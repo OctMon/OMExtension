@@ -48,7 +48,7 @@ public struct OMDateInfo {
     var nanosecond = 0
 }
 
-public extension NSDate {
+public extension Date {
     
     /**
      G: 公元时代，例如AD公元
@@ -70,12 +70,12 @@ public extension NSDate {
      ss:秒，2位
      S:毫秒
      */
-    func omFormatString(dateFormat: String = "yyyy-MM-dd HH:mm:ss") -> String {
+    func omFormatString(_ dateFormat: String = "yyyy-MM-dd HH:mm:ss") -> String {
         
-        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        let dateFormatter: DateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         
-        return dateFormatter.stringFromDate(self)
+        return dateFormatter.string(from: self)
     }
     
     var omYearString: String {
@@ -93,23 +93,23 @@ public extension NSDate {
         return omFormatString("EEEE")
     }
     
-    func omDateInfo(timeZone: NSTimeZone = NSTimeZone.systemTimeZone()) -> OMDateInfo {
+    func omDateInfo(_ timeZone: TimeZone = TimeZone.current) -> OMDateInfo {
         
-        let calendar = NSCalendar.autoupdatingCurrentCalendar()
+        var calendar = Calendar.autoupdatingCurrent
         calendar.timeZone = timeZone
         
-        return OMDateInfo(year: calendar.components(.Year, fromDate: self).year, month: calendar.components(.Month, fromDate: self).month, day: calendar.components(.Day, fromDate: self).day, weekday: calendar.components(.WeekdayOrdinal, fromDate: self).weekdayOrdinal, hour: calendar.components(.Hour, fromDate: self).hour, minute: calendar.components(.Minute, fromDate: self).minute, second: calendar.components(.Second, fromDate: self).second, nanosecond: calendar.components(.Nanosecond, fromDate: self).nanosecond)
+        return OMDateInfo(year: (calendar as NSCalendar).components(.year, from: self).year!, month: (calendar as NSCalendar).components(.month, from: self).month!, day: (calendar as NSCalendar).components(.day, from: self).day!, weekday: (calendar as NSCalendar).components(.weekdayOrdinal, from: self).weekdayOrdinal!, hour: (calendar as NSCalendar).components(.hour, from: self).hour!, minute: (calendar as NSCalendar).components(.minute, from: self).minute!, second: (calendar as NSCalendar).components(.second, from: self).second!, nanosecond: (calendar as NSCalendar).components(.nanosecond, from: self).nanosecond!)
     }
     
-    static func omWithTimeStamp(timeStamp: NSTimeInterval) -> NSDate {
+    static func omWithTimeStamp(_ timeStamp: TimeInterval) -> Date {
         
-        return NSDate(timeIntervalSince1970: timeStamp / 1000)
+        return Date(timeIntervalSince1970: timeStamp / 1000)
     }
 }
 
 public extension OMDateInfo {
     
-    func omString(dateSeparator dateSeparator: String = "-", dateNormal: Bool = true, nanosecond: Bool = false) -> String {
+    func omString(dateSeparator: String = "-", dateNormal: Bool = true, nanosecond: Bool = false) -> String {
         var description: String
         
         if dateNormal {

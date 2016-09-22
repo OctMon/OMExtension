@@ -26,24 +26,44 @@
 
 import Foundation
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 public extension UITextField {
     
-    func omSetLimit(length: Int) {
+    func omSetLimit(_ length: Int) {
         
-        NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: nil, queue: OperationQueue.main) { (notification) in
             
             if ((self.text?.characters.count > length) && self.markedTextRange == nil) {
                 
-                self.text = (self.text! as NSString).substringToIndex(length)
+                self.text = (self.text! as NSString).substring(to: length)
             }
         }
     }
     
-    func omAddDoneButton(barStyle: UIBarStyle = .Default, title: String? = "完成") {
+    func omAddDoneButton(_ barStyle: UIBarStyle = .default, title: String? = "完成") {
         
         let toolbar = UIToolbar()
-        toolbar.items = [UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil), UIBarButtonItem(title: title, style: .Done, target: self, action: #selector(UIResponder.resignFirstResponder))]
+        toolbar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: title, style: .done, target: self, action: #selector(UIResponder.resignFirstResponder))]
         
         toolbar.barStyle = barStyle
         toolbar.sizeToFit()
@@ -51,21 +71,21 @@ public extension UITextField {
         inputAccessoryView = toolbar
     }
     
-    func omAddLeftPadding(padding: CGFloat) {
+    func omAddLeftPadding(_ padding: CGFloat) {
         
         let leftView = UIView()
         leftView.frame = CGRect(x: 0, y: 0, width: padding, height: frame.height)
         self.leftView = leftView
-        self.leftViewMode = UITextFieldViewMode.Always
+        self.leftViewMode = UITextFieldViewMode.always
     }
     
-    func omAddLeftIcon(image: UIImage, padding: CGFloat = 8) {
+    func omAddLeftIcon(_ image: UIImage, padding: CGFloat = 8) {
         
         let imageView = UIImageView(image: image)
-        imageView.contentMode = .Center
+        imageView.contentMode = .center
         self.leftView = imageView
         self.leftView?.frame.size = CGSize(width: image.size.width + padding, height: image.size.height)
-        self.leftViewMode = UITextFieldViewMode.Always
+        self.leftViewMode = UITextFieldViewMode.always
     }
 
 }

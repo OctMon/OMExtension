@@ -35,12 +35,12 @@ public extension Dictionary {
         return (Array(keys)[index], Array(values)[index])
     }
     
-    func omContainsKey(key: Key) -> Bool {
+    func omContainsKey(_ key: Key) -> Bool {
         
-        return indexForKey(key) != nil
+        return index(forKey: key) != nil
     }
     
-    func omUnion(dictionary: Dictionary...) -> Dictionary {
+    func omUnion(_ dictionary: Dictionary...) -> Dictionary {
         
         var result = self
         
@@ -55,7 +55,7 @@ public extension Dictionary {
         return result
     }
     
-    func omMapFilter<K, V>(map: (Key, Value) -> (K, V)?) -> [K: V] {
+    func omMapFilter<K, V>(_ map: (Key, Value) -> (K, V)?) -> [K: V] {
         
         var result = [K: V]()
         
@@ -70,7 +70,7 @@ public extension Dictionary {
         return result
     }
     
-    func omFilter(valid: (Key, Value) -> Bool) -> Dictionary {
+    func omFilter(_ valid: (Key, Value) -> Bool) -> Dictionary {
         
         var result = Dictionary()
         
@@ -85,11 +85,11 @@ public extension Dictionary {
         return result
     }
     
-    func omIntersection<K, V where K: Equatable, V: Equatable>(dictionary: [K: V]...) -> [K: V] {
+    func omIntersection<K, V>(_ dictionary: [K: V]...) -> [K: V] where K: Equatable, V: Equatable {
         
         let filter = omMapFilter { (key, value) -> (K, V)? in
             
-            if let key = key as? K, value = value as? V {
+            if let key = key as? K, let value = value as? V {
                 
                 return (key, value)
             }
@@ -106,7 +106,7 @@ public extension Dictionary {
 
 public extension Dictionary where Value: Equatable {
     
-    func omDifference(dictionary: [Key: Value]...) -> [Key: Value] {
+    func omDifference(_ dictionary: [Key: Value]...) -> [Key: Value] {
         
         var result = self
         
@@ -116,7 +116,7 @@ public extension Dictionary where Value: Equatable {
                 
                 if result.omContainsKey(key) && result[key] == value {
                     
-                    result.removeValueForKey(key)
+                    result.removeValue(forKey: key)
                 }
             }
         }

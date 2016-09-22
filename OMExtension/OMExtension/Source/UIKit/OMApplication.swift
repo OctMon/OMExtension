@@ -31,18 +31,18 @@ import UIKit
 public extension UIApplication {
     
     /// 获取单例delegate
-    static var omAppDelegate: UIApplicationDelegate { return UIApplication.sharedApplication().delegate! }
+    static var omAppDelegate: UIApplicationDelegate { return UIApplication.shared.delegate! }
     
     // 获取当前UIViewController
     static var omCurrentVC: UIViewController? {
         
-        var top = UIApplication.sharedApplication().keyWindow?.rootViewController
+        var top = UIApplication.shared.keyWindow?.rootViewController
         
-        if top?.isKindOfClass(UITabBarController.classForCoder()) == true {
+        if top?.isKind(of: UITabBarController.classForCoder()) == true {
             
             top = (top as! UITabBarController).selectedViewController
             
-            if (top?.isKindOfClass(UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
+            if (top?.isKind(of: UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
                 
                 top = (top as! UINavigationController).topViewController
             }
@@ -51,7 +51,7 @@ public extension UIApplication {
             
             top = top?.presentedViewController
             
-        } else if (top?.isKindOfClass(UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
+        } else if (top?.isKind(of: UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
             
             top = (top as! UINavigationController).topViewController
         }
@@ -73,7 +73,7 @@ public extension UIApplication {
     // 获取当前UITabBarController
     static var omCurrentTBC: UITabBarController? {
         
-        if let top = UIApplication.sharedApplication().keyWindow?.rootViewController where top.isKindOfClass(UITabBarController.classForCoder()) == true {
+        if let top = UIApplication.shared.keyWindow?.rootViewController , top.isKind(of: UITabBarController.classForCoder()) == true {
             
             return (top as! UITabBarController)
         }
@@ -82,16 +82,16 @@ public extension UIApplication {
     }
     
     /// 获取应用名称
-    static var omAppName: String { return NSBundle.mainBundle().infoDictionary!["CFBundleName"] as! String }
+    static var omAppName: String { return Bundle.main.infoDictionary!["CFBundleName"] as! String }
     
     /// 获取应用唯一标识
-    static var omAppIdentifier: String { return NSBundle.mainBundle().infoDictionary!["CFBundleIdentifier"] as! String }
+    static var omAppIdentifier: String { return Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String }
     
     /// 获取应用内部版本号
-    static var omAppBuild: String { return NSBundle.mainBundle().infoDictionary!["CFBundleVersion"] as! String }
+    static var omAppBuild: String { return Bundle.main.infoDictionary!["CFBundleVersion"] as! String }
     
     /// 获取应用外部版本号
-    static var omAppVersion: String { return NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String }
+    static var omAppVersion: String { return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String }
     
     /// 是否存在一个以应用唯一标识为标记的key
     static var omIsFirstStart: Bool { return omIsFirstStartForKey(omAppIdentifier) }
@@ -109,12 +109,12 @@ public extension UIApplication {
      
      - returns: 是否存在标记key
      */
-    static func omIsFirstStartForKey(key: String) -> (Bool) {
+    static func omIsFirstStartForKey(_ key: String) -> (Bool) {
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let isFirstStart: Bool = defaults.boolForKey(key)
+        let defaults = UserDefaults.standard
+        let isFirstStart: Bool = defaults.bool(forKey: key)
         
-        defaults.setBool(true, forKey: key)
+        defaults.set(true, forKey: key)
         defaults.synchronize()
         
         if isFirstStart != true {
@@ -133,12 +133,12 @@ public extension UIApplication {
     
 //  http://stackoverflow.com/questions/8246070/ios-launching-settings-restrictions-url-scheme/8246814#8246814
     
-    private static let prefsRoot = "prefs:root="
-    private static let generalPath = "General&path="
+    fileprivate static let prefsRoot = "prefs:root="
+    fileprivate static let generalPath = "General&path="
     
-    private static func omOpenPrefsRoot(string: String) -> Bool { return omOpenURL(string: UIApplication.prefsRoot + string) }
+    fileprivate static func omOpenPrefsRoot(_ string: String) -> Bool { return omOpenURL(string: UIApplication.prefsRoot + string) }
     
-    private static func omOpenGeneralPath(string: String) -> Bool { return omOpenURL(string: UIApplication.prefsRoot + UIApplication.generalPath + string) }
+    fileprivate static func omOpenGeneralPath(_ string: String) -> Bool { return omOpenURL(string: UIApplication.prefsRoot + UIApplication.generalPath + string) }
     
     /**
      是否可以打开网址
@@ -147,7 +147,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
-    static func omCanOpenURL(string string: String) -> Bool { return sharedApplication().canOpenURL(NSURL(string: string)!) }
+    static func omCanOpenURL(string: String) -> Bool { return shared.canOpenURL(URL(string: string)!) }
     
     /**
      在浏览器中打开网址
@@ -156,7 +156,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
-    static func omOpenURL(string string: String) -> Bool { return sharedApplication().openURL(NSURL(string: string)!) }
+    static func omOpenURL(string: String) -> Bool { return shared.openURL(URL(string: string)!) }
     
     /**
      跳转到应用设置
@@ -490,7 +490,7 @@ import AudioToolbox
 
 public extension UIApplication {
     
-    static func omSystemSoundPlay(omAudioSystemSoundID: OMSystemSoundID) {
+    static func omSystemSoundPlay(_ omAudioSystemSoundID: OMSystemSoundID) {
         
         AudioServicesPlaySystemSound(SystemSoundID(omAudioSystemSoundID.rawValue))
     }
@@ -520,48 +520,48 @@ import LocalAuthentication
 
 public extension UIApplication {
     
-    static func omAuthenticationTouchID(reason: String, handler: (result: OMAuthenticationTouchID) -> Void) {
+    static func omAuthenticationTouchID(_ reason: String, handler: @escaping (_ result: OMAuthenticationTouchID) -> Void) {
         
         let context: LAContext = LAContext()
         
         var error: NSError?
         
-        if context.canEvaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, error: &error) {
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             
-            context.evaluatePolicy(.DeviceOwnerAuthenticationWithBiometrics, localizedReason: reason, reply: { (success: Bool, error: NSError?) -> Void in
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason, reply: { (success: Bool, error: NSError?) -> Void in
                 
                 if success {
                     
-                    handler(result: .success)
+                    handler(.success)
                     
                 } else {
                     
                     switch error!.code {
-                    case LAError.AuthenticationFailed.rawValue:
-                        handler(result: .authenticationFailed)
-                    case LAError.UserCancel.rawValue:
-                        handler(result: .userCancel)
-                    case LAError.UserFallback.rawValue:
-                        handler(result: .userFallback)
-                    case LAError.SystemCancel.rawValue:
-                        handler(result: .systemCancel)
+                    case LAError.Code.authenticationFailed.rawValue:
+                        handler(.authenticationFailed)
+                    case LAError.Code.userCancel.rawValue:
+                        handler(.userCancel)
+                    case LAError.Code.userFallback.rawValue:
+                        handler(.userFallback)
+                    case LAError.Code.systemCancel.rawValue:
+                        handler(.systemCancel)
                     default:
-                        handler(result: .error)
+                        handler(.error)
                     }
                 }
-            })
+            } as! (Bool, Error?) -> Void)
             
         } else {
             
             switch error!.code {
-            case LAError.PasscodeNotSet.rawValue:
-                handler(result: .passcodeNotSet)
-            case LAError.TouchIDNotAvailable.rawValue:
-                handler(result: .touchIDNotAvailable)
-            case LAError.TouchIDNotEnrolled.rawValue:
-                handler(result: .touchIDNotEnrolled)
+            case LAError.Code.passcodeNotSet.rawValue:
+                handler(.passcodeNotSet)
+            case LAError.Code.touchIDNotAvailable.rawValue:
+                handler(.touchIDNotAvailable)
+            case LAError.Code.touchIDNotEnrolled.rawValue:
+                handler(.touchIDNotEnrolled)
             default:
-                handler(result: .error)
+                handler(.error)
             }
         }
     }

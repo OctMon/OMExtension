@@ -91,15 +91,15 @@ class PopularAppTVC: BaseTVC {
         "WWDC"
     ]
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         navigationController?.navigationBar.titleTextAttributes = nil
         navigationController?.navigationBar.barTintColor = nil
         navigationController?.navigationBar.tintColor = nil
-        navigationController?.navigationBar.translucent = false
+        navigationController?.navigationBar.isTranslucent = false
         
-        UIApplication.sharedApplication().setStatusBarStyle(.Default, animated: true)
+        UIApplication.shared.setStatusBarStyle(.default, animated: true)
     }
 
     override func viewDidLoad() {
@@ -108,35 +108,35 @@ class PopularAppTVC: BaseTVC {
         tableView.rowHeight = 70
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return dataSource.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.omClassName, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.omClassName, for: indexPath)
         
-        cell.imageView?.image = UIImage(named: "icon_" + dataSource[indexPath.row].lowercaseString.stringByReplacingOccurrencesOfString(" ", withString: "_", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil))
-        cell.textLabel?.text = dataSource[indexPath.row]
+        cell.imageView?.image = UIImage(named: "icon_" + dataSource[(indexPath as NSIndexPath).row].lowercased().replacingOccurrences(of: " ", with: "_", options: NSString.CompareOptions.caseInsensitive, range: nil))
+        cell.textLabel?.text = dataSource[(indexPath as NSIndexPath).row]
         
         cell.imageView?.layer.masksToBounds = true
         cell.imageView?.layer.cornerRadius = (cell.imageView?.image?.size.width ?? 0) * 0.2
-        cell.imageView?.layer.borderColor = UIColor.grayColor().colorWithAlphaComponent(0.2).CGColor
+        cell.imageView?.layer.borderColor = UIColor.gray.withAlphaComponent(0.2).cgColor
         cell.imageView?.layer.borderWidth = 0.5
         cell.imageView?.layer.shouldRasterize = true
-        cell.imageView?.layer.rasterizationScale = UIScreen.mainScreen().scale
+        cell.imageView?.layer.rasterizationScale = UIScreen.main.scale
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if let controller = UIStoryboard.omInstantiateViewController(name: UIViewController.omClassName, identifier: PlaceholderTVC.omClassName) {
             
-            controller.title = dataSource[indexPath.row]
+            controller.title = dataSource[(indexPath as NSIndexPath).row]
             
-            showViewController(controller, sender: nil)
+            show(controller, sender: nil)
         }
     }
     

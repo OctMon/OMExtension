@@ -30,9 +30,9 @@ import UIKit
 
 public extension UIAlertController {
     
-    func omShow(completion: dispatch_block_t? = nil) {
+    func omShow(_ completion: (()->())? = nil) {
         
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(self, animated: true, completion: completion)
+        UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: completion)
     }
 
 }

@@ -29,7 +29,7 @@ import UIKit
 
 public extension UIStoryboard {
     
-    private convenience init(omName: String, bundle: NSBundle? = nil) {
+    fileprivate convenience init(omName: String, bundle: Bundle? = nil) {
         
         self.init(name: omName, bundle: bundle)
     }
@@ -42,11 +42,11 @@ public extension UIStoryboard {
      
      - returns: UIViewController
      */
-    static func omInstantiateViewController(name name: String, identifier: String? = nil) -> UIViewController? {
+    static func omInstantiateViewController(name: String, identifier: String? = nil) -> UIViewController? {
         
         if let identifier = identifier {
             
-            return UIStoryboard(omName: name).instantiateViewControllerWithIdentifier(identifier)
+            return UIStoryboard(omName: name).instantiateViewController(withIdentifier: identifier)
             
         } else {
             

@@ -31,26 +31,26 @@ public extension UIScreen {
     
     static var omIsPortrait: Bool {
         
-        return UIDevice.currentDevice().orientation.isPortrait
+        return UIDevice.current.orientation.isPortrait
     }
     
     static var omGetWidth: CGFloat {
         
-        return UIScreen.mainScreen().bounds.size.width
+        return UIScreen.main.bounds.size.width
     }
     
     static var omGetHeight: CGFloat {
         
-        return UIScreen.mainScreen().bounds.size.height
+        return UIScreen.main.bounds.size.height
     }
     
     static var omGetSize: CGSize {
         
-        return UIScreen.mainScreen().bounds.size
+        return UIScreen.main.bounds.size
     }
     
     static var omGetBounds: CGRect {
         
-        return UIScreen.mainScreen().bounds
+        return UIScreen.main.bounds
     }
 }

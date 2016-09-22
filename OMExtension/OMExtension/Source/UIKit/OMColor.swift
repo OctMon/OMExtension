@@ -29,13 +29,13 @@ import UIKit
 
 public extension UIColor {
     
-    private static func colorComponentFrom(string: String, start: Int, lenght: Int) -> CGFloat {
+    fileprivate static func colorComponentFrom(_ string: String, start: Int, lenght: Int) -> CGFloat {
         
         var substring: NSString = string as NSString
-        substring = substring.substringWithRange(NSMakeRange(start, lenght))
+        substring = substring.substring(with: NSMakeRange(start, lenght)) as NSString
         let fullHex = lenght == 2 ? substring as String : "\(substring)\(substring)"
         var hexComponent: CUnsignedInt = 0
-        NSScanner(string: fullHex).scanHexInt(&hexComponent)
+        Scanner(string: fullHex).scanHexInt32(&hexComponent)
         
         return CGFloat(hexComponent) / 255.0
     }
@@ -47,7 +47,7 @@ public extension UIColor {
     
     convenience init(omHex: String) {
         
-        let colorString: String = omHex.stringByReplacingOccurrencesOfString("#", withString: "").uppercaseString
+        let colorString: String = omHex.replacingOccurrences(of: "#", with: "").uppercased()
         var alpha: CGFloat = 0.0, red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0
         
         switch colorString.characters.count {

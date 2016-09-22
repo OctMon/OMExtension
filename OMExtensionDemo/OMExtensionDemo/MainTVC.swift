@@ -38,27 +38,27 @@ class MainTVC: BaseTVC {
 
     // MARK: - Table view data source
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return dataSource.count
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.omClassName, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.omClassName, for: indexPath)
 
-        cell.textLabel?.text = dataSource[indexPath.row]
+        cell.textLabel?.text = dataSource[(indexPath as NSIndexPath).row]
 
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let controller = UIStoryboard.omInstantiateViewController(name: dataSource[indexPath.row]) {
+        if let controller = UIStoryboard.omInstantiateViewController(name: dataSource[(indexPath as NSIndexPath).row]) {
             
-            controller.title = dataSource[indexPath.row]
+            controller.title = dataSource[(indexPath as NSIndexPath).row]
             
-            showViewController(controller, sender: nil)
+            show(controller, sender: nil)
         }
     }
 

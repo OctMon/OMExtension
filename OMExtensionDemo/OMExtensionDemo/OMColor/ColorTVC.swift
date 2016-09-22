@@ -33,7 +33,7 @@ class ColorTVC: BaseTVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.separatorStyle = .None
+        tableView.separatorStyle = .none
         tableView.backgroundColor = UIColor.omChinese粉红
         tableView.rowHeight = 128
         
@@ -207,7 +207,7 @@ class ColorTVC: BaseTVC {
             }
         }*/
         
-        NSThread.omRunInMainThread(delay: 0.1, handler: {
+        Thread.omRunInMainThread(delay: 0.1, handler: {
             
             self.tableView.reloadData()
         })
@@ -219,23 +219,23 @@ extension ColorTVC {
     
     // MARK: Table view data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return colors.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.omClassName, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.omClassName, for: indexPath)
         
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         
-        cell.backgroundColor = colors[indexPath.row].0
-        cell.textLabel?.text = colors[indexPath.row].1.stringByReplacingOccurrencesOfString("omChinese", withString: "") + " RGB(" + cell.backgroundColor!.omGetRed.omToString + "," + cell.backgroundColor!.omGetGreen.omToString + "," + cell.backgroundColor!.omGetBlue.omToString + ")"
-        cell.detailTextLabel?.text = colors[indexPath.row].2
+        cell.backgroundColor = colors[(indexPath as NSIndexPath).row].0
+        cell.textLabel?.text = colors[(indexPath as NSIndexPath).row].1.replacingOccurrences(of: "omChinese", with: "") + " RGB(" + cell.backgroundColor!.omGetRed.omToString + "," + cell.backgroundColor!.omGetGreen.omToString + "," + cell.backgroundColor!.omGetBlue.omToString + ")"
+        cell.detailTextLabel?.text = colors[(indexPath as NSIndexPath).row].2
         cell.detailTextLabel?.numberOfLines = 0
         
-        cell.textLabel?.textColor = cell.backgroundColor!.omIsLight ? UIColor.blackColor() : UIColor.whiteColor()
+        cell.textLabel?.textColor = cell.backgroundColor!.omIsLight ? UIColor.black : UIColor.white
         cell.detailTextLabel?.textColor = cell.textLabel?.textColor
         
         return cell

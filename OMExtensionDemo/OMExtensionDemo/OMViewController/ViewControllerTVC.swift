@@ -36,24 +36,24 @@ class ViewControllerTVC: BaseTVC {
     
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return dataSource.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.omClassName, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.omClassName, for: indexPath)
         
-        cell.textLabel?.text = dataSource[indexPath.row].0
+        cell.textLabel?.text = dataSource[(indexPath as NSIndexPath).row].0
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = UIStoryboard.omInstantiateViewController(name: UIViewController.omClassName, identifier: dataSource[indexPath.row].1)!
-        vc.title = dataSource[indexPath.row].0
+        let vc = UIStoryboard.omInstantiateViewController(name: UIViewController.omClassName, identifier: dataSource[(indexPath as NSIndexPath).row].1)!
+        vc.title = dataSource[(indexPath as NSIndexPath).row].0
         
         omPushViewController(vc)
     }

@@ -37,13 +37,13 @@ class FontTVC: BaseTVC {
         
         tableView.estimatedRowHeight = 44
         
-        UIFont.familyNames().sort().forEach({ (family) in
-            UIFont.fontNamesForFamilyName(family).sort().forEach({ (font) in
+        UIFont.familyNames.sorted().forEach({ (family) in
+            UIFont.fontNames(forFamilyName: family).sorted().forEach({ (font) in
                 fonts.append(font)
             })
         })
         
-        NSThread.omRunInMainThread(delay: 0.1) { 
+        Thread.omRunInMainThread(delay: 0.1) { 
             
             self.tableView.reloadData()
         }
@@ -55,21 +55,21 @@ extension FontTVC {
     
     // MARK: Table view data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return fonts.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.omClassName, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.omClassName, for: indexPath)
         
-        cell.selectionStyle = .None
+        cell.selectionStyle = .none
         
-        cell.textLabel?.font = UIFont(name: fonts[indexPath.row], size: UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline).pointSize)
-        cell.textLabel?.text = fonts[indexPath.row]
+        cell.textLabel?.font = UIFont(name: fonts[(indexPath as NSIndexPath).row], size: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline).pointSize)
+        cell.textLabel?.text = fonts[(indexPath as NSIndexPath).row]
         
-        cell.detailTextLabel?.font = UIFont(name: fonts[indexPath.row], size: UIFont.preferredFontForTextStyle(UIFontTextStyleSubheadline).pointSize)
+        cell.detailTextLabel?.font = UIFont(name: fonts[(indexPath as NSIndexPath).row], size: UIFont.preferredFont(forTextStyle: UIFontTextStyle.subheadline).pointSize)
         cell.detailTextLabel?.text = "壹貳參" + "，。#@" + "OctMon" + ",.#@" + " 123" + "abc" + "ABC"
         
         return cell

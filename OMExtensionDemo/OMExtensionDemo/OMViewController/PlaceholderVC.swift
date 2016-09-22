@@ -63,22 +63,22 @@ class PlaceholderVC: BaseVC {
         
         let app = PopularApp(rawValue: dataSource.omRandom()!.1)!
         
-        return UIImage(named: "placeholder_" + app.rawValue.lowercaseString.stringByReplacingOccurrencesOfString("", withString: "_", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil))
+        return UIImage(named: "placeholder_" + app.rawValue.lowercased().replacingOccurrences(of: "", with: "_", options: NSString.CompareOptions.caseInsensitive, range: nil))
     }
     
     var getButtonBackgroundImageName: String {
         
         let app = PopularApp(rawValue: dataSource.omRandom()!.1)!
         
-        return "button_background_" + app.rawValue.lowercaseString
+        return "button_background_" + app.rawValue.lowercased()
     }
     
-    var timer: NSTimer?
+    var timer: Timer?
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        if let timer = timer where timer.valid {
+        if let timer = timer , timer.isValid {
             
             timer.invalidate()
         }
@@ -89,7 +89,7 @@ class PlaceholderVC: BaseVC {
         
         omShowPlaceholder(getImage)
         
-        timer = NSTimer.omRunLoop(seconds: 1) { (timer) in
+        timer = Timer.omRunLoop(seconds: 1) { (timer) in
             
             if let image = self.getImage {
                 
@@ -100,9 +100,9 @@ class PlaceholderVC: BaseVC {
                 let backgroundImageNormal = UIImage(named: backgroundImageName + "_normal")
                 let backgroundImageHighlight = UIImage(named: backgroundImageName + "_highlight")
                 
-                self.omShowPlaceholder(image, shouldTap: true, offset: image.size.width * 0.5, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState.Normal), (backgroundImageHighlight, state: UIControlState.Highlighted)], titles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState.Normal)] : nil), buttonTapHandler: { (button) in
+                self.omShowPlaceholder(image, shouldTap: true, offset: image.size.width * 0.5, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState()), (backgroundImageHighlight, state: UIControlState.highlighted)], titles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState())] : nil), buttonTapHandler: { (button) in
                     
-                    print(button.selected)
+                    print(button.isSelected)
                     
                     })
                 
@@ -110,7 +110,7 @@ class PlaceholderVC: BaseVC {
                 
                 let title = "No Image"
                 
-                self.omShowPlaceholder(nil, titleAttributedString: title.omGetAttributes(color: [(UIColor.grayColor(), title)]), shouldTap: false, offset: 64)
+                self.omShowPlaceholder(nil, titleAttributedString: title.omGetAttributes(color: [(UIColor.gray, title)]), shouldTap: false, offset: 64)
             }
             
         }

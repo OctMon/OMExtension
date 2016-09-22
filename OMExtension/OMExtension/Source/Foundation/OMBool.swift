@@ -28,10 +28,7 @@ import Foundation
 
 public extension Bool {
     
-    var omToInt: Int {
-        
-        return Int(self)
-    }
+    var omToInt: Int { return self ? 1 : 0 }
     
     mutating func omToggle() -> Bool {
         

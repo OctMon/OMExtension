@@ -38,18 +38,18 @@ public extension Double {
         return Int(self)
     }
     
-    var omToDate: NSDate {
+    var omToDate: Date {
         
-        return NSDate.omWithTimeStamp(self)
+        return Date.omWithTimeStamp(self)
     }
     
-    func omToDecimalStyle(precision: Int = 2) -> String {
+    func omToDecimalStyle(_ precision: Int = 2) -> String {
         
-        let formatter = NSNumberFormatter()
-        formatter.numberStyle = .DecimalStyle
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = precision
         
-        return formatter.stringFromNumber(self)!
+        return formatter.string(from: NSNumber(value: self)) ?? ""
     }
     
 }

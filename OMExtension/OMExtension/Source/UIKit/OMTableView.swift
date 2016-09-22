@@ -33,19 +33,19 @@ public extension UITableView {
         
         setContentOffset(contentOffset, animated: false)
         
-        UIView.animateWithDuration(0.2, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             
-            self.hidden = true
+            self.isHidden = true
             self.reloadData()
             
-        }) { (_) in
+        }, completion: { (_) in
             
-            self.hidden = false
+            self.isHidden = false
             self.visibleRowsBeginAnimation()
-        }
+        }) 
     }
     
-    private func visibleRowsBeginAnimation() {
+    fileprivate func visibleRowsBeginAnimation() {
         
         let array = indexPathsForVisibleRows
         
@@ -53,46 +53,46 @@ public extension UITableView {
             
             for path in pathArray {
                 
-                let cell = cellForRowAtIndexPath(path)
-                cell?.center = CGPointMake(frame.size.width * 0.5, cell!.center.y)
+                let cell = cellForRow(at: path)
+                cell?.center = CGPoint(x: frame.size.width * 0.5, y: cell!.center.y)
             }
             
-            NSObject.cancelPreviousPerformRequestsWithTarget(self)
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
             
-            for (num, item) in pathArray.enumerate() {
+            for (num, item) in pathArray.enumerated() {
                 
-                let cell = self.cellForRowAtIndexPath(item)
-                cell?.hidden = true
+                let cell = self.cellForRow(at: item)
+                cell?.isHidden = true
                 let i: Double = Double(num)
                 
-                performSelector(#selector(UITableView.animationStart(_:)), withObject: item, afterDelay: 0.1 * (i + 1))
+                perform(#selector(UITableView.animationStart(_:)), with: item, afterDelay: 0.1 * (i + 1))
             }
         }
     }
     
-    @objc private func animationStart(path: NSIndexPath) {
+    @objc fileprivate func animationStart(_ path: IndexPath) {
         
-        let cell = cellForRowAtIndexPath(path)
+        let cell = cellForRow(at: path)
         
         if let animationCell = cell {
             
             let originPoint = animationCell.center
-            animationCell.center = CGPointMake(animationCell.frame.size.width, originPoint.y)
+            animationCell.center = CGPoint(x: animationCell.frame.size.width, y: originPoint.y)
             
-            UIView.animateWithDuration(0.25, delay: 0, options: .CurveEaseInOut, animations: {
+            UIView.animate(withDuration: 0.25, delay: 0, options: UIViewAnimationOptions(), animations: {
                 
-                animationCell.center = CGPointMake(originPoint.x - 2, originPoint.y)
-                animationCell.hidden = false
+                animationCell.center = CGPoint(x: originPoint.x - 2, y: originPoint.y)
+                animationCell.isHidden = false
                 
             }) { (_) in
                 
-                UIView.animateWithDuration(0.1, delay: 0, options: .CurveEaseInOut, animations: {
+                UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions(), animations: {
                     
-                    animationCell.center = CGPointMake(originPoint.x + 2, originPoint.y)
+                    animationCell.center = CGPoint(x: originPoint.x + 2, y: originPoint.y)
                     
                     }, completion: { (_) in
                         
-                        UIView.animateWithDuration(0.1, delay: 0, options: .CurveEaseInOut, animations: {
+                        UIView.animate(withDuration: 0.1, delay: 0, options: UIViewAnimationOptions(), animations: {
                             
                             animationCell.center = originPoint
                             

@@ -26,6 +26,26 @@
 
 import Foundation
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 // MARK: - convert
 
@@ -33,7 +53,7 @@ public extension String {
     
     var omToFloat: Float? {
         
-        if let num = NSNumberFormatter().numberFromString(self) {
+        if let num = NumberFormatter().number(from: self) {
             
             return num.floatValue
         }
@@ -43,7 +63,7 @@ public extension String {
     
     var omToDouble: Double? {
         
-        if let num = NSNumberFormatter().numberFromString(self) {
+        if let num = NumberFormatter().number(from: self) {
             
             return num.doubleValue
         }
@@ -53,9 +73,9 @@ public extension String {
     
     var omToInt: Int? {
         
-        if let num = NSNumberFormatter().numberFromString(self) {
+        if let num = NumberFormatter().number(from: self) {
             
-            return num.integerValue
+            return num.intValue
         }
         
         return nil
@@ -63,7 +83,7 @@ public extension String {
     
     var omToBool: Bool? {
         
-        let string = self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).lowercaseString
+        let string = trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
         
         if string == "true" {
             
@@ -83,11 +103,11 @@ public extension String {
 
 public extension String {
     
-    func omIsRegex(regex: String) -> Bool {
+    func omIsRegex(_ regex: String) -> Bool {
         
         let regExPredicate: NSPredicate = NSPredicate(format: "SELF MATCHES %@", regex)
         
-        return regExPredicate.evaluateWithObject(self.lowercaseString)
+        return regExPredicate.evaluate(with: self.lowercased())
     }
     
     /// 纯数字验证
@@ -110,7 +130,7 @@ public extension String {
         
         if omIsRegex("^(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})$") {
             
-            for string in self.componentsSeparatedByString(".") {
+            for string in self.components(separatedBy: ".") {
                 
                 if string.omToInt > 255 {
                     
@@ -132,13 +152,13 @@ public extension String {
 
 public extension String {
     
-    var omExtractURL: [NSURL] {
+    var omExtractURL: [URL] {
         
-        var URL = [NSURL]()
+        var urls: [URL] = []
         let detector: NSDataDetector?
         
         do {
-            detector = try NSDataDetector(types: NSTextCheckingType.Link.rawValue)
+            detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
         } catch _ as NSError {
             detector = nil
         }
@@ -147,26 +167,26 @@ public extension String {
         
         if let detector = detector {
             
-            detector.enumerateMatchesInString(text, options: [], range: NSRange(location: 0, length: text.characters.count), usingBlock: {
+            detector.enumerateMatches(in: text, options: [], range: NSRange(location: 0, length: text.characters.count), using: {
                 
-                (result: NSTextCheckingResult?, flags: NSMatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
+                (result: NSTextCheckingResult?, flags: NSRegularExpression.MatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
                 
-                if let result = result, url = result.URL {
+                if let result = result, let url = result.url {
                     
-                    URL.append(url)
+                    urls.append(url)
                 }
             })
         }
         
-        return URL
+        return urls
     }
     
     func omCopyToPasteboard() {
         
-        UIPasteboard.generalPasteboard().string = self
+        UIPasteboard.general.string = self
     }
     
-    func omHeight(width: CGFloat, font: UIFont, lineBreakMode: NSLineBreakMode? = nil) -> CGFloat {
+    func omHeight(_ width: CGFloat, font: UIFont, lineBreakMode: NSLineBreakMode? = nil) -> CGFloat {
         
         var attrib: [String: AnyObject] = [NSFontAttributeName: font]
         
@@ -179,7 +199,7 @@ public extension String {
         
         let size = CGSize(width: width, height: CGFloat(DBL_MAX))
         
-        return ceil((self as NSString).boundingRectWithSize(size, options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes:attrib, context: nil).height)
+        return ceil((self as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:attrib, context: nil).height)
     }
     
     mutating func omTrim() {
@@ -189,35 +209,35 @@ public extension String {
     
     var omTrimming: String {
         
-        return stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
-    func omSplit(separator: String) -> [String] {
+    func omSplit(_ separator: String) -> [String] {
         
-        return componentsSeparatedByString(separator).filter({
+        return components(separatedBy: separator).filter({
             
             return !$0.omTrimming.isEmpty
         })
     }
     
-    func omContains(subStirng: String, options: NSStringCompareOptions? = nil) -> Bool {
+    func omContains(_ subStirng: String, options: NSString.CompareOptions? = nil) -> Bool {
         
         if let options = options {
             
-            return rangeOfString(subStirng, options: options) != nil
+            return range(of: subStirng, options: options) != nil
         }
         
-        return rangeOfString(subStirng) != nil
+        return range(of: subStirng) != nil
     }
     
-    func omGetRanges(searchString: String) -> [NSRange] {
+    func omGetRanges(_ searchString: String) -> [NSRange] {
         
         var start = 0
         var ranges: [NSRange] = []
         
         while true {
             
-            let range = (self as NSString).rangeOfString(searchString, options: NSStringCompareOptions.LiteralSearch, range: NSRange(location: start, length: (self as NSString).length - start))
+            let range = (self as NSString).range(of: searchString, options: NSString.CompareOptions.literal, range: NSRange(location: start, length: (self as NSString).length - start))
             
             if range.location == NSNotFound {
                 
@@ -233,13 +253,13 @@ public extension String {
         return ranges
     }
     
-    func omGetAttributes(color color: [(color: UIColor, subString: String?)]? = nil, font: [(font: UIFont, subString: String?)]? = nil, underlineStyle: [String]? = nil, strikethroughStyle: [String]? = nil) -> NSMutableAttributedString {
+    func omGetAttributes(color: [(color: UIColor, subString: String?)]? = nil, font: [(font: UIFont, subString: String?)]? = nil, underlineStyle: [String]? = nil, strikethroughStyle: [String]? = nil) -> NSMutableAttributedString {
         
         let mutableAttributedString = NSMutableAttributedString(string: self)
         
         color?.forEach { (color, subString) in
             
-            if let string = subString where string.characters.count > 0 {
+            if let string = subString , string.characters.count > 0 {
                 
                 for range in omGetRanges(string) {
                     
@@ -254,7 +274,7 @@ public extension String {
         
         font?.forEach { (font, subString) in
             
-            if let string = subString where string.characters.count > 0 {
+            if let string = subString , string.characters.count > 0 {
                 
                 for range in omGetRanges(string) {
                     
@@ -273,7 +293,7 @@ public extension String {
                 
                 for range in omGetRanges(subString) {
                     
-                    mutableAttributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.StyleSingle.rawValue, range: range)
+                    mutableAttributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
                 }
             }
         }
@@ -284,7 +304,7 @@ public extension String {
                 
                 for range in omGetRanges(subString) {
                     
-                    mutableAttributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(integer: NSUnderlineStyle.StyleSingle.rawValue), range: range)
+                    mutableAttributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int), range: range)
                 }
             }
         }
@@ -298,8 +318,13 @@ public extension String {
 
 public extension String {
     var omMD5: String {
-        if let data = dataUsingEncoding(NSUTF8StringEncoding) {
-            let MD5Calculator = MD5(Array(UnsafeBufferPointer(start: UnsafePointer<UInt8>(data.bytes), count: data.length)))
+        if let data = self.data(using: .utf8, allowLossyConversion: true) {
+            
+            let message = data.withUnsafeBytes { bytes -> [UInt8] in
+                return Array(UnsafeBufferPointer(start: bytes, count: data.count))
+            }
+            
+            let MD5Calculator = MD5(message)
             let MD5Data = MD5Calculator.calculate()
             
             let MD5String = NSMutableString()
@@ -314,28 +339,31 @@ public extension String {
     }
 }
 
+
 /** array of bytes, little-endian representation */
-func arrayOfBytes<T>(value: T, length: Int? = nil) -> [UInt8] {
-    let totalBytes = length ?? (sizeofValue(value) * 8)
+func arrayOfBytes<T>(_ value: T, length: Int? = nil) -> [UInt8] {
+    let totalBytes = length ?? (MemoryLayout<T>.size * 8)
     
-    let valuePointer = UnsafeMutablePointer<T>.alloc(1)
-    valuePointer.memory = value
+    let valuePointer = UnsafeMutablePointer<T>.allocate(capacity: 1)
+    valuePointer.pointee = value
     
-    let bytesPointer = UnsafeMutablePointer<UInt8>(valuePointer)
-    var bytes = [UInt8](count: totalBytes, repeatedValue: 0)
-    for j in 0..<min(sizeof(T), totalBytes) {
-        bytes[totalBytes - 1 - j] = (bytesPointer + j).memory
+    let bytes = valuePointer.withMemoryRebound(to: UInt8.self, capacity: totalBytes) { (bytesPointer) -> [UInt8] in
+        var bytes = [UInt8](repeating: 0, count: totalBytes)
+        for j in 0..<min(MemoryLayout<T>.size, totalBytes) {
+            bytes[totalBytes - 1 - j] = (bytesPointer + j).pointee
+        }
+        return bytes
     }
     
-    valuePointer.destroy()
-    valuePointer.dealloc(1)
+    valuePointer.deinitialize()
+    valuePointer.deallocate(capacity: 1)
     
     return bytes
 }
 
 extension Int {
     /** Array of bytes with optional padding (little-endian) */
-    func bytes(totalBytes: Int = sizeof(Int)) -> [UInt8] {
+    func bytes(_ totalBytes: Int = MemoryLayout<Int>.size) -> [UInt8] {
         return arrayOfBytes(self, length: totalBytes)
     }
     
@@ -344,8 +372,8 @@ extension Int {
 extension NSMutableData {
     
     /** Convenient way to append bytes */
-    func appendBytes(arrayOfBytes: [UInt8]) {
-        appendBytes(arrayOfBytes, length: arrayOfBytes.count)
+    func appendBytes(_ arrayOfBytes: [UInt8]) {
+        append(arrayOfBytes, length: arrayOfBytes.count)
     }
     
 }
@@ -354,12 +382,12 @@ protocol HashProtocol {
     var message: Array<UInt8> { get }
     
     /** Common part for hash calculation. Prepare header data. */
-    func prepare(len: Int) -> Array<UInt8>
+    func prepare(_ len: Int) -> Array<UInt8>
 }
 
 extension HashProtocol {
     
-    func prepare(len: Int) -> Array<UInt8> {
+    func prepare(_ len: Int) -> Array<UInt8> {
         var tmpMessage = message
         
         // Step 1. Append Padding Bits
@@ -374,19 +402,19 @@ extension HashProtocol {
             msgLength += 1
         }
         
-        tmpMessage += Array<UInt8>(count: counter, repeatedValue: 0)
+        tmpMessage += Array<UInt8>(repeating: 0, count: counter)
         return tmpMessage
     }
 }
 
-func toUInt32Array(slice: ArraySlice<UInt8>) -> Array<UInt32> {
+func toUInt32Array(_ slice: ArraySlice<UInt8>) -> Array<UInt32> {
     var result = Array<UInt32>()
     result.reserveCapacity(16)
     
-    for idx in slice.startIndex.stride(to: slice.endIndex, by: sizeof(UInt32)) {
-        let d0 = UInt32(slice[idx.advancedBy(3)]) << 24
-        let d1 = UInt32(slice[idx.advancedBy(2)]) << 16
-        let d2 = UInt32(slice[idx.advancedBy(1)]) << 8
+    for idx in stride(from: slice.startIndex, to: slice.endIndex, by: MemoryLayout<UInt32>.size) {
+        let d0 = UInt32(slice[idx.advanced(by: 3)]) << 24
+        let d1 = UInt32(slice[idx.advanced(by: 2)]) << 16
+        let d2 = UInt32(slice[idx.advanced(by: 1)]) << 8
         let d3 = UInt32(slice[idx])
         let val: UInt32 = d0 | d1 | d2 | d3
         
@@ -395,7 +423,7 @@ func toUInt32Array(slice: ArraySlice<UInt8>) -> Array<UInt32> {
     return result
 }
 
-struct BytesGenerator: GeneratorType {
+struct BytesIterator: IteratorProtocol {
     
     let chunkSize: Int
     let data: [UInt8]
@@ -415,16 +443,16 @@ struct BytesGenerator: GeneratorType {
     }
 }
 
-struct BytesSequence: SequenceType {
+struct BytesSequence: Sequence {
     let chunkSize: Int
     let data: [UInt8]
     
-    func generate() -> BytesGenerator {
-        return BytesGenerator(chunkSize: chunkSize, data: data)
+    func makeIterator() -> BytesIterator {
+        return BytesIterator(chunkSize: chunkSize, data: data)
     }
 }
 
-func rotateLeft(value: UInt32, bits: UInt32) -> UInt32 {
+func rotateLeft(_ value: UInt32, bits: UInt32) -> UInt32 {
     return ((value << bits) & 0xFFFFFFFF) | (value >> (32 - bits))
 }
 
@@ -473,7 +501,7 @@ class MD5: HashProtocol {
         // Step 2. Append Length a 64-bit representation of lengthInBits
         let lengthInBits = (message.count * 8)
         let lengthBytes = lengthInBits.bytes(64 / 8)
-        tmpMessage += lengthBytes.reverse()
+        tmpMessage += lengthBytes.reversed()
         
         // Process the message in successive 512-bit chunks:
         let chunkSizeBytes = 512 / 8 // 64

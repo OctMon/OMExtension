@@ -29,19 +29,19 @@ import UIKit
 
 public extension UINavigationBar {
     
-    public func omTransparent(transparent: Bool, translucent: Bool = true) {
+    public func omTransparent(_ transparent: Bool, translucent: Bool = true) {
         
         if transparent {
             
-            self.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+            self.setBackgroundImage(UIImage(), for: .default)
             self.shadowImage = UIImage()
-            self.translucent = translucent
+            self.isTranslucent = translucent
             
         } else {
             
-            self.setBackgroundImage(nil, forBarMetrics: .Default)
+            self.setBackgroundImage(nil, for: .default)
             self.shadowImage = nil
-            self.translucent = translucent
+            self.isTranslucent = translucent
         }
     }
     

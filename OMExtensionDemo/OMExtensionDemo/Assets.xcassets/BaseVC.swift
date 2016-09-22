@@ -31,7 +31,7 @@ class BaseVC: UIViewController {
 
     deinit{
         
-        print("\(self.dynamicType)♻️deinit")
+        print("\(type(of: self))♻️deinit")
     }
     
     override func viewDidLoad() {

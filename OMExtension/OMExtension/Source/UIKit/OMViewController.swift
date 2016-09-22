@@ -36,24 +36,24 @@ public extension UIViewController {
         return navigationController?.navigationBar
     }
     
-    func omPushViewController(viewController: UIViewController, animated: Bool = true) {
+    func omPushViewController(_ viewController: UIViewController, animated: Bool = true) {
         
         navigationController?.pushViewController(viewController, animated: animated)
     }
     
-    func omPopViewController(animated: Bool = true) {
+    func omPopViewController(_ animated: Bool = true) -> UIViewController? {
         
-        navigationController?.popViewControllerAnimated(animated)
+        return navigationController?.popViewController(animated: animated)
     }
     
-    func omPresentViewController(viewController: UIViewController, animated: Bool = true, completion: dispatch_block_t? = nil) {
+    func omPresentViewController(_ viewController: UIViewController, animated: Bool = true, completion: (()->())? = nil) {
         
-        presentViewController(viewController, animated: animated, completion: completion)
+        present(viewController, animated: animated, completion: completion)
     }
     
-    func omDismissViewController(animated: Bool = true, completion: dispatch_block_t? = nil) {
+    func omDismissViewController(_ animated: Bool = true, completion: (()->())? = nil) {
         
-        dismissViewControllerAnimated(animated, completion: completion)
+        dismiss(animated: animated, completion: completion)
     }
     
     /**
@@ -80,12 +80,12 @@ public extension UIViewController {
      
      - returns: UIImageView
      */
-    func omSetBackground(image image: UIImage) -> UIImageView {
+    func omSetBackground(image: UIImage) -> UIImageView {
         
         let imageView = UIImageView(frame: view.frame)
         imageView.image = image
         view.addSubview(imageView)
-        view.sendSubviewToBack(imageView)
+        view.sendSubview(toBack: imageView)
         
         return imageView
     }
@@ -96,9 +96,9 @@ public extension UIViewController {
 
 public extension UIViewController {
     
-    func omAddUserDidTakeScreenshotNotificationNotification(handler: dispatch_block_t) {
+    func omAddUserDidTakeScreenshotNotificationNotification(_ handler: @escaping ()->()) {
         
-        NSNotificationCenter.defaultCenter().addObserverForName(UIApplicationUserDidTakeScreenshotNotification, object: nil, queue: NSOperationQueue.mainQueue()) { notification in
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
             
             handler()
         }
@@ -110,9 +110,9 @@ public extension UIViewController {
      - parameter name:     名称
      - parameter selector: 方法
      */
-    func omAddNotificationObserver(name: String, selector: Selector) {
+    func omAddNotificationObserver(_ name: String, selector: Selector) {
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: selector, name: name, object: nil)
+        NotificationCenter.default.addObserver(self, selector: selector, name: NSNotification.Name(rawValue: name), object: nil)
     }
     
     /**
@@ -120,9 +120,9 @@ public extension UIViewController {
      
      - parameter name: 名称
      */
-    func omRemoveNotificationObserver(name: String) {
+    func omRemoveNotificationObserver(_ name: String) {
         
-        NSNotificationCenter.defaultCenter().removeObserver(self, name: name, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: name), object: nil)
     }
     
     /**
@@ -130,94 +130,94 @@ public extension UIViewController {
      */
     func omRemoveNotificationObserver() {
         
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
     func omAddKeyboardWillShowNotification() {
         
-        omAddNotificationObserver(UIKeyboardWillShowNotification, selector: #selector(UIViewController.omKeyboardWillShowNotification(_:)))
+        omAddNotificationObserver(NSNotification.Name.UIKeyboardWillShow.rawValue, selector: #selector(UIViewController.omKeyboardWillShowNotification(_:)))
     }
     
     func omAddKeyboardDidShowNotification() {
         
-        omAddNotificationObserver(UIKeyboardDidShowNotification, selector: #selector(UIViewController.omKeyboardDidShowNotification(_:)))
+        omAddNotificationObserver(NSNotification.Name.UIKeyboardDidShow.rawValue, selector: #selector(UIViewController.omKeyboardDidShowNotification(_:)))
     }
     
     func omAddKeyboardWillHideNotification() {
         
-        omAddNotificationObserver(UIKeyboardWillHideNotification, selector: #selector(UIViewController.omKeyboardWillHideNotification(_:)))
+        omAddNotificationObserver(NSNotification.Name.UIKeyboardWillHide.rawValue, selector: #selector(UIViewController.omKeyboardWillHideNotification(_:)))
     }
     
     func omAddKeyboardDidHideNotification() {
         
-        omAddNotificationObserver(UIKeyboardDidHideNotification, selector: #selector(UIViewController.omKeyboardDidHideNotification(_:)))
+        omAddNotificationObserver(NSNotification.Name.UIKeyboardDidHide.rawValue, selector: #selector(UIViewController.omKeyboardDidHideNotification(_:)))
     }
     
     func omRemoveKeyboardWillShowNotification() {
         
-        omRemoveNotificationObserver(UIKeyboardWillShowNotification)
+        omRemoveNotificationObserver(NSNotification.Name.UIKeyboardWillShow.rawValue)
     }
     
     func omRemoveKeyboardDidShowNotification() {
         
-        omRemoveNotificationObserver(UIKeyboardDidShowNotification)
+        omRemoveNotificationObserver(NSNotification.Name.UIKeyboardDidShow.rawValue)
     }
     
     func omRemoveKeyboardWillHideNotification() {
         
-        omRemoveNotificationObserver(UIKeyboardWillHideNotification)
+        omRemoveNotificationObserver(NSNotification.Name.UIKeyboardWillHide.rawValue)
     }
     
     func omRemoveKeyboardDidHideNotification() {
         
-        omRemoveNotificationObserver(UIKeyboardDidHideNotification)
+        omRemoveNotificationObserver(NSNotification.Name.UIKeyboardDidHide.rawValue)
     }
     
-    func omKeyboardDidShowNotification(notification: NSNotification) {
+    func omKeyboardDidShowNotification(_ notification: Notification) {
         
-        if let info = notification.userInfo, value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+        if let info = (notification as NSNotification).userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             
-            omKeyboardDidShowWithFrame(value.CGRectValue())
+            omKeyboardDidShowWithFrame(value.cgRectValue)
         }
     }
     
-    func omKeyboardWillShowNotification(notification: NSNotification) {
+    func omKeyboardWillShowNotification(_ notification: Notification) {
         
-        if let info = notification.userInfo, value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+        if let info = (notification as NSNotification).userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             
-            omKeyboardWillShowWithFrame(value.CGRectValue())
+            omKeyboardWillShowWithFrame(value.cgRectValue)
         }
     }
     
-    func omKeyboardWillHideNotification(notification: NSNotification) {
+    func omKeyboardWillHideNotification(_ notification: Notification) {
         
-        if let info = notification.userInfo, value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+        if let info = (notification as NSNotification).userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             
-            omKeyboardWillHideWithFrame(value.CGRectValue())
+            omKeyboardWillHideWithFrame(value.cgRectValue)
         }
     }
     
-    func omKeyboardDidHideNotification(notification: NSNotification) {
+    func omKeyboardDidHideNotification(_ notification: Notification) {
         
-        if let info = notification.userInfo, value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+        if let info = (notification as NSNotification).userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             
-            omKeyboardDidHideWithFrame(value.CGRectValue())
+            omKeyboardDidHideWithFrame(value.cgRectValue)
         }
     }
     
-    func omKeyboardWillShowWithFrame(frame: CGRect) {
+    func omKeyboardWillShowWithFrame(_ frame: CGRect) {
         
     }
     
-    func omKeyboardDidShowWithFrame(frame: CGRect) {
+    func omKeyboardDidShowWithFrame(_ frame: CGRect) {
         
     }
     
-    func omKeyboardWillHideWithFrame(frame: CGRect) {
+    func omKeyboardWillHideWithFrame(_ frame: CGRect) {
         
     }
     
-    func omKeyboardDidHideWithFrame(frame: CGRect) {
+    func omKeyboardDidHideWithFrame(_ frame: CGRect) {
         
     }
     
@@ -237,7 +237,7 @@ private var __omPlaceholderButton__: String = "__omPlaceholderButton__"
 
 public extension UIViewController {
     
-    private var placeholderView: UIView? {
+    fileprivate var placeholderView: UIView? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderView__) as? UIView
@@ -248,7 +248,7 @@ public extension UIViewController {
         }
     }
     
-    private var placeholderImageView: UIImageView? {
+    fileprivate var placeholderImageView: UIImageView? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderImageView__) as? UIImageView
@@ -259,7 +259,7 @@ public extension UIViewController {
         }
     }
     
-    private var placeholderTitleLabel: UILabel? {
+    fileprivate var placeholderTitleLabel: UILabel? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderTitleLabel__) as? UILabel
@@ -270,7 +270,7 @@ public extension UIViewController {
         }
     }
     
-    private var placeholderDescriptionLabel: UILabel? {
+    fileprivate var placeholderDescriptionLabel: UILabel? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderDescriptionLabel__) as? UILabel
@@ -281,7 +281,7 @@ public extension UIViewController {
         }
     }
     
-    private var placeholderButton: UIButton? {
+    fileprivate var placeholderButton: UIButton? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderButton__) as? UIButton
@@ -292,28 +292,28 @@ public extension UIViewController {
         }
     }
     
-    private func omSetScrollEnabled(scrollEnabled: Bool) {
+    fileprivate func omSetScrollEnabled(_ scrollEnabled: Bool) {
         
         view.subviews.forEach({ (subView) in
             
-            if subView.isKindOfClass(UIScrollView.self){
+            if subView.isKind(of: UIScrollView.self){
                 
-                (subView as! UIScrollView).scrollEnabled = scrollEnabled
+                (subView as! UIScrollView).isScrollEnabled = scrollEnabled
             }
         })
         
-        if isKindOfClass(UITableViewController) {
+        if isKind(of: UITableViewController.self) {
             
-            (self as! UITableViewController).tableView.scrollEnabled = scrollEnabled
+            (self as! UITableViewController).tableView.isScrollEnabled = scrollEnabled
         }
     }
     
-    private func imageView(image: UIImage?, offset: CGFloat) {
+    fileprivate func imageView(_ image: UIImage?, offset: CGFloat) {
         
         if placeholderImageView == nil {
             
             placeholderImageView = UIImageView(image: image)
-            placeholderImageView?.contentMode = .Center
+            placeholderImageView?.contentMode = .center
             
             placeholderView?.addSubview(placeholderImageView!)
             
@@ -322,7 +322,7 @@ public extension UIViewController {
         }
     }
     
-    private func titleLabel(attributedString: NSAttributedString?, space: CGFloat) {
+    fileprivate func titleLabel(_ attributedString: NSAttributedString?, space: CGFloat) {
         
         if placeholderTitleLabel == nil {
             
@@ -334,10 +334,10 @@ public extension UIViewController {
             }
             
             _titleLabel.textColor = UIColor(omHex: 0xc9c9c9)
-            _titleLabel.font = UIFont.systemFontOfSize(27)
+            _titleLabel.font = UIFont.systemFont(ofSize: 27)
             _titleLabel.attributedText = attributedString
             _titleLabel.numberOfLines = 0
-            _titleLabel.textAlignment = .Center
+            _titleLabel.textAlignment = .center
             
             guard let _imageView = placeholderImageView else {
                 
@@ -353,8 +353,8 @@ public extension UIViewController {
             _titleLabel.frame.size.width = _view.frame.size.width - 30
             _titleLabel.frame.origin.y = _imageView.frame.origin.y + _imageView.frame.size.height + space
             
-            let width2 = _titleLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 2).height
-            let width1 = _titleLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 1).height
+            let width2 = _titleLabel.textRect(forBounds: CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 2).height
+            let width1 = _titleLabel.textRect(forBounds: CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 1).height
             
             if width2 > width1 {
                 
@@ -367,7 +367,7 @@ public extension UIViewController {
         }
     }
     
-    private func descriptionlLabel(attributedString: NSAttributedString?, space: CGFloat) {
+    fileprivate func descriptionlLabel(_ attributedString: NSAttributedString?, space: CGFloat) {
         
         if placeholderDescriptionLabel == nil {
             
@@ -379,10 +379,10 @@ public extension UIViewController {
             }
             
             _descriptionLabel.textColor = UIColor(omHex: 0xcfcfcf)
-            _descriptionLabel.font = UIFont.systemFontOfSize(17)
+            _descriptionLabel.font = UIFont.systemFont(ofSize: 17)
             _descriptionLabel.attributedText = attributedString
             _descriptionLabel.numberOfLines = 0
-            _descriptionLabel.textAlignment = .Center
+            _descriptionLabel.textAlignment = .center
             
             guard let _titleLabel = placeholderTitleLabel else {
                 
@@ -398,8 +398,8 @@ public extension UIViewController {
             _descriptionLabel.frame.size.width = _view.frame.size.width - 30
             _descriptionLabel.frame.origin.y = _titleLabel.frame.origin.y + _titleLabel.frame.size.height + space
             
-            let width2 = _descriptionLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 2).height
-            let width1 = _descriptionLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 1).height
+            let width2 = _descriptionLabel.textRect(forBounds: CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 2).height
+            let width1 = _descriptionLabel.textRect(forBounds: CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.greatestFiniteMagnitude), limitedToNumberOfLines: 1).height
             
             if width2 > width1 {
                 
@@ -412,20 +412,20 @@ public extension UIViewController {
         }
     }
     
-    private func button(backgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, titles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, size: CGSize? = nil, space: CGFloat) {
+    fileprivate func button(_ backgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, titles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, size: CGSize? = nil, space: CGFloat) {
         
         if placeholderButton == nil {
             
-            placeholderButton = UIButton(type: .Custom)
+            placeholderButton = UIButton(type: .custom)
             
             guard let _button = placeholderButton else {
                 
                 return
             }
             
-            _button.titleLabel?.font = UIFont.systemFontOfSize(14.0)
-            backgroundImages?.forEach({_button.setBackgroundImage($0.backgroundImage, forState: $0.state)})
-            titles?.forEach({_button.setAttributedTitle($0.title, forState: $0.state)})
+            _button.titleLabel?.font = UIFont.systemFont(ofSize: 14.0)
+            backgroundImages?.forEach({_button.setBackgroundImage($0.backgroundImage, for: $0.state)})
+            titles?.forEach({_button.setAttributedTitle($0.title, for: $0.state)})
             
             guard let _descriptionLabel = placeholderDescriptionLabel else {
                 
@@ -466,7 +466,7 @@ public extension UIViewController {
      - parameter shouldTapBackground:         是否可以交互
      - parameter offset:                      距离y坐标偏移
      */
-    func omShowPlaceholder(image: UIImage? = nil, backgroundColor: UIColor = UIColor.clearColor(), titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, titles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, size: CGSize? = nil, buttonTapHandler: ((button: UIButton)->Void)? = nil) {
+    func omShowPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, titles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, size: CGSize? = nil, buttonTapHandler: ((_ button: UIButton)->Void)? = nil) {
         
         omHidePlaceholder()
         
@@ -474,18 +474,18 @@ public extension UIViewController {
         
         if let navigation = navigationController  {
             
-            offsetY = navigation.navigationBar.translucent ? 0 : -64
+            offsetY = navigation.navigationBar.isTranslucent ? 0 : -64
             offsetY += offset
         }
         
         omSetScrollEnabled(shouldTap)
         
-        placeholderView = UIView(frame: UIScreen.mainScreen().bounds)
+        placeholderView = UIView(frame: UIScreen.main.bounds)
         placeholderView?.backgroundColor = backgroundColor
         
         if shouldTap {
             
-            view.insertSubview(placeholderView!, atIndex: 0)
+            view.insertSubview(placeholderView!, at: 0)
             
         } else {
             
@@ -501,7 +501,7 @@ public extension UIViewController {
             
             if let button = self?.placeholderButton {
                 
-                buttonTapHandler?(button: button)
+                buttonTapHandler?(button)
             }
             
         })

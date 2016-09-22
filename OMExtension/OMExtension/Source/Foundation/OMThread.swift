@@ -26,29 +26,28 @@
 
 import Foundation
 
-public extension NSThread {
+public extension Thread {
     
-    static func omRunInMainThread(delay delay: NSTimeInterval = 0, handler: () -> Void) {
+    static func omRunInMainThread(delay: TimeInterval = 0, handler: @escaping () -> Void) {
         
         if delay <= 0 {
             
-            dispatch_async(dispatch_get_main_queue(), handler)
+            DispatchQueue.main.async(execute: handler)
             
         } else {
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), handler)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: handler)
         }
     }
     
-    static func omRunInBackgroundThread(delay delay: NSTimeInterval = 0, handler: () -> Void) {
+    static func omRunInBackgroundThread(delay: TimeInterval = 0, handler: @escaping () -> Void) {
         
         if delay <= 0 {
-            
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), handler)
+            DispatchQueue.global(qos: .default).async(execute: handler)
             
         } else {
             
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), handler)
+            DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: handler)
         }
     }
 }

@@ -26,16 +26,16 @@
 
 import Foundation
 
-public extension NSTimer {
+public extension Timer {
     
-    static func omRunLoop(seconds seconds: NSTimeInterval, handler: (timer: NSTimer!) -> Void) -> NSTimer {
+    static func omRunLoop(seconds: TimeInterval, handler: @escaping (_ timer: Timer?) -> Void) -> Timer {
         
         let fireDate = CFAbsoluteTimeGetCurrent()
         let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, fireDate, seconds, 0, 0, handler)
         
-        CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, kCFRunLoopDefaultMode)
+        CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, CFRunLoopMode.defaultMode)
         
-        return timer
+        return timer!
     }
 
 }

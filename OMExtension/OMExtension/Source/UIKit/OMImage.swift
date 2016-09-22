@@ -44,7 +44,7 @@ public extension UIImage {
         let filter = CIFilter(name: omCodeGeneratorWithFilterName)
         filter?.setDefaults()
         
-        let data = code.dataUsingEncoding(NSUTF8StringEncoding)
+        let data = code.data(using: String.Encoding.utf8)
         filter?.setValue(data, forKey: "inputMessage")
         
         let outputImage = filter?.outputImage
@@ -52,9 +52,9 @@ public extension UIImage {
         if outputImage != nil {
             
             let context = CIContext(options: nil)
-            let cgImage = context.createCGImage(outputImage!, fromRect: (outputImage?.extent)!)
+            let cgImage = context.createCGImage(outputImage!, from: (outputImage?.extent)!)
             
-            self.init(CGImage: cgImage, scale: 1.0, orientation: UIImageOrientation.Up)
+            self.init(cgImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
             
         } else {
             
@@ -66,43 +66,43 @@ public extension UIImage {
         
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, omColor.CGColor)
-        CGContextFillRect(context, frame)
-        let cgImage = UIGraphicsGetImageFromCurrentImageContext().CGImage
+        context?.setFillColor(omColor.cgColor)
+        context?.fill(frame)
+        let cgImage = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
         UIGraphicsEndImageContext()
         
-        self.init(CGImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.Up)
+        self.init(cgImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
     }
     
-    func omResize(size: CGSize, quality: CGInterpolationQuality = .None) -> UIImage {
+    func omResize(_ size: CGSize, quality: CGInterpolationQuality = .none) -> UIImage {
         
         let resizedImage: UIImage
         
-        UIGraphicsBeginImageContext(CGSizeMake(size.width, size.height))
+        UIGraphicsBeginImageContext(CGSize(width: size.width, height: size.height))
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetInterpolationQuality(context, quality)
-        drawInRect(CGRect(origin: CGPointZero, size: size))
-        resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        context!.interpolationQuality = quality
+        draw(in: CGRect(origin: CGPoint.zero, size: size))
+        resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         return resizedImage
     }
     
-    func omTintColor(tintColor: UIColor) -> UIImage {
+    func omTintColor(_ tintColor: UIColor) -> UIImage {
         
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         
         let context = UIGraphicsGetCurrentContext()
-        CGContextTranslateCTM(context, 0, size.height)
-        CGContextScaleCTM(context, 1.0, -1.0)
-        CGContextSetBlendMode(context, CGBlendMode.Normal)
+        context?.translateBy(x: 0, y: size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+        context?.setBlendMode(CGBlendMode.normal)
         
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height) as CGRect
-        CGContextClipToMask(context, rect, CGImage)
+        context?.clip(to: rect, mask: cgImage!)
         tintColor.setFill()
-        CGContextFillRect(context, rect)
+        context?.fill(rect)
         
-        let newImage = UIGraphicsGetImageFromCurrentImageContext() as UIImage
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
         UIGraphicsEndImageContext()
         
         return newImage
@@ -110,26 +110,26 @@ public extension UIImage {
     
     static func omLaunchImage() -> UIImage? {
         
-        if let imagesDict = NSBundle.mainBundle().infoDictionary!["UILaunchImages"] as? [[String: String]] {
+        if let imagesDict = Bundle.main.infoDictionary!["UILaunchImages"] as? [[String: String]] {
             
             for dict in imagesDict {
                 
-                if CGSizeEqualToSize(UIScreen.omGetSize, CGSizeFromString(dict["UILaunchImageSize"]!)) {
+                if UIScreen.omGetSize.equalTo(CGSizeFromString(dict["UILaunchImageSize"]!)) {
                     
                     return UIImage(named: dict["UILaunchImageName"]!)
                 }
             }
             
-            let launchImageName = (NSBundle.mainBundle().infoDictionary!["UILaunchImageFile"] ?? "") as? String
+            let launchImageName = (Bundle.main.infoDictionary!["UILaunchImageFile"] ?? "") as? String
             
-            if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            if UIDevice.current.userInterfaceIdiom == .pad {
                 
-                if UIDeviceOrientationIsPortrait(UIDevice.currentDevice().orientation) {
+                if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
                     
                     return UIImage(named: launchImageName! + "-Portrait")
                 }
                 
-                if UIDeviceOrientationIsLandscape(UIDevice.currentDevice().orientation) {
+                if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
                     
                     return UIImage(named: launchImageName! + "-Landscape")
                 }

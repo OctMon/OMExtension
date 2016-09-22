@@ -29,17 +29,17 @@ import UIKit
 
 // MARK: - GestureHandler
 
-public typealias OMTapGestureHandler = (tapGestureRecognizer: UITapGestureRecognizer) -> Void
-public typealias OMLongPressGestureHandler = (longPressGestureRecognizer: UILongPressGestureRecognizer) -> Void
-public typealias OMPanGestureHandler = (panGestureRecognizer: UIPanGestureRecognizer) -> Void
-public typealias OMSwipeGestureHandler = (swipeGestureRecognizer: UISwipeGestureRecognizer) -> Void
-public typealias OMPinchGestureHandler = (pinchGestureRecognizer: UIPinchGestureRecognizer) -> Void
+public typealias OMTapGestureHandler = (_ tapGestureRecognizer: UITapGestureRecognizer) -> Void
+public typealias OMLongPressGestureHandler = (_ longPressGestureRecognizer: UILongPressGestureRecognizer) -> Void
+public typealias OMPanGestureHandler = (_ panGestureRecognizer: UIPanGestureRecognizer) -> Void
+public typealias OMSwipeGestureHandler = (_ swipeGestureRecognizer: UISwipeGestureRecognizer) -> Void
+public typealias OMPinchGestureHandler = (_ pinchGestureRecognizer: UIPinchGestureRecognizer) -> Void
 
-public class OMTapGestureRecognizer: UITapGestureRecognizer {
+open class OMTapGestureRecognizer: UITapGestureRecognizer {
     
-    private var tapGestureHandler: OMTapGestureHandler!
+    fileprivate var tapGestureHandler: OMTapGestureHandler!
     
-    convenience init(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, handler: OMTapGestureHandler) {
+    convenience init(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, handler: @escaping OMTapGestureHandler) {
         self.init()
         
         self.numberOfTapsRequired = numberOfTapsRequired
@@ -50,18 +50,18 @@ public class OMTapGestureRecognizer: UITapGestureRecognizer {
         addTarget(self, action: #selector(OMTapGestureRecognizer.action(_:)))
     }
     
-    @objc private func action(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc fileprivate func action(_ tapGestureRecognizer: UITapGestureRecognizer) {
         
-        tapGestureHandler(tapGestureRecognizer: tapGestureRecognizer)
+        tapGestureHandler(tapGestureRecognizer)
     }
     
 }
 
-public class OMLongPressGestureRecognizer: UILongPressGestureRecognizer {
+open class OMLongPressGestureRecognizer: UILongPressGestureRecognizer {
     
-    private var longPressGestureHandler: OMLongPressGestureHandler!
+    fileprivate var longPressGestureHandler: OMLongPressGestureHandler!
     
-    convenience init(numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, handler: OMLongPressGestureHandler) {
+    convenience init(numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, handler: @escaping OMLongPressGestureHandler) {
         self.init()
         
         self.numberOfTapsRequired = numberOfTapsRequired
@@ -72,18 +72,18 @@ public class OMLongPressGestureRecognizer: UILongPressGestureRecognizer {
         addTarget(self, action: #selector(OMLongPressGestureRecognizer.action(_:)))
     }
     
-    @objc private func action(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+    @objc fileprivate func action(_ longPressGestureRecognizer: UILongPressGestureRecognizer) {
         
-        longPressGestureHandler(longPressGestureRecognizer: longPressGestureRecognizer)
+        longPressGestureHandler(longPressGestureRecognizer)
     }
     
 }
 
-public class OMPanGestureRecognizer: UIPanGestureRecognizer {
+open class OMPanGestureRecognizer: UIPanGestureRecognizer {
     
-    private var panGestureHandler: OMPanGestureHandler!
+    fileprivate var panGestureHandler: OMPanGestureHandler!
     
-    convenience init(minimumNumberOfTouches: Int = 1, handler: OMPanGestureHandler) {
+    convenience init(minimumNumberOfTouches: Int = 1, handler: @escaping OMPanGestureHandler) {
         self.init()
         
         self.minimumNumberOfTouches = minimumNumberOfTouches
@@ -93,18 +93,18 @@ public class OMPanGestureRecognizer: UIPanGestureRecognizer {
         addTarget(self, action: #selector(OMPanGestureRecognizer.action(_:)))
     }
     
-    @objc private func action(panGestureRecognizer: UIPanGestureRecognizer) {
+    @objc fileprivate func action(_ panGestureRecognizer: UIPanGestureRecognizer) {
         
-        panGestureHandler(panGestureRecognizer: panGestureRecognizer)
+        panGestureHandler(panGestureRecognizer)
     }
     
 }
 
-public class OMSwipeGestureRecognizer: UISwipeGestureRecognizer {
+open class OMSwipeGestureRecognizer: UISwipeGestureRecognizer {
     
-    private var swipeGestureHandler: OMSwipeGestureHandler!
+    fileprivate var swipeGestureHandler: OMSwipeGestureHandler!
     
-    convenience init(direction: UISwipeGestureRecognizerDirection, numberOfTouchesRequired: Int = 1, handler: OMSwipeGestureHandler) {
+    convenience init(direction: UISwipeGestureRecognizerDirection, numberOfTouchesRequired: Int = 1, handler: @escaping OMSwipeGestureHandler) {
         self.init()
         
         self.numberOfTouchesRequired = numberOfTouchesRequired
@@ -114,18 +114,18 @@ public class OMSwipeGestureRecognizer: UISwipeGestureRecognizer {
         addTarget(self, action: #selector(OMSwipeGestureRecognizer.action(_:)))
     }
     
-    @objc private func action(swipeGestureRecognizer: UISwipeGestureRecognizer) {
+    @objc fileprivate func action(_ swipeGestureRecognizer: UISwipeGestureRecognizer) {
         
-        swipeGestureHandler(swipeGestureRecognizer: swipeGestureRecognizer)
+        swipeGestureHandler(swipeGestureRecognizer)
     }
     
 }
 
-public class OMPinchGestureRecognizer: UIPinchGestureRecognizer {
+open class OMPinchGestureRecognizer: UIPinchGestureRecognizer {
     
-    private var pinchGestureHandler: OMPinchGestureHandler!
+    fileprivate var pinchGestureHandler: OMPinchGestureHandler!
     
-    convenience init(handler: OMPinchGestureHandler) {
+    convenience init(handler: @escaping OMPinchGestureHandler) {
         self.init()
         
         pinchGestureHandler = handler
@@ -133,9 +133,9 @@ public class OMPinchGestureRecognizer: UIPinchGestureRecognizer {
         addTarget(self, action: #selector(OMPinchGestureRecognizer.action(_:)))
     }
     
-    @objc private func action(pinchGestureRecognizer: UIPinchGestureRecognizer) {
+    @objc fileprivate func action(_ pinchGestureRecognizer: UIPinchGestureRecognizer) {
         
-        pinchGestureHandler(pinchGestureRecognizer: pinchGestureRecognizer)
+        pinchGestureHandler(pinchGestureRecognizer)
     }
 
 }
@@ -153,9 +153,10 @@ public extension UIView {
      
      - returns: OMTapGestureRecognizer
      */
-    func omAddTapGestureRecognizer(numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, handler: OMTapGestureHandler) -> OMTapGestureRecognizer {
+    @discardableResult
+    func omAddTapGestureRecognizer(_ numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, handler: @escaping OMTapGestureHandler) -> OMTapGestureRecognizer {
         
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         let tapGestureRecognizer = OMTapGestureRecognizer(numberOfTapsRequired: numberOfTapsRequired, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
         addGestureRecognizer(tapGestureRecognizer)
         
@@ -171,9 +172,10 @@ public extension UIView {
      
      - returns: OMLongPressGestureRecognizer
      */
-    func omAddLongPressGestureRecognizer(numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, handler: OMLongPressGestureHandler) -> OMLongPressGestureRecognizer {
+    @discardableResult
+    func omAddLongPressGestureRecognizer(_ numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, handler: @escaping OMLongPressGestureHandler) -> OMLongPressGestureRecognizer {
         
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         let longPressGestureRecognizer = OMLongPressGestureRecognizer(numberOfTapsRequired: numberOfTapsRequired, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
         addGestureRecognizer(longPressGestureRecognizer)
         
@@ -188,9 +190,10 @@ public extension UIView {
      
      - returns: OMPanGestureRecognizer
      */
-    func omAddPanGestureRecognizer(minimumNumberOfTouches: Int = 1, handler: OMPanGestureHandler) -> OMPanGestureRecognizer {
+    @discardableResult
+    func omAddPanGestureRecognizer(_ minimumNumberOfTouches: Int = 1, handler: @escaping OMPanGestureHandler) -> OMPanGestureRecognizer {
         
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         let longPressGestureRecognizer = OMPanGestureRecognizer(minimumNumberOfTouches: minimumNumberOfTouches, handler: handler)
         addGestureRecognizer(longPressGestureRecognizer)
         
@@ -206,9 +209,10 @@ public extension UIView {
      
      - returns: OMSwipeGestureRecognizer
      */
-    func omAddSwipeGestureRecognizer(direction: UISwipeGestureRecognizerDirection, numberOfTouchesRequired: Int = 1, handler: OMSwipeGestureHandler) -> OMSwipeGestureRecognizer {
+    @discardableResult
+    func omAddSwipeGestureRecognizer(_ direction: UISwipeGestureRecognizerDirection, numberOfTouchesRequired: Int = 1, handler: @escaping OMSwipeGestureHandler) -> OMSwipeGestureRecognizer {
         
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         let swpieGestureRecognizer = OMSwipeGestureRecognizer(direction: direction, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
         addGestureRecognizer(swpieGestureRecognizer)
         
@@ -222,9 +226,10 @@ public extension UIView {
      
      - returns: OMPinchGestureHandler
      */
-    func omAddPinchGestureRecognizer(handler: OMPinchGestureHandler) -> OMPinchGestureRecognizer {
+    @discardableResult
+    func omAddPinchGestureRecognizer(_ handler: @escaping OMPinchGestureHandler) -> OMPinchGestureRecognizer {
         
-        userInteractionEnabled = true
+        isUserInteractionEnabled = true
         let pinchGestureRecognizer = OMPinchGestureRecognizer(handler: handler)
         addGestureRecognizer(pinchGestureRecognizer)
         
@@ -337,13 +342,13 @@ public extension UIView {
         }
     }
     
-    func leftOffset(offset: CGFloat) -> CGFloat { return self.omX - offset }
+    func leftOffset(_ offset: CGFloat) -> CGFloat { return self.omX - offset }
     
-    func rightOffset(offset: CGFloat) -> CGFloat { return self.omRight + offset }
+    func rightOffset(_ offset: CGFloat) -> CGFloat { return self.omRight + offset }
     
-    func topOffset(offset: CGFloat) -> CGFloat { return self.omTop - offset }
+    func topOffset(_ offset: CGFloat) -> CGFloat { return self.omTop - offset }
     
-    func bottomOffset(offset: CGFloat) -> CGFloat { return self.omBottom + offset }
+    func bottomOffset(_ offset: CGFloat) -> CGFloat { return self.omBottom + offset }
 
 }
 
@@ -351,8 +356,8 @@ public extension UIView {
 
 public extension UIView {
     
-    private static let lineColor = UIColor(omHex: 0xCCCCCC)
-    private static let lineSize: CGFloat = 0.3
+    fileprivate static let lineColor = UIColor(omHex: 0xCCCCCC)
+    fileprivate static let lineSize: CGFloat = 0.3
     
     func omRoundSquare() {
         
@@ -361,47 +366,47 @@ public extension UIView {
         layer.cornerRadius = min(self.frame.size.height, self.frame.size.width) * 0.5
     }
     
-    func omRoundCorner(corner: UIRectCorner, radius: CGFloat) {
+    func omRoundCorner(_ corner: UIRectCorner, radius: CGFloat) {
         
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corner, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
-        mask.path = path.CGPath
+        mask.path = path.cgPath
         
         layer.mask = mask
     }
     
-    func omAddBorder(x x: CGFloat, y: CGFloat, width: CGFloat = 0.3, height: CGFloat = 0.3, color: UIColor = UIColor(omHex: 0xCCCCCC)) {
+    func omAddBorder(x: CGFloat, y: CGFloat, width: CGFloat = 0.3, height: CGFloat = 0.3, color: UIColor = UIColor(omHex: 0xCCCCCC)) {
         
         let borderLayer = CALayer()
         borderLayer.frame = CGRect(x: x, y: y, width: width, height: height)
-        borderLayer.backgroundColor = color.CGColor
+        borderLayer.backgroundColor = color.cgColor
         
         layer.addSublayer(borderLayer)
     }
     
-    func omAddBorder(size size: CGFloat = lineSize, color: UIColor = lineColor) {
+    func omAddBorder(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
         layer.borderWidth = size
-        layer.borderColor = color.CGColor
+        layer.borderColor = color.cgColor
         layer.masksToBounds = true
     }
     
-    func omAddBorderTop(size size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
+    func omAddBorderTop(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
         
         omAddBorder(x: padding.0 + padding.1, y: 0, width: frame.width - padding.0 - padding.1, height: size, color: color)
     }
     
-    func omAddBorderLeft(size size: CGFloat = lineSize, color: UIColor = lineColor) {
+    func omAddBorderLeft(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
         omAddBorder(x: 0, y: 0, width: size, height: frame.height, color: color)
     }
     
-    func omAddBorderBottom(size size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
+    func omAddBorderBottom(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
         
         omAddBorder(x: padding.0 + padding.1, y: frame.height - size, width: frame.width - padding.0 - padding.1, height: size, color: color)
     }
     
-    func omAddBorderRight(size size: CGFloat = lineSize, color: UIColor = lineColor) {
+    func omAddBorderRight(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
         omAddBorder(x: frame.width - size, y: 0, width: size, height: frame.height, color: color)
     }
@@ -411,7 +416,7 @@ public extension UIView {
 
 public extension UIView {
     
-    func omSetRotationX(x: CGFloat) {
+    func omSetRotationX(_ x: CGFloat) {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -419,7 +424,7 @@ public extension UIView {
         layer.transform = transform
     }
     
-    func omSetRotationY(y: CGFloat) {
+    func omSetRotationY(_ y: CGFloat) {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -427,7 +432,7 @@ public extension UIView {
         layer.transform = transform
     }
     
-    func omSetRotationZ(z: CGFloat) {
+    func omSetRotationZ(_ z: CGFloat) {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -435,7 +440,7 @@ public extension UIView {
         layer.transform = transform
     }
     
-    func omSetRotation(x x: CGFloat, y: CGFloat, z: CGFloat) {
+    func omSetRotation(x: CGFloat, y: CGFloat, z: CGFloat) {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -445,7 +450,7 @@ public extension UIView {
         layer.transform = transform
     }
     
-    func omSetScale(x x: CGFloat, y: CGFloat) {
+    func omSetScale(x: CGFloat, y: CGFloat) {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
@@ -465,12 +470,12 @@ public extension UIView {
     func omShakeAnimation() {
         
         let shake: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform")
-        shake.values = [NSValue(CATransform3D: CATransform3DMakeTranslation(-5.0, 0.0, 0.0)), NSValue(CATransform3D: CATransform3DMakeTranslation(5.0, 0.0, 0.0))]
+        shake.values = [NSValue(caTransform3D: CATransform3DMakeTranslation(-5.0, 0.0, 0.0)), NSValue(caTransform3D: CATransform3DMakeTranslation(5.0, 0.0, 0.0))]
         shake.autoreverses = true
         shake.repeatCount = 2.0
         shake.duration = 0.07
         
-        layer.addAnimation(shake, forKey:"shake")
+        layer.add(shake, forKey:"shake")
     }
     
     /**
@@ -478,41 +483,41 @@ public extension UIView {
      
      - parameter duration: 时间
      */
-    func omPulseAnimationWithDuration(duration: CGFloat) {
+    func omPulseAnimationWithDuration(_ duration: CGFloat) {
         
-        UIView.animateWithDuration(NSTimeInterval(duration / 6), animations: { () -> Void in
-            self.transform = CGAffineTransformMakeScale(1.1, 1.1)
-        }) { (finished) -> Void in
+        UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
+            self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }, completion: { (finished) -> Void in
             if finished {
-                UIView.animateWithDuration(NSTimeInterval(duration / 6), animations: { () -> Void in
-                    self.transform = CGAffineTransformMakeScale(0.96, 0.96)
-                }) { (finished: Bool) -> Void in
+                UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
+                    self.transform = CGAffineTransform(scaleX: 0.96, y: 0.96)
+                }, completion: { (finished: Bool) -> Void in
                     if finished {
-                        UIView.animateWithDuration(NSTimeInterval(duration / 6), animations: { () -> Void in
-                            self.transform = CGAffineTransformMakeScale(1.03, 1.03)
-                        }) { (finished: Bool) -> Void in
+                        UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
+                            self.transform = CGAffineTransform(scaleX: 1.03, y: 1.03)
+                        }, completion: { (finished: Bool) -> Void in
                             if finished {
-                                UIView.animateWithDuration(NSTimeInterval(duration / 6), animations: { () -> Void in
-                                    self.transform = CGAffineTransformMakeScale(0.985, 0.985)
-                                }) { (finished: Bool) -> Void in
+                                UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
+                                    self.transform = CGAffineTransform(scaleX: 0.985, y: 0.985)
+                                }, completion: { (finished: Bool) -> Void in
                                     if finished {
-                                        UIView.animateWithDuration(NSTimeInterval(duration / 6), animations: { () -> Void in
-                                            self.transform = CGAffineTransformMakeScale(1.007, 1.007)
-                                        }) { (finished: Bool) -> Void in
+                                        UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
+                                            self.transform = CGAffineTransform(scaleX: 1.007, y: 1.007)
+                                        }, completion: { (finished: Bool) -> Void in
                                             if finished {
-                                                UIView.animateWithDuration(NSTimeInterval(duration / 6), animations: { () -> Void in
-                                                    self.transform = CGAffineTransformMakeScale(1, 1)
+                                                UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
+                                                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
                                                 })
                                             }
-                                        }
+                                        }) 
                                     }
-                                }
+                                }) 
                             }
-                        }
+                        }) 
                     }
-                }
+                }) 
             }
-        }
+        }) 
     }
     
     /**
@@ -520,7 +525,7 @@ public extension UIView {
      
      - parameter duration: 时间
      */
-    func omHeartbeatAnimationWithDuration(duration: CGFloat) {
+    func omHeartbeatAnimationWithDuration(_ duration: CGFloat) {
         
         let maxSize: CGFloat = 1.4, durationPerBeat: CGFloat = 0.5
         
@@ -531,18 +536,18 @@ public extension UIView {
         let scale3: CATransform3D = CATransform3DMakeScale(maxSize - 0.3, maxSize - 0.3, 1)
         let scale4: CATransform3D = CATransform3DMakeScale(1.0, 1.0, 1)
         
-        let frameValues: Array = [NSValue(CATransform3D: scale1), NSValue(CATransform3D: scale2), NSValue(CATransform3D: scale3), NSValue(CATransform3D: scale4)]
+        let frameValues: Array = [NSValue(caTransform3D: scale1), NSValue(caTransform3D: scale2), NSValue(caTransform3D: scale3), NSValue(caTransform3D: scale4)]
         
         animation.values = frameValues
         
-        let frameTimes: Array = [NSNumber(float: 0.05), NSNumber(float: 0.2), NSNumber(float: 0.6), NSNumber(float: 1.0)]
+        let frameTimes: Array = [NSNumber(value: 0.05 as Float), NSNumber(value: 0.2 as Float), NSNumber(value: 0.6 as Float), NSNumber(value: 1.0 as Float)]
         animation.keyTimes = frameTimes
         
         animation.fillMode = kCAFillModeForwards
-        animation.duration = NSTimeInterval(durationPerBeat)
+        animation.duration = TimeInterval(durationPerBeat)
         animation.repeatCount = Float(duration / durationPerBeat)
         
-        layer.addAnimation(animation, forKey: "heartbeat")
+        layer.add(animation, forKey: "heartbeat")
     }
 
 }
@@ -558,14 +563,14 @@ public extension UIView {
      */
     func omScreenshotToImage() -> UIImage {
         
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.mainScreen().scale)
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
         
-        drawViewHierarchyInRect(bounds, afterScreenUpdates: true)
+        drawHierarchy(in: bounds, afterScreenUpdates: true)
         
-        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        let imageData: NSData = UIImagePNGRepresentation(image)!
+        let imageData: Data = UIImagePNGRepresentation(image)!
         image = UIImage(data: imageData)!
         
         return image

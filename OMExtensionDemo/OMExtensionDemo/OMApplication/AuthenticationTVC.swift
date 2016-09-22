@@ -34,25 +34,25 @@ class AuthenticationTVC: BaseTVC {
     
     // MARK: - Table view data source
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return dataSource.count
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(UITableViewCell.omClassName, forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: UITableViewCell.omClassName, for: indexPath)
         
-        cell.textLabel?.text = dataSource[indexPath.row]
+        cell.textLabel?.text = dataSource[(indexPath as NSIndexPath).row]
         
         return cell
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
         
-        switch indexPath.row {
+        switch (indexPath as NSIndexPath).row {
         case 0:
             UIApplication.omAuthenticationTouchID("TouchID授权测试", handler: { (result) -> Void in
                 

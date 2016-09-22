@@ -40,12 +40,12 @@ public extension Array {
         return (idx, self[idx])
     }
     
-    func omAtIndex(index: Int) -> Element? {
+    func omAtIndex(_ index: Int) -> Element? {
         
         return index >= 0 && index < count ? self[index] : nil
     }
     
-    func omFilter(valid: (Element) -> Bool) -> Bool {
+    func omFilter(_ valid: (Element) -> Bool) -> Bool {
         
         for item in self {
             
@@ -61,7 +61,7 @@ public extension Array {
 
 public extension Array where Element: Equatable {
     
-    func omDifference(values: [Element]...) -> [Element] {
+    func omDifference(_ values: [Element]...) -> [Element] {
         
         var elements = [Element]()
         
@@ -81,7 +81,7 @@ public extension Array where Element: Equatable {
         return elements
     }
     
-    func omUnion(values: [Element]...) -> [Element] {
+    func omUnion(_ values: [Element]...) -> [Element] {
         
         var elements = self
         
@@ -99,14 +99,14 @@ public extension Array where Element: Equatable {
         return elements
     }
     
-    func omIntersection(values: [Element]...) -> [Element] {
+    func omIntersection(_ values: [Element]...) -> [Element] {
         
         var elements = self
         var intersection = [Element]()
         
-        for value in values.enumerate() {
+        for value in values.enumerated() {
             
-            if value.index > 0 {
+            if value.offset > 0 {
                 
                 elements = intersection
                 intersection = [Element]()

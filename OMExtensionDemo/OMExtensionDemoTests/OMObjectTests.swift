@@ -41,10 +41,10 @@ class OMObjectTests: XCTestCase {
     func testName() {
         
         print(NSObject.omClassName)
-        print(UIApplication.sharedApplication().omClassName)
+        print(UIApplication.sharedApplication.omClassName)
         
         XCTAssertEqual(NSObject.omClassName, "NSObject")
-        XCTAssertEqual(UIApplication.sharedApplication().omClassName, "UIApplication")
+        XCTAssertEqual(UIApplication.shared.omClassName, "UIApplication")
     }
     
 }

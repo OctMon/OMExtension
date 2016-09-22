@@ -35,23 +35,23 @@ public extension UIDevice {
         var name: [Int32] = [CTL_HW, HW_MACHINE]
         var size: Int = 2
         sysctl(&name, 2, nil, &size, &name, 0)
-        var hw_machine = [CChar](count: Int(size), repeatedValue: 0)
+        var hw_machine = [CChar](repeating: 0, count: Int(size))
         sysctl(&name, 2, &hw_machine, &size, &name, 0)
         
-        let hardware: String = String.fromCString(hw_machine)!
+        let hardware: String = String(cString: hw_machine)
         
         return hardware
     }
     
     /// iPhone判断
-    static var omIsPhone: Bool { return UIDevice.currentDevice().userInterfaceIdiom == .Phone }
+    static var omIsPhone: Bool { return UIDevice.current.userInterfaceIdiom == .phone }
     
     /// iPad判断
-    static var omIsPad: Bool { return UIDevice.currentDevice().userInterfaceIdiom == .Pad }
+    static var omIsPad: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
     
     /// 前面的摄像头是否可用
-    static var omIsAvailableCameraFront: Bool { return UIImagePickerController.isCameraDeviceAvailable(.Front) }
+    static var omIsAvailableCameraFront: Bool { return UIImagePickerController.isCameraDeviceAvailable(.front) }
     
     /// 后面的摄像头是否可用
-    static var omIsAvailableCameraRear: Bool { return UIImagePickerController.isCameraDeviceAvailable(.Rear) }
+    static var omIsAvailableCameraRear: Bool { return UIImagePickerController.isCameraDeviceAvailable(.rear) }
 }

@@ -31,13 +31,13 @@ public extension NSObject {
     /// 获取类型名称
     var omClassName: String {
         
-        return self.dynamicType.omClassName
+        return type(of: self).omClassName
     }
     
     /// 获取类型名称
     static var omClassName: String {
         
-        return String(self)
+        return String(describing: self)
     }
 
 }
