@@ -2,6 +2,11 @@
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/OMExtension.svg)](https://img.shields.io/cocoapods/v/OMExtension.svg) 
 
+## Requirements
+
+- iOS 8.0+
+- Swift 3 (OMExtension 1.1.x), Swift 2.3 (OMExtension 1.0.x)
+
 ## 安装和使用
 
 ### Git Submodule
@@ -30,6 +35,9 @@ platform :ios, '8.0'
 use_frameworks!
 
 pod 'OMExtension'
+
+swift <= 2.3 use
+pod 'OMExtension', '< 1.1'
 ```
 
 Then run `pod install`. For details of the installation and usage of CocoaPods, visit [it's official web site](https://cocoapods.org/).
