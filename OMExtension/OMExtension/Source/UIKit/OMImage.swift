@@ -54,7 +54,11 @@ public extension UIImage {
             let context = CIContext(options: nil)
             let cgImage = context.createCGImage(outputImage!, fromRect: (outputImage?.extent)!)
             
-            self.init(CGImage: cgImage, scale: 1.0, orientation: UIImageOrientation.Up)
+            #if swift(>=2.3)
+                self.init(CGImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.Up)
+            #else
+                self.init(CGImage: cgImage, scale: 1.0, orientation: UIImageOrientation.Up)
+            #endif
             
         } else {
             
@@ -66,9 +70,9 @@ public extension UIImage {
         
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetFillColorWithColor(context, omColor.CGColor)
-        CGContextFillRect(context, frame)
-        let cgImage = UIGraphicsGetImageFromCurrentImageContext().CGImage
+        CGContextSetFillColorWithColor(context!, omColor.CGColor)
+        CGContextFillRect(context!, frame)
+        let cgImage = UIGraphicsGetImageFromCurrentImageContext()!.CGImage
         UIGraphicsEndImageContext()
         
         self.init(CGImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.Up)
@@ -80,9 +84,9 @@ public extension UIImage {
         
         UIGraphicsBeginImageContext(CGSizeMake(size.width, size.height))
         let context = UIGraphicsGetCurrentContext()
-        CGContextSetInterpolationQuality(context, quality)
+        CGContextSetInterpolationQuality(context!, quality)
         drawInRect(CGRect(origin: CGPointZero, size: size))
-        resizedImage = UIGraphicsGetImageFromCurrentImageContext()
+        resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         return resizedImage
@@ -93,16 +97,16 @@ public extension UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         
         let context = UIGraphicsGetCurrentContext()
-        CGContextTranslateCTM(context, 0, size.height)
-        CGContextScaleCTM(context, 1.0, -1.0)
-        CGContextSetBlendMode(context, CGBlendMode.Normal)
+        CGContextTranslateCTM(context!, 0, size.height)
+        CGContextScaleCTM(context!, 1.0, -1.0)
+        CGContextSetBlendMode(context!, CGBlendMode.Normal)
         
         let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height) as CGRect
-        CGContextClipToMask(context, rect, CGImage)
+        CGContextClipToMask(context!, rect, CGImage!)
         tintColor.setFill()
-        CGContextFillRect(context, rect)
+        CGContextFillRect(context!, rect)
         
-        let newImage = UIGraphicsGetImageFromCurrentImageContext() as UIImage
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
         UIGraphicsEndImageContext()
         
         return newImage

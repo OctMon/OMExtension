@@ -562,7 +562,7 @@ public extension UIView {
         
         drawViewHierarchyInRect(bounds, afterScreenUpdates: true)
         
-        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         let imageData: NSData = UIImagePNGRepresentation(image)!
