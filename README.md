@@ -50,6 +50,9 @@ import OMExtension
 - [Int](#int)
 - [String](#string)
 - [NSDate](#nsdate)
+- [NSThread](#nsthread)
+- [NSTimer](#nstimer)
+- [NSObject](#nsobject)
 
 ## UIKit
 
@@ -195,6 +198,12 @@ string.omIsIP
 string.omIsNumber
 ```
 
+身份证号验证
+
+```swift
+string.omIsIDCard
+```
+
 提取URL
 
 ```swift
@@ -219,7 +228,7 @@ print("https://github.com/OctMon".omHeight(320, font: UIFont.systemFontOfSize(12
 print("   https://github.com/OctMon  ".omTrimming) // https://github.com/OctMon
 ```
 
-字符串分享
+字符串分离
 
 ```swift
 print("https:// github. com/ OctMon  ".omSplit(" ")[3]) // OctMon
