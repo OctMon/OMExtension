@@ -107,6 +107,7 @@ public class OMSwipeGestureRecognizer: UISwipeGestureRecognizer {
     convenience init(direction: UISwipeGestureRecognizerDirection, numberOfTouchesRequired: Int = 1, handler: OMSwipeGestureHandler) {
         self.init()
         
+        self.direction = direction
         self.numberOfTouchesRequired = numberOfTouchesRequired
         
         swipeGestureHandler = handler
