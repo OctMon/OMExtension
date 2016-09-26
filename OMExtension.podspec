@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "OMExtension"
   s.module_name      = "OMExtension"
-  s.version          = "1.0.1"
+  s.version          = "1.0.2"
   s.summary          = "一个有用的swift扩展集合"
   s.homepage         = "https://github.com/OctMon/OMExtension"
   s.license          = {
@@ -13,8 +13,10 @@ Pod::Spec.new do |s|
   s.platform         = :ios, "8.0"
   s.source           = {
                           :git => "https://github.com/OctMon/OMExtension.git",
-                          :tag => "1.0.1"
+                          :tag => "1.0.2"
                        }
   s.source_files     = "OMExtension/OMExtension/Source/**/*.{swift}"
   s.requires_arc     = true
+
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '2.3' }
 end
