@@ -28,6 +28,7 @@ import Foundation
 
 public extension Timer {
     
+    @discardableResult
     static func omRunLoop(seconds: TimeInterval, handler: @escaping (_ timer: Timer?) -> Void) -> Timer {
         
         let fireDate = CFAbsoluteTimeGetCurrent()

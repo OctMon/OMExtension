@@ -342,12 +342,16 @@ public extension UIView {
         }
     }
     
+    @discardableResult
     func leftOffset(_ offset: CGFloat) -> CGFloat { return self.omX - offset }
     
+    @discardableResult
     func rightOffset(_ offset: CGFloat) -> CGFloat { return self.omRight + offset }
     
+    @discardableResult
     func topOffset(_ offset: CGFloat) -> CGFloat { return self.omTop - offset }
     
+    @discardableResult
     func bottomOffset(_ offset: CGFloat) -> CGFloat { return self.omBottom + offset }
 
 }
@@ -581,6 +585,7 @@ public extension UIView {
      
      - returns: UIImage
      */
+    @discardableResult
     func omScreenshotToSavedPhotosAlbum() -> UIImage {
         
         let image: UIImage = omScreenshotToImage()

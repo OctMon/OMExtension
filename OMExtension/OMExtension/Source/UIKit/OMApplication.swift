@@ -156,6 +156,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenURL(string: String) -> Bool { return shared.openURL(URL(string: string)!) }
     
     /**
@@ -163,6 +164,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenAppSettings() -> Bool { return omOpenURL(string: UIApplicationOpenSettingsURLString) }
     
     /**
@@ -170,6 +172,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsAbout() -> Bool { return omOpenGeneralPath("About") }
     
     /**
@@ -177,6 +180,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsAccessibility() -> Bool { return omOpenGeneralPath("ACCESSIBILITY") }
     
     /**
@@ -184,6 +188,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsAirplane() -> Bool { return omOpenPrefsRoot("AIRPLANE_MODE") }
     
     /**
@@ -191,6 +196,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsAutoLock() -> Bool { return omOpenGeneralPath("AUTOLOCK") }
     
     /**
@@ -198,6 +204,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsDateTime() -> Bool { return omOpenGeneralPath("DATE_AND_TIME") }
     
     /**
@@ -205,6 +212,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsFaceTime() -> Bool { return omOpenPrefsRoot("FACETIME") }
     
     /**
@@ -212,6 +220,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsGeneral() -> Bool { return omOpenPrefsRoot("General") }
     
     /**
@@ -219,6 +228,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsKeyboard() -> Bool { return omOpenGeneralPath("Keyboard") }
     
     /**
@@ -226,6 +236,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsiCloud() -> Bool { return omOpenPrefsRoot("CASTLE") }
     
     /**
@@ -233,6 +244,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsiCloudStorageBackup() -> Bool { return omOpenPrefsRoot("CASTLE&path=STORAGE_AND_BACKUP") }
     
     /**
@@ -240,6 +252,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsInternational() -> Bool { return omOpenGeneralPath("INTERNATIONAL") }
     
     /**
@@ -247,6 +260,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsLocationServices() -> Bool { return omOpenPrefsRoot("LOCATION_SERVICES") }
     
     /**
@@ -254,6 +268,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsMusic() -> Bool { return omOpenPrefsRoot("MUSIC") }
     
     /**
@@ -261,6 +276,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsNotes() -> Bool { return omOpenPrefsRoot("NOTES") }
     
     /**
@@ -268,6 +284,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsNotification() -> Bool { return omOpenPrefsRoot("NOTIFICATIONS_ID") }
     
     /**
@@ -275,6 +292,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsPhone() -> Bool { return omOpenPrefsRoot("Phone") }
     
     /**
@@ -282,6 +300,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsPhotos() -> Bool { return omOpenPrefsRoot("Photos") }
     
     /**
@@ -289,6 +308,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsProfile() -> Bool { return omOpenGeneralPath("ManagedConfigurationList") }
     
     /**
@@ -296,6 +316,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsReset() -> Bool { return omOpenGeneralPath("Reset") }
     
     /**
@@ -303,6 +324,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsRingtone() -> Bool { return omOpenPrefsRoot("Sounds&path=Ringtone") }
     
     /**
@@ -310,6 +332,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsSounds() -> Bool { return omOpenPrefsRoot("Sounds") }
     
     /**
@@ -317,6 +340,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsSoftwareUpdate() -> Bool { return omOpenGeneralPath("SOFTWARE_UPDATE_LINK") }
     
     /**
@@ -324,6 +348,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsStore() -> Bool { return omOpenPrefsRoot("STORE") }
     
     /**
@@ -331,6 +356,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsTwitter() -> Bool { return omOpenPrefsRoot("TWITTER") }
     
     /**
@@ -338,6 +364,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsVideo() -> Bool { return omOpenPrefsRoot("VIDEO") }
     
     /**
@@ -345,6 +372,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsWallpaper() -> Bool { return omOpenPrefsRoot("Wallpaper") }
     
     /**
@@ -352,6 +380,7 @@ public extension UIApplication {
      
      - returns: 成功/失败
      */
+    @discardableResult
     static func omOpenPrefsWiFi() -> Bool { return omOpenPrefsRoot("WIFI") }
 
 }

@@ -57,7 +57,10 @@ import OMExtension
 - [Double](#double)
 - [Int](#int)
 - [String](#string)
-- [NSDate](#nsdate)
+- [Date](#date)
+- [Thread](#thread)
+- [Timer](#timer)
+- [NSObject](#nsobject)
 
 ## UIKit
 
@@ -203,6 +206,12 @@ string.omIsIP
 string.omIsNumber
 ```
 
+身份证号验证
+
+```swift
+string.omIsIDCard
+```
+
 提取URL
 
 ```swift
@@ -227,7 +236,7 @@ print("https://github.com/OctMon".omHeight(320, font: UIFont.systemFontOfSize(12
 print("   https://github.com/OctMon  ".omTrimming) // https://github.com/OctMon
 ```
 
-字符串分享
+字符串分离
 
 ```swift
 print("https:// github. com/ OctMon  ".omSplit(" ")[3]) // OctMon
@@ -251,10 +260,10 @@ NSMutableAttributedString
 let mutableAttributedString = ("https://github.com/OctMon".omGetAttributes(color: [(color: UIColor.redColor(), subString: "github")], font: [(font: UIFont.systemFontOfSize(12), subString: "Octmon")]))
 ```
 
-### NSDate
+### Date
 
 ```swift
-let date = NSDate.omWithTimeStamp(NSDate().timeIntervalSince1970 * 1000)
+let date = Date.omWithTimeStamp(NSDate().timeIntervalSince1970 * 1000)
 
 print(date) // 2016-08-29 07:29:21 +0000
 date.omYearString() // 2016
@@ -265,18 +274,18 @@ date.omDateInfo() // OMDateInfo(year: 2016, month: 8, day: 29, weekday: 5, hour:
 date.omDateInfo().omString(nanosecond: true) // 2016-08-29 15:29:21:899
 ```
 
-### NSThread
+### Thread
 
 ```swift
-NSThread.omRunInMainThread(delay: 2.5) { 
-    // 2.5s后在主线程延时执行
+Thread.omRunInMainThread(delay: 1) {
+    // 1s后在主线程延时执行
 }
 ```
 
-### NSTimer
+### Timer
 
 ```swift
-NSTimer.omRunLoop(seconds: 1, handler: { (timer) in
+Timer.omRunLoop(seconds: 1, handler: { (timer) in
             
     total-=1
     print(total)

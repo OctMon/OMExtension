@@ -26,6 +26,7 @@
 
 import Foundation
 import UIKit
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -45,7 +46,6 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
     return rhs < lhs
   }
 }
-
 
 // MARK: - convert
 
@@ -144,6 +144,54 @@ public extension String {
             
             return false
         }
+    }
+    
+    /// 身份证号码验证
+    var omIsIDCard: Bool {
+        
+        if characters.count != 18 {
+            
+            return false
+        }
+        
+        let mmdd = "(((0[13578]|1[02])(0[1-9]|[12][0-9]|3[01]))|((0[469]|11)(0[1-9]|[12][0-9]|30))|(02(0[1-9]|[1][0-9]|2[0-8])))"
+        let leapMmdd = "0229"
+        let year = "(19|20)[0-9]{2}"
+        let leapYear = "(19|20)(0[48]|[2468][048]|[13579][26])"
+        let yearMmdd = year + mmdd
+        let leapyearMmdd = leapYear + leapMmdd
+        let yyyyMmdd = "((\(yearMmdd))|(\(leapyearMmdd))|(20000229))"
+        let area = "(1[1-5]|2[1-3]|3[1-7]|4[1-6]|5[0-4]|6[1-5]|82|[7-9]1)[0-9]{4}"
+        let regex = "\(area)\(yyyyMmdd)[0-9]{3}[0-9Xx]"
+        
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        
+        if predicate.evaluate(with: self) == false {
+            
+            return false
+        }
+        
+        let chars = uppercased().characters.map { return String($0) }
+        
+        let c1 = chars[7].omToInt!
+        let c2 = (chars[6].omToInt! + chars[16].omToInt!) * 2
+        let c3 = chars[9].omToInt! * 3
+        let c4 = (chars[5].omToInt! + chars[15].omToInt!) * 4
+        let c5 = (chars[3].omToInt! + chars[13].omToInt!) * 5
+        let c6 = chars[8].omToInt! * 6
+        let c7 = (chars[0].omToInt! + chars[10].omToInt!) * 7
+        let c8 = (chars[4].omToInt! + chars[14].omToInt!) * 8
+        let c9 = (chars[1].omToInt! + chars[11].omToInt!) * 9
+        let c10 = (chars[2].omToInt! + chars[12].omToInt!) * 10
+        
+        let summary: Int = c1 + c2 + c3 + c4 + c5 + c6 + c7 + c8 + c9 + c10
+        
+        let remainder = summary % 11
+        let checkString = "10X98765432"
+        
+        let checkBit = checkString.characters.map { return String($0) }[remainder]
+        
+        return (checkBit == chars.last)
     }
 
 }

@@ -41,6 +41,7 @@ public extension UIViewController {
         navigationController?.pushViewController(viewController, animated: animated)
     }
     
+    @discardableResult
     func omPopViewController(_ animated: Bool = true) -> UIViewController? {
         
         return navigationController?.popViewController(animated: animated)
@@ -80,6 +81,7 @@ public extension UIViewController {
      
      - returns: UIImageView
      */
+    @discardableResult
     func omSetBackground(image: UIImage) -> UIImageView {
         
         let imageView = UIImageView(frame: view.frame)

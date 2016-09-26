@@ -30,6 +30,7 @@ public extension Bool {
     
     var omToInt: Int { return self ? 1 : 0 }
     
+    @discardableResult
     mutating func omToggle() -> Bool {
         
         self = !self
