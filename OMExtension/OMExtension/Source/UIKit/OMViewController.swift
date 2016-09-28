@@ -239,7 +239,7 @@ private var __omPlaceholderButton__: String = "__omPlaceholderButton__"
 
 public extension UIViewController {
     
-    fileprivate var placeholderView: UIView? {
+    public var omPlaceholderView: UIView? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderView__) as? UIView
@@ -317,10 +317,10 @@ public extension UIViewController {
             placeholderImageView = UIImageView(image: image)
             placeholderImageView?.contentMode = .center
             
-            placeholderView?.addSubview(placeholderImageView!)
+            omPlaceholderView?.addSubview(placeholderImageView!)
             
-            placeholderImageView?.center.x = placeholderView!.center.x
-            placeholderImageView?.center.y = placeholderView!.center.y + offset
+            placeholderImageView?.center.x = omPlaceholderView!.center.x
+            placeholderImageView?.center.y = omPlaceholderView!.center.y + offset
         }
     }
     
@@ -346,7 +346,7 @@ public extension UIViewController {
                 return
             }
             
-            guard let _view = placeholderView else {
+            guard let _view = omPlaceholderView else {
                 
                 return
             }
@@ -391,7 +391,7 @@ public extension UIViewController {
                 return
             }
             
-            guard let _view = placeholderView else {
+            guard let _view = omPlaceholderView else {
                 
                 return
             }
@@ -434,7 +434,7 @@ public extension UIViewController {
                 return
             }
             
-            guard let _view = placeholderView else {
+            guard let _view = omPlaceholderView else {
                 
                 return
             }
@@ -482,16 +482,16 @@ public extension UIViewController {
         
         omSetScrollEnabled(shouldTap)
         
-        placeholderView = UIView(frame: UIScreen.main.bounds)
-        placeholderView?.backgroundColor = backgroundColor
+        omPlaceholderView = UIView(frame: UIScreen.main.bounds)
+        omPlaceholderView?.backgroundColor = backgroundColor
         
         if shouldTap {
             
-            view.insertSubview(placeholderView!, at: 0)
+            view.insertSubview(omPlaceholderView!, at: 0)
             
         } else {
             
-            view.addSubview(placeholderView!)
+            view.addSubview(omPlaceholderView!)
         }
         
         imageView(image, offset: offsetY)
@@ -516,21 +516,21 @@ public extension UIViewController {
         
         omSetScrollEnabled(true)
         
-        if placeholderView != nil {
+        if omPlaceholderView != nil {
             
             placeholderImageView?.removeFromSuperview()
             placeholderTitleLabel?.removeFromSuperview()
             placeholderDescriptionLabel?.removeFromSuperview()
             placeholderButton?.removeFromSuperview()
             
-            placeholderView!.removeFromSuperview()
+            omPlaceholderView!.removeFromSuperview()
             
             placeholderImageView = nil
             placeholderTitleLabel = nil
             placeholderDescriptionLabel = nil
             placeholderButton = nil
             
-            placeholderView = nil
+            omPlaceholderView = nil
         }
     }
     
