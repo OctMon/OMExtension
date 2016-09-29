@@ -468,7 +468,7 @@ public extension UIViewController {
      - parameter shouldTapBackground:         是否可以交互
      - parameter offset:                      距离y坐标偏移
      */
-    func omShowPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, titles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, size: CGSize? = nil, buttonTapHandler: ((_ button: UIButton)->Void)? = nil) {
+    func omShowPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton)->Void)? = nil) {
         
         omHidePlaceholder()
         
@@ -497,7 +497,7 @@ public extension UIViewController {
         imageView(image, offset: offsetY)
         titleLabel(titleAttributedString, space: space)
         descriptionlLabel(descriptionAttributedString, space: space)
-        button(buttonBackgroundImages, titles: titles, size: size, space: space)
+        button(buttonBackgroundImages, titles: buttonTitles, size: buttonSize, space: space)
         
         placeholderButton?.omAddTapGestureRecognizer(handler: { [weak self] (_) in
             
