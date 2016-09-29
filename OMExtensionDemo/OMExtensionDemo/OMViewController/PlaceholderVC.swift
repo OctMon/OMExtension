@@ -100,7 +100,7 @@ class PlaceholderVC: BaseVC {
                 let backgroundImageNormal = UIImage(named: backgroundImageName + "_normal")
                 let backgroundImageHighlight = UIImage(named: backgroundImageName + "_highlight")
                 
-                self.omShowPlaceholder(image, shouldTap: true, offset: image.size.width * 0.5, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState.Normal), (backgroundImageHighlight, state: UIControlState.Highlighted)], titles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState.Normal)] : nil), buttonTapHandler: { (button) in
+                self.omShowPlaceholder(image, shouldTap: true, offset: image.size.width * 0.5, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState.Normal), (backgroundImageHighlight, state: UIControlState.Highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState.Normal)] : nil), buttonTapHandler: { (button) in
                     
                     print(button.selected)
                     
