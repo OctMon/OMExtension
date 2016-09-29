@@ -81,7 +81,7 @@ public extension Array where Element: Equatable {
         return elements
     }
     
-    func omUnion(values: [Element]...) -> [Element] {
+    func omUnion(values: [Element]...) -> Array {
         
         var elements = self
         
@@ -99,28 +99,27 @@ public extension Array where Element: Equatable {
         return elements
     }
     
-    func omIntersection(values: [Element]...) -> [Element] {
+    func omIntersection(values: [Element]...) -> Array {
         
         var elements = self
-        var intersection = [Element]()
+        var intersection = Array()
         
-        for value in values.enumerate() {
+        for (offset, element) in values.enumerate() {
             
-            if value.index > 0 {
+            if offset > 0 {
                 
                 elements = intersection
-                intersection = [Element]()
+                intersection = Array()
             }
             
-            value.element.forEach({ (element) in
+            element.forEach { item in
                 
-                if elements.contains(element) {
+                if elements.contains(item) {
                     
-                    intersection.append(element)
+                    intersection.append(item)
                 }
-            })
+            }
         }
-        
-        return elements
+        return intersection
     }
 }
