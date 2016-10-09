@@ -28,6 +28,12 @@ import Foundation
 
 public extension NSObject {
     
+    /// ♻️deinit
+    var omDeinitLog: String {
+        
+        return ("\(self.dynamicType)♻️deinit")
+    }
+    
     /// 获取类型名称
     var omClassName: String {
         

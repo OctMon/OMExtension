@@ -36,6 +36,13 @@ public extension UIViewController {
         return navigationController?.navigationBar
     }
     
+    func omSetBackBarButtonItem(title: String) {
+        
+        let temporaryBarButtonItem = UIBarButtonItem()
+        temporaryBarButtonItem.title = title
+        navigationItem.backBarButtonItem = temporaryBarButtonItem
+    }
+    
     func omPushViewController(viewController: UIViewController, animated: Bool = true) {
         
         navigationController?.pushViewController(viewController, animated: animated)
@@ -235,6 +242,8 @@ private var __omPlaceholderDescriptionLabel__: String = "__omPlaceholderDescript
 
 private var __omPlaceholderButton__: String = "__omPlaceholderButton__"
 
+private var __omPlaceholderLastBackgroundColor__: String = "__omPlaceholderLastBackgroundColor__"
+
 public extension UIViewController {
     
     private var omPlaceholderView: UIView? {
@@ -292,6 +301,17 @@ public extension UIViewController {
         }
     }
     
+    private var omPlaceholderLastBackgroundColor: UIColor? {
+        
+        get {
+            return objc_getAssociatedObject(self, &__omPlaceholderLastBackgroundColor__) as? UIColor
+        }
+        
+        set {
+            objc_setAssociatedObject(self, &__omPlaceholderLastBackgroundColor__, newValue, .OBJC_ASSOCIATION_RETAIN)
+        }
+    }
+    
     private func omSetScrollEnabled(scrollEnabled: Bool) {
         
         view.subviews.forEach({ (subView) in
@@ -313,12 +333,22 @@ public extension UIViewController {
         if placeholderImageView == nil {
             
             placeholderImageView = UIImageView(image: image)
-            placeholderImageView?.contentMode = .Center
             
-            omPlaceholderView?.addSubview(placeholderImageView!)
+            guard let _imageView = placeholderImageView else {
+                
+                return
+            }
             
-            placeholderImageView?.center.x = omPlaceholderView!.center.x
-            placeholderImageView?.center.y = omPlaceholderView!.center.y + offset
+            guard let _view = omPlaceholderView else {
+                
+                return
+            }
+            
+            _imageView.contentMode = .Center
+            
+            _view.addSubview(_imageView)
+            
+            updateFrame(offset)
         }
     }
     
@@ -339,31 +369,14 @@ public extension UIViewController {
             _titleLabel.numberOfLines = 0
             _titleLabel.textAlignment = .Center
             
-            guard let _imageView = placeholderImageView else {
-                
-                return
-            }
-            
             guard let _view = omPlaceholderView else {
                 
                 return
             }
             
-            _titleLabel.sizeToFit()
-            _titleLabel.frame.size.width = _view.frame.size.width - 30
-            _titleLabel.frame.origin.y = _imageView.frame.origin.y + _imageView.frame.size.height + space
-            
-            let width2 = _titleLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 2).height
-            let width1 = _titleLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 1).height
-            
-            if width2 > width1 {
-                
-                _titleLabel.sizeToFit()
-            }
-            
-            _titleLabel.center.x = _imageView.center.x
-            
             _view.addSubview(_titleLabel)
+            
+            updateFrame(space: space)
         }
     }
     
@@ -384,31 +397,14 @@ public extension UIViewController {
             _descriptionLabel.numberOfLines = 0
             _descriptionLabel.textAlignment = .Center
             
-            guard let _titleLabel = placeholderTitleLabel else {
-                
-                return
-            }
-            
             guard let _view = omPlaceholderView else {
                 
                 return
             }
             
-            _descriptionLabel.sizeToFit()
-            _descriptionLabel.frame.size.width = _view.frame.size.width - 30
-            _descriptionLabel.frame.origin.y = _titleLabel.frame.origin.y + _titleLabel.frame.size.height + space
-            
-            let width2 = _descriptionLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 2).height
-            let width1 = _descriptionLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 1).height
-            
-            if width2 > width1 {
-                
-                _descriptionLabel.sizeToFit()
-            }
-            
-            _descriptionLabel.center.x = _titleLabel.center.x
-            
             _view.addSubview(_descriptionLabel)
+            
+            updateFrame(space: space)
         }
     }
     
@@ -427,32 +423,96 @@ public extension UIViewController {
             backgroundImages?.forEach({_button.setBackgroundImage($0.backgroundImage, forState: $0.state)})
             titles?.forEach({_button.setAttributedTitle($0.title, forState: $0.state)})
             
-            guard let _descriptionLabel = placeholderDescriptionLabel else {
-                
-                return
-            }
-            
             guard let _view = omPlaceholderView else {
                 
                 return
             }
             
-            if let _size = size {
-                
-                _button.frame.size = _size
-                
-            } else {
-                
-                let size = _button.sizeThatFits(CGSize(width: UIScreen.omGetWidth - 30, height: UIScreen.omGetHeight))
-                
-                _button.frame.size = CGSize(width: min(size.width + 30, UIScreen.omGetWidth - 30), height: max(size.height, 30))
-            }
-            
-            _button.frame.origin.y = _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + space
-            _button.center.x = _descriptionLabel.center.x
-            
             _view.addSubview(_button)
+            
+            updateFrame(space: space)
         }
+    }
+    
+    private func updateFrame(offset: CGFloat = 0, space: CGFloat = 8, buttonSize: CGSize? = nil) {
+        
+        guard let _view = omPlaceholderView else {
+            
+            return
+        }
+        
+        guard let _imageView = placeholderImageView else {
+            
+            return
+        }
+        
+        _view.frame = view.frame
+        _view.omTop = 0
+        
+        _imageView.center.x = _view.center.x
+        _imageView.center.y = _view.center.y
+        
+        guard let _titleLabel = placeholderTitleLabel else {
+            
+            return
+        }
+        
+        _titleLabel.sizeToFit()
+        _titleLabel.frame.size.width = _view.frame.size.width - 30
+        _titleLabel.frame.origin.y = _imageView.frame.origin.y + _imageView.frame.size.height + space
+        
+        let _titleLabelwidth2 = _titleLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 2).height
+        let _titleLabelwidth1 = _titleLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 1).height
+        
+        if _titleLabelwidth2 > _titleLabelwidth1 {
+            
+            _titleLabel.sizeToFit()
+        }
+        
+        _titleLabel.center.x = _imageView.center.x
+        
+        guard let _descriptionLabel = placeholderDescriptionLabel else {
+            
+            return
+        }
+        
+        _descriptionLabel.sizeToFit()
+        _descriptionLabel.frame.size.width = _view.frame.size.width - 30
+        _descriptionLabel.frame.origin.y = _titleLabel.frame.origin.y + _titleLabel.frame.size.height + space
+        
+        let _descriptionLabelwidth2 = _descriptionLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 2).height
+        let _descriptionLabelwidth1 = _descriptionLabel.textRectForBounds(CGRect(x: 0, y: 0, width: _view.frame.size.width - 30, height: CGFloat.max), limitedToNumberOfLines: 1).height
+        
+        if _descriptionLabelwidth2 > _descriptionLabelwidth1 {
+            
+            _descriptionLabel.sizeToFit()
+        }
+        
+        _descriptionLabel.center.x = _titleLabel.center.x
+        
+        guard let _button = placeholderButton else {
+            
+            return
+        }
+        
+        if let _size = buttonSize {
+            
+            _button.frame.size = _size
+            
+        } else {
+            
+            let size = _button.sizeThatFits(CGSize(width: UIScreen.omGetWidth - 30, height: UIScreen.omGetHeight))
+            
+            _button.frame.size = CGSize(width: min(size.width + 30, UIScreen.omGetWidth - 30), height: max(size.height, 30))
+        }
+        
+        _button.frame.origin.y = _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + space
+        _button.center.x = _descriptionLabel.center.x
+    }
+    
+    var omIsShowPlaceholder: Bool {
+        
+        return omPlaceholderView != nil
     }
     
     /**
@@ -468,6 +528,8 @@ public extension UIViewController {
      */
     func omShowPlaceholder(image: UIImage? = nil, backgroundColor: UIColor = UIColor.clearColor(), titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((button: UIButton)->Void)? = nil) {
         
+        omPlaceholderLastBackgroundColor = view.backgroundColor
+        
         omHidePlaceholder()
         
         var offsetY = offset
@@ -482,6 +544,11 @@ public extension UIViewController {
         
         omPlaceholderView = UIView(frame: UIScreen.mainScreen().bounds)
         omPlaceholderView?.backgroundColor = backgroundColor
+        
+        if backgroundColor != UIColor.clearColor() {
+            
+            view.backgroundColor = backgroundColor
+        }
         
         if shouldTap {
             
@@ -505,6 +572,11 @@ public extension UIViewController {
             }
             
         })
+        
+        NSNotificationCenter.defaultCenter().addObserverForName(UIDeviceOrientationDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { [weak self] (notification) in
+            
+            self?.updateFrame(offset, space: space, buttonSize: buttonSize)
+        }
     }
     
     /**
@@ -515,6 +587,8 @@ public extension UIViewController {
         omSetScrollEnabled(true)
         
         if omPlaceholderView != nil {
+            
+            view.backgroundColor = omPlaceholderLastBackgroundColor
             
             placeholderImageView?.removeFromSuperview()
             placeholderTitleLabel?.removeFromSuperview()

@@ -382,6 +382,7 @@
 				TargetAttributes = {
 					FE8F90761D6EADEB0095D74B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = E4QM55B48M;
 						LastSwiftMigration = 0800;
 					};
 					FE8F908A1D6EADEB0095D74B = {
@@ -642,6 +643,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E4QM55B48M;
 				INFOPLIST_FILE = OMExtensionDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtensionDemo;
@@ -654,6 +656,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E4QM55B48M;
 				INFOPLIST_FILE = OMExtensionDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtensionDemo;
