@@ -31,15 +31,13 @@ class BaseVC: UIViewController {
 
     deinit{
         
-        print("\(type(of: self))♻️deinit")
+        print(omDeinitLog)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let temporaryBarButtonItem = UIBarButtonItem()
-        temporaryBarButtonItem.title = ""
-        navigationItem.backBarButtonItem = temporaryBarButtonItem
+        omSetBackBarButtonItem("")
     }
 
 }

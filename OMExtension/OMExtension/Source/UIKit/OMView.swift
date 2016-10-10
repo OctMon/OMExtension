@@ -29,11 +29,11 @@ import UIKit
 
 // MARK: - GestureHandler
 
-public typealias OMTapGestureHandler = (_ tapGestureRecognizer: UITapGestureRecognizer) -> Void
-public typealias OMLongPressGestureHandler = (_ longPressGestureRecognizer: UILongPressGestureRecognizer) -> Void
-public typealias OMPanGestureHandler = (_ panGestureRecognizer: UIPanGestureRecognizer) -> Void
-public typealias OMSwipeGestureHandler = (_ swipeGestureRecognizer: UISwipeGestureRecognizer) -> Void
-public typealias OMPinchGestureHandler = (_ pinchGestureRecognizer: UIPinchGestureRecognizer) -> Void
+public typealias OMTapGestureHandler = (UITapGestureRecognizer) -> Void
+public typealias OMLongPressGestureHandler = (UILongPressGestureRecognizer) -> Void
+public typealias OMPanGestureHandler = (UIPanGestureRecognizer) -> Void
+public typealias OMSwipeGestureHandler = (UISwipeGestureRecognizer) -> Void
+public typealias OMPinchGestureHandler = (UIPinchGestureRecognizer) -> Void
 
 open class OMTapGestureRecognizer: UITapGestureRecognizer {
     

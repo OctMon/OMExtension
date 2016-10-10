@@ -33,6 +33,16 @@ class PlaceholderTVC: BaseTVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.omAddTapGestureRecognizer { [unowned self] (_) in
+            
+            self.omIsShowPlaceholder ? self.omHidePlaceholder() : self.showPlaceholder()
+        }
+        
+        showPlaceholder()
+    }
+    
+    func showPlaceholder() {
+        
         var barColor: UIColor? = nil
         var tintColor: UIColor? = nil
         var barstyle: UIStatusBarStyle = .default
@@ -355,6 +365,5 @@ class PlaceholderTVC: BaseTVC {
         let image = UIImage(named: "placeholder_" + title!.lowercased().replacingOccurrences(of: "", with: "_", options: NSString.CompareOptions.caseInsensitive, range: nil))
         
         omShowPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: text.omGetAttributes(color: [(textColor, text)], font: [(textFont, text)]), descriptionAttributedString: description.omGetAttributes(color: [(descriptionColor, description)], font: [(descriptionFont, description)]))
-        
     }
 }
