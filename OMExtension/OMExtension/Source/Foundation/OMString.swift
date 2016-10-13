@@ -103,7 +103,7 @@ public extension String {
     var omIsPhoneTelephone: Bool { return omIsRegex("([\\d]{7,25}(?!\\d))|((\\d{3,4})-(\\d{7,8}))|((\\d{3,4})-(\\d{7,8})-(\\d{1,4}))") }
     
     /// URL网址验证
-    var omIsURL: Bool { return omIsRegex("((http[s]{0,1}|ftp)://[a-zA-Z0-9\\.\\-]+\\.([a-zA-Z]{2,4})(:\\d+)?(/[a-zA-Z0-9\\.\\-~!@#$%^&*+?:_/=<>]*)?)|^[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)+([-A-Z0-9a-z_\\$\\.\\+!\\*\\(\\)/,:;@&=\\?~#%]*)*") }
+    var omIsURL: Bool { return omExtractURL.count > 0 }
     
     /// IP地址验证
     var omIsIP: Bool {

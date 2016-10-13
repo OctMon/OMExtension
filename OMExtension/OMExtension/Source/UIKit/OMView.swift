@@ -29,11 +29,11 @@ import UIKit
 
 // MARK: - GestureHandler
 
-public typealias OMTapGestureHandler = (tapGestureRecognizer: UITapGestureRecognizer) -> Void
-public typealias OMLongPressGestureHandler = (longPressGestureRecognizer: UILongPressGestureRecognizer) -> Void
-public typealias OMPanGestureHandler = (panGestureRecognizer: UIPanGestureRecognizer) -> Void
-public typealias OMSwipeGestureHandler = (swipeGestureRecognizer: UISwipeGestureRecognizer) -> Void
-public typealias OMPinchGestureHandler = (pinchGestureRecognizer: UIPinchGestureRecognizer) -> Void
+public typealias OMTapGestureHandler = (UITapGestureRecognizer) -> Void
+public typealias OMLongPressGestureHandler = (UILongPressGestureRecognizer) -> Void
+public typealias OMPanGestureHandler = (UIPanGestureRecognizer) -> Void
+public typealias OMSwipeGestureHandler = (UISwipeGestureRecognizer) -> Void
+public typealias OMPinchGestureHandler = (UIPinchGestureRecognizer) -> Void
 
 public class OMTapGestureRecognizer: UITapGestureRecognizer {
     
@@ -52,7 +52,7 @@ public class OMTapGestureRecognizer: UITapGestureRecognizer {
     
     @objc private func action(tapGestureRecognizer: UITapGestureRecognizer) {
         
-        tapGestureHandler(tapGestureRecognizer: tapGestureRecognizer)
+        tapGestureHandler(tapGestureRecognizer)
     }
     
 }
@@ -74,7 +74,7 @@ public class OMLongPressGestureRecognizer: UILongPressGestureRecognizer {
     
     @objc private func action(longPressGestureRecognizer: UILongPressGestureRecognizer) {
         
-        longPressGestureHandler(longPressGestureRecognizer: longPressGestureRecognizer)
+        longPressGestureHandler(longPressGestureRecognizer)
     }
     
 }
@@ -95,7 +95,7 @@ public class OMPanGestureRecognizer: UIPanGestureRecognizer {
     
     @objc private func action(panGestureRecognizer: UIPanGestureRecognizer) {
         
-        panGestureHandler(panGestureRecognizer: panGestureRecognizer)
+        panGestureHandler(panGestureRecognizer)
     }
     
 }
@@ -117,7 +117,7 @@ public class OMSwipeGestureRecognizer: UISwipeGestureRecognizer {
     
     @objc private func action(swipeGestureRecognizer: UISwipeGestureRecognizer) {
         
-        swipeGestureHandler(swipeGestureRecognizer: swipeGestureRecognizer)
+        swipeGestureHandler(swipeGestureRecognizer)
     }
     
 }
@@ -136,7 +136,7 @@ public class OMPinchGestureRecognizer: UIPinchGestureRecognizer {
     
     @objc private func action(pinchGestureRecognizer: UIPinchGestureRecognizer) {
         
-        pinchGestureHandler(pinchGestureRecognizer: pinchGestureRecognizer)
+        pinchGestureHandler(pinchGestureRecognizer)
     }
 
 }

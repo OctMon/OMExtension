@@ -42,7 +42,7 @@ class ApplicationTVC: BaseTVC {
         label.numberOfLines = 0
         label.text = UIApplication.omAppName + "\n" + UIApplication.omAppIdentifier + "\n" + UIApplication.omAppBuild + "\n" + UIApplication.omAppVersion + "\n" + "\(UIApplication.omAppDelegate)"
         
-        label.omAddTapGestureRecognizer { [unowned self] (tapGestureRecognizer) in
+        label.omAddTapGestureRecognizer { [unowned self] (_) in
             
             self.tableView.tableHeaderView?.backgroundColor = UIColor.omRandom
         }
