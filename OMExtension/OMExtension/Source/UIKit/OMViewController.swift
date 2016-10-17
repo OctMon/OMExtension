@@ -246,7 +246,7 @@ private var __omPlaceholderLastBackgroundColor__: String = "__omPlaceholderLastB
 
 public extension UIViewController {
     
-    private var omPlaceholderView: UIView? {
+    public var omPlaceholderView: UIView? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderView__) as? UIView
@@ -257,7 +257,7 @@ public extension UIViewController {
         }
     }
     
-    private var placeholderImageView: UIImageView? {
+    public var omPlaceholderImageView: UIImageView? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderImageView__) as? UIImageView
@@ -268,7 +268,7 @@ public extension UIViewController {
         }
     }
     
-    private var placeholderTitleLabel: UILabel? {
+    public var omPlaceholderTitleLabel: UILabel? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderTitleLabel__) as? UILabel
@@ -279,7 +279,7 @@ public extension UIViewController {
         }
     }
     
-    private var placeholderDescriptionLabel: UILabel? {
+    public var omPlaceholderDescriptionLabel: UILabel? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderDescriptionLabel__) as? UILabel
@@ -290,7 +290,7 @@ public extension UIViewController {
         }
     }
     
-    private var placeholderButton: UIButton? {
+    public var omPlaceholderButton: UIButton? {
         
         get {
             return objc_getAssociatedObject(self, &__omPlaceholderButton__) as? UIButton
@@ -330,11 +330,11 @@ public extension UIViewController {
     
     private func imageView(image: UIImage?, offset: CGFloat) {
         
-        if placeholderImageView == nil {
+        if omPlaceholderImageView == nil {
             
-            placeholderImageView = UIImageView(image: image)
+            omPlaceholderImageView = UIImageView(image: image)
             
-            guard let _imageView = placeholderImageView else {
+            guard let _imageView = omPlaceholderImageView else {
                 
                 return
             }
@@ -354,11 +354,11 @@ public extension UIViewController {
     
     private func titleLabel(attributedString: NSAttributedString?, space: CGFloat) {
         
-        if placeholderTitleLabel == nil {
+        if omPlaceholderTitleLabel == nil {
             
-            placeholderTitleLabel = UILabel()
+            omPlaceholderTitleLabel = UILabel()
             
-            guard let _titleLabel = placeholderTitleLabel else {
+            guard let _titleLabel = omPlaceholderTitleLabel else {
                 
                 return
             }
@@ -382,11 +382,11 @@ public extension UIViewController {
     
     private func descriptionlLabel(attributedString: NSAttributedString?, space: CGFloat) {
         
-        if placeholderDescriptionLabel == nil {
+        if omPlaceholderDescriptionLabel == nil {
             
-            placeholderDescriptionLabel = UILabel()
+            omPlaceholderDescriptionLabel = UILabel()
             
-            guard let _descriptionLabel = placeholderDescriptionLabel else {
+            guard let _descriptionLabel = omPlaceholderDescriptionLabel else {
                 
                 return
             }
@@ -410,11 +410,11 @@ public extension UIViewController {
     
     private func button(backgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, titles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, size: CGSize? = nil, space: CGFloat) {
         
-        if placeholderButton == nil {
+        if omPlaceholderButton == nil {
             
-            placeholderButton = UIButton(type: .Custom)
+            omPlaceholderButton = UIButton(type: .Custom)
             
-            guard let _button = placeholderButton else {
+            guard let _button = omPlaceholderButton else {
                 
                 return
             }
@@ -441,7 +441,7 @@ public extension UIViewController {
             return
         }
         
-        guard let _imageView = placeholderImageView else {
+        guard let _imageView = omPlaceholderImageView else {
             
             return
         }
@@ -452,7 +452,7 @@ public extension UIViewController {
         _imageView.center.x = _view.center.x
         _imageView.center.y = _view.center.y
         
-        guard let _titleLabel = placeholderTitleLabel else {
+        guard let _titleLabel = omPlaceholderTitleLabel else {
             
             return
         }
@@ -471,7 +471,7 @@ public extension UIViewController {
         
         _titleLabel.center.x = _imageView.center.x
         
-        guard let _descriptionLabel = placeholderDescriptionLabel else {
+        guard let _descriptionLabel = omPlaceholderDescriptionLabel else {
             
             return
         }
@@ -490,7 +490,7 @@ public extension UIViewController {
         
         _descriptionLabel.center.x = _titleLabel.center.x
         
-        guard let _button = placeholderButton else {
+        guard let _button = omPlaceholderButton else {
             
             return
         }
@@ -564,9 +564,9 @@ public extension UIViewController {
         descriptionlLabel(descriptionAttributedString, space: space)
         button(buttonBackgroundImages, titles: buttonTitles, size: buttonSize, space: space)
         
-        placeholderButton?.omAddTapGestureRecognizer(handler: { [weak self] (_) in
+        omPlaceholderButton?.omAddTapGestureRecognizer(handler: { [weak self] (_) in
             
-            if let button = self?.placeholderButton {
+            if let button = self?.omPlaceholderButton {
                 
                 buttonTapHandler?(button: button)
             }
@@ -590,17 +590,17 @@ public extension UIViewController {
             
             view.backgroundColor = omPlaceholderLastBackgroundColor
             
-            placeholderImageView?.removeFromSuperview()
-            placeholderTitleLabel?.removeFromSuperview()
-            placeholderDescriptionLabel?.removeFromSuperview()
-            placeholderButton?.removeFromSuperview()
+            omPlaceholderImageView?.removeFromSuperview()
+            omPlaceholderTitleLabel?.removeFromSuperview()
+            omPlaceholderDescriptionLabel?.removeFromSuperview()
+            omPlaceholderButton?.removeFromSuperview()
             
             omPlaceholderView!.removeFromSuperview()
             
-            placeholderImageView = nil
-            placeholderTitleLabel = nil
-            placeholderDescriptionLabel = nil
-            placeholderButton = nil
+            omPlaceholderImageView = nil
+            omPlaceholderTitleLabel = nil
+            omPlaceholderDescriptionLabel = nil
+            omPlaceholderButton = nil
             
             omPlaceholderView = nil
         }
