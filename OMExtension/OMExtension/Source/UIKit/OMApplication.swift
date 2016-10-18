@@ -499,6 +499,16 @@ public extension UIApplication {
         
         AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
     }
+    
+    static func omSystemSoundPlay(forResource: String) {
+        
+        guard let soundPath = NSBundle.mainBundle().pathForResource(forResource, ofType: nil) else { return }
+        guard let soundUrl = NSURL(string: soundPath) else { return }
+        
+        var soundID: SystemSoundID = 0
+        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
+        AudioServicesPlaySystemSound(soundID)
+    }
 
 }
 

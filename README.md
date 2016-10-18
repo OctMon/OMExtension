@@ -491,7 +491,6 @@ print(UIFont.fontNamesForFamilyName(OMFamilyFontName.arial.rawValue)) // ["Arial
 ```swift
 print(UIImage(omColor: UIColor.redColor(), frame: CGRect(x: 0, y: 0, width: 100, height: 100))) // Optional(<UIImage: 0x7fcadb5ac110>, {100, 100})
 print(UIImage(omBarcode: "123456789")) // Optional(<UIImage: 0x7ff25064c480>, {115, 46})
-UIImage.omLaunchImage()
 ```
 
 创建条形码

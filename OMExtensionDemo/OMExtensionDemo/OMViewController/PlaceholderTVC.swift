@@ -33,12 +33,12 @@ class PlaceholderTVC: BaseTVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.omAddTapGestureRecognizer { (tapGestureRecognizer) in
-            
-            self.omIsShowPlaceholder ? self.omHidePlaceholder() : self.showPlaceholder()
-        }
-        
         showPlaceholder()
+        
+        view.omAddTapGestureRecognizer { [unowned self] (_) in
+            
+            self.showPlaceholder()
+        }
     }
     
     func showPlaceholder() {
@@ -364,6 +364,9 @@ class PlaceholderTVC: BaseTVC {
         
         let image = UIImage(named: "placeholder_" + title!.lowercaseString.stringByReplacingOccurrencesOfString("", withString: "_", options: NSStringCompareOptions.CaseInsensitiveSearch, range: nil))
         
-        omShowPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: text.omGetAttributes(color: [(textColor, text)], font: [(textFont, text)]), descriptionAttributedString: description.omGetAttributes(color: [(descriptionColor, description)], font: [(descriptionFont, description)]))
+        omShowPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: text.omGetAttributes(color: [(textColor, text)], font: [(textFont, text)]), descriptionAttributedString: description.omGetAttributes(color: [(descriptionColor, description)], font: [(descriptionFont, description)]), placeholderViewTapHandler: { [unowned self] in
+            
+            self.omHidePlaceholder()
+        })
     }
 }
