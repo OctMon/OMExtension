@@ -122,9 +122,9 @@ second.omFilter({ (key, value) -> Bool in
 ```swift
 let double: Double = 100.0
 
-print(double.omToInt.dynamicType) // Int
-print(double.omToDate.dynamicType) // __NSDate
-print(double.omToString.dynamicType) // String
+print(type(of: double.omToInt)) // Int
+print(type(of: double.omToDate)) // Date
+print(type(of: double.omToString)) // String
 print(100.58.omToDecimalStyle()) // 100.58
 print(123.456.omToDecimalStyle(3)) // 123.456
 ```
@@ -145,9 +145,9 @@ let int: Int = 123
 
 print(int.omToFloat) // 123.0
 print(int.omToDouble) // 123.0
-print(int.omToString.dynamicType) //String
-print(int.omToFloat.dynamicType) // Float
-print(int.omToDouble.dynamicType) // Double
+print(type(of: int.omToString)) //String
+print(type(of: int.omToFloat)) // Float
+print(type(of: int.omToDouble)) // Double
 print(int.omIsOdd) // true
 print(int.omIsEven) // false
 ```
@@ -164,10 +164,10 @@ print(string.omToFloat) // Optional(128.0)
 print(string.omToInt) // Optional(128)
 print(string.omToBool) // nil
 
-print(string.omToDouble.dynamicType) // Optional<Double>
-print(string.omToFloat.dynamicType) // Optional<Float>
-print(string.omToInt.dynamicType) // Optional<Int>
-print(string.omToBool.dynamicType) // Optional<Bool>
+print(type(of: string.omToDouble)) // Optional<Double>
+print(type(of: string.omToFloat)) // Optional<Float>
+print(type(of: string.omToInt)) // Optional<Int>
+print(type(of: string.omToBool)) // Optional<Bool>
 ```
 
 手机号验证
@@ -263,12 +263,12 @@ let mutableAttributedString = ("https://github.com/OctMon".omGetAttributes(color
 ### Date
 
 ```swift
-let date = Date.omWithTimeStamp(NSDate().timeIntervalSince1970 * 1000)
+let date = Date.omWithTimeStamp(Date().timeIntervalSince1970 * 1000)
 
 print(date) // 2016-08-29 07:29:21 +0000
-date.omYearString() // 2016
-date.omMonthString() // August
-date.omWeekdayString() // Monday
+date.omYearString // 2016
+date.omMonthString // August
+date.omWeekdayString // Monday
 date.omDateInfo().month // 8
 date.omDateInfo() // OMDateInfo(year: 2016, month: 8, day: 29, weekday: 5, hour: 15, minute: 29, second: 21, nanosecond: 898715019)
 date.omDateInfo().omString(nanosecond: true) // 2016-08-29 15:29:21:899
@@ -306,13 +306,14 @@ Timer.omRunLoop(seconds: 1, handler: { (timer) in
 ```swift
 print(NSObject.omClassName) // NSObject
 print(UIApplication.sharedApplication().omClassName) // UIApplication
+print(omDeinitLog) // ApplicationTVC♻️deinit
 ```
 
 ### UIAlertController
 
 ```swift
-let alertController = UIAlertController(title: "title", message: "message", preferredStyle: .Alert)
-alertController.addAction(UIAlertAction(title: "ok", style: .Default, handler: nil))
+let alertController = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
+alertController.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
 alertController.omShow()
 ```
 
@@ -376,6 +377,12 @@ UIApplication.omSystemSoundVibrate()
 
 ```swift
 UIApplication.omSystemSoundPlay(.alarm) // OMSystemSoundID
+```
+
+手机播放自定义声音
+
+```swift
+UIApplication.omSystemSoundPlay("noticeMusic.caf")
 ```
 
 跳转到系统设置
@@ -498,7 +505,6 @@ print(UIFont.fontNamesForFamilyName(OMFamilyFontName.arial.rawValue)) // ["Arial
 ```swift
 print(UIImage(omColor: UIColor.redColor(), frame: CGRect(x: 0, y: 0, width: 100, height: 100))) // Optional(<UIImage: 0x7fcadb5ac110>, {100, 100})
 print(UIImage(omBarcode: "123456789")) // Optional(<UIImage: 0x7ff25064c480>, {115, 46})
-UIImage.omLaunchImage()
 ```
 
 创建条形码
@@ -762,7 +768,9 @@ override func omKeyboardDidHideWithFrame(frame: CGRect) {
 显示占位图
 
 ```swift
-omShowPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: text.omGetAttributes(color: [(textColor, text)], font: [(textFont, text)]), descriptionAttributedString: description.omGetAttributes(color: [(descriptionColor, description)], font: [(descriptionFont, description)]))
+omShowPlaceholder(image, shouldTap: true, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState()), (backgroundImageHighlight, state: UIControlState.highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState())] : nil), buttonTapHandler: { (button) in
+	// 按钮点击回调
+})
 ```
 
 其它
@@ -775,4 +783,6 @@ omPopViewController(true)
 
 omPresentViewController(UIViewController(), animated: true, completion: nil)
 omDismissViewController()
+
+omSetBackBarButtonItem("") // 设置返回按钮的文字
 ```

@@ -528,7 +528,7 @@ public extension UIViewController {
      - parameter shouldTapBackground:         是否可以交互
      - parameter offset:                      距离y坐标偏移
      */
-    func omShowPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton)->Void)? = nil) {
+    func omShowPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton) -> Void)? = nil, placeholderViewTapHandler: (() -> Void)? = nil) {
         
         omPlaceholderLastBackgroundColor = view.backgroundColor
         
@@ -574,6 +574,11 @@ public extension UIViewController {
             }
             
             })
+        
+        omPlaceholderView?.omAddTapGestureRecognizer(handler: { (_) in
+            
+            placeholderViewTapHandler?()
+        })
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UIDeviceOrientationDidChange, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
             

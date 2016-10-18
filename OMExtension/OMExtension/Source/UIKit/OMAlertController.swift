@@ -32,7 +32,9 @@ public extension UIAlertController {
     
     func omShow(_ completion: (()->())? = nil) {
         
-        UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: completion)
+        Thread.omRunInMainThread(delay: 0.1) { 
+            UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: completion)
+        }
     }
 
 }
