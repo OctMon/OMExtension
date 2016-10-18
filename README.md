@@ -298,6 +298,7 @@ NSTimer.omRunLoop(seconds: 1, handler: { (timer) in
 ```swift
 print(NSObject.omClassName) // NSObject
 print(UIApplication.sharedApplication().omClassName) // UIApplication
+print(omDeinitLog) // ApplicationTVC♻️deinit
 ```
 
 ### UIAlertController
@@ -754,7 +755,9 @@ override func omKeyboardDidHideWithFrame(frame: CGRect) {
 显示占位图
 
 ```swift
-omShowPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: text.omGetAttributes(color: [(textColor, text)], font: [(textFont, text)]), descriptionAttributedString: description.omGetAttributes(color: [(descriptionColor, description)], font: [(descriptionFont, description)]))
+omShowPlaceholder(image, shouldTap: true, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState.Normal), (backgroundImageHighlight, state: UIControlState.Highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState.Normal)] : nil), buttonTapHandler: { (button) in
+                    
+})
 ```
 
 其它
@@ -767,4 +770,6 @@ omPopViewController(true)
 
 omPresentViewController(UIViewController(), animated: true, completion: nil)
 omDismissViewController()
+
+omSetBackBarButtonItem("") // 设置返回按钮的文字
 ```
