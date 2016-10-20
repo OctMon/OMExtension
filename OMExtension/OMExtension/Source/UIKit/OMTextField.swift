@@ -55,7 +55,7 @@ public extension UITextField {
             
             if ((self.text?.characters.count > length) && self.markedTextRange == nil) {
                 
-                self.text = (self.text! as NSString).substring(to: length)
+                self.text = self.text!.substring(to: self.text!.index(self.text!.endIndex, offsetBy: -1))
             }
         }
     }
