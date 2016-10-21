@@ -35,7 +35,7 @@ public extension UITextField {
             
             if ((self.text?.characters.count > length) && self.markedTextRange == nil) {
                 
-                self.text = self.text!.substringToIndex(self.text!.endIndex.advancedBy(-1))
+                self.text = (self.text! as NSString).substringToIndex(length)
             }
         }
     }
