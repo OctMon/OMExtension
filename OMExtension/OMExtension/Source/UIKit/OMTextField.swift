@@ -29,13 +29,15 @@ import UIKit
 
 public extension UITextField {
     
-    func omSetLimit(length: Int) {
+    func omSetLimit(length: Int, limitHandler: (() -> Void)? = nil) {
         
         NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
             
             if (((self.text! as NSString).length > length) && self.markedTextRange == nil) {
                 
                 self.text = (self.text! as NSString).substringToIndex(length)
+                
+                limitHandler?()
             }
         }
     }

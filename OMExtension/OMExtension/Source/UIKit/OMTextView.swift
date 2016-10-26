@@ -29,12 +29,15 @@ import UIKit
 
 public extension UITextView {
     
-    func omSetLimit(length: Int) {
+    func omSetLimit(length: Int, limitHandler: (() -> Void)? = nil) {
         
         NSNotificationCenter.defaultCenter().addObserverForName(UITextViewTextDidChangeNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) in
             
-            if ((self.text?.characters.count > length) && self.markedTextRange == nil) {
+            if (((self.text! as NSString).length > length) && self.markedTextRange == nil) {
+                
                 self.text = (self.text! as NSString).substringToIndex(length)
+                
+                limitHandler?()
             }
         }
     }
