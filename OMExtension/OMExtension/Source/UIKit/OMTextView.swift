@@ -49,12 +49,15 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 public extension UITextView {
     
-    func omSetLimit(_ length: Int) {
+    func omSetLimit(_ length: Int, limitHandler: (() -> Void)? = nil) {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { (notification) in
             
-            if ((self.text?.characters.count > length) && self.markedTextRange == nil) {
+            if (((self.text! as NSString).length > length) && self.markedTextRange == nil) {
+                
                 self.text = (self.text! as NSString).substring(to: length)
+                
+                limitHandler?()
             }
         }
     }
