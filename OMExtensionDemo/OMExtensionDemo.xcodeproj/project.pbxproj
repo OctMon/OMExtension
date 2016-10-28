@@ -33,6 +33,8 @@
 		FE1658E61D7842CA005FAEB0 /* OMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CD1D7842CA005FAEB0 /* OMView.swift */; };
 		FE1658E71D7842CA005FAEB0 /* OMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CE1D7842CA005FAEB0 /* OMViewController.swift */; };
 		FE1658EB1D784441005FAEB0 /* SystemSoundTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658EA1D784441005FAEB0 /* SystemSoundTVC.swift */; };
+		FE250B8D1DC32D0500CA0F8D /* OMData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE250B8B1DC32D0500CA0F8D /* OMData.swift */; };
+		FE250B8E1DC32D0500CA0F8D /* OMURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE250B8C1DC32D0500CA0F8D /* OMURLRequest.swift */; };
 		FE37D5EF1D701670000F749C /* MainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE37D5EE1D701670000F749C /* MainTVC.swift */; };
 		FE38A6EF1D891E98005AEB72 /* PopularAppTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE38A6EE1D891E98005AEB72 /* PopularAppTVC.swift */; };
 		FE38A6F11D891EBA005AEB72 /* UIViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE38A6F01D891EBA005AEB72 /* UIViewController.storyboard */; };
@@ -104,6 +106,8 @@
 		FE1658CD1D7842CA005FAEB0 /* OMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMView.swift; sourceTree = "<group>"; };
 		FE1658CE1D7842CA005FAEB0 /* OMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMViewController.swift; sourceTree = "<group>"; };
 		FE1658EA1D784441005FAEB0 /* SystemSoundTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemSoundTVC.swift; sourceTree = "<group>"; };
+		FE250B8B1DC32D0500CA0F8D /* OMData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMData.swift; sourceTree = "<group>"; };
+		FE250B8C1DC32D0500CA0F8D /* OMURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMURLRequest.swift; sourceTree = "<group>"; };
 		FE37D5EE1D701670000F749C /* MainTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTVC.swift; sourceTree = "<group>"; };
 		FE38A6EE1D891E98005AEB72 /* PopularAppTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularAppTVC.swift; sourceTree = "<group>"; };
 		FE38A6F01D891EBA005AEB72 /* UIViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIViewController.storyboard; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			children = (
 				FE1658B51D7842CA005FAEB0 /* OMArray.swift */,
 				FE1658B61D7842CA005FAEB0 /* OMBool.swift */,
+				FE250B8B1DC32D0500CA0F8D /* OMData.swift */,
 				FE1658B71D7842CA005FAEB0 /* OMDate.swift */,
 				FE1658B81D7842CA005FAEB0 /* OMDictionary.swift */,
 				FE1658B91D7842CA005FAEB0 /* OMDouble.swift */,
@@ -185,6 +190,7 @@
 				FE1658BC1D7842CA005FAEB0 /* OMString.swift */,
 				FE1658BD1D7842CA005FAEB0 /* OMThread.swift */,
 				FE1658BE1D7842CA005FAEB0 /* OMTimer.swift */,
+				FE250B8C1DC32D0500CA0F8D /* OMURLRequest.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -459,6 +465,7 @@
 				FE7837E71D70409600B6F233 /* BaseTVC.swift in Sources */,
 				FE1658DF1D7842CA005FAEB0 /* OMNavigationBar.swift in Sources */,
 				FE639D401D8E6D9C00A6CFB7 /* ViewControllerTVC.swift in Sources */,
+				FE250B8D1DC32D0500CA0F8D /* OMData.swift in Sources */,
 				FE6351C41D74003600A0A0B1 /* ColorTVC.swift in Sources */,
 				FE7837D51D7020BD00B6F233 /* ApplicationTVC.swift in Sources */,
 				FE1658DB1D7842CA005FAEB0 /* OMColor.swift in Sources */,
@@ -467,6 +474,7 @@
 				FE1658DE1D7842CA005FAEB0 /* OMImage.swift in Sources */,
 				FE37D5EF1D701670000F749C /* MainTVC.swift in Sources */,
 				FE1658DA1D7842CA005FAEB0 /* OMApplication.swift in Sources */,
+				FE250B8E1DC32D0500CA0F8D /* OMURLRequest.swift in Sources */,
 				FE6351BD1D73E0F700A0A0B1 /* FontTVC.swift in Sources */,
 				FE1658EB1D784441005FAEB0 /* SystemSoundTVC.swift in Sources */,
 				FE639D3E1D8E6CBF00A6CFB7 /* PlaceholderVC.swift in Sources */,
