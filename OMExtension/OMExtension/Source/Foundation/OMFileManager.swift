@@ -80,14 +80,37 @@ public extension FileManager {
         return nil
     }
     
+    /// 获取 文件大小
+    ///
+    /// - Parameter path: e.g. "a/b/c/d.txt"
+    /// - Returns: 存在返回大小 不存在返回空nil
+    static func omFileSize(for: SearchPathDirectory = .documentDirectory, path: String) -> Int64 {
+        
+        let url = omGetUrl(for: `for`, path: path)
+        
+        do {
+            return (try FileManager.default.attributesOfItem(atPath: url.path)[FileAttributeKey.size] as? Int64) ?? 0
+        } catch {
+            return 0
+        }
+    }
+    
     /// 创建目录
     ///
-    /// - Parameter path: path: e.g. "a/b/c"
+    /// - Parameter path: e.g. "a/b/c"
     static func omCreateDirectory(for: SearchPathDirectory = .documentDirectory, path: String){
         
         let url = omGetUrl(for: `for`, path: path)
         
-        if omFileExists(path: path) == nil {
+        omCreateDirectory(url: url)
+    }
+    
+    /// 创建目录
+    ///
+    /// - Parameter url: URL
+    static func omCreateDirectory(url: URL){
+        
+        if omFileExists(path: url.path) == nil {
             
             try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
         }
