@@ -28,13 +28,13 @@ import Foundation
 
 public extension FileManager {
     
-    /// 获取 沙盒中的url
+    /// 获取沙盒中的URL
     ///
     /// - Parameters:
     ///   - for: SearchPathDirectory
     ///   - path: e.g. "a/b/c/d.txt"
     /// - Returns: URL
-    static func omGetUrl(for: SearchPathDirectory, path: String? = nil) -> URL {
+    static func omGetURL(for: SearchPathDirectory, path: String? = nil) -> URL {
         
         var document = FileManager.default.urls(for: `for`, in: .userDomainMask)[0]
         
@@ -52,7 +52,7 @@ public extension FileManager {
     /// - Returns: URL
     static func omDocumentDirectory(path: String? = nil) -> URL {
         
-        return omGetUrl(for: .documentDirectory, path: path)
+        return omGetURL(for: .documentDirectory, path: path)
     }
     
     /// 获取 cachesDirectory -> URL
@@ -61,35 +61,57 @@ public extension FileManager {
     /// - Returns: URL
     static func omCachesDirectory(path: String? = nil) -> URL {
         
-        return omGetUrl(for: .cachesDirectory, path: path)
+        return omGetURL(for: .cachesDirectory, path: path)
     }
     
-    /// 检查 文件是否存在
+    /// 检查文件是否存在
     ///
-    /// - Parameter path: e.g. "a/b/c/d.txt"
+    /// - Parameters:
+    ///   - for: SearchPathDirectory
+    ///   - path: "a/b/c/d.txt
     /// - Returns: 存在返回URL 不存在返回空nil
-    static func omFileExists(for: SearchPathDirectory = .documentDirectory, path: String) -> URL?{
+    static func omFileExists(for: SearchPathDirectory = .documentDirectory, path: String) -> URL? {
         
-        let url = omGetUrl(for: `for`, path: path)
+        let url = omGetURL(for: `for`, path: path)
         
-        if FileManager.default.fileExists(atPath: url.path) {
+        return omFileExists(at: url)
+    }
+    
+    /// 检查文件是否存在
+    ///
+    /// - Parameter at: URL
+    /// - Returns: 存在返回URL 不存在返回空nil
+    static func omFileExists(at: URL) -> URL? {
+        
+        if FileManager.default.fileExists(atPath: at.path) {
             
-            return url
+            return at
         }
         
         return nil
     }
     
-    /// 获取 文件大小
+    /// 获取文件大小
     ///
-    /// - Parameter path: e.g. "a/b/c/d.txt"
+    /// - Parameters:
+    ///   - for: SearchPathDirectory
+    ///   - path: e.g. "a/b/c/d.txt"
     /// - Returns: 存在返回大小 不存在返回空nil
     static func omFileSize(for: SearchPathDirectory = .documentDirectory, path: String) -> Int64 {
         
-        let url = omGetUrl(for: `for`, path: path)
+        let url = omGetURL(for: `for`, path: path)
+        
+        return omFileSize(at: url)
+    }
+    
+    /// 获取文件大小
+    ///
+    /// - Parameter at: URL
+    /// - Returns: 存在返回大小 不存在返回空nil
+    static func omFileSize(at: URL) -> Int64 {
         
         do {
-            return (try FileManager.default.attributesOfItem(atPath: url.path)[FileAttributeKey.size] as? Int64) ?? 0
+            return (try FileManager.default.attributesOfItem(atPath: at.path)[FileAttributeKey.size] as? Int64) ?? 0
         } catch {
             return 0
         }
@@ -97,22 +119,44 @@ public extension FileManager {
     
     /// 创建目录
     ///
-    /// - Parameter path: e.g. "a/b/c"
-    static func omCreateDirectory(for: SearchPathDirectory = .documentDirectory, path: String){
+    /// - Parameters:
+    ///   - for: SearchPathDirectory
+    ///   - path: e.g. "a/b/c"
+    static func omCreateDirectory(for: SearchPathDirectory = .documentDirectory, path: String) {
         
-        let url = omGetUrl(for: `for`, path: path)
+        let url = omGetURL(for: `for`, path: path)
         
-        omCreateDirectory(url: url)
+        omCreateDirectory(at: url)
     }
     
     /// 创建目录
     ///
-    /// - Parameter url: URL
-    static func omCreateDirectory(url: URL){
+    /// - Parameter at: URL
+    static func omCreateDirectory(at: URL) {
         
-        if omFileExists(path: url.path) == nil {
+        if omFileExists(path: at.path) == nil {
             
-            try? FileManager.default.createDirectory(at: url, withIntermediateDirectories: true, attributes: nil)
+            try? FileManager.default.createDirectory(at: at, withIntermediateDirectories: true, attributes: nil)
         }
+    }
+    
+    /// 删除文件或目录
+    ///
+    /// - Parameters:
+    ///   - for: SearchPathDirectory
+    ///   - path: e.g. "a/b/c"
+    static func omRemoveItem(for: SearchPathDirectory = .documentDirectory, path: String) {
+        
+        let url = omGetURL(for: `for`, path: path)
+        
+        omRemoveItem(at: url)
+    }
+    
+    /// 删除文件或目录
+    ///
+    /// - Parameter at: URL
+    static func omRemoveItem(at: URL) {
+        
+        try? FileManager.default.removeItem(at: at)
     }
 }
