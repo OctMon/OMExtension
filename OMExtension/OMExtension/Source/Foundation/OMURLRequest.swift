@@ -27,17 +27,26 @@
 import Foundation
 
 private let omRequestSeparator = "\n->->->->->->->->->->Request->->->->->->->->->\n"
+private func omStatusCodeSeparator(statusCode: Int = NSURLErrorNotConnectedToInternet) -> String { return "\n----------------------\(statusCode)------------------->" }
+private let omResponseSeparator = "\n->->->->->->->->->->Response->->->->->->->->->\n"
 
 public extension URLRequest {
     
-    func omPrintLog(isPrintBase64DecodeBody: Bool = false) {
+    func omPrintRequestLog(isPrintBase64DecodeBody: Bool = false) {
+        
+        omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omRequestSeparator, omRequestSeparator])
+    }
+    
+    private func omPrintRequestLog(isPrintBase64DecodeBody: Bool = false, separator: [String]) {
+        
+        var separator = Array(separator.reversed())
         
         let omUrl = url?.absoluteString ?? ""
         let omHttpMethod = httpMethod ?? ""
         let omTimeout = timeoutInterval
         let omHttpBody = httpBody?.omToJson()
         
-        var log = "\(omRequestSeparator)[URL]\n\(omUrl)\n[Method]\n\(omHttpMethod)\n[Timeout]\n\(omTimeout)"
+        var log = "\(separator.popLast() ?? "")[URL]\t\t\(omUrl)\n[Method]\t\(omHttpMethod)\n[Timeout]\t\(omTimeout)"
         
         if let allHTTPHeaderFields = allHTTPHeaderFields, allHTTPHeaderFields.count > 0, let header = Data.omToJson(from: allHTTPHeaderFields) {
             
@@ -54,6 +63,57 @@ public extension URLRequest {
             }
         }
         
-        print(log + omRequestSeparator)
+        print(log + "\(separator.popLast() ?? "")")
+    }
+    
+    func omPrintResponseLog(_ isPrintHeader: Bool = false, isPrintBase64DecodeBody: Bool = false, isPrintBase64DecodeData: Bool = false, response: HTTPURLResponse?, data: Data?, error: Error?, requestDuration: TimeInterval?) {
+        
+        var log = ""
+        
+        if let response = response {
+            
+            omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omResponseSeparator, omStatusCodeSeparator(statusCode: response.statusCode)])
+            
+            if let requestDuration = requestDuration {
+                
+                log += "[Duration]\t\(requestDuration)"
+            }
+            
+            if isPrintHeader, let header = Data.omToJson(from: response.allHeaderFields) {
+                
+                log += "\n[Header]\n\(header)"
+            }
+            
+        } else {
+            
+            omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omResponseSeparator, omStatusCodeSeparator()])
+            
+            if let requestDuration = requestDuration {
+                
+                log += "[Duration]\t\(requestDuration)"
+            }
+        }
+        
+        if let error = error {
+            
+            log += "\n[Error]\t\t\(error.localizedDescription)"
+        }
+        
+        if let data = data {
+            
+            log += "\n[Size]\t\t\(data)"
+            
+            if let data = data.omToJson() {
+                
+                log += "\n[Data]\n\(data)"
+                
+                if let json = Data(base64Encoded: data, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)?.omToJson(), isPrintBase64DecodeBody {
+                    
+                    log += "\n[Base64DecodeData]\n\(json)"
+                }
+            }
+        }
+        
+        print(log + omResponseSeparator)
     }
 }
