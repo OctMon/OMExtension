@@ -68,7 +68,7 @@ import OMExtension
 - [UIStoryboard](#uistoryboard)
 - [UITableView](#uitableview)
 - [UITextField](#uitextfield)
-- [UITextView](uitextview)
+- [UITextView](#uitextview)
 - [UIView](#uiview)
 - [UIViewController](#uiviewcontroller)
 
