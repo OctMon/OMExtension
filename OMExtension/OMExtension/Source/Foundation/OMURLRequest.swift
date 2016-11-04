@@ -59,7 +59,7 @@ public extension URLRequest {
             
             if let json = Data(base64Encoded: body, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)?.omToJson(), isPrintBase64DecodeBody {
                 
-                log += "\n[Base64DecodeBody]\n\(json)"
+                log += "\n[Body -> Base64Decode]\n\(json)"
             }
         }
         
@@ -109,7 +109,7 @@ public extension URLRequest {
                 
                 if let json = Data(base64Encoded: data, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)?.omToJson(), isPrintBase64DecodeBody {
                     
-                    log += "\n[Base64DecodeData]\n\(json)"
+                    log += "\n[Data -> Base64Decode]\n\(json)"
                 }
             }
         }
