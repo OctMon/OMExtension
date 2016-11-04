@@ -27,33 +27,93 @@
 import Foundation
 
 private let omRequestSeparator = "\n->->->->->->->->->->Request->->->->->->->->->\n"
+private func omStatusCodeSeparator(statusCode: Int = NSURLErrorNotConnectedToInternet) -> String { return "\n----------------------\(statusCode)------------------->" }
+private let omResponseSeparator = "\n->->->->->->->->->->Response->->->->->->->->->\n"
 
 public extension NSURLRequest {
     
-    func omPrintLog(isPrintBase64DecodeBody: Bool = false) {
+    func omPrintRequestLog(isPrintBase64DecodeBody: Bool = false) {
+        
+        omPrintRequestLog(isPrintBase64DecodeBody, separator: [omRequestSeparator, omRequestSeparator])
+    }
+    
+    private func omPrintRequestLog(isPrintBase64DecodeBody: Bool = false, separator: [String]) {
+        
+        var separator = Array(separator.reverse())
         
         let omUrl = URL?.absoluteString ?? ""
         let omHttpMethod = HTTPMethod ?? ""
         let omTimeout = timeoutInterval
         let omHttpBody = HTTPBody?.omToJson()
         
-        var log = "\(omRequestSeparator)[URL]\n\(omUrl)\n[Method]\n\(omHttpMethod)\n[Timeout]\n\(omTimeout)"
+        var log = "\(separator.popLast() ?? "")[URL]\t\t\(omUrl)\n[Method]\t\(omHttpMethod)\n[Timeout]\t\(omTimeout)"
         
-        if let header = NSData.omToJson(from: allHTTPHeaderFields) where allHTTPHeaderFields?.count > 0 {
+        if let allHTTPHeaderFields = allHTTPHeaderFields where allHTTPHeaderFields.count > 0, let header = NSData.omToJson(from: allHTTPHeaderFields) {
             
             log += "\n[Header]\n\(header)"
         }
         
         if let body = omHttpBody {
-        
+            
             log += "\n[Body]\n\(body)"
             
-            if let json = NSData(base64EncodedString: body, options: NSDataBase64DecodingOptions.IgnoreUnknownCharacters)?.omToJson() where isPrintBase64DecodeBody {
+            if let json = NSData(base64EncodedString: body, options: .IgnoreUnknownCharacters)?.omToJson() where isPrintBase64DecodeBody {
                 
-                log += "\n[Base64DecodeBody]\n\(json)"
+                log += "\n[Body -> Base64Decode]\n\(json)"
             }
         }
         
-        print(log + omRequestSeparator)
+        print(log + "\(separator.popLast() ?? "")")
+    }
+    
+    func omPrintResponseLog(isPrintHeader: Bool = false, isPrintBase64DecodeBody: Bool = false, isPrintBase64DecodeData: Bool = false, response: NSHTTPURLResponse?, data: NSData?, error: NSError?, requestDuration: NSTimeInterval?) {
+        
+        var log = ""
+        
+        if let response = response {
+            
+            omPrintRequestLog(isPrintBase64DecodeBody, separator: [omResponseSeparator, omStatusCodeSeparator(response.statusCode)])
+            
+            if let requestDuration = requestDuration {
+                
+                log += "[Duration]\t\(requestDuration)"
+            }
+            
+            if isPrintHeader, let header = NSData.omToJson(from: response.allHeaderFields) {
+                
+                log += "\n[Header]\n\(header)"
+            }
+            
+        } else {
+            
+            omPrintRequestLog(isPrintBase64DecodeBody, separator: [omResponseSeparator, omStatusCodeSeparator()])
+            
+            if let requestDuration = requestDuration {
+                
+                log += "[Duration]\t\(requestDuration)"
+            }
+        }
+        
+        if let error = error {
+            
+            log += "\n[Error]\t\t\(error.localizedDescription)"
+        }
+        
+        if let data = data {
+            
+            log += "\n[Size]\t\t\(data.length) bytes"
+            
+            if let data = data.omToJson() {
+                
+                log += "\n[Data]\n\(data)"
+                
+                if let json = NSData(base64EncodedString: data, options: .IgnoreUnknownCharacters)?.omToJson() where isPrintBase64DecodeBody {
+                    
+                    log += "\n[Data -> Base64Decode]\n\(json)"
+                }
+            }
+        }
+        
+        print(log + omResponseSeparator)
     }
 }
