@@ -65,18 +65,18 @@ import OMExtension
 
 ## UIKit
 
-- [UIAlertController](#uialertController)
+- [UIAlertController](#uialertcontroller)
 - [UIApplaction](#uiapplaction)
 - [UIButton](#uibutton)
 - [UIColor](#uicolor)
 - [UIDevice](#uidevice)
 - [UIFont](#uifont)
 - [UIImage](#uiimage)
-- [UINavigationBar](#uinavigationBar)
+- [UINavigationBar](#uinavigationbar)
 - [UIScreen](#uiscreen)
 - [UIStoryboard](#uistoryboard)
-- [UITableView](#uitableView)
-- [UITextField](#uitextField)
+- [UITableView](#uitableview)
+- [UITextField](#uitextfield)
 - [UITextView](uitextview)
 - [UIView](#uiview)
 - [UIViewController](#uiviewcontroller)
@@ -459,7 +459,7 @@ self.request?.omPrintResponseLog(response: response.response, data: response.dat
 ```
 
 ```swift
-// 封装请求
+// 封装请求 [Alamofire](https://github.com/Alamofire/Alamofire)
 
 /**
  请求前打印日志
