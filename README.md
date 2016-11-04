@@ -56,18 +56,18 @@ import OMExtension
 
 ## UIKit
 
-- [UIAlertController](#uialertController)
+- [UIAlertController](#uialertcontroller)
 - [UIApplaction](#uiapplaction)
 - [UIButton](#uibutton)
 - [UIColor](#uicolor)
 - [UIDevice](#uidevice)
 - [UIFont](#uifont)
 - [UIImage](#uiimage)
-- [UINavigationBar](#uinavigationBar)
+- [UINavigationBar](#uinavigationbar)
 - [UIScreen](#uiscreen)
 - [UIStoryboard](#uistoryboard)
-- [UITableView](#uitableView)
-- [UITextField](#uitextField)
+- [UITableView](#uitableview)
+- [UITextField](#uitextfield)
 - [UITextView](uitextview)
 - [UIView](#uiview)
 - [UIViewController](#uiviewcontroller)
