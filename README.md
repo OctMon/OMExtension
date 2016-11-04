@@ -53,14 +53,16 @@ import OMExtension
 - [Array](#array)
 - [Bool](#bool)
 - [CGRect](#cgrect)
+- [Data](#data)
+- [Date](#date)
 - [Dictionary](#dictionary)
 - [Double](#double)
+- [FileManager](#filemanager)
 - [Int](#int)
+- [NSObject](#nsobject)
 - [String](#string)
-- [Date](#date)
 - [Thread](#thread)
 - [Timer](#timer)
-- [NSObject](#nsobject)
 - [URLRequest](#urlrequest)
 
 ## UIKit
@@ -103,6 +105,43 @@ print(isValid) // true
 print(isValid.omToInt) // 1
 ```
 
+### CGRect
+
+```swift
+var frame = CGRect(x: 10, y: 20, width: 30, height: 40)
+print(frame.omX) // 10.0
+frame.omX = 50
+print(frame.omX) // 50.0
+```
+
+### Data
+
+Data转json
+
+```swift
+httpBody?.omToJson()
+```
+
+Any转json
+
+```swift
+Data.omToJson(from: allHTTPHeaderFields)
+```
+
+### Date
+
+```swift
+let date = Date.omWithTimeStamp(Date().timeIntervalSince1970 * 1000)
+
+print(date) // 2016-08-29 07:29:21 +0000
+date.omYearString // 2016
+date.omMonthString // August
+date.omWeekdayString // Monday
+date.omDateInfo().month // 8
+date.omDateInfo() // OMDateInfo(year: 2016, month: 8, day: 29, weekday: 5, hour: 15, minute: 29, second: 21, nanosecond: 898715019)
+date.omDateInfo().omString(nanosecond: true) // 2016-08-29 15:29:21:899
+```
+
 ### Dictionary
 
 ```swift
@@ -130,13 +169,52 @@ print(100.58.omToDecimalStyle()) // 100.58
 print(123.456.omToDecimalStyle(3)) // 123.456
 ```
 
-### CGRect
+### FileManager
+
+在cachesDirectory创建download目录
 
 ```swift
-var frame = CGRect(x: 10, y: 20, width: 30, height: 40)
-print(frame.omX) // 10.0
-frame.omX = 50
-print(frame.omX) // 50.0
+FileManager.omCreateDirectory(for: .cachesDirectory, path: "download")
+```
+
+获取 documentDirectory
+
+```swift
+print(FileManager.omDocumentDirectory())
+// file:///Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/C62F47FB-625E-453B-AB34-B0CA51296F36/Documents/
+```
+
+获取 cachesDirectory中download目录
+
+```swift
+print(FileManager.omCachesDirectory(path: "download").path)
+// /Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/C62F47FB-625E-453B-AB34-B0CA51296F36/Library/Caches/download
+```
+
+documentDirectory中user.dat是否存在
+
+```swift
+print(FileManager.omFileExists(path: "user.dat"))
+print(FileManager.omFileExists(for: .cachesDirectory, path: "download"))
+print(FileManager.omFileExists(at: FileManager.omDocumentDirectory(path: "user.dat")))
+
+// nil
+// nil
+// Optional(file:///Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/A7108007-93D6-4C0D-99E4-0D2BC6474D6C/Library/Caches/download/)
+```
+
+获取文件大小
+
+```swift
+print(FileManager.omFileSize(at: FileManager.omCachesDirectory(path: "download")))
+
+// 68
+```
+
+删除文件
+
+```swift
+FileManager.omRemoveItem(path: FileManager.omDocumentDirectory(path: "user.data").path)
 ```
 
 ### Int
@@ -151,6 +229,16 @@ print(type(of: int.omToFloat)) // Float
 print(type(of: int.omToDouble)) // Double
 print(int.omIsOdd) // true
 print(int.omIsEven) // false
+```
+
+### NSObject
+
+获取类型名称
+
+```swift
+print(NSObject.omClassName) // NSObject
+print(UIApplication.sharedApplication().omClassName) // UIApplication
+print(omDeinitLog) // ApplicationTVC♻️deinit
 ```
 
 ### String
@@ -261,20 +349,6 @@ NSMutableAttributedString
 let mutableAttributedString = ("https://github.com/OctMon".omGetAttributes(color: [(color: UIColor.redColor(), subString: "github")], font: [(font: UIFont.systemFontOfSize(12), subString: "Octmon")]))
 ```
 
-### Date
-
-```swift
-let date = Date.omWithTimeStamp(Date().timeIntervalSince1970 * 1000)
-
-print(date) // 2016-08-29 07:29:21 +0000
-date.omYearString // 2016
-date.omMonthString // August
-date.omWeekdayString // Monday
-date.omDateInfo().month // 8
-date.omDateInfo() // OMDateInfo(year: 2016, month: 8, day: 29, weekday: 5, hour: 15, minute: 29, second: 21, nanosecond: 898715019)
-date.omDateInfo().omString(nanosecond: true) // 2016-08-29 15:29:21:899
-```
-
 ### Thread
 
 ```swift
@@ -300,16 +374,6 @@ Timer.omRunLoop(seconds: 1, handler: { (timer) in
 })
 ```
 
-### NSObject
-
-获取类型名称
-
-```swift
-print(NSObject.omClassName) // NSObject
-print(UIApplication.sharedApplication().omClassName) // UIApplication
-print(omDeinitLog) // ApplicationTVC♻️deinit
-```
-
 ### URLRequest
 
 打印请求、响应日志
@@ -318,6 +382,40 @@ print(omDeinitLog) // ApplicationTVC♻️deinit
 requestMyServers(urlRequest: URLRequest(url: URL(string: "http://itunes.apple.com/US/lookup?id=414478124")!))?.responseMyServers(completionHandler: { (_) in
 
 })
+```
+
+封装请求  [Alamofire](https://github.com/Alamofire/Alamofire)
+
+```swift
+/**
+ 请求前打印日志
+ 
+ - parameter URLRequest: 路由
+ 
+ - returns: Request
+ */
+@discardableResult
+func requestMyServers(urlRequest: URLRequestConvertible) -> DataRequest? {
+    
+    urlRequest.urlRequest?.omPrintRequestLog()
+    
+    return request(urlRequest).validate()
+}
+
+/**
+ 收到请求
+ 
+ - parameter handler: 回调
+ */
+func responseMyServers(completionHandler: @escaping (DataResponse<Any>) -> Void) {
+    
+    responseJSON { (response) in
+        
+        self.request?.omPrintResponseLog(response: response.response, data: response.data, error: response.result.error, requestDuration: response.timeline.requestDuration)
+        
+        completionHandler(response)
+    }
+}
 ```
 
 ```swift
@@ -456,42 +554,6 @@ self.request?.omPrintResponseLog(response: response.response, data: response.dat
   ]
 }
 ->->->->->->->->->->Response->->->->->->->->->xxxxxxxxxx requestMyServers(urlRequest: URLRequest(url: URL(string: "http://itunes.apple.com/US/lookup?id=414478124")!))?.responseMyServers(completionHandler: { (_) in})
-```
-
-```swift
-// 封装请求 [Alamofire](https://github.com/Alamofire/Alamofire)
-
-/**
- 请求前打印日志
- 
- - parameter URLRequest: 路由
- 
- - returns: Request
- */
-@discardableResult
-func requestMyServers(urlRequest: URLRequestConvertible) -> DataRequest? {
-    
-    urlRequest.urlRequest?.omPrintRequestLog()
-    
-    return request(urlRequest).validate()
-}
-
-
-/**
- 收到请求
- 
- - parameter handler: 回调
- */
-func responseMyServers(completionHandler: @escaping (DataResponse<Any>) -> Void) {
-    
-    responseJSON { (response) in
-        
-        self.request?.omPrintResponseLog(response: response.response, data: response.data, error: response.result.error, requestDuration: response.timeline.requestDuration)
-        
-        completionHandler(response)
-    }
-}
-
 ```
 
 ### UIAlertController
