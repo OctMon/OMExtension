@@ -60,6 +60,7 @@
 		FE8F90901D6EADEB0095D74B /* OMExtensionDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F908F1D6EADEB0095D74B /* OMExtensionDemoTests.swift */; };
 		FE8F909B1D6EADEB0095D74B /* OMExtensionDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F909A1D6EADEB0095D74B /* OMExtensionDemoUITests.swift */; };
 		FEBECC861D6F179300632A32 /* OMApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBECC851D6F179300632A32 /* OMApplicationTests.swift */; };
+		FEDA0A7A1DCD87CD00F00034 /* OMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A791DCD87CD00F00034 /* OMFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +140,7 @@
 		FE8F909A1D6EADEB0095D74B /* OMExtensionDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMExtensionDemoUITests.swift; sourceTree = "<group>"; };
 		FE8F909C1D6EADEB0095D74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEBECC851D6F179300632A32 /* OMApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMApplicationTests.swift; sourceTree = "<group>"; };
+		FEDA0A791DCD87CD00F00034 /* OMFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				FE1658B51D7842CA005FAEB0 /* OMArray.swift */,
 				FE1658B61D7842CA005FAEB0 /* OMBool.swift */,
 				FE250B8B1DC32D0500CA0F8D /* OMData.swift */,
+				FEDA0A791DCD87CD00F00034 /* OMFileManager.swift */,
 				FE1658B71D7842CA005FAEB0 /* OMDate.swift */,
 				FE1658B81D7842CA005FAEB0 /* OMDictionary.swift */,
 				FE1658B91D7842CA005FAEB0 /* OMDouble.swift */,
@@ -479,6 +482,7 @@
 				FE1658EB1D784441005FAEB0 /* SystemSoundTVC.swift in Sources */,
 				FE639D3E1D8E6CBF00A6CFB7 /* PlaceholderVC.swift in Sources */,
 				FE1658D71D7842CA005FAEB0 /* OMThread.swift in Sources */,
+				FEDA0A7A1DCD87CD00F00034 /* OMFileManager.swift in Sources */,
 				FE48ACC61D7839770066F52D /* PrefsTVC.swift in Sources */,
 				FE1658E11D7842CA005FAEB0 /* OMScreen.swift in Sources */,
 				FE1658CF1D7842CA005FAEB0 /* OMArray.swift in Sources */,

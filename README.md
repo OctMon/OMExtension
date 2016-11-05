@@ -51,6 +51,7 @@ import OMExtension
 - [String](#string)
 - [NSData](#nsdata)
 - [NSDate](#nsdate)
+- [NSFileManager](#nsfilemanager)
 - [NSObject](#nsobject)
 - [NSThread](#nsthread)
 - [NSTimer](#nstimer)
@@ -281,6 +282,53 @@ date.omDateInfo() // OMDateInfo(year: 2016, month: 8, day: 29, weekday: 5, hour:
 date.omDateInfo().omString(nanosecond: true) // 2016-08-29 15:29:21:899
 ```
 
+### FileManager
+
+在cachesDirectory创建download目录
+
+```swift
+NSFileManager.omCreateDirectory(.CachesDirectory, path: "download")
+```
+
+获取 documentDirectory
+
+```swift
+print(NSFileManager.omDocumentDirectory())
+// file:///Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/C62F47FB-625E-453B-AB34-B0CA51296F36/Documents/
+```
+
+获取 cachesDirectory中download目录
+
+```swift
+print(NSFileManager.omCachesDirectory("download").path)
+// /Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/C62F47FB-625E-453B-AB34-B0CA51296F36/Library/Caches/download
+```
+
+documentDirectory中user.dat是否存在
+
+```swift
+print(NSFileManager.omFileExists(path: "user.dat"))
+print(NSFileManager.omFileExists(.CachesDirectory, path: "download"))
+print(NSFileManager.omFileExists(NSFileManager.omDocumentDirectory("user.dat")))
+
+// nil
+// Optional(file:///Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/A7108007-93D6-4C0D-99E4-0D2BC6474D6C/Library/Caches/download/)
+// nil
+```
+
+获取文件大小
+
+```swift
+print(FileManager.omFileSize(at: FileManager.omCachesDirectory(path: "download")))
+
+// 68
+```
+
+删除文件
+
+```swift
+NSFileManager.omRemoveItem(NSFileManager.omCachesDirectory("user.dat"))
+```
 ### NSObject
 
 获取类型名称
