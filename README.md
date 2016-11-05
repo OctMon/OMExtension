@@ -387,6 +387,8 @@ requestMyServers(urlRequest: URLRequest(url: URL(string: "http://itunes.apple.co
 封装请求  [Alamofire](https://github.com/Alamofire/Alamofire)
 
 ```swift
+import Alamofire
+
 /**
  请求前打印日志
  
@@ -402,18 +404,21 @@ func requestMyServers(urlRequest: URLRequestConvertible) -> DataRequest? {
     return request(urlRequest).validate()
 }
 
-/**
- 收到请求
- 
- - parameter handler: 回调
- */
-func responseMyServers(completionHandler: @escaping (DataResponse<Any>) -> Void) {
+extension DataRequest {
     
-    responseJSON { (response) in
+    /**
+     收到请求
+     
+     - parameter handler: 回调
+     */
+    func responseMyServers(completionHandler: @escaping (DataResponse<Any>) -> Void) {
         
-        self.request?.omPrintResponseLog(response: response.response, data: response.data, error: response.result.error, requestDuration: response.timeline.requestDuration)
-        
-        completionHandler(response)
+        responseJSON { (response) in
+            
+            self.request?.omPrintResponseLog(response: response.response, data: response.data, error: response.result.error, requestDuration: response.timeline.requestDuration)
+            
+            completionHandler(response)
+        }
     }
 }
 ```
