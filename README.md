@@ -329,6 +329,8 @@ requestMyServers(NSURLRequest(URL: NSURL(string: "http://itunes.apple.com/US/loo
 封装请求  [Alamofire](https://github.com/Alamofire/Alamofire)
 
 ```swift
+import Alamofire
+
 /**
  请求前打印日志
  
