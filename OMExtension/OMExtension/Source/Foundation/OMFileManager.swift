@@ -97,7 +97,7 @@ public extension FileManager {
     ///   - for: SearchPathDirectory
     ///   - path: e.g. "a/b/c/d.txt"
     /// - Returns: 存在返回大小 不存在返回空nil
-    static func omFileSize(for: SearchPathDirectory = .documentDirectory, path: String) -> Int64 {
+    static func omFileSize(for: SearchPathDirectory = .documentDirectory, path: String) -> Int {
         
         let url = omGetURL(for: `for`, path: path)
         
@@ -108,10 +108,10 @@ public extension FileManager {
     ///
     /// - Parameter at: URL
     /// - Returns: 存在返回大小 不存在返回空nil
-    static func omFileSize(at: URL) -> Int64 {
+    static func omFileSize(at: URL) -> Int {
         
         do {
-            return (try FileManager.default.attributesOfItem(atPath: at.path)[FileAttributeKey.size] as? Int64) ?? 0
+            return (try FileManager.default.attributesOfItem(atPath: at.path)[FileAttributeKey.size] as? Int) ?? 0
         } catch {
             return 0
         }

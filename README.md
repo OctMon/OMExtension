@@ -199,8 +199,8 @@ print(FileManager.omFileExists(for: .cachesDirectory, path: "download"))
 print(FileManager.omFileExists(at: FileManager.omDocumentDirectory(path: "user.dat")))
 
 // nil
-// nil
 // Optional(file:///Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/A7108007-93D6-4C0D-99E4-0D2BC6474D6C/Library/Caches/download/)
+// nil
 ```
 
 获取文件大小
@@ -214,7 +214,7 @@ print(FileManager.omFileSize(at: FileManager.omCachesDirectory(path: "download")
 删除文件
 
 ```swift
-FileManager.omRemoveItem(path: FileManager.omDocumentDirectory(path: "user.data").path)
+FileManager.omRemoveItem(at: FileManager.omDocumentDirectory(path: "user.data"))
 ```
 
 ### Int
