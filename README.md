@@ -49,10 +49,12 @@ import OMExtension
 - [Double](#double)
 - [Int](#int)
 - [String](#string)
+- [NSData](#nsdata)
 - [NSDate](#nsdate)
+- [NSObject](#nsobject)
 - [NSThread](#nsthread)
 - [NSTimer](#nstimer)
-- [NSObject](#nsobject)
+- [NSURLRequest](#nsurlrequest)
 
 ## UIKit
 
@@ -252,6 +254,19 @@ NSMutableAttributedString
 let mutableAttributedString = ("https://github.com/OctMon".omGetAttributes(color: [(color: UIColor.redColor(), subString: "github")], font: [(font: UIFont.systemFontOfSize(12), subString: "Octmon")]))
 ```
 
+### NSData
+
+Data转json
+
+```swift
+HTTPBody?.omToJson()
+```
+
+Any转json
+
+```swift
+NSData.omToJson(from: allHTTPHeaderFields)
+```
 ### NSDate
 
 ```swift
@@ -264,6 +279,16 @@ date.omWeekdayString() // Monday
 date.omDateInfo().month // 8
 date.omDateInfo() // OMDateInfo(year: 2016, month: 8, day: 29, weekday: 5, hour: 15, minute: 29, second: 21, nanosecond: 898715019)
 date.omDateInfo().omString(nanosecond: true) // 2016-08-29 15:29:21:899
+```
+
+### NSObject
+
+获取类型名称
+
+```swift
+print(NSObject.omClassName) // NSObject
+print(UIApplication.sharedApplication().omClassName) // UIApplication
+print(omDeinitLog) // ApplicationTVC♻️deinit
 ```
 
 ### NSThread
@@ -291,16 +316,189 @@ NSTimer.omRunLoop(seconds: 1, handler: { (timer) in
 })
 ```
 
-### NSObject
+### NSURLRequest
 
-获取类型名称
+打印请求、响应日志
 
 ```swift
-print(NSObject.omClassName) // NSObject
-print(UIApplication.sharedApplication().omClassName) // UIApplication
-print(omDeinitLog) // ApplicationTVC♻️deinit
+requestMyServers(NSURLRequest(URL: NSURL(string: "http://itunes.apple.com/US/lookup?id=414478124")!))?.responseMyServers({ (_) in
+            
+})
 ```
 
+封装请求  [Alamofire](https://github.com/Alamofire/Alamofire)
+
+```swift
+/**
+ 请求前打印日志
+ 
+ - parameter URLRequest: 路由
+ 
+ - returns: Request
+ */
+func requestMyServers(urlRequest: URLRequestConvertible) -> Request? {
+    
+    urlRequest.URLRequest.omPrintRequestLog()
+    
+    return request(urlRequest).validate()
+}
+
+extension Request {
+    
+    /**
+     收到请求
+     
+     - parameter handler: 回调
+     */
+    func responseMyServers(completionHandler: Response<AnyObject, NSError> -> Void) {
+        
+        responseJSON { (response) in
+            
+            self.request?.URLRequest.omPrintResponseLog(response: response.response, data: response.data, error: response.result.error, requestDuration: response.timeline.requestDuration)
+            
+            completionHandler(response)
+        }
+    }
+}
+```
+
+```swift
+urlRequest.URLRequest.omPrintRequestLog()
+
+->->->->->->->->->->Request->->->->->->->->->
+[URL]		http://itunes.apple.com/US/lookup?id=414478124
+[Method]	GET
+[Timeout]	60.0
+->->->->->->->->->->Request->->->->->->->->->
+```
+
+```swift
+self.request?.URLRequest.omPrintResponseLog(response: response.response, data: response.data, error: response.result.error, requestDuration: response.timeline.requestDuration)
+
+->->->->->->->->->->Response->->->->->->->->->
+[URL]		http://itunes.apple.com/US/lookup?id=414478124
+[Method]	GET
+[Timeout]	60.0
+----------------------200------------------->
+[Duration]	0.0185419917106628
+[Size]		4958 bytes
+[Data]
+{
+  "resultCount" : 1,
+  "results" : [
+    {
+      "artistId" : 614694882,
+      "version" : "6.3.30",
+      "primaryGenreName" : "Social Networking",
+      "genreIds" : [
+        "6005",
+        "6007"
+      ],
+      "artworkUrl60" : "http:\/\/is5.mzstatic.com\/image\/thumb\/Purple71\/v4\/fe\/ed\/a1\/feeda179-73fc-0460-48c0-194997842dac\/source\/60x60bb.jpg",
+      "userRatingCountForCurrentVersion" : 3,
+      "minimumOsVersion" : "7.0",
+      "appletvScreenshotUrls" : [
+
+      ],
+      "sellerName" : "Tencent Technology (Shenzhen) Company Limited",
+      "supportedDevices" : [
+        "iPhone4",
+        "iPad2Wifi",
+        "iPad23G",
+        "iPhone4S",
+        "iPadThirdGen",
+        "iPadThirdGen4G",
+        "iPhone5",
+        "iPodTouchFifthGen",
+        "iPadFourthGen",
+        "iPadFourthGen4G",
+        "iPadMini",
+        "iPadMini4G",
+        "iPhone5c",
+        "iPhone5s",
+        "iPhone6",
+        "iPhone6Plus",
+        "iPodTouchSixthGen"
+      ],
+      "genres" : [
+        "Social Networking",
+        "Productivity"
+      ],
+      "currentVersionReleaseDate" : "2016-11-03T08:38:20Z",
+      "trackName" : "WeChat",
+      "isVppDeviceBasedLicensingEnabled" : true,
+      "description" : "Over half a billion people use WeChat, the free messaging & calling app that allows you to easily connect with family & friends across countries. It’s the all-in-one communications app for free text (SMS\/MMS), voice & video calls, moments, photo sharing, and games.\nWHY USE WECHAT:\n• ALWAYS FREE: No annual subscription fee. Absolutely free for life.\n• FREE VOICE & VIDEO CALLS: High-quality free calls to anywhere in the world.\n• GROUP CHAT: Create group chats with up to 500 people.\n• MULTIMEDIA MESSAGING: Send video, image, text, and voice messages.\n• STICKER GALLERY: Hundreds of free fun, animated stickers to express your feelings from some of your favorite cartoons and movies.\n• MOMENTS: Share your best moments on your personal photo stream.\n• BETTER PRIVACY: WeChat gives you the highest level of control over your privacy. It’s the only messaging app to be certified by TRUSTe.\n• MEET NEW FRIENDS: Use “Friend Radar”, “People Nearby” and “Shake” to meet others.\n• ADDICTIVE GAMES: Compete with your friends on some of the hottest games.\n• REALTIME LOCATION: Instead of having to tell others where you are, just use real-time location sharing.\n• LANGUAGE SUPPORT: Localized in 20 different languages and can translate messages to any language\n• AND MORE: Desktop app, custom wallpaper, custom notifications, group walkie-talkie, official accounts.\n• WeRun-WeChat: Access HealthKit data and challenge friends to beat their scores via the \"WeRun-WeChat\" Official Account.",
+      "price" : 0,
+      "trackId" : 414478124,
+      "releaseDate" : "2011-01-21T01:32:15Z",
+      "advisories" : [
+        "Infrequent\/Mild Sexual Content and Nudity"
+      ],
+      "screenshotUrls" : [
+        "http:\/\/a2.mzstatic.com\/us\/r30\/Purple62\/v4\/67\/a9\/67\/67a96743-3a1f-8df2-d27c-b268873aa000\/screen696x696.jpeg",
+        "http:\/\/a1.mzstatic.com\/us\/r30\/Purple71\/v4\/18\/13\/c2\/1813c2dd-98b9-bb2d-ec89-bdf14a29a9c8\/screen696x696.jpeg",
+        "http:\/\/a1.mzstatic.com\/us\/r30\/Purple62\/v4\/04\/fe\/b8\/04feb813-ca57-ff65-0c03-186cf21047df\/screen696x696.jpeg",
+        "http:\/\/a4.mzstatic.com\/us\/r30\/Purple71\/v4\/d9\/91\/71\/d99171d9-0fb3-930f-3d78-1c0cdf8326e9\/screen696x696.jpeg",
+        "http:\/\/a1.mzstatic.com\/us\/r30\/Purple62\/v4\/c1\/4f\/11\/c14f1147-0ea1-a0bc-04a1-139fe7fc800e\/screen696x696.jpeg"
+      ],
+      "artistViewUrl" : "https:\/\/itunes.apple.com\/us\/developer\/wechat\/id614694882?uo=4",
+      "primaryGenreId" : 6005,
+      "userRatingCount" : 33284,
+      "averageUserRatingForCurrentVersion" : 3,
+      "kind" : "software",
+      "fileSizeBytes" : "158753792",
+      "sellerUrl" : "http:\/\/www.wechat.com",
+      "trackContentRating" : "12+",
+      "bundleId" : "com.tencent.xin",
+      "trackCensoredName" : "WeChat",
+      "contentAdvisoryRating" : "12+",
+      "isGameCenterEnabled" : false,
+      "artistName" : "WeChat",
+      "languageCodesISO2A" : [
+        "AR",
+        "ZH",
+        "EN",
+        "FR",
+        "DE",
+        "HE",
+        "HI",
+        "ID",
+        "IT",
+        "JA",
+        "KO",
+        "MS",
+        "PL",
+        "PT",
+        "RU",
+        "ZH",
+        "ES",
+        "TH",
+        "ZH",
+        "TR",
+        "VI"
+      ],
+      "releaseNotes" : "Latest Updates:\n- Minor bug fixes.\n\nRecent Updates:\n- Group owner can verify members' invitation before they invite their friends to join the group.\n- Added Go Dutch to group chats allowing you to split bills quickly with your friends.\n- Send animated GIFs in chats.",
+      "features" : [
+        "iosUniversal"
+      ],
+      "averageUserRating" : 4.5,
+      "wrapperType" : "software",
+      "artworkUrl512" : "http:\/\/is5.mzstatic.com\/image\/thumb\/Purple71\/v4\/fe\/ed\/a1\/feeda179-73fc-0460-48c0-194997842dac\/source\/512x512bb.jpg",
+      "artworkUrl100" : "http:\/\/is5.mzstatic.com\/image\/thumb\/Purple71\/v4\/fe\/ed\/a1\/feeda179-73fc-0460-48c0-194997842dac\/source\/100x100bb.jpg",
+      "trackViewUrl" : "https:\/\/itunes.apple.com\/us\/app\/wechat\/id414478124?mt=8&uo=4",
+      "formattedPrice" : "Free",
+      "currency" : "USD",
+      "ipadScreenshotUrls" : [
+        "http:\/\/a5.mzstatic.com\/us\/r30\/Purple62\/v4\/54\/e2\/d4\/54e2d42b-0f4e-557e-02fe-9d710c1496f8\/sc1024x768.jpeg",
+        "http:\/\/a1.mzstatic.com\/us\/r30\/Purple62\/v4\/20\/ac\/4e\/20ac4e52-411c-4599-2a2a-30b44a53b516\/sc1024x768.jpeg",
+        "http:\/\/a2.mzstatic.com\/us\/r30\/Purple62\/v4\/73\/ec\/92\/73ec9245-8897-1be6-4bdb-3cee460212b8\/sc1024x768.jpeg",
+        "http:\/\/a5.mzstatic.com\/us\/r30\/Purple71\/v4\/76\/b6\/9d\/76b69d42-54d4-115d-9db5-8e334fff1b46\/sc1024x768.jpeg"
+      ]
+    }
+  ]
+}
+->->->->->->->->->->Response->->->->->->->->->xxxxxxxxxx requestMyServers(urlRequest: URLRequest(url: URL(string: "http://itunes.apple.com/US/lookup?id=414478124")!))?.responseMyServers(completionHandler: { (_) in})
+```
 ### UIAlertController
 
 ```swift
