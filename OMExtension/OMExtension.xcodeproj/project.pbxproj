@@ -7,34 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE6351911D73CFA100A0A0B1 /* OMBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351881D73CFA100A0A0B1 /* OMBool.swift */; };
-		FE6351921D73CFA100A0A0B1 /* OMObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351891D73CFA100A0A0B1 /* OMObject.swift */; };
-		FE6351931D73CFA100A0A0B1 /* OMThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE63518A1D73CFA100A0A0B1 /* OMThread.swift */; };
-		FE6351941D73CFA100A0A0B1 /* OMTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE63518B1D73CFA100A0A0B1 /* OMTimer.swift */; };
-		FE6351951D73CFA100A0A0B1 /* OMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE63518D1D73CFA100A0A0B1 /* OMApplication.swift */; };
-		FE6351961D73CFA100A0A0B1 /* OMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE63518E1D73CFA100A0A0B1 /* OMColor.swift */; };
-		FE6351971D73CFA100A0A0B1 /* OMStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE63518F1D73CFA100A0A0B1 /* OMStoryboard.swift */; };
-		FE6351981D73CFA100A0A0B1 /* OMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351901D73CFA100A0A0B1 /* OMView.swift */; };
-		FE63519A1D73D00B00A0A0B1 /* OMArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351991D73D00B00A0A0B1 /* OMArray.swift */; };
-		FE63519C1D73D18E00A0A0B1 /* OMDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE63519B1D73D18E00A0A0B1 /* OMDate.swift */; };
-		FE63519E1D73D1C900A0A0B1 /* OMDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE63519D1D73D1C900A0A0B1 /* OMDictionary.swift */; };
-		FE6351A01D73D1FD00A0A0B1 /* OMDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE63519F1D73D1FD00A0A0B1 /* OMDouble.swift */; };
-		FE6351A21D73D22300A0A0B1 /* OMInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351A11D73D22300A0A0B1 /* OMInt.swift */; };
-		FE6351A41D73D25600A0A0B1 /* OMString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351A31D73D25600A0A0B1 /* OMString.swift */; };
-		FE6351A61D73D35900A0A0B1 /* OMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351A51D73D35900A0A0B1 /* OMAlertController.swift */; };
-		FE6351A81D73D39C00A0A0B1 /* OMDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351A71D73D39C00A0A0B1 /* OMDevice.swift */; };
-		FE6351AA1D73D3FC00A0A0B1 /* OMFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351A91D73D3FC00A0A0B1 /* OMFont.swift */; };
-		FE6351AC1D73D58700A0A0B1 /* OMImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351AB1D73D58700A0A0B1 /* OMImage.swift */; };
-		FE6351AE1D73D5D900A0A0B1 /* OMScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351AD1D73D5D900A0A0B1 /* OMScreen.swift */; };
-		FE6351B01D73D63F00A0A0B1 /* OMRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351AF1D73D63F00A0A0B1 /* OMRect.swift */; };
-		FE6351B21D73D66000A0A0B1 /* OMNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351B11D73D66000A0A0B1 /* OMNavigationBar.swift */; };
-		FE6351B41D73D78500A0A0B1 /* OMTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351B31D73D78500A0A0B1 /* OMTableView.swift */; };
-		FE6351B61D73D7A400A0A0B1 /* OMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351B51D73D7A400A0A0B1 /* OMTextField.swift */; };
-		FE6351B81D73D8C000A0A0B1 /* OMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351B71D73D8C000A0A0B1 /* OMTextView.swift */; };
-		FE6351BA1D73DBC800A0A0B1 /* OMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6351B91D73DBC800A0A0B1 /* OMViewController.swift */; };
 		FE8F90581D6EADCC0095D74B /* OMExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = FE8F90571D6EADCC0095D74B /* OMExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE8F905F1D6EADCC0095D74B /* OMExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8F90541D6EADCC0095D74B /* OMExtension.framework */; };
 		FE8F90641D6EADCC0095D74B /* OMExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F90631D6EADCC0095D74B /* OMExtensionTests.swift */; };
+		FEDA0A9A1DCD87DE00F00034 /* OMArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A7D1DCD87DE00F00034 /* OMArray.swift */; };
+		FEDA0A9B1DCD87DE00F00034 /* OMBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A7E1DCD87DE00F00034 /* OMBool.swift */; };
+		FEDA0A9C1DCD87DE00F00034 /* OMData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A7F1DCD87DE00F00034 /* OMData.swift */; };
+		FEDA0A9D1DCD87DE00F00034 /* OMDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A801DCD87DE00F00034 /* OMDate.swift */; };
+		FEDA0A9E1DCD87DE00F00034 /* OMDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A811DCD87DE00F00034 /* OMDictionary.swift */; };
+		FEDA0A9F1DCD87DE00F00034 /* OMDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A821DCD87DE00F00034 /* OMDouble.swift */; };
+		FEDA0AA01DCD87DE00F00034 /* OMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A831DCD87DE00F00034 /* OMFileManager.swift */; };
+		FEDA0AA11DCD87DE00F00034 /* OMInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A841DCD87DE00F00034 /* OMInt.swift */; };
+		FEDA0AA21DCD87DE00F00034 /* OMObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A851DCD87DE00F00034 /* OMObject.swift */; };
+		FEDA0AA31DCD87DE00F00034 /* OMString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A861DCD87DE00F00034 /* OMString.swift */; };
+		FEDA0AA41DCD87DE00F00034 /* OMThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A871DCD87DE00F00034 /* OMThread.swift */; };
+		FEDA0AA51DCD87DE00F00034 /* OMTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A881DCD87DE00F00034 /* OMTimer.swift */; };
+		FEDA0AA61DCD87DE00F00034 /* OMURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A891DCD87DE00F00034 /* OMURLRequest.swift */; };
+		FEDA0AA71DCD87DE00F00034 /* OMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A8B1DCD87DE00F00034 /* OMAlertController.swift */; };
+		FEDA0AA81DCD87DE00F00034 /* OMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A8C1DCD87DE00F00034 /* OMApplication.swift */; };
+		FEDA0AA91DCD87DE00F00034 /* OMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A8D1DCD87DE00F00034 /* OMColor.swift */; };
+		FEDA0AAA1DCD87DE00F00034 /* OMDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A8E1DCD87DE00F00034 /* OMDevice.swift */; };
+		FEDA0AAB1DCD87DE00F00034 /* OMFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A8F1DCD87DE00F00034 /* OMFont.swift */; };
+		FEDA0AAC1DCD87DE00F00034 /* OMImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A901DCD87DE00F00034 /* OMImage.swift */; };
+		FEDA0AAD1DCD87DE00F00034 /* OMNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A911DCD87DE00F00034 /* OMNavigationBar.swift */; };
+		FEDA0AAE1DCD87DE00F00034 /* OMRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A921DCD87DE00F00034 /* OMRect.swift */; };
+		FEDA0AAF1DCD87DE00F00034 /* OMScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A931DCD87DE00F00034 /* OMScreen.swift */; };
+		FEDA0AB01DCD87DE00F00034 /* OMStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A941DCD87DE00F00034 /* OMStoryboard.swift */; };
+		FEDA0AB11DCD87DE00F00034 /* OMTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A951DCD87DE00F00034 /* OMTableView.swift */; };
+		FEDA0AB21DCD87DE00F00034 /* OMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A961DCD87DE00F00034 /* OMTextField.swift */; };
+		FEDA0AB31DCD87DE00F00034 /* OMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A971DCD87DE00F00034 /* OMTextView.swift */; };
+		FEDA0AB41DCD87DE00F00034 /* OMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A981DCD87DE00F00034 /* OMView.swift */; };
+		FEDA0AB51DCD87DE00F00034 /* OMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A991DCD87DE00F00034 /* OMViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,37 +51,40 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FE6351881D73CFA100A0A0B1 /* OMBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBool.swift; sourceTree = "<group>"; };
-		FE6351891D73CFA100A0A0B1 /* OMObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMObject.swift; sourceTree = "<group>"; };
-		FE63518A1D73CFA100A0A0B1 /* OMThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMThread.swift; sourceTree = "<group>"; };
-		FE63518B1D73CFA100A0A0B1 /* OMTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTimer.swift; sourceTree = "<group>"; };
-		FE63518D1D73CFA100A0A0B1 /* OMApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMApplication.swift; sourceTree = "<group>"; };
-		FE63518E1D73CFA100A0A0B1 /* OMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMColor.swift; sourceTree = "<group>"; };
-		FE63518F1D73CFA100A0A0B1 /* OMStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMStoryboard.swift; sourceTree = "<group>"; };
-		FE6351901D73CFA100A0A0B1 /* OMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMView.swift; sourceTree = "<group>"; };
-		FE6351991D73D00B00A0A0B1 /* OMArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMArray.swift; sourceTree = "<group>"; };
-		FE63519B1D73D18E00A0A0B1 /* OMDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDate.swift; sourceTree = "<group>"; };
-		FE63519D1D73D1C900A0A0B1 /* OMDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDictionary.swift; sourceTree = "<group>"; };
-		FE63519F1D73D1FD00A0A0B1 /* OMDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDouble.swift; sourceTree = "<group>"; };
-		FE6351A11D73D22300A0A0B1 /* OMInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMInt.swift; sourceTree = "<group>"; };
-		FE6351A31D73D25600A0A0B1 /* OMString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMString.swift; sourceTree = "<group>"; };
-		FE6351A51D73D35900A0A0B1 /* OMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMAlertController.swift; sourceTree = "<group>"; };
-		FE6351A71D73D39C00A0A0B1 /* OMDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDevice.swift; sourceTree = "<group>"; };
-		FE6351A91D73D3FC00A0A0B1 /* OMFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMFont.swift; sourceTree = "<group>"; };
-		FE6351AB1D73D58700A0A0B1 /* OMImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMImage.swift; sourceTree = "<group>"; };
-		FE6351AD1D73D5D900A0A0B1 /* OMScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMScreen.swift; sourceTree = "<group>"; };
-		FE6351AF1D73D63F00A0A0B1 /* OMRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMRect.swift; sourceTree = "<group>"; };
-		FE6351B11D73D66000A0A0B1 /* OMNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMNavigationBar.swift; sourceTree = "<group>"; };
-		FE6351B31D73D78500A0A0B1 /* OMTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTableView.swift; sourceTree = "<group>"; };
-		FE6351B51D73D7A400A0A0B1 /* OMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextField.swift; sourceTree = "<group>"; };
-		FE6351B71D73D8C000A0A0B1 /* OMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextView.swift; sourceTree = "<group>"; };
-		FE6351B91D73DBC800A0A0B1 /* OMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMViewController.swift; sourceTree = "<group>"; };
 		FE8F90541D6EADCC0095D74B /* OMExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OMExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8F90571D6EADCC0095D74B /* OMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMExtension.h; sourceTree = "<group>"; };
 		FE8F90591D6EADCC0095D74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE8F905E1D6EADCC0095D74B /* OMExtensionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMExtensionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8F90631D6EADCC0095D74B /* OMExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMExtensionTests.swift; sourceTree = "<group>"; };
 		FE8F90651D6EADCC0095D74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEDA0A7D1DCD87DE00F00034 /* OMArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMArray.swift; sourceTree = "<group>"; };
+		FEDA0A7E1DCD87DE00F00034 /* OMBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBool.swift; sourceTree = "<group>"; };
+		FEDA0A7F1DCD87DE00F00034 /* OMData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMData.swift; sourceTree = "<group>"; };
+		FEDA0A801DCD87DE00F00034 /* OMDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDate.swift; sourceTree = "<group>"; };
+		FEDA0A811DCD87DE00F00034 /* OMDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDictionary.swift; sourceTree = "<group>"; };
+		FEDA0A821DCD87DE00F00034 /* OMDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDouble.swift; sourceTree = "<group>"; };
+		FEDA0A831DCD87DE00F00034 /* OMFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMFileManager.swift; sourceTree = "<group>"; };
+		FEDA0A841DCD87DE00F00034 /* OMInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMInt.swift; sourceTree = "<group>"; };
+		FEDA0A851DCD87DE00F00034 /* OMObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMObject.swift; sourceTree = "<group>"; };
+		FEDA0A861DCD87DE00F00034 /* OMString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMString.swift; sourceTree = "<group>"; };
+		FEDA0A871DCD87DE00F00034 /* OMThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMThread.swift; sourceTree = "<group>"; };
+		FEDA0A881DCD87DE00F00034 /* OMTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTimer.swift; sourceTree = "<group>"; };
+		FEDA0A891DCD87DE00F00034 /* OMURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMURLRequest.swift; sourceTree = "<group>"; };
+		FEDA0A8B1DCD87DE00F00034 /* OMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMAlertController.swift; sourceTree = "<group>"; };
+		FEDA0A8C1DCD87DE00F00034 /* OMApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMApplication.swift; sourceTree = "<group>"; };
+		FEDA0A8D1DCD87DE00F00034 /* OMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMColor.swift; sourceTree = "<group>"; };
+		FEDA0A8E1DCD87DE00F00034 /* OMDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDevice.swift; sourceTree = "<group>"; };
+		FEDA0A8F1DCD87DE00F00034 /* OMFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMFont.swift; sourceTree = "<group>"; };
+		FEDA0A901DCD87DE00F00034 /* OMImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMImage.swift; sourceTree = "<group>"; };
+		FEDA0A911DCD87DE00F00034 /* OMNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMNavigationBar.swift; sourceTree = "<group>"; };
+		FEDA0A921DCD87DE00F00034 /* OMRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMRect.swift; sourceTree = "<group>"; };
+		FEDA0A931DCD87DE00F00034 /* OMScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMScreen.swift; sourceTree = "<group>"; };
+		FEDA0A941DCD87DE00F00034 /* OMStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMStoryboard.swift; sourceTree = "<group>"; };
+		FEDA0A951DCD87DE00F00034 /* OMTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTableView.swift; sourceTree = "<group>"; };
+		FEDA0A961DCD87DE00F00034 /* OMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextField.swift; sourceTree = "<group>"; };
+		FEDA0A971DCD87DE00F00034 /* OMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextView.swift; sourceTree = "<group>"; };
+		FEDA0A981DCD87DE00F00034 /* OMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMView.swift; sourceTree = "<group>"; };
+		FEDA0A991DCD87DE00F00034 /* OMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,54 +106,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE6351861D73CFA100A0A0B1 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				FE6351871D73CFA100A0A0B1 /* Foundation */,
-				FE63518C1D73CFA100A0A0B1 /* UIKit */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		FE6351871D73CFA100A0A0B1 /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				FE6351991D73D00B00A0A0B1 /* OMArray.swift */,
-				FE6351881D73CFA100A0A0B1 /* OMBool.swift */,
-				FE63519B1D73D18E00A0A0B1 /* OMDate.swift */,
-				FE63519D1D73D1C900A0A0B1 /* OMDictionary.swift */,
-				FE63519F1D73D1FD00A0A0B1 /* OMDouble.swift */,
-				FE6351A11D73D22300A0A0B1 /* OMInt.swift */,
-				FE6351891D73CFA100A0A0B1 /* OMObject.swift */,
-				FE6351A31D73D25600A0A0B1 /* OMString.swift */,
-				FE63518A1D73CFA100A0A0B1 /* OMThread.swift */,
-				FE63518B1D73CFA100A0A0B1 /* OMTimer.swift */,
-			);
-			path = Foundation;
-			sourceTree = "<group>";
-		};
-		FE63518C1D73CFA100A0A0B1 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				FE6351A51D73D35900A0A0B1 /* OMAlertController.swift */,
-				FE63518D1D73CFA100A0A0B1 /* OMApplication.swift */,
-				FE63518E1D73CFA100A0A0B1 /* OMColor.swift */,
-				FE6351A71D73D39C00A0A0B1 /* OMDevice.swift */,
-				FE6351A91D73D3FC00A0A0B1 /* OMFont.swift */,
-				FE6351AB1D73D58700A0A0B1 /* OMImage.swift */,
-				FE6351B11D73D66000A0A0B1 /* OMNavigationBar.swift */,
-				FE6351AF1D73D63F00A0A0B1 /* OMRect.swift */,
-				FE6351AD1D73D5D900A0A0B1 /* OMScreen.swift */,
-				FE63518F1D73CFA100A0A0B1 /* OMStoryboard.swift */,
-				FE6351B31D73D78500A0A0B1 /* OMTableView.swift */,
-				FE6351B51D73D7A400A0A0B1 /* OMTextField.swift */,
-				FE6351B71D73D8C000A0A0B1 /* OMTextView.swift */,
-				FE6351901D73CFA100A0A0B1 /* OMView.swift */,
-				FE6351B91D73DBC800A0A0B1 /* OMViewController.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		FE8F904A1D6EADCC0095D74B = {
 			isa = PBXGroup;
 			children = (
@@ -171,7 +129,7 @@
 			children = (
 				FE8F90591D6EADCC0095D74B /* Info.plist */,
 				FE8F90571D6EADCC0095D74B /* OMExtension.h */,
-				FE6351861D73CFA100A0A0B1 /* Source */,
+				FEDA0A7B1DCD87DE00F00034 /* Source */,
 			);
 			path = OMExtension;
 			sourceTree = "<group>";
@@ -183,6 +141,57 @@
 				FE8F90651D6EADCC0095D74B /* Info.plist */,
 			);
 			path = OMExtensionTests;
+			sourceTree = "<group>";
+		};
+		FEDA0A7B1DCD87DE00F00034 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FEDA0A7C1DCD87DE00F00034 /* Foundation */,
+				FEDA0A8A1DCD87DE00F00034 /* UIKit */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		FEDA0A7C1DCD87DE00F00034 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				FEDA0A7D1DCD87DE00F00034 /* OMArray.swift */,
+				FEDA0A7E1DCD87DE00F00034 /* OMBool.swift */,
+				FEDA0A7F1DCD87DE00F00034 /* OMData.swift */,
+				FEDA0A801DCD87DE00F00034 /* OMDate.swift */,
+				FEDA0A811DCD87DE00F00034 /* OMDictionary.swift */,
+				FEDA0A821DCD87DE00F00034 /* OMDouble.swift */,
+				FEDA0A831DCD87DE00F00034 /* OMFileManager.swift */,
+				FEDA0A841DCD87DE00F00034 /* OMInt.swift */,
+				FEDA0A851DCD87DE00F00034 /* OMObject.swift */,
+				FEDA0A861DCD87DE00F00034 /* OMString.swift */,
+				FEDA0A871DCD87DE00F00034 /* OMThread.swift */,
+				FEDA0A881DCD87DE00F00034 /* OMTimer.swift */,
+				FEDA0A891DCD87DE00F00034 /* OMURLRequest.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		FEDA0A8A1DCD87DE00F00034 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				FEDA0A8B1DCD87DE00F00034 /* OMAlertController.swift */,
+				FEDA0A8C1DCD87DE00F00034 /* OMApplication.swift */,
+				FEDA0A8D1DCD87DE00F00034 /* OMColor.swift */,
+				FEDA0A8E1DCD87DE00F00034 /* OMDevice.swift */,
+				FEDA0A8F1DCD87DE00F00034 /* OMFont.swift */,
+				FEDA0A901DCD87DE00F00034 /* OMImage.swift */,
+				FEDA0A911DCD87DE00F00034 /* OMNavigationBar.swift */,
+				FEDA0A921DCD87DE00F00034 /* OMRect.swift */,
+				FEDA0A931DCD87DE00F00034 /* OMScreen.swift */,
+				FEDA0A941DCD87DE00F00034 /* OMStoryboard.swift */,
+				FEDA0A951DCD87DE00F00034 /* OMTableView.swift */,
+				FEDA0A961DCD87DE00F00034 /* OMTextField.swift */,
+				FEDA0A971DCD87DE00F00034 /* OMTextView.swift */,
+				FEDA0A981DCD87DE00F00034 /* OMView.swift */,
+				FEDA0A991DCD87DE00F00034 /* OMViewController.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,31 +304,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE6351921D73CFA100A0A0B1 /* OMObject.swift in Sources */,
-				FE6351AA1D73D3FC00A0A0B1 /* OMFont.swift in Sources */,
-				FE6351961D73CFA100A0A0B1 /* OMColor.swift in Sources */,
-				FE6351951D73CFA100A0A0B1 /* OMApplication.swift in Sources */,
-				FE6351941D73CFA100A0A0B1 /* OMTimer.swift in Sources */,
-				FE6351A21D73D22300A0A0B1 /* OMInt.swift in Sources */,
-				FE6351A81D73D39C00A0A0B1 /* OMDevice.swift in Sources */,
-				FE6351A01D73D1FD00A0A0B1 /* OMDouble.swift in Sources */,
-				FE6351A41D73D25600A0A0B1 /* OMString.swift in Sources */,
-				FE6351B01D73D63F00A0A0B1 /* OMRect.swift in Sources */,
-				FE6351B21D73D66000A0A0B1 /* OMNavigationBar.swift in Sources */,
-				FE6351A61D73D35900A0A0B1 /* OMAlertController.swift in Sources */,
-				FE6351911D73CFA100A0A0B1 /* OMBool.swift in Sources */,
-				FE63519C1D73D18E00A0A0B1 /* OMDate.swift in Sources */,
-				FE6351971D73CFA100A0A0B1 /* OMStoryboard.swift in Sources */,
-				FE6351B81D73D8C000A0A0B1 /* OMTextView.swift in Sources */,
-				FE6351AC1D73D58700A0A0B1 /* OMImage.swift in Sources */,
-				FE63519A1D73D00B00A0A0B1 /* OMArray.swift in Sources */,
-				FE6351B61D73D7A400A0A0B1 /* OMTextField.swift in Sources */,
-				FE6351BA1D73DBC800A0A0B1 /* OMViewController.swift in Sources */,
-				FE6351981D73CFA100A0A0B1 /* OMView.swift in Sources */,
-				FE6351931D73CFA100A0A0B1 /* OMThread.swift in Sources */,
-				FE6351B41D73D78500A0A0B1 /* OMTableView.swift in Sources */,
-				FE63519E1D73D1C900A0A0B1 /* OMDictionary.swift in Sources */,
-				FE6351AE1D73D5D900A0A0B1 /* OMScreen.swift in Sources */,
+				FEDA0AB51DCD87DE00F00034 /* OMViewController.swift in Sources */,
+				FEDA0AB21DCD87DE00F00034 /* OMTextField.swift in Sources */,
+				FEDA0AA31DCD87DE00F00034 /* OMString.swift in Sources */,
+				FEDA0A9A1DCD87DE00F00034 /* OMArray.swift in Sources */,
+				FEDA0A9E1DCD87DE00F00034 /* OMDictionary.swift in Sources */,
+				FEDA0AAC1DCD87DE00F00034 /* OMImage.swift in Sources */,
+				FEDA0AA91DCD87DE00F00034 /* OMColor.swift in Sources */,
+				FEDA0AAE1DCD87DE00F00034 /* OMRect.swift in Sources */,
+				FEDA0A9D1DCD87DE00F00034 /* OMDate.swift in Sources */,
+				FEDA0AB01DCD87DE00F00034 /* OMStoryboard.swift in Sources */,
+				FEDA0AA21DCD87DE00F00034 /* OMObject.swift in Sources */,
+				FEDA0A9C1DCD87DE00F00034 /* OMData.swift in Sources */,
+				FEDA0AA71DCD87DE00F00034 /* OMAlertController.swift in Sources */,
+				FEDA0AAA1DCD87DE00F00034 /* OMDevice.swift in Sources */,
+				FEDA0AB41DCD87DE00F00034 /* OMView.swift in Sources */,
+				FEDA0A9F1DCD87DE00F00034 /* OMDouble.swift in Sources */,
+				FEDA0AA11DCD87DE00F00034 /* OMInt.swift in Sources */,
+				FEDA0AAF1DCD87DE00F00034 /* OMScreen.swift in Sources */,
+				FEDA0AA61DCD87DE00F00034 /* OMURLRequest.swift in Sources */,
+				FEDA0AAD1DCD87DE00F00034 /* OMNavigationBar.swift in Sources */,
+				FEDA0AA41DCD87DE00F00034 /* OMThread.swift in Sources */,
+				FEDA0AA81DCD87DE00F00034 /* OMApplication.swift in Sources */,
+				FEDA0AB11DCD87DE00F00034 /* OMTableView.swift in Sources */,
+				FEDA0AB31DCD87DE00F00034 /* OMTextView.swift in Sources */,
+				FEDA0AAB1DCD87DE00F00034 /* OMFont.swift in Sources */,
+				FEDA0AA51DCD87DE00F00034 /* OMTimer.swift in Sources */,
+				FEDA0AA01DCD87DE00F00034 /* OMFileManager.swift in Sources */,
+				FEDA0A9B1DCD87DE00F00034 /* OMBool.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -477,6 +489,7 @@
 		FE8F906C1D6EADCC0095D74B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = OMExtensionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtensionTests;
@@ -488,6 +501,7 @@
 		FE8F906D1D6EADCC0095D74B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = OMExtensionTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtensionTests;
