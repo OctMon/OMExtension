@@ -49,16 +49,13 @@ public extension UIImage {
         
         let outputImage = filter?.outputImage
         
-        if outputImage != nil {
+        if let outputImage = outputImage {
             
-            let context = CIContext(options: nil)
-            let cgImage = context.createCGImage(outputImage!, from: (outputImage?.extent)!)
-            
-            self.init(cgImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
+            self.init(ciImage: outputImage)
             
         } else {
             
-            self.init(named: "")
+            self.init()
         }
     }
     
