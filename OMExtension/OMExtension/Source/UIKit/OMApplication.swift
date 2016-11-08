@@ -141,22 +141,82 @@ public extension UIApplication {
     private static func omOpenGeneralPath(string: String) -> Bool { return omOpenURL(string: UIApplication.prefsRoot + UIApplication.generalPath + string) }
     
     /**
-     是否可以打开网址
+     是否可以打开网址 (判断手机是否安装微信 需要在“Info.plist”中将要使用的URL Schemes列为白名单)
      
-     - parameter string: URL
+     - parameter string: e.g. weixin://
      
      - returns: 成功/失败
      */
-    static func omCanOpenURL(string string: String) -> Bool { return sharedApplication().canOpenURL(NSURL(string: string)!) }
+    static func omCanOpenURL(string string: String) -> Bool {
+        
+        if let url = NSURL(string: string) {
+            
+            return sharedApplication().canOpenURL(url)
+        }
+        
+        return false
+    }
     
     /**
-     在浏览器中打开网址
+     在浏览器中打开URL (跳转微信 需要在“Info.plist”中将要使用的URL Schemes列为白名单)
      
-     - parameter string: URL
+     - parameter string: e.g. weixin://
      
      - returns: 成功/失败
      */
-    static func omOpenURL(string string: String) -> Bool { return sharedApplication().openURL(NSURL(string: string)!) }
+    static func omOpenURL(string string: String) -> Bool {
+        
+        if let url = NSURL(string: string) {
+            
+            return sharedApplication().openURL(url)
+        }
+        
+        return false
+    }
+    
+    /// 打电话
+    ///
+    /// - Parameter telephone: 电话号码
+    /// - Returns: 成功/失败
+    static func omCall(telephone: String) -> Bool {
+        
+        guard telephone.characters.count > 0 else {
+            
+            return false
+        }
+        
+        return omOpenURL(string: "telprompt:\(telephone)")
+    }
+    
+    /// 跳转到appStroe应用详情
+    ///
+    /// - Parameter id: 应该id
+    /// - Returns: 成功/失败
+    static func omOpenAppStoreDetails(id: Int) -> Bool {
+        
+        return omOpenURL(string: "itms-apps://itunes.apple.com/app/id\(id)")
+    }
+    
+    /// 跳转到appStroe应用评价
+    ///
+    /// - Parameter id: 应该id
+    /// - Returns: 成功/失败
+    static func omOpenAppStoreReviews(id: Int) -> Bool {
+        
+        return omOpenURL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(id)")
+    }
+    
+    /// 应用在appStroe中的地址
+    ///
+    /// - Parameter id: 应该id
+    /// - Returns: 成功/失败
+    static func omGetAppStoreURL(id: Int) -> String { return "http://itunes.apple.com/app/id\(id)" }
+    
+    /// 应用在appStroe中的详情json的请求地址
+    ///
+    /// - Parameter id: 应该id
+    /// - Returns: 成功/失败
+    static func omGetAppStoreLookupURL(id: Int) -> String { return "http://itunes.apple.com/US/lookup?id=\(id)" }
     
     /**
      跳转到应用设置
