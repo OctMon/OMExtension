@@ -49,6 +49,7 @@
 		FE639D3C1D8E6C9300A6CFB7 /* BaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE639D3B1D8E6C9300A6CFB7 /* BaseVC.swift */; };
 		FE639D3E1D8E6CBF00A6CFB7 /* PlaceholderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE639D3D1D8E6CBF00A6CFB7 /* PlaceholderVC.swift */; };
 		FE639D401D8E6D9C00A6CFB7 /* ViewControllerTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE639D3F1D8E6D9C00A6CFB7 /* ViewControllerTVC.swift */; };
+		FE6DA6181DD173DC00257991 /* JumpOtherTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE6DA6171DD173DC00257991 /* JumpOtherTVC.swift */; };
 		FE7837D11D701AB200B6F233 /* UIApplication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7837D01D701AB200B6F233 /* UIApplication.storyboard */; };
 		FE7837D51D7020BD00B6F233 /* ApplicationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7837D41D7020BD00B6F233 /* ApplicationTVC.swift */; };
 		FE7837D71D702E3400B6F233 /* OMObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7837D61D702E3400B6F233 /* OMObjectTests.swift */; };
@@ -123,6 +124,7 @@
 		FE639D3B1D8E6C9300A6CFB7 /* BaseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseVC.swift; path = Assets.xcassets/BaseVC.swift; sourceTree = "<group>"; };
 		FE639D3D1D8E6CBF00A6CFB7 /* PlaceholderVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderVC.swift; sourceTree = "<group>"; };
 		FE639D3F1D8E6D9C00A6CFB7 /* ViewControllerTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerTVC.swift; sourceTree = "<group>"; };
+		FE6DA6171DD173DC00257991 /* JumpOtherTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JumpOtherTVC.swift; sourceTree = "<group>"; };
 		FE7837D01D701AB200B6F233 /* UIApplication.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIApplication.storyboard; sourceTree = "<group>"; };
 		FE7837D41D7020BD00B6F233 /* ApplicationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationTVC.swift; sourceTree = "<group>"; };
 		FE7837D61D702E3400B6F233 /* OMObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMObjectTests.swift; sourceTree = "<group>"; };
@@ -223,11 +225,12 @@
 		FE37D5EB1D7015FB000F749C /* OMApplication */ = {
 			isa = PBXGroup;
 			children = (
-				FE7837D01D701AB200B6F233 /* UIApplication.storyboard */,
 				FE7837D41D7020BD00B6F233 /* ApplicationTVC.swift */,
 				FE48ACC71D783C810066F52D /* AuthenticationTVC.swift */,
+				FE6DA6171DD173DC00257991 /* JumpOtherTVC.swift */,
 				FE48ACC51D7839770066F52D /* PrefsTVC.swift */,
 				FE1658EA1D784441005FAEB0 /* SystemSoundTVC.swift */,
+				FE7837D01D701AB200B6F233 /* UIApplication.storyboard */,
 			);
 			path = OMApplication;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				TargetAttributes = {
 					FE8F90761D6EADEB0095D74B = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = E4QM55B48M;
 						LastSwiftMigration = 0800;
 					};
 					FE8F908A1D6EADEB0095D74B = {
@@ -491,6 +495,7 @@
 				FE639D3C1D8E6C9300A6CFB7 /* BaseVC.swift in Sources */,
 				FE1658E31D7842CA005FAEB0 /* OMTableView.swift in Sources */,
 				FE8F907B1D6EADEB0095D74B /* AppDelegate.swift in Sources */,
+				FE6DA6181DD173DC00257991 /* JumpOtherTVC.swift in Sources */,
 				FE1658DD1D7842CA005FAEB0 /* OMFont.swift in Sources */,
 				FE48ACC81D783C810066F52D /* AuthenticationTVC.swift in Sources */,
 				FE1658E51D7842CA005FAEB0 /* OMTextView.swift in Sources */,
@@ -654,6 +659,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E4QM55B48M;
 				INFOPLIST_FILE = OMExtensionDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtensionDemo;
@@ -666,6 +672,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = E4QM55B48M;
 				INFOPLIST_FILE = OMExtensionDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtensionDemo;

@@ -32,6 +32,7 @@ class ApplicationTVC: BaseTVC {
     
     let dataSource = [
         ("跳转到系统设置", PrefsTVC.omClassName),
+        ("跳转到其它", JumpOtherTVC.omClassName),
         ("系统授权", AuthenticationTVC.omClassName),
         ("播放系统声音", SystemSoundTVC.omClassName)
     ]
