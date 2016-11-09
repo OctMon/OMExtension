@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE28E6F51DD2BFC10009A2BE /* OMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE28E6F41DD2BFC10009A2BE /* OMButton.swift */; };
 		FE8F90581D6EADCC0095D74B /* OMExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = FE8F90571D6EADCC0095D74B /* OMExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE8F905F1D6EADCC0095D74B /* OMExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8F90541D6EADCC0095D74B /* OMExtension.framework */; };
 		FE8F90641D6EADCC0095D74B /* OMExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F90631D6EADCC0095D74B /* OMExtensionTests.swift */; };
@@ -51,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE28E6F41DD2BFC10009A2BE /* OMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMButton.swift; sourceTree = "<group>"; };
 		FE8F90541D6EADCC0095D74B /* OMExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OMExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8F90571D6EADCC0095D74B /* OMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMExtension.h; sourceTree = "<group>"; };
 		FE8F90591D6EADCC0095D74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				FEF83F321DCC1BAA000C9B08 /* OMAlertController.swift */,
 				FEF83F331DCC1BAA000C9B08 /* OMApplication.swift */,
+				FE28E6F41DD2BFC10009A2BE /* OMButton.swift */,
 				FEF83F341DCC1BAA000C9B08 /* OMColor.swift */,
 				FEF83F351DCC1BAA000C9B08 /* OMDevice.swift */,
 				FEF83F361DCC1BAA000C9B08 /* OMFont.swift */,
@@ -308,6 +311,7 @@
 				FEF83F591DCC1BAA000C9B08 /* OMTextField.swift in Sources */,
 				FEF83F4A1DCC1BAA000C9B08 /* OMString.swift in Sources */,
 				FEF83F411DCC1BAA000C9B08 /* OMArray.swift in Sources */,
+				FE28E6F51DD2BFC10009A2BE /* OMButton.swift in Sources */,
 				FEF83F451DCC1BAA000C9B08 /* OMDictionary.swift in Sources */,
 				FEF83F531DCC1BAA000C9B08 /* OMImage.swift in Sources */,
 				FEF83F501DCC1BAA000C9B08 /* OMColor.swift in Sources */,

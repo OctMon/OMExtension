@@ -234,83 +234,83 @@ public extension UIViewController {
 
 // MARK: - placeholder
 
-private var __omPlaceholderView__: String = "__omPlaceholderView__"
+private var _omPlaceholderView: Void?
 
-private var __omPlaceholderImageView__: String = "__omPlaceholderImageView__"
+private var _omPlaceholderImageView: Void?
 
-private var __omPlaceholderTitleLabel__: String = "__omPlaceholderTitleLabel__"
+private var _omPlaceholderTitleLabel: Void?
 
-private var __omPlaceholderDescriptionLabel__: String = "__omPlaceholderDescriptionLabel__"
+private var _omPlaceholderDescriptionLabel: Void?
 
-private var __omPlaceholderButton__: String = "__omPlaceholderButton__"
+private var _omPlaceholderButton: Void?
 
-private var __omPlaceholderLastBackgroundColor__: String = "__omPlaceholderLastBackgroundColor__"
+private var _omPlaceholderLastBackgroundColor: Void?
 
 public extension UIViewController {
     
-    public var omPlaceholderView: UIView? {
+    var omPlaceholderView: UIView? {
         
         get {
-            return objc_getAssociatedObject(self, &__omPlaceholderView__) as? UIView
+            return objc_getAssociatedObject(self, &_omPlaceholderView) as? UIView
         }
         
         set {
-            objc_setAssociatedObject(self, &__omPlaceholderView__, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &_omPlaceholderView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    public var omPlaceholderImageView: UIImageView? {
+    var omPlaceholderImageView: UIImageView? {
         
         get {
-            return objc_getAssociatedObject(self, &__omPlaceholderImageView__) as? UIImageView
+            return objc_getAssociatedObject(self, &_omPlaceholderImageView) as? UIImageView
         }
         
         set {
-            objc_setAssociatedObject(self, &__omPlaceholderImageView__, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &_omPlaceholderImageView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    public var omPlaceholderTitleLabel: UILabel? {
+    var omPlaceholderTitleLabel: UILabel? {
         
         get {
-            return objc_getAssociatedObject(self, &__omPlaceholderTitleLabel__) as? UILabel
+            return objc_getAssociatedObject(self, &_omPlaceholderTitleLabel) as? UILabel
         }
         
         set {
-            objc_setAssociatedObject(self, &__omPlaceholderTitleLabel__, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &_omPlaceholderTitleLabel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    public var omPlaceholderDescriptionLabel: UILabel? {
+    var omPlaceholderDescriptionLabel: UILabel? {
         
         get {
-            return objc_getAssociatedObject(self, &__omPlaceholderDescriptionLabel__) as? UILabel
+            return objc_getAssociatedObject(self, &_omPlaceholderDescriptionLabel) as? UILabel
         }
         
         set {
-            objc_setAssociatedObject(self, &__omPlaceholderDescriptionLabel__, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &_omPlaceholderDescriptionLabel, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    public var omPlaceholderButton: UIButton? {
+    var omPlaceholderButton: UIButton? {
         
         get {
-            return objc_getAssociatedObject(self, &__omPlaceholderButton__) as? UIButton
+            return objc_getAssociatedObject(self, &_omPlaceholderButton) as? UIButton
         }
         
         set {
-            objc_setAssociatedObject(self, &__omPlaceholderButton__, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &_omPlaceholderButton, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
     private var omPlaceholderLastBackgroundColor: UIColor? {
         
         get {
-            return objc_getAssociatedObject(self, &__omPlaceholderLastBackgroundColor__) as? UIColor
+            return objc_getAssociatedObject(self, &_omPlaceholderLastBackgroundColor) as? UIColor
         }
         
         set {
-            objc_setAssociatedObject(self, &__omPlaceholderLastBackgroundColor__, newValue, .OBJC_ASSOCIATION_RETAIN)
+            objc_setAssociatedObject(self, &_omPlaceholderLastBackgroundColor, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
