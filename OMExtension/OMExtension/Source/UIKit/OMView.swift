@@ -150,7 +150,7 @@ public extension UIView {
      
      - parameter numberOfTapsRequired:    手势点击数
      - parameter numberOfTouchesRequired: 手指个数
-     - parameter handler:                 回调
+     - parameter handler:                 使用 [unowned self] 或 [weak self] 避免循环引用
      
      - returns: OMTapGestureRecognizer
      */
@@ -169,7 +169,7 @@ public extension UIView {
      
      - parameter numberOfTapsRequired:    手势点击数
      - parameter numberOfTouchesRequired: 手指个数
-     - parameter handler:                 回调
+     - parameter handler:                 使用 [unowned self] 或 [weak self] 避免循环引用
      
      - returns: OMLongPressGestureRecognizer
      */
@@ -187,7 +187,7 @@ public extension UIView {
      拖动手势
      
      - parameter minimumNumberOfTouches: 最少手指个数
-     - parameter handler:                回调
+     - parameter handler:                使用 [unowned self] 或 [weak self] 避免循环引用
      
      - returns: OMPanGestureRecognizer
      */
@@ -206,7 +206,7 @@ public extension UIView {
      
      - parameter direction:               方向
      - parameter numberOfTouchesRequired: 手指个数
-     - parameter handler:                 回调
+     - parameter handler:                 使用 [unowned self] 或 [weak self] 避免循环引用
      
      - returns: OMSwipeGestureRecognizer
      */
@@ -223,7 +223,7 @@ public extension UIView {
     /**
      捏合手势
      
-     - parameter handler: 回调
+     - parameter handler: 使用 [unowned self] 或 [weak self] 避免循环引用
      
      - returns: OMPinchGestureHandler
      */

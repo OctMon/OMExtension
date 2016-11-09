@@ -39,6 +39,7 @@
 		FEF83F5A1DCC1BAA000C9B08 /* OMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF83F3E1DCC1BAA000C9B08 /* OMTextView.swift */; };
 		FEF83F5B1DCC1BAA000C9B08 /* OMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF83F3F1DCC1BAA000C9B08 /* OMView.swift */; };
 		FEF83F5C1DCC1BAA000C9B08 /* OMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF83F401DCC1BAA000C9B08 /* OMViewController.swift */; };
+		FEF949011DD3024700B5F1BC /* OMBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF949001DD3024700B5F1BC /* OMBarButtonItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		FEF83F3E1DCC1BAA000C9B08 /* OMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextView.swift; sourceTree = "<group>"; };
 		FEF83F3F1DCC1BAA000C9B08 /* OMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMView.swift; sourceTree = "<group>"; };
 		FEF83F401DCC1BAA000C9B08 /* OMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMViewController.swift; sourceTree = "<group>"; };
+		FEF949001DD3024700B5F1BC /* OMBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBarButtonItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 			children = (
 				FEF83F321DCC1BAA000C9B08 /* OMAlertController.swift */,
 				FEF83F331DCC1BAA000C9B08 /* OMApplication.swift */,
+				FEF949001DD3024700B5F1BC /* OMBarButtonItem.swift */,
 				FE28E6F41DD2BFC10009A2BE /* OMButton.swift */,
 				FEF83F341DCC1BAA000C9B08 /* OMColor.swift */,
 				FEF83F351DCC1BAA000C9B08 /* OMDevice.swift */,
@@ -327,6 +330,7 @@
 				FEF83F481DCC1BAA000C9B08 /* OMInt.swift in Sources */,
 				FEF83F561DCC1BAA000C9B08 /* OMScreen.swift in Sources */,
 				FEF83F4D1DCC1BAA000C9B08 /* OMURLRequest.swift in Sources */,
+				FEF949011DD3024700B5F1BC /* OMBarButtonItem.swift in Sources */,
 				FEF83F541DCC1BAA000C9B08 /* OMNavigationBar.swift in Sources */,
 				FEF83F4B1DCC1BAA000C9B08 /* OMThread.swift in Sources */,
 				FEF83F4F1DCC1BAA000C9B08 /* OMApplication.swift in Sources */,

@@ -27,30 +27,30 @@
 import Foundation
 import UIKit
 
-private var _activityIndicatorView: Void?
-private var _lastTitle: Void?
+private var _omActivityIndicatorView: Void?
+private var _omLastTitle: Void?
 
 public extension UIButton {
     
-    var activityIndicatorView: UIActivityIndicatorView? {
+    var omActivityIndicatorView: UIActivityIndicatorView? {
         
         get {
-            return objc_getAssociatedObject(self, &_activityIndicatorView) as? UIActivityIndicatorView
+            return objc_getAssociatedObject(self, &_omActivityIndicatorView) as? UIActivityIndicatorView
         }
         
         set {
-            objc_setAssociatedObject(self, &_activityIndicatorView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &_omActivityIndicatorView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
-    private var lastTitle: String? {
+    private var omLastTitle: String? {
         
         get {
-            return objc_getAssociatedObject(self, &_lastTitle) as? String
+            return objc_getAssociatedObject(self, &_omLastTitle) as? String
         }
         
         set {
-            objc_setAssociatedObject(self, &_lastTitle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &_omLastTitle, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
     
@@ -60,14 +60,14 @@ public extension UIButton {
             
             isEnabled = false
             
-            lastTitle = title(for: .disabled)
+            omLastTitle = title(for: .disabled)
             
             setTitle("", for: .disabled)
             
-            activityIndicatorView = UIActivityIndicatorView(frame: bounds)
-            activityIndicatorView?.color = currentTitleColor
+            omActivityIndicatorView = UIActivityIndicatorView(frame: bounds)
+            omActivityIndicatorView?.color = currentTitleColor
             
-            guard let activityIndicatorView = activityIndicatorView else {
+            guard let activityIndicatorView = omActivityIndicatorView else {
                 
                 return
             }
@@ -79,11 +79,11 @@ public extension UIButton {
             
             isEnabled = true
             
-            setTitle(lastTitle, for: .disabled)
+            setTitle(omLastTitle, for: .disabled)
             
-            activityIndicatorView?.stopAnimating()
-            activityIndicatorView?.removeFromSuperview()
-            activityIndicatorView = nil
+            omActivityIndicatorView?.stopAnimating()
+            omActivityIndicatorView?.removeFromSuperview()
+            omActivityIndicatorView = nil
         }
     }
     

@@ -62,6 +62,7 @@
 		FE8F90901D6EADEB0095D74B /* OMExtensionDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F908F1D6EADEB0095D74B /* OMExtensionDemoTests.swift */; };
 		FE8F909B1D6EADEB0095D74B /* OMExtensionDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F909A1D6EADEB0095D74B /* OMExtensionDemoUITests.swift */; };
 		FEBECC861D6F179300632A32 /* OMApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBECC851D6F179300632A32 /* OMApplicationTests.swift */; };
+		FEF949031DD3027100B5F1BC /* OMBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF949021DD3027100B5F1BC /* OMBarButtonItem.swift */; };
 		FEFB4DDA1DC6EBAF0036B709 /* OMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB4DD91DC6EBAF0036B709 /* OMFileManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -144,6 +145,7 @@
 		FE8F909A1D6EADEB0095D74B /* OMExtensionDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMExtensionDemoUITests.swift; sourceTree = "<group>"; };
 		FE8F909C1D6EADEB0095D74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEBECC851D6F179300632A32 /* OMApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMApplicationTests.swift; sourceTree = "<group>"; };
+		FEF949021DD3027100B5F1BC /* OMBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBarButtonItem.swift; sourceTree = "<group>"; };
 		FEFB4DD91DC6EBAF0036B709 /* OMFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -207,6 +209,7 @@
 			children = (
 				FE1658C01D7842CA005FAEB0 /* OMAlertController.swift */,
 				FE1658C11D7842CA005FAEB0 /* OMApplication.swift */,
+				FEF949021DD3027100B5F1BC /* OMBarButtonItem.swift */,
 				FE28E6F61DD2BFCB0009A2BE /* OMButton.swift */,
 				FE1658C21D7842CA005FAEB0 /* OMColor.swift */,
 				FE1658C31D7842CA005FAEB0 /* OMDevice.swift */,
@@ -489,6 +492,7 @@
 				FE639D3E1D8E6CBF00A6CFB7 /* PlaceholderVC.swift in Sources */,
 				FE1658D71D7842CA005FAEB0 /* OMThread.swift in Sources */,
 				FEFB4DDA1DC6EBAF0036B709 /* OMFileManager.swift in Sources */,
+				FEF949031DD3027100B5F1BC /* OMBarButtonItem.swift in Sources */,
 				FE48ACC61D7839770066F52D /* PrefsTVC.swift in Sources */,
 				FE1658E11D7842CA005FAEB0 /* OMScreen.swift in Sources */,
 				FE1658CF1D7842CA005FAEB0 /* OMArray.swift in Sources */,
