@@ -69,6 +69,7 @@ import OMExtension
 
 - [UIAlertController](#uialertcontroller)
 - [UIApplaction](#uiapplaction)
+- [UIBarButtonItem](#uibarbuttonitem)
 - [UIButton](#uibutton)
 - [UIColor](#uicolor)
 - [UIDevice](#uidevice)
@@ -679,14 +680,36 @@ UIApplication.omAuthenticationTouchID("TouchID授权测试", handler: { (result)
 })
 ```
 
+### UIBarButtonItem
+
+点击回调
+
+```swift
+barButtonItem.omClickHandler {
+    // 点击回调
+}
+```
+
 ### UIButton
 
-按钮点击回调
+点击回调
 
 ```swift
 button.omAddTapGestureRecognizer { [weak self] (tapGestureRecognizer) in
     // 回调
 }
+```
+
+开始菊花动画
+
+```swift
+button.omStartActivity()
+```
+
+停止菊花动画
+
+```swift
+button.omStopActivity()
 ```
 
 ### UIColor
