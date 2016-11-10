@@ -61,6 +61,7 @@
 		FE8F909B1D6EADEB0095D74B /* OMExtensionDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F909A1D6EADEB0095D74B /* OMExtensionDemoUITests.swift */; };
 		FEBECC861D6F179300632A32 /* OMApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBECC851D6F179300632A32 /* OMApplicationTests.swift */; };
 		FEDA0A7A1DCD87CD00F00034 /* OMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A791DCD87CD00F00034 /* OMFileManager.swift */; };
+		FEF949171DD40AB200B5F1BC /* OMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF949161DD40AB200B5F1BC /* OMButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		FE8F909C1D6EADEB0095D74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FEBECC851D6F179300632A32 /* OMApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMApplicationTests.swift; sourceTree = "<group>"; };
 		FEDA0A791DCD87CD00F00034 /* OMFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMFileManager.swift; sourceTree = "<group>"; };
+		FEF949161DD40AB200B5F1BC /* OMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 			children = (
 				FE1658C01D7842CA005FAEB0 /* OMAlertController.swift */,
 				FE1658C11D7842CA005FAEB0 /* OMApplication.swift */,
+				FEF949161DD40AB200B5F1BC /* OMButton.swift */,
 				FE1658C21D7842CA005FAEB0 /* OMColor.swift */,
 				FE1658C31D7842CA005FAEB0 /* OMDevice.swift */,
 				FE1658C41D7842CA005FAEB0 /* OMFont.swift */,
@@ -475,6 +478,7 @@
 				FE1658E71D7842CA005FAEB0 /* OMViewController.swift in Sources */,
 				FE1658D91D7842CA005FAEB0 /* OMAlertController.swift in Sources */,
 				FE1658DE1D7842CA005FAEB0 /* OMImage.swift in Sources */,
+				FEF949171DD40AB200B5F1BC /* OMButton.swift in Sources */,
 				FE37D5EF1D701670000F749C /* MainTVC.swift in Sources */,
 				FE1658DA1D7842CA005FAEB0 /* OMApplication.swift in Sources */,
 				FE250B8E1DC32D0500CA0F8D /* OMURLRequest.swift in Sources */,

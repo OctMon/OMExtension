@@ -38,6 +38,7 @@
 		FEDA0AB31DCD87DE00F00034 /* OMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A971DCD87DE00F00034 /* OMTextView.swift */; };
 		FEDA0AB41DCD87DE00F00034 /* OMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A981DCD87DE00F00034 /* OMView.swift */; };
 		FEDA0AB51DCD87DE00F00034 /* OMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDA0A991DCD87DE00F00034 /* OMViewController.swift */; };
+		FEF949151DD40AAC00B5F1BC /* OMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF949141DD40AAC00B5F1BC /* OMButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +86,7 @@
 		FEDA0A971DCD87DE00F00034 /* OMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextView.swift; sourceTree = "<group>"; };
 		FEDA0A981DCD87DE00F00034 /* OMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMView.swift; sourceTree = "<group>"; };
 		FEDA0A991DCD87DE00F00034 /* OMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMViewController.swift; sourceTree = "<group>"; };
+		FEF949141DD40AAC00B5F1BC /* OMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			children = (
 				FEDA0A8B1DCD87DE00F00034 /* OMAlertController.swift */,
 				FEDA0A8C1DCD87DE00F00034 /* OMApplication.swift */,
+				FEF949141DD40AAC00B5F1BC /* OMButton.swift */,
 				FEDA0A8D1DCD87DE00F00034 /* OMColor.swift */,
 				FEDA0A8E1DCD87DE00F00034 /* OMDevice.swift */,
 				FEDA0A8F1DCD87DE00F00034 /* OMFont.swift */,
@@ -308,6 +311,7 @@
 				FEDA0AB21DCD87DE00F00034 /* OMTextField.swift in Sources */,
 				FEDA0AA31DCD87DE00F00034 /* OMString.swift in Sources */,
 				FEDA0A9A1DCD87DE00F00034 /* OMArray.swift in Sources */,
+				FEF949151DD40AAC00B5F1BC /* OMButton.swift in Sources */,
 				FEDA0A9E1DCD87DE00F00034 /* OMDictionary.swift in Sources */,
 				FEDA0AAC1DCD87DE00F00034 /* OMImage.swift in Sources */,
 				FEDA0AA91DCD87DE00F00034 /* OMColor.swift in Sources */,

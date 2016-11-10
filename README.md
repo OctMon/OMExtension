@@ -661,6 +661,17 @@ UIApplication.omAuthenticationTouchID("TouchID授权测试", handler: { (result)
 })
 ```
 
+开始菊花动画
+
+```swift
+button.omStartActivity()
+```
+
+停止菊花动画
+
+```swift
+button.omStopActivity()
+```
 ### UIButton
 
 按钮点击回调
