@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE1EFA871DD43BAF0061926B /* OMExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1EFA861DD43BAF0061926B /* OMExtension.swift */; };
 		FE28E6F51DD2BFC10009A2BE /* OMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE28E6F41DD2BFC10009A2BE /* OMButton.swift */; };
 		FE8F90581D6EADCC0095D74B /* OMExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = FE8F90571D6EADCC0095D74B /* OMExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FE8F905F1D6EADCC0095D74B /* OMExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE8F90541D6EADCC0095D74B /* OMExtension.framework */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE1EFA861DD43BAF0061926B /* OMExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMExtension.swift; sourceTree = "<group>"; };
 		FE28E6F41DD2BFC10009A2BE /* OMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMButton.swift; sourceTree = "<group>"; };
 		FE8F90541D6EADCC0095D74B /* OMExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OMExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8F90571D6EADCC0095D74B /* OMExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OMExtension.h; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 		FEF83F221DCC1BAA000C9B08 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FE1EFA861DD43BAF0061926B /* OMExtension.swift */,
 				FEF83F231DCC1BAA000C9B08 /* Foundation */,
 				FEF83F311DCC1BAA000C9B08 /* UIKit */,
 			);
@@ -323,6 +326,7 @@
 				FEF83F571DCC1BAA000C9B08 /* OMStoryboard.swift in Sources */,
 				FEF83F491DCC1BAA000C9B08 /* OMObject.swift in Sources */,
 				FEF83F431DCC1BAA000C9B08 /* OMData.swift in Sources */,
+				FE1EFA871DD43BAF0061926B /* OMExtension.swift in Sources */,
 				FEF83F4E1DCC1BAA000C9B08 /* OMAlertController.swift in Sources */,
 				FEF83F511DCC1BAA000C9B08 /* OMDevice.swift in Sources */,
 				FEF83F5B1DCC1BAA000C9B08 /* OMView.swift in Sources */,

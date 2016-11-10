@@ -33,6 +33,7 @@
 		FE1658E61D7842CA005FAEB0 /* OMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CD1D7842CA005FAEB0 /* OMView.swift */; };
 		FE1658E71D7842CA005FAEB0 /* OMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CE1D7842CA005FAEB0 /* OMViewController.swift */; };
 		FE1658EB1D784441005FAEB0 /* SystemSoundTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658EA1D784441005FAEB0 /* SystemSoundTVC.swift */; };
+		FE1EFA891DD43BB70061926B /* OMExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1EFA881DD43BB70061926B /* OMExtension.swift */; };
 		FE250B911DC3426A00CA0F8D /* OMData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE250B8F1DC3426A00CA0F8D /* OMData.swift */; };
 		FE250B921DC3426A00CA0F8D /* OMURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE250B901DC3426A00CA0F8D /* OMURLRequest.swift */; };
 		FE28E6F71DD2BFCB0009A2BE /* OMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE28E6F61DD2BFCB0009A2BE /* OMButton.swift */; };
@@ -110,6 +111,7 @@
 		FE1658CD1D7842CA005FAEB0 /* OMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMView.swift; sourceTree = "<group>"; };
 		FE1658CE1D7842CA005FAEB0 /* OMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMViewController.swift; sourceTree = "<group>"; };
 		FE1658EA1D784441005FAEB0 /* SystemSoundTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemSoundTVC.swift; sourceTree = "<group>"; };
+		FE1EFA881DD43BB70061926B /* OMExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMExtension.swift; sourceTree = "<group>"; };
 		FE250B8F1DC3426A00CA0F8D /* OMData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMData.swift; sourceTree = "<group>"; };
 		FE250B901DC3426A00CA0F8D /* OMURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMURLRequest.swift; sourceTree = "<group>"; };
 		FE28E6F61DD2BFCB0009A2BE /* OMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMButton.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		FE1658B31D7842CA005FAEB0 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				FE1EFA881DD43BB70061926B /* OMExtension.swift */,
 				FE1658B41D7842CA005FAEB0 /* Foundation */,
 				FE1658BF1D7842CA005FAEB0 /* UIKit */,
 			);
@@ -487,6 +490,7 @@
 				FE37D5EF1D701670000F749C /* MainTVC.swift in Sources */,
 				FE1658DA1D7842CA005FAEB0 /* OMApplication.swift in Sources */,
 				FE250B921DC3426A00CA0F8D /* OMURLRequest.swift in Sources */,
+				FE1EFA891DD43BB70061926B /* OMExtension.swift in Sources */,
 				FE6351BD1D73E0F700A0A0B1 /* FontTVC.swift in Sources */,
 				FE1658EB1D784441005FAEB0 /* SystemSoundTVC.swift in Sources */,
 				FE639D3E1D8E6CBF00A6CFB7 /* PlaceholderVC.swift in Sources */,
