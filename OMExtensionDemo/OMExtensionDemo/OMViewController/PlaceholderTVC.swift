@@ -33,7 +33,7 @@ class PlaceholderTVC: BaseTVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.omAddTapGestureRecognizer { [unowned self] (_) in
+        view.om.addTapGestureRecognizer { [unowned self] (_) in
             
             self.omIsShowPlaceholder ? self.omHidePlaceholder() : self.showPlaceholder()
         }

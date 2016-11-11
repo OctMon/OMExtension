@@ -438,7 +438,7 @@ public extension UIViewController {
     
     private func updateFrame(_ offset: CGFloat = 0, space: CGFloat = 8, buttonSize: CGSize? = nil) {
         
-        guard let _view = omPlaceholderView else {
+        guard var _view = omPlaceholderView else {
             
             return
         }
@@ -449,7 +449,7 @@ public extension UIViewController {
         }
         
         _view.frame = view.frame
-        _view.omTop = 0
+        _view.om.top = 0
         
         _imageView.center.x = _view.center.x
         _imageView.center.y = _view.center.y
@@ -566,7 +566,7 @@ public extension UIViewController {
         descriptionlLabel(descriptionAttributedString, space: space)
         button(buttonBackgroundImages, titles: buttonTitles, size: buttonSize, space: space)
         
-        omPlaceholderButton?.omAddTapGestureRecognizer(handler: { [weak self] (_) in
+        omPlaceholderButton?.om.addTapGestureRecognizer(handler: { [weak self] (_) in
             
             if let button = self?.omPlaceholderButton {
                 
@@ -575,7 +575,7 @@ public extension UIViewController {
             
             })
         
-        omPlaceholderView?.omAddTapGestureRecognizer(handler: { (_) in
+        omPlaceholderView?.om.addTapGestureRecognizer(handler: { (_) in
             
             placeholderViewTapHandler?()
         })

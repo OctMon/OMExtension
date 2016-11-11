@@ -143,7 +143,7 @@ open class OMPinchGestureRecognizer: UIPinchGestureRecognizer {
 
 // MARK: - AddGestureRecognizer
 
-public extension UIView {
+public extension OMExtension where OMBase: UIView {
     
     /**
      点按手势
@@ -155,11 +155,11 @@ public extension UIView {
      - returns: OMTapGestureRecognizer
      */
     @discardableResult
-    func omAddTapGestureRecognizer(_ numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, handler: @escaping OMTapGestureHandler) -> OMTapGestureRecognizer {
+    func addTapGestureRecognizer(_ numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, handler: @escaping OMTapGestureHandler) -> OMTapGestureRecognizer {
         
-        isUserInteractionEnabled = true
+        base.isUserInteractionEnabled = true
         let tapGestureRecognizer = OMTapGestureRecognizer(numberOfTapsRequired: numberOfTapsRequired, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
-        addGestureRecognizer(tapGestureRecognizer)
+        base.addGestureRecognizer(tapGestureRecognizer)
         
         return tapGestureRecognizer
     }
@@ -174,11 +174,11 @@ public extension UIView {
      - returns: OMLongPressGestureRecognizer
      */
     @discardableResult
-    func omAddLongPressGestureRecognizer(_ numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, handler: @escaping OMLongPressGestureHandler) -> OMLongPressGestureRecognizer {
+    func addLongPressGestureRecognizer(_ numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, handler: @escaping OMLongPressGestureHandler) -> OMLongPressGestureRecognizer {
         
-        isUserInteractionEnabled = true
+        base.isUserInteractionEnabled = true
         let longPressGestureRecognizer = OMLongPressGestureRecognizer(numberOfTapsRequired: numberOfTapsRequired, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
-        addGestureRecognizer(longPressGestureRecognizer)
+        base.addGestureRecognizer(longPressGestureRecognizer)
         
         return longPressGestureRecognizer
     }
@@ -192,11 +192,11 @@ public extension UIView {
      - returns: OMPanGestureRecognizer
      */
     @discardableResult
-    func omAddPanGestureRecognizer(_ minimumNumberOfTouches: Int = 1, handler: @escaping OMPanGestureHandler) -> OMPanGestureRecognizer {
+    func addPanGestureRecognizer(_ minimumNumberOfTouches: Int = 1, handler: @escaping OMPanGestureHandler) -> OMPanGestureRecognizer {
         
-        isUserInteractionEnabled = true
+        base.isUserInteractionEnabled = true
         let longPressGestureRecognizer = OMPanGestureRecognizer(minimumNumberOfTouches: minimumNumberOfTouches, handler: handler)
-        addGestureRecognizer(longPressGestureRecognizer)
+        base.addGestureRecognizer(longPressGestureRecognizer)
         
         return longPressGestureRecognizer
     }
@@ -211,11 +211,11 @@ public extension UIView {
      - returns: OMSwipeGestureRecognizer
      */
     @discardableResult
-    func omAddSwipeGestureRecognizer(_ direction: UISwipeGestureRecognizerDirection, numberOfTouchesRequired: Int = 1, handler: @escaping OMSwipeGestureHandler) -> OMSwipeGestureRecognizer {
+    func addSwipeGestureRecognizer(_ direction: UISwipeGestureRecognizerDirection, numberOfTouchesRequired: Int = 1, handler: @escaping OMSwipeGestureHandler) -> OMSwipeGestureRecognizer {
         
-        isUserInteractionEnabled = true
+        base.isUserInteractionEnabled = true
         let swpieGestureRecognizer = OMSwipeGestureRecognizer(direction: direction, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
-        addGestureRecognizer(swpieGestureRecognizer)
+        base.addGestureRecognizer(swpieGestureRecognizer)
         
         return swpieGestureRecognizer
     }
@@ -228,18 +228,205 @@ public extension UIView {
      - returns: OMPinchGestureHandler
      */
     @discardableResult
-    func omAddPinchGestureRecognizer(_ handler: @escaping OMPinchGestureHandler) -> OMPinchGestureRecognizer {
+    func addPinchGestureRecognizer(_ handler: @escaping OMPinchGestureHandler) -> OMPinchGestureRecognizer {
         
-        isUserInteractionEnabled = true
+        base.isUserInteractionEnabled = true
         let pinchGestureRecognizer = OMPinchGestureRecognizer(handler: handler)
-        addGestureRecognizer(pinchGestureRecognizer)
+        base.addGestureRecognizer(pinchGestureRecognizer)
         
         return pinchGestureRecognizer
+    }
+}
+
+public extension UIView {
+    
+    /**
+     点按手势
+     
+     - parameter numberOfTapsRequired:    手势点击数
+     - parameter numberOfTouchesRequired: 手指个数
+     - parameter handler:                 使用 [unowned self] 或 [weak self] 避免循环引用
+     
+     - returns: OMTapGestureRecognizer
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addTapGestureRecognizer` instead.", renamed: "om.addTapGestureRecognizer")
+    @discardableResult
+    func omAddTapGestureRecognizer(_ numberOfTapsRequired: Int = 1, numberOfTouchesRequired: Int = 1, handler: @escaping OMTapGestureHandler) -> OMTapGestureRecognizer {
+        
+        return om.addTapGestureRecognizer(numberOfTapsRequired, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
+    }
+    
+    /**
+     长按手势
+     
+     - parameter numberOfTapsRequired:    手势点击数
+     - parameter numberOfTouchesRequired: 手指个数
+     - parameter handler:                 使用 [unowned self] 或 [weak self] 避免循环引用
+     
+     - returns: OMLongPressGestureRecognizer
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addLongPressGestureRecognizer` instead.", renamed: "om.addLongPressGestureRecognizer")
+    @discardableResult
+    func omAddLongPressGestureRecognizer(_ numberOfTapsRequired: Int = 0, numberOfTouchesRequired: Int = 1, handler: @escaping OMLongPressGestureHandler) -> OMLongPressGestureRecognizer {
+        
+        return om.addLongPressGestureRecognizer(numberOfTapsRequired, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
+    }
+    
+    /**
+     拖动手势
+     
+     - parameter minimumNumberOfTouches: 最少手指个数
+     - parameter handler:                使用 [unowned self] 或 [weak self] 避免循环引用
+     
+     - returns: OMPanGestureRecognizer
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addPanGestureRecognizer` instead.", renamed: "om.addPanGestureRecognizer")
+    @discardableResult
+    func omAddPanGestureRecognizer(_ minimumNumberOfTouches: Int = 1, handler: @escaping OMPanGestureHandler) -> OMPanGestureRecognizer {
+        
+        return om.addPanGestureRecognizer(minimumNumberOfTouches, handler: handler)
+    }
+    
+    /**
+     轻扫手势，支持四个方向的轻扫，但是不同的方向要分别定义轻扫手势
+     
+     - parameter direction:               方向
+     - parameter numberOfTouchesRequired: 手指个数
+     - parameter handler:                 使用 [unowned self] 或 [weak self] 避免循环引用
+     
+     - returns: OMSwipeGestureRecognizer
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addSwipeGestureRecognizer` instead.", renamed: "om.addSwipeGestureRecognizer")
+    @discardableResult
+    func omAddSwipeGestureRecognizer(_ direction: UISwipeGestureRecognizerDirection, numberOfTouchesRequired: Int = 1, handler: @escaping OMSwipeGestureHandler) -> OMSwipeGestureRecognizer {
+        
+        return om.addSwipeGestureRecognizer(direction, numberOfTouchesRequired: numberOfTouchesRequired, handler: handler)
+    }
+    
+    /**
+     捏合手势
+     
+     - parameter handler: 使用 [unowned self] 或 [weak self] 避免循环引用
+     
+     - returns: OMPinchGestureHandler
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addPinchGestureRecognizer` instead.", renamed: "om.addPinchGestureRecognizer")
+    @discardableResult
+    func omAddPinchGestureRecognizer(_ handler: @escaping OMPinchGestureHandler) -> OMPinchGestureRecognizer {
+        
+        return om.addPinchGestureRecognizer(handler)
     }
 
 }
 
 // MARK: - frame
+
+public extension OMExtension where OMBase: UIView {
+    
+    var x: CGFloat {
+        
+        get { return self.base.frame.origin.x }
+        
+        set(value) { self.base.frame.origin.x = value }
+    }
+    
+    var y: CGFloat {
+        
+        get { return self.base.frame.origin.y }
+        
+        set(value) { self.base.frame.origin.y = value }
+    }
+    
+    var width: CGFloat {
+        
+        get { return self.base.frame.size.width }
+        
+        set(value) { self.base.frame.size.width = value }
+    }
+    
+    var height: CGFloat {
+        
+        get { return self.base.frame.size.height }
+        
+        set(value) { self.base.frame.size.height = value }
+    }
+    
+    var left: CGFloat {
+        
+        get { return self.base.frame.origin.x }
+        
+        set(value) { self.base.frame.origin.x = value }
+    }
+    
+    var right: CGFloat {
+        
+        get { return self.base.frame.origin.x + self.base.frame.size.width }
+        
+        set(value) { self.base.frame.origin.x = value - self.base.frame.size.width }
+    }
+    
+    var top: CGFloat {
+        
+        get { return self.base.frame.origin.y }
+        
+        set(value) { self.base.frame.origin.y = value }
+    }
+    
+    var bottom: CGFloat {
+        
+        get { return self.base.frame.origin.y + self.base.frame.size.height }
+        
+        set(value) { self.base.frame.origin.y = value - self.base.frame.size.height }
+    }
+    
+    var centerX: CGFloat {
+        
+        get { return self.base.center.x }
+        
+        set(value) { self.base.center.x = value }
+    }
+    
+    var centerY: CGFloat {
+        
+        get { return self.base.center.y }
+        
+        set(value) { self.base.center.y = value }
+    }
+    
+    var origin: CGPoint {
+        
+        get { return self.base.frame.origin }
+        
+        set(value) { self.base.frame.origin = value }
+    }
+    
+    var size: CGSize {
+        
+        get { return self.base.frame.size }
+        
+        set(value) { self.base.frame.size = value }
+    }
+    
+    func leftOffset(_ to: CGFloat) {
+        
+        self.base.frame.origin.x = self.base.frame.origin.x + to
+    }
+    
+    func rightOffset(_ to: CGFloat) {
+        
+        self.base.frame.origin.x = self.base.frame.origin.x + self.base.frame.size.width + to
+    }
+    
+    func topOffset(_ to: CGFloat) {
+        
+        self.base.frame.origin.y = self.base.frame.origin.y + to
+    }
+    
+    func bottomOffset(_ to: CGFloat) {
+        
+        self.base.frame.origin.y = self.base.frame.origin.y + self.base.frame.size.height + to
+    }
+}
 
 public extension UIView {
     
@@ -247,6 +434,7 @@ public extension UIView {
         self.init(frame: CGRect(x: x, y: y, width: width, height: height))
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.x` instead.", renamed: "om.x")
     var omX: CGFloat {
         get {
             return self.frame.origin.x
@@ -255,6 +443,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.y` instead.", renamed: "om.y")
     var omY: CGFloat {
         get {
             return self.frame.origin.y
@@ -263,6 +452,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.width` instead.", renamed: "om.width")
     var omW: CGFloat {
         get {
             return self.frame.size.width
@@ -271,6 +461,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.height` instead.", renamed: "om.height")
     var omH: CGFloat {
         get {
             return self.frame.size.height
@@ -279,6 +470,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.left` instead.", renamed: "om.left")
     var omLeft: CGFloat {
         get {
             return self.omX
@@ -287,6 +479,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.right` instead.", renamed: "om.right")
     var omRight: CGFloat {
         get {
             return self.omX + self.omW
@@ -295,6 +488,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.top` instead.", renamed: "om.top")
     var omTop: CGFloat {
         get {
             return self.omY
@@ -303,6 +497,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.bottom` instead.", renamed: "om.bottom")
     var omBottom: CGFloat {
         get {
             return self.omY + self.omH
@@ -311,6 +506,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.centerX` instead.", renamed: "om.centerX")
     var omCenterX: CGFloat {
         get {
             return self.center.x
@@ -319,6 +515,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.centerY` instead.", renamed: "om.centerY")
     var omCenterY: CGFloat {
         get {
             return self.center.y
@@ -327,6 +524,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.origin` instead.", renamed: "om.origin")
     var omOrigin: CGPoint {
         get {
             return self.frame.origin
@@ -335,6 +533,7 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.size` instead.", renamed: "om.size")
     var omSize: CGSize {
         get {
             return self.frame.size
@@ -343,52 +542,105 @@ public extension UIView {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.leftOffset` instead.", renamed: "om.leftOffset")
     @discardableResult
-    func leftOffset(_ offset: CGFloat) -> CGFloat { return self.omX - offset }
+    func omLeftOffset(_ offset: CGFloat) -> CGFloat { return self.omX - offset }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.rightOffset` instead.", renamed: "om.rightOffset")
     @discardableResult
-    func rightOffset(_ offset: CGFloat) -> CGFloat { return self.omRight + offset }
+    func omRightOffset(_ offset: CGFloat) -> CGFloat { return self.omRight + offset }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.topOffset` instead.", renamed: "om.topOffset")
     @discardableResult
-    func topOffset(_ offset: CGFloat) -> CGFloat { return self.omTop - offset }
+    func omTopOffset(_ offset: CGFloat) -> CGFloat { return self.omTop - offset }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.bottomOffset` instead.", renamed: "om.bottomOffset")
     @discardableResult
-    func bottomOffset(_ offset: CGFloat) -> CGFloat { return self.omBottom + offset }
+    func omBottomOffset(_ offset: CGFloat) -> CGFloat { return self.omBottom + offset }
 
 }
 
 // MARK: - layer
 
-public extension UIView {
+fileprivate let lineColor = UIColor(omHex: 0xCCCCCC)
+fileprivate let lineSize: CGFloat = 0.3
+
+public extension OMExtension where OMBase: UIView {
     
-    fileprivate static let lineColor = UIColor(omHex: 0xCCCCCC)
-    fileprivate static let lineSize: CGFloat = 0.3
-    
-    func omRoundSquare() {
+    func addRoundedCorners() {
         
-        clipsToBounds = true
+        base.clipsToBounds = true
         
-        layer.cornerRadius = min(self.frame.size.height, self.frame.size.width) * 0.5
+        base.layer.cornerRadius = min(self.base.frame.size.height, self.base.frame.size.width) * 0.5
     }
     
-    func omRoundCorner(_ corner: UIRectCorner, radius: CGFloat) {
+    func addRoundedCorners(byRoundingCorners corners: UIRectCorner, cornerRadii: CGFloat) {
         
-        let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corner, cornerRadii: CGSize(width: radius, height: radius))
+        let path = UIBezierPath(roundedRect: base.bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: cornerRadii, height: cornerRadii))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
         
-        layer.mask = mask
+        base.layer.mask = mask
     }
     
-    func omAddBorder(x: CGFloat, y: CGFloat, width: CGFloat = 0.3, height: CGFloat = 0.3, color: UIColor = UIColor(omHex: 0xCCCCCC)) {
+    func addBorder(x: CGFloat, y: CGFloat, width: CGFloat = 0.3, height: CGFloat = 0.3, color: UIColor = UIColor(omHex: 0xCCCCCC)) {
         
         let borderLayer = CALayer()
         borderLayer.frame = CGRect(x: x, y: y, width: width, height: height)
         borderLayer.backgroundColor = color.cgColor
         
-        layer.addSublayer(borderLayer)
+        base.layer.addSublayer(borderLayer)
     }
     
+    func addBorder(size: CGFloat = lineSize, color: UIColor = lineColor) {
+        
+        base.layer.borderWidth = size
+        base.layer.borderColor = color.cgColor
+        base.layer.masksToBounds = true
+    }
+    
+    func omAddBorderTop(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
+        
+        addBorder(x: padding.0 + padding.1, y: 0, width: base.frame.width - padding.0 - padding.1, height: size, color: color)
+    }
+    
+    func omAddBorderLeft(size: CGFloat = lineSize, color: UIColor = lineColor) {
+        
+        addBorder(x: 0, y: 0, width: size, height: base.frame.height, color: color)
+    }
+    
+    func omAddBorderBottom(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
+        
+        addBorder(x: padding.0 + padding.1, y: base.frame.height - size, width: base.frame.width - padding.0 - padding.1, height: size, color: color)
+    }
+    
+    func omAddBorderRight(size: CGFloat = lineSize, color: UIColor = lineColor) {
+        
+        addBorder(x: base.frame.width - size, y: 0, width: size, height: base.frame.height, color: color)
+    }
+}
+
+public extension UIView {
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addRoundedCorners` instead.", renamed: "om.addRoundedCorners")
+    func omRoundSquare() {
+        
+        om.addRoundedCorners()
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addRoundedCorners` instead.", renamed: "om.addRoundedCorners")
+    func omRoundCorner(_ corner: UIRectCorner, radius: CGFloat) {
+        
+        om.addRoundedCorners(byRoundingCorners: corner, cornerRadii: radius)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
+    func omAddBorder(x: CGFloat, y: CGFloat, width: CGFloat = 0.3, height: CGFloat = 0.3, color: UIColor = UIColor(omHex: 0xCCCCCC)) {
+        
+        om.addBorder(x: x, y: y, width: width, height: height, color: color)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
     func omAddBorder(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
         layer.borderWidth = size
@@ -396,83 +648,120 @@ public extension UIView {
         layer.masksToBounds = true
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
     func omAddBorderTop(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
         
-        omAddBorder(x: padding.0 + padding.1, y: 0, width: frame.width - padding.0 - padding.1, height: size, color: color)
+        om.addBorder(x: padding.0 + padding.1, y: 0, width: frame.width - padding.0 - padding.1, height: size, color: color)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
     func omAddBorderLeft(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
-        omAddBorder(x: 0, y: 0, width: size, height: frame.height, color: color)
+        om.addBorder(x: 0, y: 0, width: size, height: frame.height, color: color)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
     func omAddBorderBottom(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
         
-        omAddBorder(x: padding.0 + padding.1, y: frame.height - size, width: frame.width - padding.0 - padding.1, height: size, color: color)
+        om.addBorder(x: padding.0 + padding.1, y: frame.height - size, width: frame.width - padding.0 - padding.1, height: size, color: color)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
     func omAddBorderRight(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
-        omAddBorder(x: frame.width - size, y: 0, width: size, height: frame.height, color: color)
+        om.addBorder(x: frame.width - size, y: 0, width: size, height: frame.height, color: color)
     }
 }
 
 // MARK: - transform
 
-public extension UIView {
+public extension OMExtension where OMBase: UIView {
     
-    func omSetRotationX(_ x: CGFloat) {
+    func transform3DRotationX(_ angle: CGFloat) {
+        
+        var transform = CATransform3DIdentity
+        transform.m34 = 1.0 / -1000.0
+        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * angle) / 180.0, 1.0, 0.0, 0.0)
+        base.layer.transform = transform
+    }
+    
+    func transform3DRotationY(_ angle: CGFloat) {
+        
+        var transform = CATransform3DIdentity
+        transform.m34 = 1.0 / -1000.0
+        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * angle) / 180.0, 0.0, 1.0, 0.0)
+        base.layer.transform = transform
+    }
+    
+    func transform3DRotationZ(_ angle: CGFloat) {
+        
+        var transform = CATransform3DIdentity
+        transform.m34 = 1.0 / -1000.0
+        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * angle) / 180.0, 0.0, 0.0, 1.0)
+        base.layer.transform = transform
+    }
+    
+    func transform3DRotation(x: CGFloat, y: CGFloat, z: CGFloat) {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
         transform = CATransform3DRotate(transform, (CGFloat (M_PI) * x) / 180.0, 1.0, 0.0, 0.0)
-        layer.transform = transform
-    }
-    
-    func omSetRotationY(_ y: CGFloat) {
-        
-        var transform = CATransform3DIdentity
-        transform.m34 = 1.0 / -1000.0
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * y) / 180.0, 0.0, 1.0, 0.0)
-        layer.transform = transform
-    }
-    
-    func omSetRotationZ(_ z: CGFloat) {
-        
-        var transform = CATransform3DIdentity
-        transform.m34 = 1.0 / -1000.0
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * z) / 180.0, 0.0, 0.0, 1.0)
-        layer.transform = transform
-    }
-    
-    func omSetRotation(x: CGFloat, y: CGFloat, z: CGFloat) {
-        
-        var transform = CATransform3DIdentity
-        transform.m34 = 1.0 / -1000.0
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * x) / 180.0, 1.0, 0.0, 0.0)
         transform = CATransform3DRotate(transform, (CGFloat (M_PI) * y) / 180.0, 0.0, 1.0, 0.0)
         transform = CATransform3DRotate(transform, (CGFloat (M_PI) * z) / 180.0, 0.0, 0.0, 1.0)
-        layer.transform = transform
+        base.layer.transform = transform
     }
     
-    func omSetScale(x: CGFloat, y: CGFloat) {
+    func transform3DScale(x: CGFloat, y: CGFloat) {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
         transform = CATransform3DScale(transform, x, y, 1)
-        layer.transform = transform
+        base.layer.transform = transform
+    }
+}
+
+public extension UIView {
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.transform3DRotationX` instead.", renamed: "om.transform3DRotationX")
+    func omSetRotationX(_ x: CGFloat) {
+        
+        om.transform3DRotationX(x)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.transform3DRotationY` instead.", renamed: "om.transform3DRotationY")
+    func omSetRotationY(_ y: CGFloat) {
+        
+        om.transform3DRotationY(y)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.transform3DRotationZ` instead.", renamed: "om.transform3DRotationZ")
+    func omSetRotationZ(_ z: CGFloat) {
+        
+        om.transform3DRotationZ(z)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.transform3DRotation` instead.", renamed: "om.transform3DRotation")
+    func omSetRotation(x: CGFloat, y: CGFloat, z: CGFloat) {
+        
+        om.transform3DRotation(x: x, y: y, z: z)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.transform3DScale` instead.", renamed: "om.transform3DScale")
+    func omSetScale(x: CGFloat, y: CGFloat) {
+        
+        om.transform3DScale(x: x, y: y)
     }
 
 }
 
 // MARK: - animation
 
-public extension UIView {
+public extension OMExtension where OMBase: UIView {
     
     /**
      摇一摇动画
      */
-    func omShakeAnimation() {
+    func animationShake() {
         
         let shake: CAKeyframeAnimation = CAKeyframeAnimation(keyPath: "transform")
         shake.values = [NSValue(caTransform3D: CATransform3DMakeTranslation(-5.0, 0.0, 0.0)), NSValue(caTransform3D: CATransform3DMakeTranslation(5.0, 0.0, 0.0))]
@@ -480,7 +769,7 @@ public extension UIView {
         shake.repeatCount = 2.0
         shake.duration = 0.07
         
-        layer.add(shake, forKey:"shake")
+        base.layer.add(shake, forKey:"shake")
     }
     
     /**
@@ -488,41 +777,41 @@ public extension UIView {
      
      - parameter duration: 时间
      */
-    func omPulseAnimationWithDuration(_ duration: CGFloat) {
+    func animationPulse(_ duration: CGFloat) {
         
         UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
-            self.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+            self.base.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }, completion: { (finished) -> Void in
             if finished {
                 UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
-                    self.transform = CGAffineTransform(scaleX: 0.96, y: 0.96)
+                    self.base.transform = CGAffineTransform(scaleX: 0.96, y: 0.96)
                 }, completion: { (finished: Bool) -> Void in
                     if finished {
                         UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
-                            self.transform = CGAffineTransform(scaleX: 1.03, y: 1.03)
+                            self.base.transform = CGAffineTransform(scaleX: 1.03, y: 1.03)
                         }, completion: { (finished: Bool) -> Void in
                             if finished {
                                 UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
-                                    self.transform = CGAffineTransform(scaleX: 0.985, y: 0.985)
+                                    self.base.transform = CGAffineTransform(scaleX: 0.985, y: 0.985)
                                 }, completion: { (finished: Bool) -> Void in
                                     if finished {
                                         UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
-                                            self.transform = CGAffineTransform(scaleX: 1.007, y: 1.007)
+                                            self.base.transform = CGAffineTransform(scaleX: 1.007, y: 1.007)
                                         }, completion: { (finished: Bool) -> Void in
                                             if finished {
                                                 UIView.animate(withDuration: TimeInterval(duration / 6), animations: { () -> Void in
-                                                    self.transform = CGAffineTransform(scaleX: 1, y: 1)
+                                                    self.base.transform = CGAffineTransform(scaleX: 1, y: 1)
                                                 })
                                             }
-                                        }) 
+                                        })
                                     }
-                                }) 
+                                })
                             }
-                        }) 
+                        })
                     }
-                }) 
+                })
             }
-        }) 
+        })
     }
     
     /**
@@ -530,7 +819,7 @@ public extension UIView {
      
      - parameter duration: 时间
      */
-    func omHeartbeatAnimationWithDuration(_ duration: CGFloat) {
+    func animationHeartbeat(_ duration: CGFloat) {
         
         let maxSize: CGFloat = 1.4, durationPerBeat: CGFloat = 0.5
         
@@ -552,25 +841,60 @@ public extension UIView {
         animation.duration = TimeInterval(durationPerBeat)
         animation.repeatCount = Float(duration / durationPerBeat)
         
-        layer.add(animation, forKey: "heartbeat")
+        base.layer.add(animation, forKey: "heartbeat")
+    }
+    
+}
+
+public extension UIView {
+    
+    /**
+     摇一摇动画
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.animationShake` instead.", renamed: "om.animationShake")
+    func omShakeAnimation() {
+        
+        om.animationShake()
+    }
+    
+    /**
+     脉冲动画
+     
+     - parameter duration: 时间
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.animationPulse` instead.", renamed: "om.animationPulse")
+    func omPulseAnimationWithDuration(_ duration: CGFloat) {
+        
+        om.animationPulse(duration)
+    }
+    
+    /**
+     心跳动画
+     
+     - parameter duration: 时间
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.animationHeartbeat` instead.", renamed: "om.animationHeartbeat")
+    func omHeartbeatAnimationWithDuration(_ duration: CGFloat) {
+        
+        om.animationHeartbeat(duration)
     }
 
 }
 
 // MARK: - Screenshot
 
-public extension UIView {
+public extension OMExtension where OMBase: UIView {
     
     /**
      截图
      
      - returns: UIImage
      */
-    func omScreenshotToImage() -> UIImage {
+    func getScreenshot() -> UIImage {
         
-        UIGraphicsBeginImageContextWithOptions(bounds.size, false, UIScreen.main.scale)
+        UIGraphicsBeginImageContextWithOptions(base.bounds.size, false, UIScreen.main.scale)
         
-        drawHierarchy(in: bounds, afterScreenUpdates: true)
+        base.drawHierarchy(in: base.bounds, afterScreenUpdates: true)
         
         var image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -587,12 +911,38 @@ public extension UIView {
      - returns: UIImage
      */
     @discardableResult
-    func omScreenshotToSavedPhotosAlbum() -> UIImage {
+    func savedScreenshotPhotosAlbum() -> UIImage {
         
-        let image: UIImage = omScreenshotToImage()
+        let image: UIImage = getScreenshot()
         UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
         
         return image
+    }
+}
+
+public extension UIView {
+    
+    /**
+     截图
+     
+     - returns: UIImage
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.getScreenshot` instead.", renamed: "om.getScreenshot")
+    func omScreenshotToImage() -> UIImage {
+        
+        return om.getScreenshot()
+    }
+    
+    /**
+     截图并保存到相册
+     
+     - returns: UIImage
+     */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.savedScreenshotPhotosAlbum` instead.", renamed: "om.savedScreenshotPhotosAlbum")
+    @discardableResult
+    func omScreenshotToSavedPhotosAlbum() -> UIImage {
+        
+        return om.savedScreenshotPhotosAlbum()
     }
 
 }
