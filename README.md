@@ -892,90 +892,91 @@ textView.omAddDoneButton(.Default, title: "完成")
 
 ### UIView
 
-手势回调
+gestureRecognizer
 
 ```swift
-imageView.omAddTapGestureRecognizer { [weak self] (tapGestureRecognizer) in
-    // 点按手势回调
-}    
-imageView.omAddLongPressGestureRecognizer { [weak self] (longPressGestureRecognizer) in
-    // 长按手势回调
+imageView.om.addTapGestureRecognizer { [unowned self] (tapGestureRecognizer) in
+    
+    print(self.omClassName + "点按手势回调")
 }
-imageView.omAddPinchGestureRecognizer { [weak self] (pinchGestureRecognizer) in
-    // 捏合手势回调
+imageView.om.addLongPressGestureRecognizer { [unowned self] (longPressGestureRecognizer) in
+    
+    print(self.omClassName + "长按手势回调")
 }
-imageView.omAddSwipeGestureRecognizer(.Left) { [weak self] (swipeGestureRecognizer) in
-    // 轻扫手势回调
+imageView.om.addPinchGestureRecognizer { [unowned self] (pinchGestureRecognizer) in
+    
+    print(self.omClassName + "捏合手势回调")
 }
-imageView.omAddPanGestureRecognizer { [weak self] (panGestureRecognizer) in
-    // 拖动手势回调
+imageView.om.addSwipeGestureRecognizer(.left) { [unowned self] (swipeGestureRecognizer) in
+    
+    print(self.omClassName + "轻扫手势回调")
+}
+imageView.om.addPanGestureRecognizer { [unowned self] (panGestureRecognizer) in
+    
+    print(self.omClassName + "拖动手势回调")
 }
 ```
 
-
-
-
+frame
 
 ```swift
-let view = UIView(omX: 15, y: 30, width: 100, height: 150)
-print(view.omX) // 15.0
-print(view.omY) // 30.0
-print(view.omW) // 100.0
-print(view.omH) // 150.0
-view.omX = 50
-print(view.omX) // 50.0
+var view = UIView(omX: 15, y: 30, width: 100, height: 150)
+print(view.om.x) // 15.0
+print(view.om.y) // 30.0
+print(view.om.width) // 100.0
+print(view.om.height) // 150.0
+view.om.x = 50
+print(view.om.x) // 50.0
 ```
-
-
 
 ```swift
 let view = UIView(omX: 10, y: 20, width: 100, height: 200)
-print(view.omTop) // 20.0
-print(view.omBottom) // 220.0 (omY + omH)
-print(view.omLeft) // 10.0
-print(view.omRight) // 110.0 (omX + omW)
-print(view.omCenterX) // 60.0
-print(view.omCenterY) // 120.0
-print(view.omOrigin) // (10.0, 20.0)
-print(view.omSize) // (100.0, 200.0)
+print(view.om.top) // 20.0
+print(view.om.bottom) // 220.0
+print(view.om.left) // 10.0
+print(view.om.right) // 110.0
+print(view.om.centerX) // 60.0
+print(view.om.centerY) // 120.0
+print(view.om.origin) // (10.0, 20.0)
+print(view.om.size) // (100.0, 200.0)
 ```
-
-
 
 ```swift
 let view1 = UIView(omX: 0, y: 0, width: 100, height: 100)
-let view2 = UIView(omX: view1.rightOffset(15), y: view1.bottomOffset(30), width: 100, height: 100)
+let view2 = UIView(omX: view1.om.rightOffset(15.0), y: view1.om.bottomOffset(30), width: 100, height: 100)
 print(view2.frame) // (115.0, 130.0, 100.0, 100.0)
 ```
 
-
-
-```swift
-view.omAddBorder()
-view.omAddBorderBottom(size: 0.3, color: UIColor(omHex: 0xCCCCCC), padding: (0, 0))
-view.omRoundSquare()
-view.omRoundCorner(.AllCorners, radius: 10)
-
-view.omSetScale(x: 1.5, y: 1.5)
-view.omSetRotationX(10)
-```
-
-
+border
 
 ```swift
-view.omShakeAnimation() // 摇一摇动画
-view.omHeartbeatAnimationWithDuration(1) // 心跳动画
-view.omPulseAnimationWithDuration(1) // 脉冲动画
+view.om.addBorder()
+view.om.addBorderBottom(size: 0.3, color: UIColor(omHex: 0xCCCCCC), padding: (0, 0))
+view.om.addRoundedCorners()
+view.om.addRoundedCorners(byRoundingCorners: .allCorners, cornerRadii: 10)
 ```
 
-
+transform
 
 ```swift
-view.omScreenshotToSavedPhotosAlbum() // 截图并保存到相册
-view.omScreenshotToImage() // 截图
+view.om.transform3DScale(x: 0.8, y: 0.8)
+view.om.transform3DRotationX(30)
 ```
 
+animation
 
+```swift
+view.om.animationShake() // 摇一摇动画
+view.om.animationHeartbeat(1) // 心跳动画
+view.om.animationPulse(1) // 脉冲动画
+```
+
+screenshot
+
+```swift
+view.om.savedScreenshotPhotosAlbum() // 截图并保存到相册
+view.om.getScreenshot() // 截图
+```
 
 ### UIViewController
 

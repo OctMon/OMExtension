@@ -141,7 +141,7 @@ open class OMPinchGestureRecognizer: UIPinchGestureRecognizer {
 
 }
 
-// MARK: - AddGestureRecognizer
+// MARK: - gestureRecognizer
 
 public extension OMExtension where OMBase: UIView {
     
@@ -407,24 +407,32 @@ public extension OMExtension where OMBase: UIView {
         set(value) { self.base.frame.size = value }
     }
     
-    func leftOffset(_ to: CGFloat) {
+    func leftOffset(_ to: CGFloat) -> CGFloat {
         
         self.base.frame.origin.x = self.base.frame.origin.x + to
+        
+        return x
     }
     
-    func rightOffset(_ to: CGFloat) {
+    func rightOffset(_ to: CGFloat) -> CGFloat {
         
         self.base.frame.origin.x = self.base.frame.origin.x + self.base.frame.size.width + to
+        
+        return x
     }
     
-    func topOffset(_ to: CGFloat) {
+    func topOffset(_ to: CGFloat) -> CGFloat {
         
         self.base.frame.origin.y = self.base.frame.origin.y + to
+        
+        return y
     }
     
-    func bottomOffset(_ to: CGFloat) {
+    func bottomOffset(_ to: CGFloat) -> CGFloat {
         
         self.base.frame.origin.y = self.base.frame.origin.y + self.base.frame.size.height + to
+        
+        return y
     }
 }
 
@@ -560,7 +568,7 @@ public extension UIView {
 
 }
 
-// MARK: - layer
+// MARK: - border
 
 fileprivate let lineColor = UIColor(omHex: 0xCCCCCC)
 fileprivate let lineSize: CGFloat = 0.3
@@ -599,22 +607,22 @@ public extension OMExtension where OMBase: UIView {
         base.layer.masksToBounds = true
     }
     
-    func omAddBorderTop(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
+    func addBorderTop(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
         
         addBorder(x: padding.0 + padding.1, y: 0, width: base.frame.width - padding.0 - padding.1, height: size, color: color)
     }
     
-    func omAddBorderLeft(size: CGFloat = lineSize, color: UIColor = lineColor) {
+    func addBorderLeft(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
         addBorder(x: 0, y: 0, width: size, height: base.frame.height, color: color)
     }
     
-    func omAddBorderBottom(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
+    func addBorderBottom(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
         
         addBorder(x: padding.0 + padding.1, y: base.frame.height - size, width: base.frame.width - padding.0 - padding.1, height: size, color: color)
     }
     
-    func omAddBorderRight(size: CGFloat = lineSize, color: UIColor = lineColor) {
+    func addBorderRight(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
         addBorder(x: base.frame.width - size, y: 0, width: size, height: base.frame.height, color: color)
     }
@@ -648,25 +656,25 @@ public extension UIView {
         layer.masksToBounds = true
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorderTop` instead.", renamed: "om.addBorderTop")
     func omAddBorderTop(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
         
         om.addBorder(x: padding.0 + padding.1, y: 0, width: frame.width - padding.0 - padding.1, height: size, color: color)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorderLeft` instead.", renamed: "om.addBorderLeft")
     func omAddBorderLeft(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
         om.addBorder(x: 0, y: 0, width: size, height: frame.height, color: color)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorderBottom` instead.", renamed: "om.addBorderBottom")
     func omAddBorderBottom(size: CGFloat = lineSize, color: UIColor = lineColor, padding: (left: CGFloat , right: CGFloat) = (0, 0)) {
         
         om.addBorder(x: padding.0 + padding.1, y: frame.height - size, width: frame.width - padding.0 - padding.1, height: size, color: color)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorder` instead.", renamed: "om.addBorder")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `view.om.addBorderRight` instead.", renamed: "om.addBorderRight")
     func omAddBorderRight(size: CGFloat = lineSize, color: UIColor = lineColor) {
         
         om.addBorder(x: frame.width - size, y: 0, width: size, height: frame.height, color: color)
@@ -881,7 +889,7 @@ public extension UIView {
 
 }
 
-// MARK: - Screenshot
+// MARK: - screenshot
 
 public extension OMExtension where OMBase: UIView {
     
