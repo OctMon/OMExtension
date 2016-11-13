@@ -855,25 +855,27 @@ tableView.omReloadAnimationWithWave()
 限制长度
 
 ```swift
-textField.omSetLimit(11)
+textField.om.addTextLimit(length: 3) {
+    print("超出限制")
+}
 ```
 
 键盘右上角添加完成按钮收回键盘
 
 ```swift
-textField.omAddDoneButton(.Default, title: "完成")
+textField.om.addDoneButton(barStyle: .default, title: "完成")
 ```
 
 文本添加左边距
 
 ```swift
-textField.omAddLeftPadding(15)
+textField.om.addLeftSpace(padding: 50)
 ```
 
 文本添加图标
 
 ```swift
-textField.omAddLeftIcon(UIImage(named: "icon")!)
+textField.om.addLeftIcon(image: UIImage(named: "icon")!)
 ```
 
 ### UITextView
@@ -881,13 +883,13 @@ textField.omAddLeftIcon(UIImage(named: "icon")!)
 限制长度
 
 ```swift
-textView.omSetLimit(11)
+textView.om.addTextLimit(length: 11)
 ```
 
 键盘右上角添加完成按钮收回键盘
 
 ```swift
-textView.omAddDoneButton(.Default, title: "完成")
+textView.om.addDoneButton(barStyle: .default, title: "完成")
 ```
 
 ### UIView
