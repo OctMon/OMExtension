@@ -808,13 +808,13 @@ UIImage.omLaunchImage()
 隐藏导航阴影并透明
 
 ```swift
-omNavigationBar?.omTransparent(true, translucent: false)
+omNavigationBar?.om.setTransparent(transparent: true)
 ```
 
 隐藏导航阴影不透明
 
 ```swift
-omNavigationBar?.omTransparent(true)
+omNavigationBar?.om.setTransparent(transparent: true, translucent: false)
 ```
 
 ### UIScreen

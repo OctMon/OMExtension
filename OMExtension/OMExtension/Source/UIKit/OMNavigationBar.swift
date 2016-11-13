@@ -27,22 +27,31 @@
 import Foundation
 import UIKit
 
-public extension UINavigationBar {
+public extension OMExtension where OMBase: UINavigationBar {
     
-    public func omTransparent(_ transparent: Bool, translucent: Bool = true) {
+    func setTransparent(transparent: Bool, translucent: Bool = true) {
         
         if transparent {
             
-            self.setBackgroundImage(UIImage(), for: .default)
-            self.shadowImage = UIImage()
-            self.isTranslucent = translucent
+            self.base.setBackgroundImage(UIImage(), for: .default)
+            self.base.shadowImage = UIImage()
+            self.base.isTranslucent = translucent
             
         } else {
             
-            self.setBackgroundImage(nil, for: .default)
-            self.shadowImage = nil
-            self.isTranslucent = translucent
+            self.base.setBackgroundImage(nil, for: .default)
+            self.base.shadowImage = nil
+            self.base.isTranslucent = translucent
         }
+    }
+}
+
+public extension UINavigationBar {
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `navigationBar.om.setTransparent` instead.", renamed: "om.setTransparent")
+    public func omTransparent(_ transparent: Bool, translucent: Bool = true) {
+        
+        om.setTransparent(transparent: translucent, translucent: transparent)
     }
     
 }
