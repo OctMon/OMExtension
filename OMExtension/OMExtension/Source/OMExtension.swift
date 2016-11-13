@@ -37,3 +37,4 @@ public struct OMExtension<OMBase> {
 }
 
 extension UIView : OMCompatible { }
+extension UIImage : OMCompatible { }

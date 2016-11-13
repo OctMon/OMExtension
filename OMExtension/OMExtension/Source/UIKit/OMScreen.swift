@@ -29,7 +29,7 @@ import UIKit
 
 public extension UIScreen {
     
-    struct om {
+    struct OM {
         
         public static var isPortrait: Bool {
             
@@ -60,30 +60,30 @@ public extension UIScreen {
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.isPortrait` instead.", renamed: "om.isPortrait")
     static var omIsPortrait: Bool {
         
-        return om.isPortrait
+        return OM.isPortrait
     }
     
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.width` instead.", renamed: "om.width")
     static var omGetWidth: CGFloat {
         
-        return om.width
+        return OM.width
     }
     
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.height` instead.", renamed: "om.height")
     static var omGetHeight: CGFloat {
         
-        return om.height
+        return OM.height
     }
     
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.size` instead.", renamed: "om.size")
     static var omGetSize: CGSize {
         
-        return om.size
+        return OM.size
     }
     
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.bounds` instead.", renamed: "om.bounds")
     static var omGetBounds: CGRect {
         
-        return om.bounds
+        return OM.bounds
     }
 }

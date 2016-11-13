@@ -27,6 +27,82 @@
 import Foundation
 import UIKit
 
+public extension OMExtension where OMBase: UIImage {
+    
+    func resize(size: CGSize, quality: CGInterpolationQuality = .none) -> UIImage {
+        
+        let resizedImage: UIImage
+        
+        UIGraphicsBeginImageContext(CGSize(width: size.width, height: size.height))
+        let context = UIGraphicsGetCurrentContext()
+        context!.interpolationQuality = quality
+        base.draw(in: CGRect(origin: CGPoint.zero, size: size))
+        resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        return resizedImage
+    }
+    
+    func setTintColor(tintColor: UIColor) -> UIImage {
+        
+        UIGraphicsBeginImageContextWithOptions(base.size, false, base.scale)
+        
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: 0, y: base.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+        context?.setBlendMode(CGBlendMode.normal)
+        
+        let rect = CGRect(x: 0, y: 0, width: base.size.width, height: base.size.height) as CGRect
+        context?.clip(to: rect, mask: base.cgImage!)
+        tintColor.setFill()
+        context?.fill(rect)
+        
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+}
+
+public extension UIImage {
+    
+    struct OM {
+        
+        static var launchImage: UIImage? {
+            
+            if let imagesDict = Bundle.main.infoDictionary!["UILaunchImages"] as? [[String: String]] {
+                
+                for dict in imagesDict {
+                    
+                    if UIScreen.OM.size.equalTo(CGSizeFromString(dict["UILaunchImageSize"]!)) {
+                        
+                        return UIImage(named: dict["UILaunchImageName"]!)
+                    }
+                }
+                
+                let launchImageName = (Bundle.main.infoDictionary!["UILaunchImageFile"] ?? "") as? String
+                
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    
+                    if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+                        
+                        return UIImage(named: launchImageName! + "-Portrait")
+                    }
+                    
+                    if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+                        
+                        return UIImage(named: launchImageName! + "-Landscape")
+                    }
+                }
+                
+                return UIImage(named: launchImageName ?? "")
+            }
+            
+            return nil
+        }
+    }
+}
+
 public extension UIImage {
     
     convenience init?(omQRcode: String) {
@@ -71,71 +147,22 @@ public extension UIImage {
         self.init(cgImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `image.om.resize` instead.", renamed: "om.resize")
     func omResize(_ size: CGSize, quality: CGInterpolationQuality = .none) -> UIImage {
         
-        let resizedImage: UIImage
-        
-        UIGraphicsBeginImageContext(CGSize(width: size.width, height: size.height))
-        let context = UIGraphicsGetCurrentContext()
-        context!.interpolationQuality = quality
-        draw(in: CGRect(origin: CGPoint.zero, size: size))
-        resizedImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        
-        return resizedImage
+        return om.resize(size: size, quality: quality)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `image.om.setTintColor` instead.", renamed: "om.setTintColor")
     func omTintColor(_ tintColor: UIColor) -> UIImage {
         
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        
-        let context = UIGraphicsGetCurrentContext()
-        context?.translateBy(x: 0, y: size.height)
-        context?.scaleBy(x: 1.0, y: -1.0)
-        context?.setBlendMode(CGBlendMode.normal)
-        
-        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height) as CGRect
-        context?.clip(to: rect, mask: cgImage!)
-        tintColor.setFill()
-        context?.fill(rect)
-        
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()! as UIImage
-        UIGraphicsEndImageContext()
-        
-        return newImage
+        return om.setTintColor(tintColor: tintColor)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIImage.OM.launchImage` instead.", renamed: "OM.launchImage")
     static func omLaunchImage() -> UIImage? {
         
-        if let imagesDict = Bundle.main.infoDictionary!["UILaunchImages"] as? [[String: String]] {
-            
-            for dict in imagesDict {
-                
-                if UIScreen.om.size.equalTo(CGSizeFromString(dict["UILaunchImageSize"]!)) {
-                    
-                    return UIImage(named: dict["UILaunchImageName"]!)
-                }
-            }
-            
-            let launchImageName = (Bundle.main.infoDictionary!["UILaunchImageFile"] ?? "") as? String
-            
-            if UIDevice.current.userInterfaceIdiom == .pad {
-                
-                if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
-                    
-                    return UIImage(named: launchImageName! + "-Portrait")
-                }
-                
-                if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
-                    
-                    return UIImage(named: launchImageName! + "-Landscape")
-                }
-            }
-            
-            return UIImage(named: launchImageName ?? "")
-        }
-        
-        return nil
+        return OM.launchImage
     }
     
 }

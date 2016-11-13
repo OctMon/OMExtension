@@ -503,9 +503,9 @@ public extension UIViewController {
             
         } else {
             
-            let size = _button.sizeThatFits(CGSize(width: UIScreen.om.width - 30, height: UIScreen.om.height))
+            let size = _button.sizeThatFits(CGSize(width: UIScreen.OM.width - 30, height: UIScreen.OM.height))
             
-            _button.frame.size = CGSize(width: min(size.width + 30, UIScreen.om.width - 30), height: max(size.height, 30))
+            _button.frame.size = CGSize(width: min(size.width + 30, UIScreen.OM.width - 30), height: max(size.height, 30))
         }
         
         _button.frame.origin.y = _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + space

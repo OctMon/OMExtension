@@ -778,8 +778,9 @@ print(UIFont.fontNamesForFamilyName(OMFamilyFontName.arial.rawValue)) // ["Arial
 创建二维码
 
 ```swift
-print(UIImage(omColor: UIColor.redColor(), frame: CGRect(x: 0, y: 0, width: 100, height: 100))) // Optional(<UIImage: 0x7fcadb5ac110>, {100, 100})
-print(UIImage(omBarcode: "123456789")) // Optional(<UIImage: 0x7ff25064c480>, {115, 46})
+print(UIImage(omColor: UIColor.red, frame: CGRect(x: 0, y: 0, width: 100, height: 100)) ?? "") // Optional(<UIImage: 0x7fcadb5ac110>, {100, 100})
+
+print(UIImage(omBarcode: "123456789") ?? "") // Optional(<UIImage: 0x7ff25064c480>, {115, 46})
 ```
 
 创建条形码
@@ -792,15 +793,16 @@ print(UIImage(omQRcode: "https://github.com/OctMon")) // Optional(<UIImage: 0x7f
 
 ```swift
 var image = UIImage(omQRcode: "https://github.com/OctMon")
-print(image)
-image =  image?.omResize(CGSize(width: 300, height: 300))
-print(image)
+print(image ?? "")
+
+image =  image?.om.resize(size: CGSize(width: 300, height: 300))
+print(image ?? "")
 ```
 
 获取应用启动图
 
 ```swift
-UIImage.omLaunchImage()
+UIImage.OM.launchImage
 ```
 
 ### UINavigationBar
@@ -822,16 +824,16 @@ omNavigationBar?.om.setTransparent(transparent: true, translucent: false)
 竖屏判断
 
 ```swift
-print(UIScreen.om.isPortrait) // true
+print(UIScreen.OM.isPortrait) // true
 ```
 
 frame
 
 ```swift
-print(UIScreen.om.bounds) // (0.0, 0.0, 414.0, 736.0)
-print(UIScreen.om.size) // (414.0, 736.0)
-print(UIScreen.om.width) // 414.0
-print(UIScreen.om.height) // 736.0
+print(UIScreen.OM.bounds) // (0.0, 0.0, 414.0, 736.0)
+print(UIScreen.OM.size) // (414.0, 736.0)
+print(UIScreen.OM.width) // 414.0
+print(UIScreen.OM.height) // 736.0
 ```
 
 ### UIStoryboard
