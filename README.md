@@ -567,7 +567,7 @@ print(frame.omX) // 50.0
 ```swift
 let alertController = UIAlertController(title: "title", message: "message", preferredStyle: .alert)
 alertController.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-alertController.omShow()
+alertController.om.show()
 ```
 
 ### UIApplaction

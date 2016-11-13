@@ -30,7 +30,7 @@ class JumpOtherTVC: BaseTVC {
         
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-        alert.omShow()
+        alert.om.show()
     }
     
     func canOpenWeixin() {

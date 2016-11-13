@@ -28,13 +28,22 @@
 import Foundation
 import UIKit
 
+public extension OMExtension where OMBase: UIAlertController {
+    
+    func show(completion: (()->())? = nil) {
+        
+        Thread.omRunInMainThread(delay: 0.1) {
+            UIApplication.shared.keyWindow?.rootViewController?.present(self.base, animated: true, completion: completion)
+        }
+    }
+}
+
 public extension UIAlertController {
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `alertController.om.show` instead.", renamed: "om.show")
     func omShow(_ completion: (()->())? = nil) {
         
-        Thread.omRunInMainThread(delay: 0.1) { 
-            UIApplication.shared.keyWindow?.rootViewController?.present(self, animated: true, completion: completion)
-        }
+        om.show(completion: completion)
     }
 
 }

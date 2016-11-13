@@ -68,7 +68,7 @@ public extension UIImage {
     
     struct OM {
         
-        static var launchImage: UIImage? {
+        public static var launchImage: UIImage? {
             
             if let imagesDict = Bundle.main.infoDictionary!["UILaunchImages"] as? [[String: String]] {
                 
