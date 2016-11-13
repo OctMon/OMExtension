@@ -52,7 +52,6 @@ import OMExtension
 
 - [Array](#array)
 - [Bool](#bool)
-- [CGRect](#cgrect)
 - [Data](#data)
 - [Date](#date)
 - [Dictionary](#dictionary)
@@ -67,6 +66,7 @@ import OMExtension
 
 ## UIKit
 
+- [CGRect](#cgrect)
 - [UIAlertController](#uialertcontroller)
 - [UIApplaction](#uiapplaction)
 - [UIBarButtonItem](#uibarbuttonitem)
@@ -104,15 +104,6 @@ print(isValid.omToInt) // 0
 isValid.omToggle()
 print(isValid) // true
 print(isValid.omToInt) // 1
-```
-
-### CGRect
-
-```swift
-var frame = CGRect(x: 10, y: 20, width: 30, height: 40)
-print(frame.omX) // 10.0
-frame.omX = 50
-print(frame.omX) // 50.0
 ```
 
 ### Data
@@ -562,6 +553,15 @@ self.request?.omPrintResponseLog(response: response.response, data: response.dat
 ->->->->->->->->->->Response->->->->->->->->->xxxxxxxxxx requestMyServers(urlRequest: URLRequest(url: URL(string: "http://itunes.apple.com/US/lookup?id=414478124")!))?.responseMyServers(completionHandler: { (_) in})
 ```
 
+### CGRect
+
+```swift
+var frame = CGRect(x: 10, y: 20, width: 30, height: 40)
+print(frame.omX) // 10.0
+frame.omX = 50
+print(frame.omX) // 50.0
+```
+
 ### UIAlertController
 
 ```swift
@@ -822,16 +822,16 @@ omNavigationBar?.omTransparent(true)
 竖屏判断
 
 ```swift
-print(UIScreen.omIsPortrait)
+print(UIScreen.om.isPortrait) // true
 ```
 
 frame
 
 ```swift
-print(UIScreen.omGetBounds) // (0.0, 0.0, 414.0, 736.0)
-print(UIScreen.omGetSize) // (414.0, 736.0)
-print(UIScreen.omGetWidth) // 414.0
-print(UIScreen.omGetHeight) // 736.0
+print(UIScreen.om.bounds) // (0.0, 0.0, 414.0, 736.0)
+print(UIScreen.om.size) // (414.0, 736.0)
+print(UIScreen.om.width) // 414.0
+print(UIScreen.om.height) // 736.0
 ```
 
 ### UIStoryboard

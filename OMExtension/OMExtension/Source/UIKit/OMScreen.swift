@@ -29,28 +29,61 @@ import UIKit
 
 public extension UIScreen {
     
+    struct om {
+        
+        public static var isPortrait: Bool {
+            
+            return UIDevice.current.orientation.isPortrait
+        }
+        
+        public static var width: CGFloat {
+            
+            return UIScreen.main.bounds.size.width
+        }
+        
+        public static var height: CGFloat {
+            
+            return UIScreen.main.bounds.size.height
+        }
+        
+        public static var size: CGSize {
+            
+            return UIScreen.main.bounds.size
+        }
+        
+        public static var bounds: CGRect {
+            
+            return UIScreen.main.bounds
+        }
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.isPortrait` instead.", renamed: "om.isPortrait")
     static var omIsPortrait: Bool {
         
-        return UIDevice.current.orientation.isPortrait
+        return om.isPortrait
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.width` instead.", renamed: "om.width")
     static var omGetWidth: CGFloat {
         
-        return UIScreen.main.bounds.size.width
+        return om.width
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.height` instead.", renamed: "om.height")
     static var omGetHeight: CGFloat {
         
-        return UIScreen.main.bounds.size.height
+        return om.height
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.size` instead.", renamed: "om.size")
     static var omGetSize: CGSize {
         
-        return UIScreen.main.bounds.size
+        return om.size
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.om.bounds` instead.", renamed: "om.bounds")
     static var omGetBounds: CGRect {
         
-        return UIScreen.main.bounds
+        return om.bounds
     }
 }

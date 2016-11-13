@@ -111,7 +111,7 @@ public extension UIImage {
             
             for dict in imagesDict {
                 
-                if UIScreen.omGetSize.equalTo(CGSizeFromString(dict["UILaunchImageSize"]!)) {
+                if UIScreen.om.size.equalTo(CGSizeFromString(dict["UILaunchImageSize"]!)) {
                     
                     return UIImage(named: dict["UILaunchImageName"]!)
                 }
