@@ -29,7 +29,12 @@ import UIKit
 
 public extension UIStoryboard {
     
-    fileprivate convenience init(omName: String, bundle: Bundle? = nil) {
+    /// e.g. UIStoryboard(omName: "Storyboard 文件名").instantiateViewController(withIdentifier: "Storyboard ID")
+    ///
+    /// - Parameters:
+    ///   - omName: name
+    ///   - bundle: bundle
+    convenience init(omName: String, bundle: Bundle? = nil) {
         
         self.init(name: omName, bundle: bundle)
     }
@@ -42,6 +47,7 @@ public extension UIStoryboard {
      
      - returns: UIViewController
      */
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIStoryboard convenience init` instead.")
     static func omInstantiateViewController(name: String, identifier: String? = nil) -> UIViewController? {
         
         if let identifier = identifier {

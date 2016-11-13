@@ -67,7 +67,7 @@ class ApplicationTVC: BaseTVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = UIStoryboard.omInstantiateViewController(name: UIApplication.omClassName, identifier: dataSource[(indexPath as NSIndexPath).row].1)!
+        let vc = UIStoryboard(omName: UIApplication.omClassName).instantiateViewController(withIdentifier: dataSource[(indexPath as NSIndexPath).row].1)
         vc.title = dataSource[(indexPath as NSIndexPath).row].0
         
         omPushViewController(vc)

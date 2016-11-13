@@ -54,7 +54,7 @@ class MainTVC: BaseTVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let controller = UIStoryboard.omInstantiateViewController(name: dataSource[(indexPath as NSIndexPath).row]) {
+        if let controller = UIStoryboard(omName: dataSource[(indexPath as NSIndexPath).row]).instantiateInitialViewController() {
             
             controller.title = dataSource[(indexPath as NSIndexPath).row]
             

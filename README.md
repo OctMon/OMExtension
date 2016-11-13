@@ -839,7 +839,7 @@ print(UIScreen.omGetHeight) // 736.0
 通过Storyboard初始化一个UIViewController
 
 ```swift
-UIStoryboard.omInstantiateViewController(name: "Storyboard 文件名", identifier: "Storyboard ID")
+UIStoryboard(omName: "Storyboard 文件名").instantiateViewController(withIdentifier: "Storyboard ID")
 ```
 
 ### UITableView
@@ -847,7 +847,7 @@ UIStoryboard.omInstantiateViewController(name: "Storyboard 文件名", identifie
 波浪动画
 
 ```swift
-tableView.omReloadAnimationWithWave()
+tableView.om.reloadAnimationWave()
 ```
 
 ### UITextField

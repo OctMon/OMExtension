@@ -132,12 +132,10 @@ class PopularAppTVC: BaseTVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let controller = UIStoryboard.omInstantiateViewController(name: UIViewController.omClassName, identifier: PlaceholderTVC.omClassName) {
-            
-            controller.title = dataSource[(indexPath as NSIndexPath).row]
-            
-            show(controller, sender: nil)
-        }
+        let controller = UIStoryboard(omName: UIViewController.omClassName).instantiateViewController(withIdentifier: PlaceholderTVC.omClassName)
+        controller.title = dataSource[(indexPath as NSIndexPath).row]
+        
+        show(controller, sender: nil)
     }
     
     /*

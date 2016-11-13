@@ -27,22 +27,36 @@
 import Foundation
 import UIKit
 
+public extension OMExtension where OMBase: UITableView {
+    
+    func reloadAnimationWave() {
+        
+        base.isUserInteractionEnabled = false
+        
+        base.setContentOffset(base.contentOffset, animated: false)
+        
+        Thread.omRunInMainThread(delay: 0.05) {
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                
+                self.base.isHidden = true
+                self.base.reloadData()
+                
+            }, completion: { (_) in
+                
+                self.base.isHidden = false
+                self.base.visibleRowsBeginAnimation()
+            })
+        }
+    }
+}
+
 public extension UITableView {
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `tableView.om.reloadAnimationWave` instead.", renamed: "om.reloadAnimationWave")
     func omReloadAnimationWithWave() {
         
-        setContentOffset(contentOffset, animated: false)
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            
-            self.isHidden = true
-            self.reloadData()
-            
-        }, completion: { (_) in
-            
-            self.isHidden = false
-            self.visibleRowsBeginAnimation()
-        }) 
+        om.reloadAnimationWave()
     }
     
     fileprivate func visibleRowsBeginAnimation() {
@@ -96,7 +110,10 @@ public extension UITableView {
                             
                             animationCell.center = originPoint
                             
-                            }, completion: nil)
+                            }, completion: { (_) in
+                                
+                                self.isUserInteractionEnabled = true
+                        })
                 })
             }
         }
