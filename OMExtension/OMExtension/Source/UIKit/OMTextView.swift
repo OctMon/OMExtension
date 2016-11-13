@@ -47,29 +47,49 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   }
 }
 
-public extension UITextView {
+public extension OMExtension where OMBase: UITextView {
     
-    func omSetLimit(_ length: Int, limitHandler: (() -> Void)? = nil) {
+    func addTextLimit(length: Int, limitHandler: (() -> Void)? = nil) {
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { (notification) in
             
-            if (((self.text! as NSString).length > length) && self.markedTextRange == nil) {
+            if (((self.base.text! as NSString).length > length) && self.base.markedTextRange == nil) {
                 
-                self.text = (self.text! as NSString).substring(to: length)
+                self.base.text = (self.base.text! as NSString).substring(to: length)
                 
                 limitHandler?()
             }
         }
     }
     
-    func omAddDoneButton(_ barStyle: UIBarStyle = .default, title: String? = "完成") {
+    func addDoneButton(barStyle: UIBarStyle = .default, title: String? = "完成") {
         
         let toolbar = UIToolbar()
-        toolbar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: title, style: .done, target: self, action: #selector(UIResponder.resignFirstResponder))]
+        toolbar.items = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), UIBarButtonItem(title: title, style: .done, target: self, action: #selector(UITextView.doneAction))]
         
         toolbar.barStyle = barStyle
         toolbar.sizeToFit()
         
-        inputAccessoryView = toolbar
+        base.inputAccessoryView = toolbar
+    }
+}
+
+public extension UITextView {
+    
+    @objc fileprivate func doneAction() { endEditing(true) }
+}
+
+public extension UITextView {
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `textView.om.addTextLimit` instead.", renamed: "om.addTextLimit")
+    func omSetLimit(_ length: Int, limitHandler: (() -> Void)? = nil) {
+        
+        om.addTextLimit(length: length, limitHandler: limitHandler)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `textView.om.addDoneButton` instead.", renamed: "om.addDoneButton")
+    func omAddDoneButton(_ barStyle: UIBarStyle = .default, title: String? = "完成") {
+        
+        om.addDoneButton(barStyle: barStyle, title: title)
     }
 }
