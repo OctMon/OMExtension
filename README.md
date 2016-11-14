@@ -641,34 +641,34 @@ UIApplication.OM.playSound(forResource: "noticeMusic.caf")
 跳转到系统设置
 
 ```swift
-UIApplication.omOpenAppSettings() // 跳转到应用设置
-UIApplication.omOpenPrefsAbout() // 跳转到关于本机
-UIApplication.omOpenPrefsAccessibility() // 跳转到辅助功能
-UIApplication.omOpenPrefsAirplane() // 跳转到飞行模式
-UIApplication.omOpenPrefsAutoLock() // 跳转到自动锁定
-UIApplication.omOpenPrefsDateTime() // 跳转到日期与时间
-UIApplication.omOpenPrefsFaceTime() // 跳转到FaceTime
-UIApplication.omOpenPrefsGeneral() // 跳转到通用
-UIApplication.omOpenPrefsKeyboard() // 跳转到键盘
-UIApplication.omOpenPrefsiCloud() // 跳转到iCloud
-UIApplication.omOpenPrefsiCloudStorageBackup() // 跳转到iCloud储存空间
-UIApplication.omOpenPrefsInternational() // 跳转到语言与地区
-UIApplication.omOpenPrefsLocationServices() // 跳转到定位服务
-UIApplication.omOpenPrefsMusic() // 跳转到音乐
-UIApplication.omOpenPrefsNotes() // 跳转到备忘录
-UIApplication.omOpenPrefsNotification() // 跳转到通知
-UIApplication.omOpenPrefsPhone() // 跳转到电话
-UIApplication.omOpenPrefsPhotos() // 跳转到照片与相机
-UIApplication.omOpenPrefsProfile() // 跳转到描述文件
-UIApplication.omOpenPrefsReset() // 跳转到还原
-UIApplication.omOpenPrefsRingtone() // 跳转到电话铃声
-UIApplication.omOpenPrefsSounds() // 跳转到声音
-UIApplication.omOpenPrefsSoftwareUpdate() // 跳转到软件更新
-UIApplication.omOpenPrefsStore() // 跳转到iTunes Store 与 App Store
-UIApplication.omOpenPrefsTwitter() // 跳转到Twitter
-UIApplication.omOpenPrefsVideo() // 跳转到视频
-UIApplication.omOpenPrefsWallpaper() // 跳转到墙纸
-UIApplication.omOpenPrefsWiFi() // 跳转到Wi-Fi
+UIApplication.OM.openAppSettings() // 跳转到应用设置
+UIApplication.OM.openPrefsAbout() // 跳转到关于本机
+UIApplication.OM.openPrefsAccessibility() // 跳转到辅助功能
+UIApplication.OM.openPrefsAirplane() // 跳转到飞行模式
+UIApplication.OM.openPrefsAutoLock() // 跳转到自动锁定
+UIApplication.OM.openPrefsDateTime() // 跳转到日期与时间
+UIApplication.OM.openPrefsFaceTime() // 跳转到FaceTime
+UIApplication.OM.openPrefsGeneral() // 跳转到通用
+UIApplication.OM.openPrefsKeyboard() // 跳转到键盘
+UIApplication.OM.openPrefsiCloud() // 跳转到iCloud
+UIApplication.OM.openPrefsiCloudStorageBackup() // 跳转到iCloud储存空间
+UIApplication.OM.openPrefsInternational() // 跳转到语言与地区
+UIApplication.OM.openPrefsLocationServices() // 跳转到定位服务
+UIApplication.OM.openPrefsMusic() // 跳转到音乐
+UIApplication.OM.openPrefsNotes() // 跳转到备忘录
+UIApplication.OM.openPrefsNotification() // 跳转到通知
+UIApplication.OM.openPrefsPhone() // 跳转到电话
+UIApplication.OM.openPrefsPhotos() // 跳转到照片与相机
+UIApplication.OM.openPrefsProfile() // 跳转到描述文件
+UIApplication.OM.openPrefsReset() // 跳转到还原
+UIApplication.OM.openPrefsRingtone() // 跳转到电话铃声
+UIApplication.OM.openPrefsSounds() // 跳转到声音
+UIApplication.OM.openPrefsSoftwareUpdate() // 跳转到软件更新
+UIApplication.OM.openPrefsStore() // 跳转到iTunes Store 与 App Store
+UIApplication.OM.openPrefsTwitter() // 跳转到Twitter
+UIApplication.OM.openPrefsVideo() // 跳转到视频
+UIApplication.OM.openPrefsWallpaper() // 跳转到墙纸
+UIApplication.OM.openPrefsWiFi() // 跳转到Wi-Fi
 ```
 
 TouchID授权
