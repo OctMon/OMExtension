@@ -738,31 +738,31 @@ print(color.omIsLight) // true
 设备型号
 
 ```swift
-print(UIDevice.omName()) // x86_64
+print(UIDevice.OM.name) // x86_64
 ```
 
 iPad判断
 
 ```swift
-UIDevice.omIsPad
+print(UIDevice.OM.isPad) // false
 ```
 
 iPhone判断
 
 ```swift
-UIDevice.omIsPhone
+print(UIDevice.OM.isPhone) // true
 ```
 
 前面的摄像头是否可用
 
 ```swift
-UIDevice.omIsAvailableCameraFront
+print(UIDevice.OM.isAvailableCameraFront) // false
 ```
 
 后面的摄像头是否可用
 
 ```swift
-UIDevice.omIsAvailableCameraRear
+print(UIDevice.OM.isAvailableCameraRear) // false
 ```
 
 ### UIFont

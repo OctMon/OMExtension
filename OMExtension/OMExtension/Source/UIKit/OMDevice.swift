@@ -29,29 +29,55 @@ import UIKit
 
 public extension UIDevice {
     
+    struct OM {
+        
+        /// 设备型号
+        public static var name: String {
+            
+            var name: [Int32] = [CTL_HW, HW_MACHINE]
+            var size: Int = 2
+            sysctl(&name, 2, nil, &size, &name, 0)
+            var hw_machine = [CChar](repeating: 0, count: Int(size))
+            sysctl(&name, 2, &hw_machine, &size, &name, 0)
+            
+            let hardware: String = String(cString: hw_machine)
+            
+            return hardware
+        }
+        
+        /// iPhone判断
+        public static var isPhone: Bool { return UIDevice.current.userInterfaceIdiom == .phone }
+        
+        /// iPad判断
+        public static var isPad: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
+        
+        /// 前面的摄像头是否可用
+        public static var isAvailableCameraFront: Bool { return UIImagePickerController.isCameraDeviceAvailable(.front) }
+        
+        /// 后面的摄像头是否可用
+        public static var isAvailableCameraRear: Bool { return UIImagePickerController.isCameraDeviceAvailable(.rear) }
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.name` instead.", renamed: "OM.name")
     /// 设备型号
     static var omName: String {
         
-        var name: [Int32] = [CTL_HW, HW_MACHINE]
-        var size: Int = 2
-        sysctl(&name, 2, nil, &size, &name, 0)
-        var hw_machine = [CChar](repeating: 0, count: Int(size))
-        sysctl(&name, 2, &hw_machine, &size, &name, 0)
-        
-        let hardware: String = String(cString: hw_machine)
-        
-        return hardware
+        return OM.name
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isPhone` instead.", renamed: "OM.isPhone")
     /// iPhone判断
-    static var omIsPhone: Bool { return UIDevice.current.userInterfaceIdiom == .phone }
+    static var omIsPhone: Bool { return OM.isPhone }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isPad` instead.", renamed: "OM.isPad")
     /// iPad判断
-    static var omIsPad: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
+    static var omIsPad: Bool { return OM.isPad }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isAvailableCameraFront` instead.", renamed: "OM.isAvailableCameraFront")
     /// 前面的摄像头是否可用
-    static var omIsAvailableCameraFront: Bool { return UIImagePickerController.isCameraDeviceAvailable(.front) }
+    static var omIsAvailableCameraFront: Bool { return OM.isAvailableCameraFront }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isAvailableCameraRear` instead.", renamed: "OM.isAvailableCameraRear")
     /// 后面的摄像头是否可用
-    static var omIsAvailableCameraRear: Bool { return UIImagePickerController.isCameraDeviceAvailable(.rear) }
+    static var omIsAvailableCameraRear: Bool { return OM.isAvailableCameraRear }
 }
