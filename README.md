@@ -638,6 +638,48 @@ UIApplication.OM.playSystemSound(systemSoundID: .alarm)
 UIApplication.OM.playSound(forResource: "noticeMusic.caf")
 ```
 
+是否可以打开URL (判断手机是否安装微信 需要在“Info.plist”中将要使用的URL Schemes列为白名单)
+
+```swift
+UIApplication.OM.canOpenURL(string: "weixin://")
+```
+
+在浏览器中打开URL (跳转微信 需要在“Info.plist”中将要使用的URL Schemes列为白名单)
+
+```swift
+UIApplication.OM.openURL(string: "weixin://")
+```
+
+打电话
+
+```swift
+UIApplication.OM.call(telephone: "112")
+```
+
+跳转到appStore应用详情
+
+```swift
+UIApplication.OM.openAppStoreDetails(id: 414478124)
+```
+
+跳转到appStore应用评价
+
+```swift
+UIApplication.OM.openAppStoreReviews(id: 414478124)
+```
+
+应用在appStore中的下载地址
+
+```swift
+UIApplication.OM.getAppStoreURL(id: 414478124)
+```
+
+应用在appStore中的详情json的请求地址
+
+```swift
+UIApplication.OM.getAppStoreLookupURL(id: 414478124)
+```
+
 跳转到系统设置
 
 ```swift
