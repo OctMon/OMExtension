@@ -724,11 +724,11 @@ print(UIColor(omR: 128, G: 128, B: 128)) // UIDeviceRGBColorSpace 0.501961 0.501
 print(UIColor(omR: 128, G: 128, B: 128, a: 0.5)) // UIDeviceRGBColorSpace 0.501961 0.501961 0.501961 0.5
 
 let color = UIColor(omHex: 0x00E079)
-print(color.omGetRed) // 0
-print(color.omGetGreen) // 224
-print(color.omGetBlue) // 121
-print(color.omGetAlpha) // 1.0
-print(color.omIsLight) // true
+print(color.om.red) // 0
+print(color.om.green) // 224
+print(color.om.blue) // 121
+print(color.om.alpha) // 1.0
+print(color.om.isLight) // true
 ```
 
 [中国传统色彩](CHINESE TRADITIONAL COLOR.md)

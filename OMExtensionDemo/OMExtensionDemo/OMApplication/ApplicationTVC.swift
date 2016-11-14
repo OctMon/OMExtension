@@ -45,7 +45,7 @@ class ApplicationTVC: BaseTVC {
         
         label.om.addTapGestureRecognizer { [unowned self] (tapGestureRecognizer) in
             
-            self.tableView.tableHeaderView?.backgroundColor = UIColor.omRandom
+            self.tableView.tableHeaderView?.backgroundColor = UIColor.OM.random
         }
     }
 
