@@ -30,78 +30,60 @@ import UIKit
 // MARK: - App
 public extension UIApplication {
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.appDelegate` instead.", renamed: "OM.appDelegate")
     /// 获取单例delegate
-    static var omAppDelegate: UIApplicationDelegate { return UIApplication.shared.delegate! }
+    static var omAppDelegate: UIApplicationDelegate { return OM.appDelegate }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.currentVC` instead.", renamed: "OM.currentVC")
     // 获取当前UIViewController
     static var omCurrentVC: UIViewController? {
         
-        var top = UIApplication.shared.keyWindow?.rootViewController
-        
-        if top?.isKind(of: UITabBarController.classForCoder()) == true {
-            
-            top = (top as! UITabBarController).selectedViewController
-            
-            if (top?.isKind(of: UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
-                
-                top = (top as! UINavigationController).topViewController
-            }
-            
-        } else if top?.presentedViewController != nil {
-            
-            top = top?.presentedViewController
-            
-        } else if (top?.isKind(of: UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
-            
-            top = (top as! UINavigationController).topViewController
-        }
-        
-        return top
+        return OM.currentVC
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.currentNC` instead.", renamed: "OM.currentNC")
     // 获取当前UINavigationController
     static var omCurrentNC: UINavigationController? {
         
-        if let current = omCurrentVC {
-            
-            return current.navigationController
-        }
-        
-        return nil
+        return OM.currentNC
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.currentTBC` instead.", renamed: "OM.currentTBC")
     // 获取当前UITabBarController
     static var omCurrentTBC: UITabBarController? {
         
-        if let top = UIApplication.shared.keyWindow?.rootViewController , top.isKind(of: UITabBarController.classForCoder()) == true {
-            
-            return (top as! UITabBarController)
-        }
-        
-        return nil
+        return OM.currentTBC
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.appName` instead.", renamed: "OM.appName")
     /// 获取应用名称
-    static var omAppName: String { return Bundle.main.infoDictionary!["CFBundleName"] as! String }
+    static var omAppName: String { return OM.appName }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.appIdentifier` instead.", renamed: "OM.appIdentifier")
     /// 获取应用唯一标识
-    static var omAppIdentifier: String { return Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String }
+    static var omAppIdentifier: String { return OM.appIdentifier }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.appBuild` instead.", renamed: "OM.appBuild")
     /// 获取应用内部版本号
-    static var omAppBuild: String { return Bundle.main.infoDictionary!["CFBundleVersion"] as! String }
+    static var omAppBuild: String { return OM.appBuild }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.appVersion` instead.", renamed: "OM.appVersion")
     /// 获取应用外部版本号
-    static var omAppVersion: String { return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String }
+    static var omAppVersion: String { return OM.appVersion }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.isFirstStart` instead.", renamed: "OM.isFirstStart")
     /// 是否存在一个以应用唯一标识为标记的key
-    static var omIsFirstStart: Bool { return omIsFirstStartForKey(omAppIdentifier) }
+    static var omIsFirstStart: Bool { return OM.isFirstStart }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.isFirstStartForCurrentBuild` instead.", renamed: "OM.isFirstStartForCurrentBuild")
     /// 是否存在一个以内部版本号为标记的key
-    static var omIsFirstStartForCurrentBuild: Bool { return omIsFirstStartForKey(omAppIdentifier) }
+    static var omIsFirstStartForCurrentBuild: Bool { return OM.isFirstStartForCurrentBuild }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.isFirstStartForCurrentVersion` instead.", renamed: "OM.isFirstStartForCurrentVersion")
     /// 是否存在一个以外部版本号为标记的key
-    static var omIsFirstStartForCurrentVersion: Bool { return omIsFirstStartForKey(omAppVersion) }
+    static var omIsFirstStartForCurrentVersion: Bool { return OM.isFirstStartForCurrentVersion }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.isFirstStartForKey` instead.", renamed: "OM.isFirstStartForKey")
     /**
      是否存在标记key，并保存key
      
@@ -109,22 +91,9 @@ public extension UIApplication {
      
      - returns: 是否存在标记key
      */
-    static func omIsFirstStartForKey(_ key: String) -> (Bool) {
+    static func omIsFirstStart(key: String) -> (Bool) {
         
-        let defaults = UserDefaults.standard
-        let isFirstStart: Bool = defaults.bool(forKey: key)
-        
-        defaults.set(true, forKey: key)
-        defaults.synchronize()
-        
-        if isFirstStart != true {
-            
-            return true
-            
-        } else {
-            
-            return false
-        }
+        return OM.isFirstStartForKey(key)
     }
 }
 
@@ -671,6 +640,103 @@ public extension UIApplication {
 public extension UIApplication {
     
     struct OM {
+        
+        /// 获取单例delegate
+        public static var appDelegate: UIApplicationDelegate { return UIApplication.shared.delegate! }
+        
+        // 获取当前UIViewController
+        public static var currentVC: UIViewController? {
+            
+            var top = UIApplication.shared.keyWindow?.rootViewController
+            
+            if top?.isKind(of: UITabBarController.classForCoder()) == true {
+                
+                top = (top as! UITabBarController).selectedViewController
+                
+                if (top?.isKind(of: UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
+                    
+                    top = (top as! UINavigationController).topViewController
+                }
+                
+            } else if top?.presentedViewController != nil {
+                
+                top = top?.presentedViewController
+                
+            } else if (top?.isKind(of: UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
+                
+                top = (top as! UINavigationController).topViewController
+            }
+            
+            return top
+        }
+        
+        // 获取当前UINavigationController
+        public static var currentNC: UINavigationController? {
+            
+            if let current = OM.currentVC {
+                
+                return current.navigationController
+            }
+            
+            return nil
+        }
+        
+        // 获取当前UITabBarController
+        public static var currentTBC: UITabBarController? {
+            
+            if let top = UIApplication.shared.keyWindow?.rootViewController , top.isKind(of: UITabBarController.classForCoder()) == true {
+                
+                return (top as! UITabBarController)
+            }
+            
+            return nil
+        }
+        
+        /// 获取应用名称
+        public static var appName: String { return Bundle.main.infoDictionary!["CFBundleName"] as! String }
+        
+        /// 获取应用唯一标识
+        public static var appIdentifier: String { return Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String }
+        
+        /// 获取应用内部版本号
+        public static var appBuild: String { return Bundle.main.infoDictionary!["CFBundleVersion"] as! String }
+        
+        /// 获取应用外部版本号
+        public static var appVersion: String { return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String }
+        
+        /// 是否存在一个以应用唯一标识为标记的key
+        public static var isFirstStart: Bool { return OM.isFirstStartForKey(OM.appIdentifier) }
+        
+        /// 是否存在一个以内部版本号为标记的key
+        public static var isFirstStartForCurrentBuild: Bool { return OM.isFirstStartForKey(OM.appIdentifier) }
+        
+        /// 是否存在一个以外部版本号为标记的key
+        public static var isFirstStartForCurrentVersion: Bool { return OM.isFirstStartForKey(OM.appVersion) }
+        
+        /**
+         是否存在标记key，并保存key
+         
+         - parameter key: 标记key是否存在
+         
+         - returns: 是否存在标记key
+         */
+        public static func isFirstStartForKey(_ key: String) -> (Bool) {
+            
+            let defaults = UserDefaults.standard
+            let isFirstStart: Bool = defaults.bool(forKey: key)
+            
+            defaults.set(true, forKey: key)
+            defaults.synchronize()
+            
+            if isFirstStart != true {
+                
+                return true
+                
+            } else {
+                
+                return false
+            }
+        }
         
         public static func playSystemSound(systemSoundID: OMSystemSoundID) {
             

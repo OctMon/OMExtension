@@ -575,49 +575,49 @@ alertController.om.show()
 获取应用名称
 
 ```swift
-print(UIApplication.omAppName) // OMExtensionDemo
+print(UIApplication.OM.appName) // OMExtensionDemo
 ```
 
 获取应用外部版本号
 
 ```swift
-print(UIApplication.omAppVersion) // 1.0
+print(UIApplication.OM.appVersion) // 1.0
 ```
 
 获取应用内部版本号
 
 ```swift
-print(UIApplication.omAppBuild) // 1
+print(UIApplication.OM.appBuild) // 1
 ```
 
 获取应用唯一标识
 
 ```swift
-print(UIApplication.omAppIdentifier) // com.octmon.OMExtensionDemo
+print(UIApplication.OM.appIdentifier) // com.octmon.OMExtensionDemo
 ```
 
 获取应用名称delegate
 
 ```swift
-print(UIApplication.omAppDelegate) // <OMExtensionDemo.AppDelegate: 0x7fdba3513720>
+print(UIApplication.OM.appDelegate) // <OMExtensionDemo.AppDelegate: 0x7fdba3513720>
 ```
 
 获取当前UIViewController
 
 ```swift
-UIApplication.omCurrentVC
+UIApplication.OM.currentVC
 ```
 
 获取当前UINavigationController
 
 ```swift
-UIApplication.omCurrentNC
+UIApplication.OM.currentNC
 ```
 
 获取当前UITabBarController
 
 ```swift
-UIApplication.omCurrentTBC
+UIApplication.OM.currentTBC
 ```
 
 手机震动

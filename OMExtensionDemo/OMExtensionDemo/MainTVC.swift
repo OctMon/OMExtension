@@ -33,7 +33,7 @@ class MainTVC: BaseTVC {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        title = UIApplication.omAppName
+        title = UIApplication.OM.appName
     }
 
     // MARK: - Table view data source

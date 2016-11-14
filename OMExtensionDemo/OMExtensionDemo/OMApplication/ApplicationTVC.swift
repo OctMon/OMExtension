@@ -41,7 +41,7 @@ class ApplicationTVC: BaseTVC {
         super.viewDidLoad()
         
         label.numberOfLines = 0
-        label.text = UIApplication.omAppName + "\n" + UIApplication.omAppIdentifier + "\n" + UIApplication.omAppBuild + "\n" + UIApplication.omAppVersion + "\n" + "\(UIApplication.omAppDelegate)"
+        label.text = UIApplication.OM.appName + "\n" + UIApplication.OM.appIdentifier + "\n" + UIApplication.OM.appBuild + "\n" + UIApplication.OM.appVersion + "\n" + "\(UIApplication.OM.appDelegate)"
         
         label.om.addTapGestureRecognizer { [unowned self] (tapGestureRecognizer) in
             
