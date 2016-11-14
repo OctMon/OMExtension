@@ -582,29 +582,29 @@ import AudioToolbox
 
 public extension UIApplication {
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.playSystemSound` instead.", renamed: "OM.playSystemSound")
     static func omSystemSoundPlay(_ omAudioSystemSoundID: OMSystemSoundID) {
         
-        AudioServicesPlaySystemSound(SystemSoundID(omAudioSystemSoundID.rawValue))
+        OM.playSystemSound(systemSoundID: omAudioSystemSoundID)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.playVibrate` instead.", renamed: "OM.playVibrate")
     static func omSystemSoundVibrate() {
         
-        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        OM.playVibrate()
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.playSound` instead.", renamed: "OM.playSound")
     static func omSystemSoundPlay(_ forResource: String) {
         
-        guard let soundPath = Bundle.main.path(forResource: forResource, ofType: nil) else { return }
-        guard let soundUrl = URL(string: soundPath) else { return }
-        
-        var soundID: SystemSoundID = 0
-        AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
-        AudioServicesPlaySystemSound(soundID)
+        OM.playSound(forResource: forResource)
     }
 
 }
 
 // MARK: - Authentication
+
+import LocalAuthentication
 
 public enum OMAuthenticationTouchID: Int {
     case success
@@ -618,10 +618,9 @@ public enum OMAuthenticationTouchID: Int {
     case touchIDNotEnrolled
 }
 
-import LocalAuthentication
-
 public extension UIApplication {
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.authenticationTouchID` instead.", renamed: "OM.authenticationTouchID")
     static func omAuthenticationTouchID(_ reason: String, handler: @escaping (_ result: OMAuthenticationTouchID) -> Void) {
         
         let context: LAContext = LAContext()
@@ -664,6 +663,51 @@ public extension UIApplication {
                 handler(.touchIDNotEnrolled)
             default:
                 handler(.error)
+            }
+        }
+    }
+}
+
+public extension UIApplication {
+    
+    struct OM {
+        
+        public static func playSystemSound(systemSoundID: OMSystemSoundID) {
+            
+            AudioServicesPlaySystemSound(SystemSoundID(systemSoundID.rawValue))
+        }
+        
+        public static func playVibrate() {
+            
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        }
+        
+        public static func playSound(forResource: String) {
+            
+            guard let soundPath = Bundle.main.path(forResource: forResource, ofType: nil) else { return }
+            guard let soundUrl = URL(string: soundPath) else { return }
+            
+            var soundID: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(soundUrl as CFURL, &soundID)
+            AudioServicesPlaySystemSound(soundID)
+        }
+        
+        public static func authenticationTouchID(reason: String, handler: @escaping (Bool, LAError?) -> Void) {
+            
+            let context: LAContext = LAContext()
+            
+            var error: NSError?
+            
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason, reply: { (success, error) in
+                    
+                    handler(success, error as? LAError)
+                })
+                
+            } else {
+                
+                handler(false, error as? LAError)
             }
         }
     }

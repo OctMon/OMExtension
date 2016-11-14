@@ -54,9 +54,9 @@ class AuthenticationTVC: BaseTVC {
         
         switch (indexPath as NSIndexPath).row {
         case 0:
-            UIApplication.omAuthenticationTouchID("TouchID授权测试", handler: { (result) -> Void in
+            UIApplication.OM.authenticationTouchID(reason: "TouchID授权测试", handler: { (success, error) -> Void in
                 
-                print(result)
+                print(error ?? "授权成功")
             })
         default:
             break

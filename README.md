@@ -623,19 +623,19 @@ UIApplication.omCurrentTBC
 手机震动
 
 ```swift
-UIApplication.omSystemSoundVibrate()
+UIApplication.OM.playVibrate()
 ```
 
 手机播放系统声音
 
 ```swift
-UIApplication.omSystemSoundPlay(.alarm) // OMSystemSoundID
+UIApplication.OM.playSystemSound(systemSoundID: .alarm)
 ```
 
 手机播放自定义声音
 
 ```swift
-UIApplication.omSystemSoundPlay("noticeMusic.caf")
+UIApplication.OM.playSound(forResource: "noticeMusic.caf")
 ```
 
 跳转到系统设置
@@ -671,12 +671,12 @@ UIApplication.omOpenPrefsWallpaper() // 跳转到墙纸
 UIApplication.omOpenPrefsWiFi() // 跳转到Wi-Fi
 ```
 
-授权
+TouchID授权
 
 ```swift
-// TouchID授权
-UIApplication.omAuthenticationTouchID("TouchID授权测试", handler: { (result) -> Void in             
-    print(result)
+UIApplication.omAuthenticationTouchID("TouchID授权测试", handler: { (result) -> Void in             UIApplication.OM.authenticationTouchID(reason: "TouchID授权测试", handler: { (success, error) -> Void in
+    
+    print(error ?? "授权成功")
 })
 ```
 

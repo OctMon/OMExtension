@@ -172,7 +172,7 @@ class SystemSoundTVC: BaseTVC {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        UIApplication.omSystemSoundPlay(dataSource[(indexPath as NSIndexPath).row])
+        UIApplication.OM.playSystemSound(systemSoundID: dataSource[(indexPath as NSIndexPath).row])
     }
 
     /*
