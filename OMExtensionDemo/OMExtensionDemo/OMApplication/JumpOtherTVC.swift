@@ -35,39 +35,39 @@ class JumpOtherTVC: BaseTVC {
     
     func canOpenWeixin() {
         
-        let canOpen = UIApplication.omCanOpenURL(string: "weixin://")
+        let canOpen = UIApplication.OM.canOpenURL(string: "weixin://")
         
         showAlert(title: "\(canOpen)")
     }
     
     func openWeixin() {
         
-        UIApplication.omOpenURL(string: "weixin://")
+        UIApplication.OM.openURL(string: "weixin://")
     }
     
     func callTelephone() {
         
-        UIApplication.omCall(telephone: "112")
+        UIApplication.OM.call(telephone: "112")
     }
     
     func openAppStoreDetails() {
         
-        UIApplication.omOpenAppStoreDetails(id: 414478124)
+        UIApplication.OM.openAppStoreDetails(id: 414478124)
     }
     
     func openAppStoreReviews() {
         
-        UIApplication.omOpenAppStoreReviews(id: 414478124)
+        UIApplication.OM.openAppStoreReviews(id: 414478124)
     }
     
     func getAppStoreURL() {
         
-        showAlert(title: UIApplication.omGetAppStoreURL(id: 414478124))
+        showAlert(title: UIApplication.OM.getAppStoreURL(id: 414478124))
     }
     
     func getAppStoreLookupURL() {
         
-        showAlert(title: UIApplication.omGetAppStoreLookupURL(id: 414478124))
+        showAlert(title: UIApplication.OM.getAppStoreLookupURL(id: 414478124))
     }
 
     // MARK: - Table view data source

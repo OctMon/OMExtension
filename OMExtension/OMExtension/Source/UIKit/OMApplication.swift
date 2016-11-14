@@ -102,13 +102,7 @@ public extension UIApplication {
     
 //  http://stackoverflow.com/questions/8246070/ios-launching-settings-restrictions-url-scheme/8246814#8246814
     
-    fileprivate static let prefsRoot = "prefs:root="
-    fileprivate static let generalPath = "General&path="
-    
-    fileprivate static func omOpenPrefsRoot(_ string: String) -> Bool { return omOpenURL(string: UIApplication.prefsRoot + string) }
-    
-    fileprivate static func omOpenGeneralPath(_ string: String) -> Bool { return omOpenURL(string: UIApplication.prefsRoot + UIApplication.generalPath + string) }
-    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.canOpenURL` instead.", renamed: "OM.canOpenURL")
     /**
      是否可以打开URL (判断手机是否安装微信 需要在“Info.plist”中将要使用的URL Schemes列为白名单)
      
@@ -118,14 +112,10 @@ public extension UIApplication {
      */
     static func omCanOpenURL(string: String) -> Bool {
         
-        if let url = URL(string: string) {
-            
-            return shared.canOpenURL(url)
-        }
-        
-        return false
+        return OM.canOpenURL(string: string)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openURL` instead.", renamed: "OM.openURL")
     /**
      在浏览器中打开URL (跳转微信 需要在“Info.plist”中将要使用的URL Schemes列为白名单)
      
@@ -136,14 +126,10 @@ public extension UIApplication {
     @discardableResult
     static func omOpenURL(string: String) -> Bool {
         
-        if let url = URL(string: string) {
-            
-            return shared.openURL(url)
-        }
-        
-        return false
+        return OM.openURL(string: string)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.call` instead.", renamed: "OM.call")
     /// 打电话
     ///
     /// - Parameter telephone: 电话号码
@@ -151,269 +137,296 @@ public extension UIApplication {
     @discardableResult
     static func omCall(telephone: String) -> Bool {
         
-        guard telephone.characters.count > 0 else {
-            
-            return false
-        }
-        
-        return omOpenURL(string: "telprompt:\(telephone)")
+        return OM.call(telephone: telephone)
     }
     
-    /// 跳转到appStroe应用详情
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openAppStoreDetails` instead.", renamed: "OM.openAppStoreDetails")
+    /// 跳转到appStore应用详情
     ///
     /// - Parameter id: 应该id
     /// - Returns: 成功/失败
     @discardableResult
     static func omOpenAppStoreDetails(id: Int) -> Bool {
         
-        return omOpenURL(string: "itms-apps://itunes.apple.com/app/id\(id)")
+        return OM.openAppStoreDetails(id: id)
     }
     
-    /// 跳转到appStroe应用评价
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openAppStoreReviews` instead.", renamed: "OM.openAppStoreReviews")
+    /// 跳转到appStore应用评价
     ///
     /// - Parameter id: 应该id
     /// - Returns: 成功/失败
     @discardableResult
     static func omOpenAppStoreReviews(id: Int) -> Bool {
         
-        return omOpenURL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(id)")
+        return OM.openAppStoreReviews(id: id)
     }
     
-    /// 应用在appStroe中的地址
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.getAppStoreURL` instead.", renamed: "OM.getAppStoreURL")
+    /// 应用在appStore中的下载地址
     ///
     /// - Parameter id: 应该id
     /// - Returns: 成功/失败
-    static func omGetAppStoreURL(id: Int) -> String { return "http://itunes.apple.com/app/id\(id)" }
+    static func omGetAppStoreURL(id: Int) -> String { return OM.getAppStoreURL(id: id) }
     
-    /// 应用在appStroe中的详情json的请求地址
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.getAppStoreLookupURL` instead.", renamed: "OM.getAppStoreLookupURL")
+    /// 应用在appStore中的详情json的请求地址
     ///
     /// - Parameter id: 应该id
     /// - Returns: 成功/失败
-    static func omGetAppStoreLookupURL(id: Int) -> String { return "http://itunes.apple.com/US/lookup?id=\(id)" }
+    static func omGetAppStoreLookupURL(id: Int) -> String { return OM.getAppStoreLookupURL(id: id) }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openAppSettings` instead.", renamed: "OM.openAppSettings")
     /**
      跳转到应用设置
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenAppSettings() -> Bool { return omOpenURL(string: UIApplicationOpenSettingsURLString) }
+    static func omOpenAppSettings() -> Bool { return OM.openAppSettings() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsAbout` instead.", renamed: "OM.openPrefsAbout")
     /**
      跳转到关于本机
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsAbout() -> Bool { return omOpenGeneralPath("About") }
+    static func omOpenPrefsAbout() -> Bool { return OM.openPrefsAbout() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsAccessibility` instead.", renamed: "OM.openPrefsAccessibility")
     /**
      跳转到辅助功能
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsAccessibility() -> Bool { return omOpenGeneralPath("ACCESSIBILITY") }
+    static func omOpenPrefsAccessibility() -> Bool { return OM.openPrefsAccessibility() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsAirplane` instead.", renamed: "OM.openPrefsAirplane")
     /**
      跳转到飞行模式
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsAirplane() -> Bool { return omOpenPrefsRoot("AIRPLANE_MODE") }
+    static func omOpenPrefsAirplane() -> Bool { return OM.openPrefsAirplane() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsAutoLock` instead.", renamed: "OM.openPrefsAutoLock")
     /**
      跳转到自动锁定
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsAutoLock() -> Bool { return omOpenGeneralPath("AUTOLOCK") }
+    static func omOpenPrefsAutoLock() -> Bool { return OM.openPrefsAutoLock() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsDateTime` instead.", renamed: "OM.openPrefsDateTime")
     /**
      跳转到日期与时间
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsDateTime() -> Bool { return omOpenGeneralPath("DATE_AND_TIME") }
+    static func omOpenPrefsDateTime() -> Bool { return OM.openPrefsDateTime() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsFaceTime` instead.", renamed: "OM.openPrefsFaceTime")
     /**
      跳转到FaceTime
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsFaceTime() -> Bool { return omOpenPrefsRoot("FACETIME") }
+    static func omOpenPrefsFaceTime() -> Bool { return OM.openPrefsFaceTime() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsGeneral` instead.", renamed: "OM.openPrefsGeneral")
     /**
      跳转到通用
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsGeneral() -> Bool { return omOpenPrefsRoot("General") }
+    static func omOpenPrefsGeneral() -> Bool { return OM.openPrefsGeneral() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsKeyboard` instead.", renamed: "OM.openPrefsKeyboard")
     /**
      跳转到键盘
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsKeyboard() -> Bool { return omOpenGeneralPath("Keyboard") }
+    static func omOpenPrefsKeyboard() -> Bool { return OM.openPrefsKeyboard() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsiCloud` instead.", renamed: "OM.openPrefsiCloud")
     /**
      跳转到iCloud
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsiCloud() -> Bool { return omOpenPrefsRoot("CASTLE") }
+    static func omOpenPrefsiCloud() -> Bool { return OM.openPrefsiCloud() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsiCloudStorageBackup` instead.", renamed: "OM.openPrefsiCloudStorageBackup")
     /**
      跳转到iCloud储存空间
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsiCloudStorageBackup() -> Bool { return omOpenPrefsRoot("CASTLE&path=STORAGE_AND_BACKUP") }
+    static func omOpenPrefsiCloudStorageBackup() -> Bool { return OM.openPrefsiCloudStorageBackup() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsInternational` instead.", renamed: "OM.openPrefsInternational")
     /**
      跳转到语言与地区
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsInternational() -> Bool { return omOpenGeneralPath("INTERNATIONAL") }
+    static func omOpenPrefsInternational() -> Bool { return OM.openPrefsInternational() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsLocationServices` instead.", renamed: "OM.openPrefsLocationServices")
     /**
      跳转到定位服务
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsLocationServices() -> Bool { return omOpenPrefsRoot("LOCATION_SERVICES") }
+    static func omOpenPrefsLocationServices() -> Bool { return OM.openPrefsLocationServices() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsMusic` instead.", renamed: "OM.openPrefsMusic")
     /**
      跳转到音乐
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsMusic() -> Bool { return omOpenPrefsRoot("MUSIC") }
+    static func omOpenPrefsMusic() -> Bool { return OM.openPrefsMusic() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsNotes` instead.", renamed: "OM.openPrefsNotes")
     /**
      跳转到备忘录
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsNotes() -> Bool { return omOpenPrefsRoot("NOTES") }
+    static func omOpenPrefsNotes() -> Bool { return OM.openPrefsNotes() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsNotification` instead.", renamed: "OM.openPrefsNotification")
     /**
      跳转到通知
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsNotification() -> Bool { return omOpenPrefsRoot("NOTIFICATIONS_ID") }
+    static func omOpenPrefsNotification() -> Bool { return OM.openPrefsNotification() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsPhone` instead.", renamed: "OM.openPrefsPhone")
     /**
      跳转到电话
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsPhone() -> Bool { return omOpenPrefsRoot("Phone") }
+    static func omOpenPrefsPhone() -> Bool { return OM.openPrefsPhone() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsPhotos` instead.", renamed: "OM.openPrefsPhotos")
     /**
      跳转到照片与相机
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsPhotos() -> Bool { return omOpenPrefsRoot("Photos") }
+    static func omOpenPrefsPhotos() -> Bool { return OM.openPrefsPhotos() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsProfile` instead.", renamed: "OM.openPrefsProfile")
     /**
      跳转到描述文件
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsProfile() -> Bool { return omOpenGeneralPath("ManagedConfigurationList") }
+    static func omOpenPrefsProfile() -> Bool { return OM.openPrefsProfile() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsReset` instead.", renamed: "OM.openPrefsReset")
     /**
      跳转到还原
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsReset() -> Bool { return omOpenGeneralPath("Reset") }
+    static func omOpenPrefsReset() -> Bool { return OM.openPrefsReset() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsRingtone` instead.", renamed: "OM.openPrefsRingtone")
     /**
      跳转到电话铃声
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsRingtone() -> Bool { return omOpenPrefsRoot("Sounds&path=Ringtone") }
+    static func omOpenPrefsRingtone() -> Bool { return OM.openPrefsRingtone() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsSounds` instead.", renamed: "OM.openPrefsSounds")
     /**
      跳转到声音
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsSounds() -> Bool { return omOpenPrefsRoot("Sounds") }
+    static func omOpenPrefsSounds() -> Bool { return OM.openPrefsSounds() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsSoftwareUpdate` instead.", renamed: "OM.openPrefsSoftwareUpdate")
     /**
      跳转到软件更新
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsSoftwareUpdate() -> Bool { return omOpenGeneralPath("SOFTWARE_UPDATE_LINK") }
+    static func omOpenPrefsSoftwareUpdate() -> Bool { return OM.openPrefsSoftwareUpdate() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsStore` instead.", renamed: "OM.openPrefsStore")
     /**
      跳转到iTunes Store 与 App Store
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsStore() -> Bool { return omOpenPrefsRoot("STORE") }
+    static func omOpenPrefsStore() -> Bool { return OM.openPrefsStore() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsTwitter` instead.", renamed: "OM.openPrefsTwitter")
     /**
      跳转到Twitter
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsTwitter() -> Bool { return omOpenPrefsRoot("TWITTER") }
+    static func omOpenPrefsTwitter() -> Bool { return OM.openPrefsTwitter() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsVideo` instead.", renamed: "OM.openPrefsVideo")
     /**
      跳转到视频
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsVideo() -> Bool { return omOpenPrefsRoot("VIDEO") }
+    static func omOpenPrefsVideo() -> Bool { return OM.openPrefsVideo() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsWallpaper` instead.", renamed: "OM.openPrefsWallpaper")
     /**
      跳转到墙纸
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsWallpaper() -> Bool { return omOpenPrefsRoot("Wallpaper") }
+    static func omOpenPrefsWallpaper() -> Bool { return OM.openPrefsWallpaper() }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.openPrefsWiFi` instead.", renamed: "OM.openPrefsWiFi")
     /**
      跳转到Wi-Fi
      
      - returns: 成功/失败
      */
     @discardableResult
-    static func omOpenPrefsWiFi() -> Bool { return omOpenPrefsRoot("WIFI") }
+    static func omOpenPrefsWiFi() -> Bool { return OM.openPrefsWiFi() }
 
 }
 
@@ -737,6 +750,321 @@ public extension UIApplication {
                 return false
             }
         }
+        
+        //  http://stackoverflow.com/questions/8246070/ios-launching-settings-restrictions-url-scheme/8246814#8246814
+        
+        fileprivate static let prefsRoot = "prefs:root="
+        fileprivate static let generalPath = "General&path="
+        
+        fileprivate static func openPrefsRoot(_ string: String) -> Bool { return openURL(string: UIApplication.OM.prefsRoot + string) }
+        
+        fileprivate static func openGeneralPath(_ string: String) -> Bool { return openURL(string: UIApplication.OM.prefsRoot + UIApplication.OM.generalPath + string) }
+        
+        /**
+         是否可以打开URL (判断手机是否安装微信 需要在“Info.plist”中将要使用的URL Schemes列为白名单)
+         
+         - parameter string: e.g. weixin://
+         
+         - returns: 成功/失败
+         */
+        public static func canOpenURL(string: String) -> Bool {
+            
+            if let url = URL(string: string) {
+                
+                return shared.canOpenURL(url)
+            }
+            
+            return false
+        }
+        
+        /**
+         在浏览器中打开URL (跳转微信 需要在“Info.plist”中将要使用的URL Schemes列为白名单)
+         
+         - parameter string: e.g. weixin://
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openURL(string: String) -> Bool {
+            
+            if let url = URL(string: string) {
+                
+                return shared.openURL(url)
+            }
+            
+            return false
+        }
+        
+        /// 打电话
+        ///
+        /// - Parameter telephone: 电话号码
+        /// - Returns: 成功/失败
+        @discardableResult
+        public static func call(telephone: String) -> Bool {
+            
+            guard telephone.characters.count > 0 else {
+                
+                return false
+            }
+            
+            return openURL(string: "telprompt:\(telephone)")
+        }
+        
+        /// 跳转到appStore应用详情
+        ///
+        /// - Parameter id: 应该id
+        /// - Returns: 成功/失败
+        @discardableResult
+        public static func openAppStoreDetails(id: Int) -> Bool {
+            
+            return openURL(string: "itms-apps://itunes.apple.com/app/id\(id)")
+        }
+        
+        /// 跳转到appStore应用评价
+        ///
+        /// - Parameter id: 应该id
+        /// - Returns: 成功/失败
+        @discardableResult
+        public static func openAppStoreReviews(id: Int) -> Bool {
+            
+            return openURL(string: "itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?type=Purple+Software&id=\(id)")
+        }
+        
+        /// 应用在appStore中的下载地址
+        ///
+        /// - Parameter id: 应该id
+        /// - Returns: 成功/失败
+        public static func getAppStoreURL(id: Int) -> String { return "http://itunes.apple.com/app/id\(id)" }
+        
+        /// 应用在appStore中的详情json的请求地址
+        ///
+        /// - Parameter id: 应该id
+        /// - Returns: 成功/失败
+        public static func getAppStoreLookupURL(id: Int) -> String { return "http://itunes.apple.com/US/lookup?id=\(id)" }
+        
+        /**
+         跳转到应用设置
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openAppSettings() -> Bool { return openURL(string: UIApplicationOpenSettingsURLString) }
+        
+        /**
+         跳转到关于本机
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsAbout() -> Bool { return openGeneralPath("About") }
+        
+        /**
+         跳转到辅助功能
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsAccessibility() -> Bool { return openGeneralPath("ACCESSIBILITY") }
+        
+        /**
+         跳转到飞行模式
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsAirplane() -> Bool { return openPrefsRoot("AIRPLANE_MODE") }
+        
+        /**
+         跳转到自动锁定
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsAutoLock() -> Bool { return openGeneralPath("AUTOLOCK") }
+        
+        /**
+         跳转到日期与时间
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsDateTime() -> Bool { return openGeneralPath("DATE_AND_TIME") }
+        
+        /**
+         跳转到FaceTime
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsFaceTime() -> Bool { return openPrefsRoot("FACETIME") }
+        
+        /**
+         跳转到通用
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsGeneral() -> Bool { return openPrefsRoot("General") }
+        
+        /**
+         跳转到键盘
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsKeyboard() -> Bool { return openGeneralPath("Keyboard") }
+        
+        /**
+         跳转到iCloud
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsiCloud() -> Bool { return openPrefsRoot("CASTLE") }
+        
+        /**
+         跳转到iCloud储存空间
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsiCloudStorageBackup() -> Bool { return openPrefsRoot("CASTLE&path=STORAGE_AND_BACKUP") }
+        
+        /**
+         跳转到语言与地区
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsInternational() -> Bool { return openGeneralPath("INTERNATIONAL") }
+        
+        /**
+         跳转到定位服务
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsLocationServices() -> Bool { return openPrefsRoot("LOCATION_SERVICES") }
+        
+        /**
+         跳转到音乐
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsMusic() -> Bool { return openPrefsRoot("MUSIC") }
+        
+        /**
+         跳转到备忘录
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsNotes() -> Bool { return openPrefsRoot("NOTES") }
+        
+        /**
+         跳转到通知
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsNotification() -> Bool { return openPrefsRoot("NOTIFICATIONS_ID") }
+        
+        /**
+         跳转到电话
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsPhone() -> Bool { return openPrefsRoot("Phone") }
+        
+        /**
+         跳转到照片与相机
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsPhotos() -> Bool { return openPrefsRoot("Photos") }
+        
+        /**
+         跳转到描述文件
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsProfile() -> Bool { return openGeneralPath("ManagedConfigurationList") }
+        
+        /**
+         跳转到还原
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsReset() -> Bool { return openGeneralPath("Reset") }
+        
+        /**
+         跳转到电话铃声
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsRingtone() -> Bool { return openPrefsRoot("Sounds&path=Ringtone") }
+        
+        /**
+         跳转到声音
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsSounds() -> Bool { return openPrefsRoot("Sounds") }
+        
+        /**
+         跳转到软件更新
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsSoftwareUpdate() -> Bool { return openGeneralPath("SOFTWARE_UPDATE_LINK") }
+        
+        /**
+         跳转到iTunes Store 与 App Store
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsStore() -> Bool { return openPrefsRoot("STORE") }
+        
+        /**
+         跳转到Twitter
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsTwitter() -> Bool { return openPrefsRoot("TWITTER") }
+        
+        /**
+         跳转到视频
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsVideo() -> Bool { return openPrefsRoot("VIDEO") }
+        
+        /**
+         跳转到墙纸
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsWallpaper() -> Bool { return openPrefsRoot("Wallpaper") }
+        
+        /**
+         跳转到Wi-Fi
+         
+         - returns: 成功/失败
+         */
+        @discardableResult
+        public static func openPrefsWiFi() -> Bool { return openPrefsRoot("WIFI") }
         
         public static func playSystemSound(systemSoundID: OMSystemSoundID) {
             
