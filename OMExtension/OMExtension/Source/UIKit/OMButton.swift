@@ -27,21 +27,28 @@
 import Foundation
 import UIKit
 
-private var _omActivityIndicatorView: Void?
-private var _omLastTitle: Void?
-
-public extension UIButton {
+public extension OMExtension where OMBase: UIButton {
     
     var omActivityIndicatorView: UIActivityIndicatorView? {
         
-        get {
-            return objc_getAssociatedObject(self, &_omActivityIndicatorView) as? UIActivityIndicatorView
-        }
-        
-        set {
-            objc_setAssociatedObject(self, &_omActivityIndicatorView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        }
+        return base.omActivityIndicatorView
     }
+    
+    func startActivity() {
+        
+        base.setupActivityIndicator(isAnimate: true)
+    }
+    
+    func stopActivity() {
+        
+        base.setupActivityIndicator(isAnimate: false)
+    }
+}
+
+private var _omLastTitle: Void?
+private var _omActivityIndicatorView: Void?
+
+public extension UIButton {
     
     private var omLastTitle: String? {
         
@@ -54,7 +61,18 @@ public extension UIButton {
         }
     }
     
-    private func setupActivityIndicator(isAnimate: Bool) {
+    fileprivate var omActivityIndicatorView: UIActivityIndicatorView? {
+        
+        get {
+            return objc_getAssociatedObject(self, &_omActivityIndicatorView) as? UIActivityIndicatorView
+        }
+        
+        set {
+            objc_setAssociatedObject(self, &_omActivityIndicatorView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    fileprivate func setupActivityIndicator(isAnimate: Bool) {
         
         if isAnimate {
             
@@ -87,13 +105,15 @@ public extension UIButton {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `color.om.startActivity` instead.", renamed: "om.startActivity")
     func omStartActivity() {
         
-        setupActivityIndicator(isAnimate: true)
+        om.startActivity()
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `color.om.stopActivity` instead.", renamed: "om.stopActivity")
     func omStopActivity() {
         
-        setupActivityIndicator(isAnimate: false)
+        om.stopActivity()
     }
 }

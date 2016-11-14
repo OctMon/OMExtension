@@ -27,9 +27,20 @@
 import Foundation
 import UIKit
 
+public extension OMExtension where OMBase: UIBarButtonItem {
+    
+    /// 点击回调
+    ///
+    /// - Parameter handler: 使用 [unowned self] 或 [weak self] 避免循环引用
+    func clickHandler(handler: @escaping () -> Void) {
+        
+        base.omClickHandler(handler: handler)
+    }
+}
+
 private var _omStruct: Void?
 
-public extension UIBarButtonItem {
+fileprivate extension UIBarButtonItem {
     
     private struct OMStruct {
         

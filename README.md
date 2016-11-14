@@ -685,8 +685,9 @@ UIApplication.omAuthenticationTouchID("TouchID授权测试", handler: { (result)
 点击回调
 
 ```swift
-barButtonItem.omClickHandler {
-    // 点击回调
+barButtonItem.om.clickHandler {
+
+    print("点击回调")
 }
 ```
 
@@ -695,7 +696,7 @@ barButtonItem.omClickHandler {
 点击回调
 
 ```swift
-button.omAddTapGestureRecognizer { [weak self] (tapGestureRecognizer) in
+button.om.addTapGestureRecognizer { [unowned self] (tapGestureRecognizer) in
     // 回调
 }
 ```
@@ -703,7 +704,7 @@ button.omAddTapGestureRecognizer { [weak self] (tapGestureRecognizer) in
 开始菊花动画
 
 ```swift
-button.omStartActivity()
+button.om.startActivity()
 ```
 
 停止菊花动画
