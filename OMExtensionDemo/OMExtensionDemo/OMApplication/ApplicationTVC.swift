@@ -39,7 +39,7 @@ class ApplicationTVC: BaseTVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        om.hideKeyboardwhenTapped()
+        
         label.numberOfLines = 0
         label.text = UIApplication.OM.appName + "\n" + UIApplication.OM.appIdentifier + "\n" + UIApplication.OM.appBuild + "\n" + UIApplication.OM.appVersion + "\n" + "\(UIApplication.OM.appDelegate)"
         

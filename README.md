@@ -14,7 +14,7 @@
 Execute:
 
 ```git submodule add https://github.com/OctMon/OMExtension.git```
-
+ 
 in your repository folder.
 
 ### [Carthage](https://github.com/Carthage/Carthage)
@@ -716,7 +716,7 @@ UIApplication.OM.openPrefsWiFi() // 跳转到Wi-Fi
 TouchID授权
 
 ```swift
-UIApplication.omAuthenticationTouchID("TouchID授权测试", handler: { (result) -> Void in             UIApplication.OM.authenticationTouchID(reason: "TouchID授权测试", handler: { (success, error) -> Void in
+UIApplication.OM.authenticationTouchID(reason: "TouchID授权测试", handler: { (success, error) -> Void in
     
     print(error ?? "授权成功")
 })
@@ -752,7 +752,7 @@ button.om.startActivity()
 停止菊花动画
 
 ```swift
-button.omStopActivity()
+button.om.stopActivity()
 ```
 
 ### UIColor
@@ -1030,68 +1030,33 @@ view.om.getScreenshot() // 截图
 点击任意位置收回键盘
 
 ```swift
-omDismissKeyboardWhenTapped()
+om.hideKeyboardwhenTapped()
 ```
 
 收回键盘
 
 ```swift
-omDismissKeyboardI()
-```
-
-添加/删除通知
-
-```swift
-omAddNotificationObserver("name", selector: #selector(MainTVC.omPopViewController(_:)))
-
-omRemoveNotificationObserver()
-omRemoveNotificationObserver("name")
+om.hideKeyboard()
 ```
 
 设置背景图
 
 ```swift
-omSetBackground(image: UIImage(named: "background")!)
+om.setBackgroundImage(UIImage(named: "background"))
 ```
 
 监听截屏事件
 
 ```swift
-omAddUserDidTakeScreenshotNotificationNotification { 
+om.addUserDidTakeScreenshotNotification {
     // 回调
-}
-```
-
-监听键盘事件
-
-```swift
-omAddKeyboardWillShowNotification()
-omAddKeyboardWillHideNotification()
-omAddKeyboardDidShowNotification()
-omAddKeyboardDidHideNotification()
-
-// 需要重写相应的方法
-override func omKeyboardWillShowWithFrame(frame: CGRect) {
-
-}
-
-override func omKeyboardWillHideWithFrame(frame: CGRect) {
-
-}
-
-override func omKeyboardDidShowWithFrame(frame: CGRect) {
-
-}
-
-override func omKeyboardDidHideWithFrame(frame: CGRect) {
-
 }
 ```
 
 显示占位图
 
 ```swift
-omShowPlaceholder(image, shouldTap: true, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState()), (backgroundImageHighlight, state: UIControlState.highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState())] : nil), buttonTapHandler: { (button) in
+om.showPlaceholder(image: image, shouldTap: true, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState()), (backgroundImageHighlight, state: UIControlState.highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState())] : nil), buttonTapHandler: { (button) in
 	// 按钮点击回调
 }, placeholderViewTapHandler: { 
     // 占位图点击回调
@@ -1101,13 +1066,15 @@ omShowPlaceholder(image, shouldTap: true, buttonBackgroundImages: [(backgroundIm
 其它
 
 ```swift
-omNavigationBar
-
-omPushViewController(UIViewController(), animated: true)
-omPopViewController(true)
-
-omPresentViewController(UIViewController(), animated: true, completion: nil)
-omDismissViewController()
-
-omSetBackBarButtonItem("") // 设置返回按钮的文字
+om.navigationBar
+        
+om.pushViewController(UIViewController(), animated: true)
+om.popViewController(animated: true)
+   
+om.presentViewController(UIViewController(), animated: true, completion: nil)
+om.dismissViewController()
+   
+om.setBackBarButtonItem(title: "返回") // 设置返回按钮的文字
 ```
+
+
