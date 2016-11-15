@@ -87,7 +87,7 @@ class PlaceholderVC: BaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        omShowPlaceholder(getImage)
+        om.showPlaceholder(image: getImage)
         
         timer = Timer.omRunLoop(seconds: 1) { (timer) in
             
@@ -100,7 +100,7 @@ class PlaceholderVC: BaseVC {
                 let backgroundImageNormal = UIImage(named: backgroundImageName + "_normal")
                 let backgroundImageHighlight = UIImage(named: backgroundImageName + "_highlight")
                 
-                self.omShowPlaceholder(image, shouldTap: true, offset: image.size.width * 0.5, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState()), (backgroundImageHighlight, state: UIControlState.highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState())] : nil), buttonTapHandler: { (button) in
+                self.om.showPlaceholder(image: image, shouldTap: true, offset: image.size.width * 0.5, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState()), (backgroundImageHighlight, state: UIControlState.highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState())] : nil), buttonTapHandler: { (button) in
                     
                     print(button.isSelected)
                     
@@ -110,7 +110,7 @@ class PlaceholderVC: BaseVC {
                 
                 let title = "No Image"
                 
-                self.omShowPlaceholder(nil, titleAttributedString: title.omGetAttributes(color: [(UIColor.gray, title)]), shouldTap: false, offset: 64)
+                self.om.showPlaceholder(image: nil, titleAttributedString: title.omGetAttributes(color: [(UIColor.gray, title)]), shouldTap: false, offset: 64)
             }
             
         }

@@ -35,7 +35,7 @@ class PlaceholderTVC: BaseTVC {
         
         view.om.addTapGestureRecognizer { [unowned self] (_) in
             
-            self.omIsShowPlaceholder ? self.omHidePlaceholder() : self.showPlaceholder()
+            self.om.isShowPlaceholder ? self.om.hidePlaceholder() : self.showPlaceholder()
         }
         
         showPlaceholder()
@@ -364,6 +364,6 @@ class PlaceholderTVC: BaseTVC {
         
         let image = UIImage(named: "placeholder_" + title!.lowercased().replacingOccurrences(of: "", with: "_", options: NSString.CompareOptions.caseInsensitive, range: nil))
         
-        omShowPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: text.omGetAttributes(color: [(textColor, text)], font: [(textFont, text)]), descriptionAttributedString: description.omGetAttributes(color: [(descriptionColor, description)], font: [(descriptionFont, description)]))
+        om.showPlaceholder(image: image, backgroundColor: backgroundColor, titleAttributedString: text.omGetAttributes(color: [(textColor, text)], font: [(textFont, text)]), descriptionAttributedString: description.omGetAttributes(color: [(descriptionColor, description)], font: [(descriptionFont, description)]))
     }
 }

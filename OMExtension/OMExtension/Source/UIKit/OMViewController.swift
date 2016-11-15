@@ -29,7 +29,6 @@ import UIKit
 
 // MARK: - common
 
-
 public extension OMExtension where OMBase: UIViewController {
     
     var navigationBar: UINavigationBar? {
@@ -97,6 +96,17 @@ public extension OMExtension where OMBase: UIViewController {
         base.view.sendSubview(toBack: imageView)
         
         return imageView
+    }
+    
+    /// 添加系统截屏通知
+    ///
+    /// - Parameter handler: 截屏回调
+    func addUserDidTakeScreenshotNotification(handler: @escaping ()->()) {
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
+            
+            handler()
+        }
     }
 }
 
@@ -182,141 +192,66 @@ public extension UIViewController {
         
         return om.setBackgroundImage(image)
     }
-    
-}
-
-// MARK: - notification
-
-public extension UIViewController {
-    
-    func omAddUserDidTakeScreenshotNotificationNotification(_ handler: @escaping ()->()) {
-        
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: OperationQueue.main) { notification in
-            
-            handler()
-        }
-    }
-    
-    /**
-     添加通知
-     
-     - parameter name:     名称
-     - parameter selector: 方法
-     */
-    func omAddNotificationObserver(_ name: String, selector: Selector) {
-        
-        NotificationCenter.default.addObserver(self, selector: selector, name: NSNotification.Name(rawValue: name), object: nil)
-    }
-    
-    /**
-     删除通知
-     
-     - parameter name: 名称
-     */
-    func omRemoveNotificationObserver(_ name: String) {
-        
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: name), object: nil)
-    }
-    
-    /**
-     删除通知
-     */
-    func omRemoveNotificationObserver() {
-        
-        NotificationCenter.default.removeObserver(self)
-    }
-    
-    func omAddKeyboardWillShowNotification() {
-        
-        omAddNotificationObserver(NSNotification.Name.UIKeyboardWillShow.rawValue, selector: #selector(UIViewController.omKeyboardWillShowNotification(_:)))
-    }
-    
-    func omAddKeyboardDidShowNotification() {
-        
-        omAddNotificationObserver(NSNotification.Name.UIKeyboardDidShow.rawValue, selector: #selector(UIViewController.omKeyboardDidShowNotification(_:)))
-    }
-    
-    func omAddKeyboardWillHideNotification() {
-        
-        omAddNotificationObserver(NSNotification.Name.UIKeyboardWillHide.rawValue, selector: #selector(UIViewController.omKeyboardWillHideNotification(_:)))
-    }
-    
-    func omAddKeyboardDidHideNotification() {
-        
-        omAddNotificationObserver(NSNotification.Name.UIKeyboardDidHide.rawValue, selector: #selector(UIViewController.omKeyboardDidHideNotification(_:)))
-    }
-    
-    func omRemoveKeyboardWillShowNotification() {
-        
-        omRemoveNotificationObserver(NSNotification.Name.UIKeyboardWillShow.rawValue)
-    }
-    
-    func omRemoveKeyboardDidShowNotification() {
-        
-        omRemoveNotificationObserver(NSNotification.Name.UIKeyboardDidShow.rawValue)
-    }
-    
-    func omRemoveKeyboardWillHideNotification() {
-        
-        omRemoveNotificationObserver(NSNotification.Name.UIKeyboardWillHide.rawValue)
-    }
-    
-    func omRemoveKeyboardDidHideNotification() {
-        
-        omRemoveNotificationObserver(NSNotification.Name.UIKeyboardDidHide.rawValue)
-    }
-    
-    func omKeyboardDidShowNotification(_ notification: Notification) {
-        
-        if let info = (notification as NSNotification).userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            
-            omKeyboardDidShowWithFrame(value.cgRectValue)
-        }
-    }
-    
-    func omKeyboardWillShowNotification(_ notification: Notification) {
-        
-        if let info = (notification as NSNotification).userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            
-            omKeyboardWillShowWithFrame(value.cgRectValue)
-        }
-    }
-    
-    func omKeyboardWillHideNotification(_ notification: Notification) {
-        
-        if let info = (notification as NSNotification).userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            
-            omKeyboardWillHideWithFrame(value.cgRectValue)
-        }
-    }
-    
-    func omKeyboardDidHideNotification(_ notification: Notification) {
-        
-        if let info = (notification as NSNotification).userInfo, let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            
-            omKeyboardDidHideWithFrame(value.cgRectValue)
-        }
-    }
-    
-    func omKeyboardWillShowWithFrame(_ frame: CGRect) {
-        
-    }
-    
-    func omKeyboardDidShowWithFrame(_ frame: CGRect) {
-        
-    }
-    
-    func omKeyboardWillHideWithFrame(_ frame: CGRect) {
-        
-    }
-    
-    func omKeyboardDidHideWithFrame(_ frame: CGRect) {
-        
-    }
-    
 }
 
 // MARK: - placeholder
+
+public extension OMExtension where OMBase: UIViewController {
+    
+    var placeholderView: UIView? {
+        
+        return base.omPlaceholderView
+    }
+    
+    var placeholderImageView: UIImageView? {
+        
+        return base.omPlaceholderImageView
+    }
+    
+    var placeholderTitleLabel: UILabel? {
+        
+        return base.omPlaceholderTitleLabel
+    }
+    
+    var placeholderDescriptionLabel: UILabel? {
+        
+        return base.omPlaceholderDescriptionLabel
+    }
+    
+    var placeholderButton: UIButton? {
+        
+        return base.omPlaceholderButton
+    }
+    
+    var isShowPlaceholder: Bool {
+        
+        return base.isShowPlaceholder
+    }
+    
+    /**
+     显示占位图
+     
+     - parameter image:                       图片
+     - parameter backgroundColor:             背景色
+     - parameter titleAttributedString:       标题
+     - parameter descriptionAttributedString: 描述
+     - parameter space:                       间距
+     - parameter shouldTapBackground:         是否可以交互
+     - parameter offset:                      距离y坐标偏移
+     */
+    func showPlaceholder(image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton) -> Void)? = nil, placeholderViewTapHandler: (() -> Void)? = nil) {
+        
+        base.showPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: titleAttributedString, descriptionAttributedString: descriptionAttributedString, space: space, shouldTap: shouldTap, offset: offset, buttonBackgroundImages: buttonBackgroundImages, buttonTitles: buttonTitles, buttonSize: buttonSize, buttonTapHandler: buttonTapHandler, placeholderViewTapHandler: placeholderViewTapHandler)
+    }
+    
+    /**
+     隐藏占位图
+     */
+    func hidePlaceholder() {
+        
+        base.hidePlaceholder()
+    }
+}
 
 private var _omPlaceholderView: Void?
 
@@ -332,7 +267,7 @@ private var _omPlaceholderLastBackgroundColor: Void?
 
 public extension UIViewController {
     
-    var omPlaceholderView: UIView? {
+    fileprivate var omPlaceholderView: UIView? {
         
         get {
             return objc_getAssociatedObject(self, &_omPlaceholderView) as? UIView
@@ -343,7 +278,7 @@ public extension UIViewController {
         }
     }
     
-    var omPlaceholderImageView: UIImageView? {
+    fileprivate var omPlaceholderImageView: UIImageView? {
         
         get {
             return objc_getAssociatedObject(self, &_omPlaceholderImageView) as? UIImageView
@@ -354,7 +289,7 @@ public extension UIViewController {
         }
     }
     
-    var omPlaceholderTitleLabel: UILabel? {
+    fileprivate var omPlaceholderTitleLabel: UILabel? {
         
         get {
             return objc_getAssociatedObject(self, &_omPlaceholderTitleLabel) as? UILabel
@@ -365,7 +300,7 @@ public extension UIViewController {
         }
     }
     
-    var omPlaceholderDescriptionLabel: UILabel? {
+    fileprivate var omPlaceholderDescriptionLabel: UILabel? {
         
         get {
             return objc_getAssociatedObject(self, &_omPlaceholderDescriptionLabel) as? UILabel
@@ -376,7 +311,7 @@ public extension UIViewController {
         }
     }
     
-    var omPlaceholderButton: UIButton? {
+    fileprivate var omPlaceholderButton: UIButton? {
         
         get {
             return objc_getAssociatedObject(self, &_omPlaceholderButton) as? UIButton
@@ -596,11 +531,18 @@ public extension UIViewController {
         _button.center.x = _descriptionLabel.center.x
     }
     
-    var omIsShowPlaceholder: Bool {
+    fileprivate var isShowPlaceholder: Bool {
         
         return omPlaceholderView != nil
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.isShowPlaceholder` instead.", renamed: "om.isShowPlaceholder")
+    var omIsShowPlaceholder: Bool {
+        
+        return isShowPlaceholder
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.showPlaceholder` instead.", renamed: "om.showPlaceholder")
     /**
      显示占位图
      
@@ -614,9 +556,25 @@ public extension UIViewController {
      */
     func omShowPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton) -> Void)? = nil, placeholderViewTapHandler: (() -> Void)? = nil) {
         
+        showPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: titleAttributedString, descriptionAttributedString: descriptionAttributedString, space: space, shouldTap: shouldTap, offset: offset, buttonBackgroundImages: buttonBackgroundImages, buttonTitles: buttonTitles, buttonSize: buttonSize, buttonTapHandler: buttonTapHandler, placeholderViewTapHandler: placeholderViewTapHandler)
+    }
+    
+    /**
+     显示占位图
+     
+     - parameter image:                       图片
+     - parameter backgroundColor:             背景色
+     - parameter titleAttributedString:       标题
+     - parameter descriptionAttributedString: 描述
+     - parameter space:                       间距
+     - parameter shouldTapBackground:         是否可以交互
+     - parameter offset:                      距离y坐标偏移
+     */
+    fileprivate func showPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton) -> Void)? = nil, placeholderViewTapHandler: (() -> Void)? = nil) {
+        
         omPlaceholderLastBackgroundColor = view.backgroundColor
         
-        omHidePlaceholder()
+        hidePlaceholder()
         
         var offsetY = offset
         
@@ -670,10 +628,19 @@ public extension UIViewController {
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.hidePlaceholder` instead.", renamed: "om.hidePlaceholder")
     /**
      隐藏占位图
      */
     func omHidePlaceholder() {
+        
+        hidePlaceholder()
+    }
+    
+    /**
+     隐藏占位图
+     */
+    fileprivate func hidePlaceholder() {
         
         omSetScrollEnabled(true)
         
