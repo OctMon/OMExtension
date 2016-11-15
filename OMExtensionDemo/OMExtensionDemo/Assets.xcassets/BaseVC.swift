@@ -37,7 +37,7 @@ class BaseVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        omSetBackBarButtonItem("")
+        om.setBackBarButtonItem()
     }
 
 }

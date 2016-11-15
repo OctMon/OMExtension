@@ -55,7 +55,7 @@ class ViewControllerTVC: BaseTVC {
         let vc = UIStoryboard(omName: UIViewController.omClassName).instantiateViewController(withIdentifier: dataSource[(indexPath as NSIndexPath).row].1)
         vc.title = dataSource[(indexPath as NSIndexPath).row].0
         
-        omPushViewController(vc)
+        om.pushViewController(vc)
     }
     
     /*

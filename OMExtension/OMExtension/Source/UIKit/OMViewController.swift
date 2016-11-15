@@ -29,56 +29,56 @@ import UIKit
 
 // MARK: - common
 
-public extension UIViewController {
+
+public extension OMExtension where OMBase: UIViewController {
     
-    var omNavigationBar: UINavigationBar? {
+    var navigationBar: UINavigationBar? {
         
-        return navigationController?.navigationBar
+        return base.navigationController?.navigationBar
     }
     
-    func omSetBackBarButtonItem(_ title: String) {
+    func setBackBarButtonItem(title: String? = nil) {
         
         let temporaryBarButtonItem = UIBarButtonItem()
-        temporaryBarButtonItem.title = title
-        navigationItem.backBarButtonItem = temporaryBarButtonItem
+        temporaryBarButtonItem.title = title ?? ""
+        base.navigationItem.backBarButtonItem = temporaryBarButtonItem
     }
     
-    func omPushViewController(_ viewController: UIViewController, animated: Bool = true) {
+    func pushViewController(_ viewController: UIViewController, animated: Bool = true) {
         
-        navigationController?.pushViewController(viewController, animated: animated)
+        base.navigationController?.pushViewController(viewController, animated: animated)
     }
     
     @discardableResult
-    func omPopViewController(_ animated: Bool = true) -> UIViewController? {
+    func popViewController(animated: Bool = true) -> UIViewController? {
         
-        return navigationController?.popViewController(animated: animated)
+        return base.navigationController?.popViewController(animated: animated)
     }
     
-    func omPresentViewController(_ viewController: UIViewController, animated: Bool = true, completion: (()->())? = nil) {
+    func presentViewController(_ viewController: UIViewController, animated: Bool = true, completion: (()->())? = nil) {
         
-        present(viewController, animated: animated, completion: completion)
+        base.present(viewController, animated: animated, completion: completion)
     }
     
-    func omDismissViewController(_ animated: Bool = true, completion: (()->())? = nil) {
+    func dismissViewController(animated: Bool = true, completion: (()->())? = nil) {
         
-        dismiss(animated: animated, completion: completion)
+        base.dismiss(animated: animated, completion: completion)
     }
     
     /**
      点击任意位置收回键盘
      */
-    func omDismissKeyboardWhenTapped() {
+    func hideKeyboardwhenTapped() {
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.omDismissKeyboard))
-        view.addGestureRecognizer(tap)
+        base.hideKeyboardwhenTapped()
     }
     
     /**
      收回键盘
      */
-    func omDismissKeyboard() {
+    func hideKeyboard() {
         
-        view.endEditing(true)
+        base.hideKeyboard()
     }
     
     /**
@@ -89,14 +89,98 @@ public extension UIViewController {
      - returns: UIImageView
      */
     @discardableResult
-    func omSetBackground(image: UIImage) -> UIImageView {
+    func setBackgroundImage(_ image: UIImage?) -> UIImageView {
         
-        let imageView = UIImageView(frame: view.frame)
+        let imageView = UIImageView(frame: base.view.frame)
         imageView.image = image
-        view.addSubview(imageView)
-        view.sendSubview(toBack: imageView)
+        base.view.addSubview(imageView)
+        base.view.sendSubview(toBack: imageView)
         
         return imageView
+    }
+}
+
+public extension UIViewController {
+    
+    fileprivate func hideKeyboardwhenTapped() {
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.hideKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    
+    @objc fileprivate func hideKeyboard() {
+        
+        view.endEditing(true)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.navigationBar` instead.", renamed: "om.navigationBar")
+    var omNavigationBar: UINavigationBar? {
+        
+        return om.navigationBar
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.setBackBarButtonItem` instead.", renamed: "om.setBackBarButtonItem")
+    func omSetBackBarButtonItem(_ title: String) {
+        
+        om.setBackBarButtonItem(title: title)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.pushViewController` instead.", renamed: "om.pushViewController")
+    func omPushViewController(_ viewController: UIViewController, animated: Bool = true) {
+        
+        om.pushViewController(viewController, animated: animated)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.popViewController` instead.", renamed: "om.popViewController")
+    @discardableResult
+    func omPopViewController(_ animated: Bool = true) -> UIViewController? {
+        
+        return om.popViewController(animated: animated)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.presentViewController` instead.", renamed: "om.presentViewController")
+    func omPresentViewController(_ viewController: UIViewController, animated: Bool = true, completion: (()->())? = nil) {
+        
+        om.presentViewController(viewController, animated: animated, completion: completion)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.dismissViewController` instead.", renamed: "om.dismissViewController")
+    func omDismissViewController(_ animated: Bool = true, completion: (()->())? = nil) {
+        
+        om.dismissViewController(animated: animated, completion: completion)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.hideKeyboardwhenTapped` instead.", renamed: "om.hideKeyboardwhenTapped")
+    /**
+     点击任意位置收回键盘
+     */
+    func omDismissKeyboardWhenTapped() {
+        
+        om.hideKeyboardwhenTapped()
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.hideKeyboard` instead.", renamed: "om.hideKeyboard")
+    /**
+     收回键盘
+     */
+    func omDismissKeyboard() {
+        
+        om.hideKeyboard()
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.setBackgroundImage` instead.", renamed: "om.setBackgroundImage")
+    /**
+     设置背景图
+     
+     - parameter image: 背景图
+     
+     - returns: UIImageView
+     */
+    @discardableResult
+    func omSetBackground(image: UIImage) -> UIImageView {
+        
+        return om.setBackgroundImage(image)
     }
     
 }

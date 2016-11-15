@@ -39,7 +39,7 @@ class ApplicationTVC: BaseTVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        om.hideKeyboardwhenTapped()
         label.numberOfLines = 0
         label.text = UIApplication.OM.appName + "\n" + UIApplication.OM.appIdentifier + "\n" + UIApplication.OM.appBuild + "\n" + UIApplication.OM.appVersion + "\n" + "\(UIApplication.OM.appDelegate)"
         
@@ -70,7 +70,7 @@ class ApplicationTVC: BaseTVC {
         let vc = UIStoryboard(omName: UIApplication.omClassName).instantiateViewController(withIdentifier: dataSource[(indexPath as NSIndexPath).row].1)
         vc.title = dataSource[(indexPath as NSIndexPath).row].0
         
-        omPushViewController(vc)
+        om.pushViewController(vc)
     }
 
     /*

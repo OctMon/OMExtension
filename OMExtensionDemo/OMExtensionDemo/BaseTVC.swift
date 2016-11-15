@@ -36,7 +36,7 @@ class BaseTVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        omSetBackBarButtonItem("")
+        om.setBackBarButtonItem()
     }
 
 }
