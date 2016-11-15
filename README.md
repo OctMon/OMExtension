@@ -229,8 +229,8 @@ print(int.omIsEven) // false
 
 ```swift
 print(NSObject.omClassName) // NSObject
-print(UIApplication.sharedApplication().omClassName) // UIApplication
-print(omDeinitLog) // ApplicationTVC♻️deinit
+print(UIApplication.shared.om.className) // UIApplication
+print(om.deinitLog) // ApplicationTVC♻️deinit
 ```
 
 ### String
@@ -942,25 +942,25 @@ textView.om.addDoneButton(barStyle: .default, title: "完成")
 gestureRecognizer
 
 ```swift
-imageView.om.addTapGestureRecognizer { [unowned self] (tapGestureRecognizer) in
+view.om.addTapGestureRecognizer { [unowned self] (tapGestureRecognizer) in
     
-    print(self.omClassName + "点按手势回调")
+    print(self.om.className + "点按手势回调")
 }
-imageView.om.addLongPressGestureRecognizer { [unowned self] (longPressGestureRecognizer) in
+view.om.addLongPressGestureRecognizer { [unowned self] (longPressGestureRecognizer) in
     
-    print(self.omClassName + "长按手势回调")
+    print(self.om.className + "长按手势回调")
 }
-imageView.om.addPinchGestureRecognizer { [unowned self] (pinchGestureRecognizer) in
+view.om.addPinchGestureRecognizer { [unowned self] (pinchGestureRecognizer) in
     
-    print(self.omClassName + "捏合手势回调")
+    print(self.om.className + "捏合手势回调")
 }
-imageView.om.addSwipeGestureRecognizer(.left) { [unowned self] (swipeGestureRecognizer) in
+view.om.addSwipeGestureRecognizer(.left) { [unowned self] (swipeGestureRecognizer) in
     
-    print(self.omClassName + "轻扫手势回调")
+    print(self.om.className + "轻扫手势回调")
 }
-imageView.om.addPanGestureRecognizer { [unowned self] (panGestureRecognizer) in
+view.om.addPanGestureRecognizer { [unowned self] (panGestureRecognizer) in
     
-    print(self.omClassName + "拖动手势回调")
+    print(self.om.className + "拖动手势回调")
 }
 ```
 

@@ -31,7 +31,7 @@ class BaseVC: UIViewController {
 
     deinit{
         
-        print(omDeinitLog)
+        print(om.deinitLog)
     }
     
     override func viewDidLoad() {

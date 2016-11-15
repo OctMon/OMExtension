@@ -30,7 +30,7 @@ class BaseTVC: UITableViewController {
 
     deinit{
         
-        print(omDeinitLog)
+        print(om.deinitLog)
     }
     
     override func viewDidLoad() {
