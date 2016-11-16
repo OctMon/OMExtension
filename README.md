@@ -216,7 +216,7 @@ let int: Int = 123
 
 print(int.omToFloat) // 123.0
 print(int.omToDouble) // 123.0
-print(type(of: int.omToString)) //String
+print(type(of: int.omToString)) // String
 print(type(of: int.omToFloat)) // Float
 print(type(of: int.omToDouble)) // Double
 print(int.omIsOdd) // true
