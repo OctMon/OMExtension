@@ -117,7 +117,7 @@ httpBody?.omToJson()
 Any转json
 
 ```swift
-Data.omToJson(from: allHTTPHeaderFields)
+Data.OM.JSONString(from: allHTTPHeaderFields)
 ```
 
 ### Date

@@ -48,7 +48,7 @@ public extension URLRequest {
         
         var log = "\(separator.popLast() ?? "")[URL]\t\t\(omUrl)\n[Method]\t\(omHttpMethod)\n[Timeout]\t\(omTimeout)"
         
-        if let allHTTPHeaderFields = allHTTPHeaderFields, allHTTPHeaderFields.count > 0, let header = Data.omToJson(from: allHTTPHeaderFields) {
+        if let allHTTPHeaderFields = allHTTPHeaderFields, allHTTPHeaderFields.count > 0, let header = Data.OM.JSONString(from: allHTTPHeaderFields) {
             
             log += "\n[Header]\n\(header)"
         }
@@ -79,7 +79,7 @@ public extension URLRequest {
                 log += "[Duration]\t\(requestDuration)"
             }
             
-            if isPrintHeader, let header = Data.omToJson(from: response.allHeaderFields) {
+            if isPrintHeader, let header = Data.OM.JSONString(from: response.allHeaderFields) {
                 
                 log += "\n[Header]\n\(header)"
             }

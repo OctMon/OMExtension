@@ -28,28 +28,37 @@ import Foundation
 
 public extension Data {
     
+    struct OM {
+        
+        static func JSONString(from json: Any?) -> String? {
+            
+            guard let json = json else {
+                
+                return nil
+            }
+            
+            var string: String? = nil
+            
+            if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted), let dataString = String(data: data, encoding: .utf8) {
+                
+                string = dataString
+            }
+            
+            return string
+        }
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Data.OM.JSONString` instead.", renamed: "OM.JSONString")
     static func omToJson(from json: Any?) -> String? {
         
-        guard let json = json else {
-            
-            return nil
-        }
-        
-        var string: String? = nil
-        
-        if let data = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted), let dataString = String(data: data, encoding: .utf8) {
-            
-            string = dataString
-        }
-        
-        return string
+        return OM.JSONString(from: json)
     }
     
     func omToJson() -> String? {
         
         var string: String? = nil
         
-        if let json = try? JSONSerialization.jsonObject(with: self, options: []), let dataString = Data.omToJson(from: json) {
+        if let json = try? JSONSerialization.jsonObject(with: self, options: []), let dataString = Data.OM.JSONString(from: json) {
             
             string = dataString
             

@@ -163,7 +163,7 @@ public extension FileManager {
         }
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.getURL` instead.", renamed: "OM.getURL")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.getURL` instead.", renamed: "OM.getURL")
     /// 获取沙盒中的URL
     ///
     /// - Parameters:
@@ -175,7 +175,7 @@ public extension FileManager {
         return OM.getURL(for: `for`, path: path)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.` instead.getDocument", renamed: "OM.getDocument")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.` instead.getDocument", renamed: "OM.getDocument")
     /// 获取 documentDirectory -> URL
     ///
     /// - Parameter path: e.g. "a/b/c/d.txt"
@@ -185,7 +185,7 @@ public extension FileManager {
         return OM.getDocument(path: path)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.getCaches` instead.", renamed: "OM.getCaches")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.getCaches` instead.", renamed: "OM.getCaches")
     /// 获取 cachesDirectory -> URL
     ///
     /// - Parameter path: e.g. "a/b/c/d.txt"
@@ -195,7 +195,7 @@ public extension FileManager {
         return OM.getCaches(path: path)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.fileExists` instead.", renamed: "OM.fileExists")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.fileExists` instead.", renamed: "OM.fileExists")
     /// 检查文件是否存在
     ///
     /// - Parameters:
@@ -207,7 +207,7 @@ public extension FileManager {
         return OM.fileExists(for: `for`, path: path)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.fileExists` instead.", renamed: "OM.fileExists")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.fileExists` instead.", renamed: "OM.fileExists")
     /// 检查文件是否存在
     ///
     /// - Parameter at: URL
@@ -217,7 +217,7 @@ public extension FileManager {
         return OM.fileExists(at: at)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.getFileSize` instead.", renamed: "OM.getFileSize")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.getFileSize` instead.", renamed: "OM.getFileSize")
     /// 获取文件大小
     ///
     /// - Parameters:
@@ -229,7 +229,7 @@ public extension FileManager {
         return OM.getFileSize(for: `for`, path: path)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.getFileSize` instead.", renamed: "OM.getFileSize")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.getFileSize` instead.", renamed: "OM.getFileSize")
     /// 获取文件大小
     ///
     /// - Parameter at: URL
@@ -239,7 +239,7 @@ public extension FileManager {
         return OM.getFileSize(at: at)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.createDirectory` instead.", renamed: "OM.createDirectory")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.createDirectory` instead.", renamed: "OM.createDirectory")
     /// 创建目录
     ///
     /// - Parameters:
@@ -250,7 +250,7 @@ public extension FileManager {
         return OM.createDirectory(for: `for`, path: path)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.createDirectory` instead.", renamed: "OM.createDirectory")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.createDirectory` instead.", renamed: "OM.createDirectory")
     /// 创建目录
     ///
     /// - Parameter at: URL
@@ -259,7 +259,7 @@ public extension FileManager {
         return OM.createDirectory(at: at)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.removeItem` instead.", renamed: "OM.removeItem")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.removeItem` instead.", renamed: "OM.removeItem")
     /// 删除文件或目录
     ///
     /// - Parameters:
@@ -270,7 +270,7 @@ public extension FileManager {
         OM.removeItem(for: `for`, path: path)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.removeItem` instead.", renamed: "OM.removeItem")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `FileManager.OM.removeItem` instead.", renamed: "OM.removeItem")
     /// 删除文件或目录
     ///
     /// - Parameter at: URL
