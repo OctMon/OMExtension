@@ -110,7 +110,7 @@ public extension Date {
 
 public extension OMDateInfo {
     
-    func omString(dateSeparator: String = "-", dateNormal: Bool = true, nanosecond: Bool = false) -> String {
+    func string(dateSeparator: String = "-", dateNormal: Bool = true, nanosecond: Bool = false) -> String {
         
         var description: String
         

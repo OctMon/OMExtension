@@ -28,16 +28,34 @@ import Foundation
 
 public extension Array {
     
-    func omRandom() -> (Int, Element)? {
+    func omRandom() -> (offset: Int, element: Element)? {
+        
+        var random = self
+        
+        return random.random()
+    }
+    
+    mutating func omPopRandom() -> (offset: Int, element: Element)? {
+        
+        return random(isPop: true)
+    }
+    
+    private mutating func random(isPop: Bool = false) -> (offset: Int, element: Element)? {
         
         guard count > 0 else {
             
             return nil
         }
         
-        let idx = Int(arc4random_uniform(UInt32(count)))
+        let offset = Int(arc4random_uniform(UInt32(count)))
+        let element = self[offset]
         
-        return (idx, self[idx])
+        if isPop {
+            
+            self.remove(at: offset)
+        }
+        
+        return (offset, element)
     }
     
     func omAtIndex(_ index: Int) -> Element? {

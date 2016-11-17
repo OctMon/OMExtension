@@ -94,6 +94,40 @@ number.omAtIndex(33) // nil
 number.omDifference([10, 11], [17, 18]) // [12, 13, 14, 15, 16, 19, 20]
 [Int](1...10).omUnion(number, [21, 22]) // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 number.omIntersection([Int](10...13), [11, 12]) // [10, 11, 12, 13]
+
+// 不重复随机数
+var random = [0, 1, 2, 3, 4, 5]
+dump(random)
+   
+for _ in 0...random.count {
+  
+  print("随机数:" + "\(random.omPopRandom()?.element)")
+  print(random)
+}
+
+/*
+▿ 6 elements
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+随机数:Optional(1)
+[0, 2, 3, 4, 5]
+随机数:Optional(5)
+[0, 2, 3, 4]
+随机数:Optional(0)
+[2, 3, 4]
+随机数:Optional(3)
+[2, 4]
+随机数:Optional(4)
+[2]
+随机数:Optional(2)
+[]
+随机数:nil
+[]
+*/
 ```
 
 ### Bool
@@ -128,7 +162,7 @@ date.omMonthString // August
 date.omWeekdayString // Monday
 date.omDateInfo().month // 8
 date.omDateInfo() // OMDateInfo(year: 2016, month: 8, day: 29, weekday: 5, hour: 15, minute: 29, second: 21, nanosecond: 898715019)
-date.omDateInfo().omString(nanosecond: true) // 2016-08-29 15:29:21:899
+date.omDateInfo().string(nanosecond: true) // 2016-08-29 15:29:21:899
 ```
 
 ### Dictionary

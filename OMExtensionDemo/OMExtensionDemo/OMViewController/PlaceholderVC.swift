@@ -61,14 +61,14 @@ class PlaceholderVC: BaseVC {
     
     var getImage: UIImage? {
         
-        let app = PopularApp(rawValue: dataSource.omRandom()!.1)!
+        let app = PopularApp(rawValue: dataSource.omRandom()!.element)!
         
         return UIImage(named: "placeholder_" + app.rawValue.lowercased().replacingOccurrences(of: "", with: "_", options: NSString.CompareOptions.caseInsensitive, range: nil))
     }
     
     var getButtonBackgroundImageName: String {
         
-        let app = PopularApp(rawValue: dataSource.omRandom()!.1)!
+        let app = PopularApp(rawValue: dataSource.omRandom()!.element)!
         
         return "button_background_" + app.rawValue.lowercased()
     }
