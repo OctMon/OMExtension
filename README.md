@@ -123,9 +123,6 @@ Data.OM.JSONString(from: allHTTPHeaderFields)
 ### Date
 
 ```swift
-let date = Date.omWithTimeStamp(Date().timeIntervalSince1970 * 1000)
-
-print(date) // 2016-08-29 07:29:21 +0000
 date.omYearString // 2016
 date.omMonthString // August
 date.omWeekdayString // Monday
@@ -159,6 +156,9 @@ print(type(of: double.omToDate)) // Date
 print(type(of: double.omToString)) // String
 print(100.58.omToDecimalStyle()) // 100.58
 print(123.456.omToDecimalStyle(3)) // 123.456
+
+let date = (Date().timeIntervalSince1970 * 1000).omToDate
+print(date) // 2016-11-17 08:28:16 +0000
 ```
 
 ### FileManager

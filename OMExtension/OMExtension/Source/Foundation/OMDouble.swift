@@ -40,7 +40,7 @@ public extension Double {
     
     var omToDate: Date {
         
-        return Date.omWithTimeStamp(self)
+        return Date(timeIntervalSince1970: self / 1000)
     }
     
     func omToDecimalStyle(_ precision: Int = 2) -> String {
