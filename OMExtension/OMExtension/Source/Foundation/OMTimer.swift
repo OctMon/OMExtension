@@ -28,15 +28,25 @@ import Foundation
 
 public extension Timer {
     
+    struct OM {
+        
+        @discardableResult
+        static func runLoop(seconds: TimeInterval, handler: @escaping (_ timer: Timer?) -> Void) -> Timer {
+            
+            let fireDate = CFAbsoluteTimeGetCurrent()
+            let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, fireDate, seconds, 0, 0, handler)
+            
+            CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, CFRunLoopMode.defaultMode)
+            
+            return timer!
+        }
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.runLoop` instead.", renamed: "OM.runLoop")
     @discardableResult
     static func omRunLoop(seconds: TimeInterval, handler: @escaping (_ timer: Timer?) -> Void) -> Timer {
         
-        let fireDate = CFAbsoluteTimeGetCurrent()
-        let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, fireDate, seconds, 0, 0, handler)
-        
-        CFRunLoopAddTimer(CFRunLoopGetCurrent(), timer, CFRunLoopMode.defaultMode)
-        
-        return timer!
+        return OM.runLoop(seconds: seconds, handler: handler)
     }
 
 }

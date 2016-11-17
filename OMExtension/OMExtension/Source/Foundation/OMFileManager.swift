@@ -28,6 +28,142 @@ import Foundation
 
 public extension FileManager {
     
+    struct OM {
+        
+        /// 获取沙盒中的URL
+        ///
+        /// - Parameters:
+        ///   - for: SearchPathDirectory
+        ///   - path: e.g. "a/b/c/d.txt"
+        /// - Returns: URL
+        static func getURL(for: SearchPathDirectory, path: String? = nil) -> URL {
+            
+            var url = FileManager.default.urls(for: `for`, in: .userDomainMask)[0]
+            
+            if let path = path {
+                
+                url.appendPathComponent(path)
+            }
+            
+            return url
+        }
+        
+        /// 获取 documentDirectory -> URL
+        ///
+        /// - Parameter path: e.g. "a/b/c/d.txt"
+        /// - Returns: URL
+        static func getDocument(path: String? = nil) -> URL {
+            
+            return getURL(for: .documentDirectory, path: path)
+        }
+        
+        /// 获取 cachesDirectory -> URL
+        ///
+        /// - Parameter path: e.g. "a/b/c/d.txt"
+        /// - Returns: URL
+        static func getCaches(path: String? = nil) -> URL {
+            
+            return getURL(for: .cachesDirectory, path: path)
+        }
+        
+        /// 检查文件是否存在
+        ///
+        /// - Parameters:
+        ///   - for: SearchPathDirectory
+        ///   - path: "a/b/c/d.txt
+        /// - Returns: 存在返回URL 不存在返回空nil
+        static func fileExists(for: SearchPathDirectory = .documentDirectory, path: String) -> URL? {
+            
+            let url = getURL(for: `for`, path: path)
+            
+            return fileExists(at: url)
+        }
+        
+        /// 检查文件是否存在
+        ///
+        /// - Parameter at: URL
+        /// - Returns: 存在返回URL 不存在返回空nil
+        static func fileExists(at: URL) -> URL? {
+            
+            if FileManager.default.fileExists(atPath: at.path) {
+                
+                return at
+            }
+            
+            return nil
+        }
+        
+        /// 获取文件大小
+        ///
+        /// - Parameters:
+        ///   - for: SearchPathDirectory
+        ///   - path: e.g. "a/b/c/d.txt"
+        /// - Returns: 存在返回大小 不存在返回空nil
+        static func getFileSize(for: SearchPathDirectory = .documentDirectory, path: String) -> Int {
+            
+            let url = getURL(for: `for`, path: path)
+            
+            return getFileSize(at: url)
+        }
+        
+        /// 获取文件大小
+        ///
+        /// - Parameter at: URL
+        /// - Returns: 存在返回大小 不存在返回空nil
+        static func getFileSize(at: URL) -> Int {
+            
+            do {
+                return (try FileManager.default.attributesOfItem(atPath: at.path)[FileAttributeKey.size] as? Int) ?? 0
+            } catch {
+                return 0
+            }
+        }
+        
+        /// 创建目录
+        ///
+        /// - Parameters:
+        ///   - for: SearchPathDirectory
+        ///   - path: e.g. "a/b/c"
+        static func createDirectory(for: SearchPathDirectory = .documentDirectory, path: String) {
+            
+            let url = getURL(for: `for`, path: path)
+            
+            createDirectory(at: url)
+        }
+        
+        /// 创建目录
+        ///
+        /// - Parameter at: URL
+        static func createDirectory(at: URL) {
+            
+            if fileExists(path: at.path) == nil {
+                
+                try? FileManager.default.createDirectory(at: at, withIntermediateDirectories: true, attributes: nil)
+            }
+        }
+        
+        /// 删除文件或目录
+        ///
+        /// - Parameters:
+        ///   - for: SearchPathDirectory
+        ///   - path: e.g. "a/b/c"
+        static func removeItem(for: SearchPathDirectory = .documentDirectory, path: String) {
+            
+            let url = getURL(for: `for`, path: path)
+            
+            removeItem(at: url)
+        }
+        
+        /// 删除文件或目录
+        ///
+        /// - Parameter at: URL
+        static func removeItem(at: URL) {
+            
+            try? FileManager.default.removeItem(at: at)
+        }
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.getURL` instead.", renamed: "OM.getURL")
     /// 获取沙盒中的URL
     ///
     /// - Parameters:
@@ -36,34 +172,30 @@ public extension FileManager {
     /// - Returns: URL
     static func omGetURL(for: SearchPathDirectory, path: String? = nil) -> URL {
         
-        var document = FileManager.default.urls(for: `for`, in: .userDomainMask)[0]
-        
-        if let path = path {
-            
-            document.appendPathComponent(path)
-        }
-        
-        return document
+        return OM.getURL(for: `for`, path: path)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.` instead.getDocument", renamed: "OM.getDocument")
     /// 获取 documentDirectory -> URL
     ///
     /// - Parameter path: e.g. "a/b/c/d.txt"
     /// - Returns: URL
     static func omDocumentDirectory(path: String? = nil) -> URL {
         
-        return omGetURL(for: .documentDirectory, path: path)
+        return OM.getDocument(path: path)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.getCaches` instead.", renamed: "OM.getCaches")
     /// 获取 cachesDirectory -> URL
     ///
     /// - Parameter path: e.g. "a/b/c/d.txt"
     /// - Returns: URL
     static func omCachesDirectory(path: String? = nil) -> URL {
         
-        return omGetURL(for: .cachesDirectory, path: path)
+        return OM.getCaches(path: path)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.fileExists` instead.", renamed: "OM.fileExists")
     /// 检查文件是否存在
     ///
     /// - Parameters:
@@ -72,25 +204,20 @@ public extension FileManager {
     /// - Returns: 存在返回URL 不存在返回空nil
     static func omFileExists(for: SearchPathDirectory = .documentDirectory, path: String) -> URL? {
         
-        let url = omGetURL(for: `for`, path: path)
-        
-        return omFileExists(at: url)
+        return OM.fileExists(for: `for`, path: path)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.fileExists` instead.", renamed: "OM.fileExists")
     /// 检查文件是否存在
     ///
     /// - Parameter at: URL
     /// - Returns: 存在返回URL 不存在返回空nil
     static func omFileExists(at: URL) -> URL? {
         
-        if FileManager.default.fileExists(atPath: at.path) {
-            
-            return at
-        }
-        
-        return nil
+        return OM.fileExists(at: at)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.getFileSize` instead.", renamed: "OM.getFileSize")
     /// 获取文件大小
     ///
     /// - Parameters:
@@ -99,24 +226,20 @@ public extension FileManager {
     /// - Returns: 存在返回大小 不存在返回空nil
     static func omFileSize(for: SearchPathDirectory = .documentDirectory, path: String) -> Int {
         
-        let url = omGetURL(for: `for`, path: path)
-        
-        return omFileSize(at: url)
+        return OM.getFileSize(for: `for`, path: path)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.getFileSize` instead.", renamed: "OM.getFileSize")
     /// 获取文件大小
     ///
     /// - Parameter at: URL
     /// - Returns: 存在返回大小 不存在返回空nil
     static func omFileSize(at: URL) -> Int {
         
-        do {
-            return (try FileManager.default.attributesOfItem(atPath: at.path)[FileAttributeKey.size] as? Int) ?? 0
-        } catch {
-            return 0
-        }
+        return OM.getFileSize(at: at)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.createDirectory` instead.", renamed: "OM.createDirectory")
     /// 创建目录
     ///
     /// - Parameters:
@@ -124,22 +247,19 @@ public extension FileManager {
     ///   - path: e.g. "a/b/c"
     static func omCreateDirectory(for: SearchPathDirectory = .documentDirectory, path: String) {
         
-        let url = omGetURL(for: `for`, path: path)
-        
-        omCreateDirectory(at: url)
+        return OM.createDirectory(for: `for`, path: path)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.createDirectory` instead.", renamed: "OM.createDirectory")
     /// 创建目录
     ///
     /// - Parameter at: URL
     static func omCreateDirectory(at: URL) {
         
-        if omFileExists(path: at.path) == nil {
-            
-            try? FileManager.default.createDirectory(at: at, withIntermediateDirectories: true, attributes: nil)
-        }
+        return OM.createDirectory(at: at)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.removeItem` instead.", renamed: "OM.removeItem")
     /// 删除文件或目录
     ///
     /// - Parameters:
@@ -147,16 +267,15 @@ public extension FileManager {
     ///   - path: e.g. "a/b/c"
     static func omRemoveItem(for: SearchPathDirectory = .documentDirectory, path: String) {
         
-        let url = omGetURL(for: `for`, path: path)
-        
-        omRemoveItem(at: url)
+        OM.removeItem(for: `for`, path: path)
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.removeItem` instead.", renamed: "OM.removeItem")
     /// 删除文件或目录
     ///
     /// - Parameter at: URL
     static func omRemoveItem(at: URL) {
         
-        try? FileManager.default.removeItem(at: at)
+        OM.removeItem(at: at)
     }
 }

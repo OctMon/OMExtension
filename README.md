@@ -166,29 +166,29 @@ print(123.456.omToDecimalStyle(3)) // 123.456
 在cachesDirectory创建download目录
 
 ```swift
-FileManager.omCreateDirectory(for: .cachesDirectory, path: "download")
+FileManager.OM.createDirectory(for: .cachesDirectory, path: "download")
 ```
 
 获取 documentDirectory
 
 ```swift
-print(FileManager.omDocumentDirectory())
+print(FileManager.OM.getDocument())
 // file:///Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/C62F47FB-625E-453B-AB34-B0CA51296F36/Documents/
 ```
 
 获取 cachesDirectory中download目录
 
 ```swift
-print(FileManager.omCachesDirectory(path: "download").path)
+print(FileManager.OM.getCaches(path: "download").path)
 // /Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/C62F47FB-625E-453B-AB34-B0CA51296F36/Library/Caches/download
 ```
 
 documentDirectory中user.dat是否存在
 
 ```swift
-print(FileManager.omFileExists(path: "user.dat"))
-print(FileManager.omFileExists(for: .cachesDirectory, path: "download"))
-print(FileManager.omFileExists(at: FileManager.omDocumentDirectory(path: "user.dat")))
+print(FileManager.OM.fileExists(path: "user.dat") ?? false)
+print(FileManager.OM.fileExists(for: .cachesDirectory, path: "download") ?? false)
+print(FileManager.OM.fileExists(at: FileManager.OM.getDocument(path: "user.dat")) ?? false)
 
 // nil
 // Optional(file:///Users/octmon/Library/Developer/CoreSimulator/Devices/1C975A61-2498-44AE-BBEE-BF921A246E5B/data/Containers/Data/Application/A7108007-93D6-4C0D-99E4-0D2BC6474D6C/Library/Caches/download/)
@@ -198,7 +198,7 @@ print(FileManager.omFileExists(at: FileManager.omDocumentDirectory(path: "user.d
 获取文件大小
 
 ```swift
-print(FileManager.omFileSize(at: FileManager.omCachesDirectory(path: "download")))
+print(FileManager.OM.getFileSize(at: FileManager.OM.getCaches(path: "download")))
 
 // 68
 ```
@@ -206,7 +206,8 @@ print(FileManager.omFileSize(at: FileManager.omCachesDirectory(path: "download")
 删除文件
 
 ```swift
-FileManager.omRemoveItem(at: FileManager.omDocumentDirectory(path: "user.data"))
+FileManager.OM.removeItem(at: FileManager.OM.getDocument(path: "user.data"))
+FileManager.OM.removeItem(path: "user.data")
 ```
 
 ### Int
@@ -356,7 +357,7 @@ Thread.OM.runInGlobal(qos: .background, delay: 5) {
 ### Timer
 
 ```swift
-Timer.omRunLoop(seconds: 1, handler: { (timer) in
+Timer.OM.runLoop(seconds: 1, handler: { (timer) in
             
     total-=1
     print(total)

@@ -89,7 +89,7 @@ class PlaceholderVC: BaseVC {
         
         om.showPlaceholder(image: getImage)
         
-        timer = Timer.omRunLoop(seconds: 1) { (timer) in
+        timer = Timer.OM.runLoop(seconds: 1) { (timer) in
             
             if let image = self.getImage {
                 
