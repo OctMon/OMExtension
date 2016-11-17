@@ -344,8 +344,12 @@ let mutableAttributedString = ("https://github.com/OctMon".omGetAttributes(color
 ### Thread
 
 ```swift
-Thread.omRunInMainThread(delay: 1) {
-    // 1s后在主线程延时执行
+Thread.OM.runInMain(delay: 1) {
+    // 1s后在主线程执行
+}
+
+Thread.OM.runInGlobal(qos: .background, delay: 5) {
+    // code
 }
 ```
 

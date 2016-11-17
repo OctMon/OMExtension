@@ -32,7 +32,7 @@ public extension OMExtension where OMBase: UIAlertController {
     
     func show(completion: (()->())? = nil) {
         
-        Thread.omRunInMainThread(delay: 0.1) {
+        Thread.OM.runInMain(delay: 0.1) {
             UIApplication.shared.keyWindow?.rootViewController?.present(self.base, animated: true, completion: completion)
         }
     }

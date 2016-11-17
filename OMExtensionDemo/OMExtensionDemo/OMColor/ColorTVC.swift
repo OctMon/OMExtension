@@ -207,7 +207,7 @@ class ColorTVC: BaseTVC {
             }
         }*/
         
-        Thread.omRunInMainThread(delay: 0.1, handler: {
+        Thread.OM.runInMain(delay: 0.1, handler: {
             
             self.tableView.reloadData()
         })

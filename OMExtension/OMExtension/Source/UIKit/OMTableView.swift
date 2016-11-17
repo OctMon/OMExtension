@@ -35,7 +35,7 @@ public extension OMExtension where OMBase: UITableView {
         
         base.setContentOffset(base.contentOffset, animated: false)
         
-        Thread.omRunInMainThread(delay: 0.05) {
+        Thread.OM.runInMain(delay: 0.05) {
             
             UIView.animate(withDuration: 0.2, animations: {
                 

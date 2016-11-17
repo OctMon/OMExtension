@@ -39,14 +39,11 @@ class FontTVC: BaseTVC {
         
         UIFont.familyNames.sorted().forEach({ (family) in
             UIFont.fontNames(forFamilyName: family).sorted().forEach({ (font) in
-                fonts.append(font)
+                self.fonts.append(font)
             })
         })
         
-        Thread.omRunInMainThread(delay: 0.1) { 
-            
-            self.tableView.reloadData()
-        }
+        self.tableView.om.reloadAnimationWave()
     }
 
 }

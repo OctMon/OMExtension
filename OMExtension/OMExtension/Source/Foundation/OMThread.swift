@@ -28,26 +28,42 @@ import Foundation
 
 public extension Thread {
     
-    static func omRunInMainThread(delay: TimeInterval = 0, handler: @escaping () -> Void) {
+    struct OM {
         
-        if delay <= 0 {
+        public static func runInMain(delay: TimeInterval = 0, handler: @escaping () -> Void) {
             
-            DispatchQueue.main.async(execute: handler)
+            if delay <= 0 {
+                
+                DispatchQueue.main.async(execute: handler)
+                
+            } else {
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: handler)
+            }
+        }
+        
+        public static func runInGlobal(qos: DispatchQoS.QoSClass = .default, delay: TimeInterval = 0, handler: @escaping () -> Void) {
             
-        } else {
-            
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: handler)
+            if delay <= 0 {
+                
+                DispatchQueue.global(qos: .default).async(execute: handler)
+                
+            } else {
+                
+                DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: handler)
+            }
         }
     }
     
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.runInMain` instead.", renamed: "OM.runInMain")
+    static func omRunInMainThread(delay: TimeInterval = 0, handler: @escaping () -> Void) {
+        
+        OM.runInMain(delay: delay, handler: handler)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.runInGlobal` instead.", renamed: "OM.runInGlobal")
     static func omRunInBackgroundThread(delay: TimeInterval = 0, handler: @escaping () -> Void) {
         
-        if delay <= 0 {
-            DispatchQueue.global(qos: .default).async(execute: handler)
-            
-        } else {
-            
-            DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: handler)
-        }
+        OM.runInGlobal(delay: delay, handler: handler)
     }
 }
