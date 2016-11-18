@@ -30,7 +30,7 @@ public extension Data {
     
     struct OM {
         
-        static func JSONString(from json: Any?) -> String? {
+        public static func JSONString(from json: Any?) -> String? {
             
             guard let json = json else {
                 
