@@ -84,6 +84,7 @@ import OMExtension
 - [UITextView](uitextview)
 - [UIView](#uiview)
 - [UIViewController](#uiviewcontroller)
+- [UIWebView](#uiwebview)
 
 ### Array
 
@@ -1129,6 +1130,14 @@ om.presentViewController(UIViewController(), animated: true, completion: nil)
 om.dismissViewController()
    
 om.setBackBarButtonItem(title: "返回") // 设置返回按钮的文字
+```
+
+###UIWebView
+
+清理Cookies
+
+```swift
+webView.om.clearCookies()
 ```
 
 
