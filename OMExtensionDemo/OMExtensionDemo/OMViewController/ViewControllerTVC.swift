@@ -29,25 +29,10 @@ import UIKit
 
 class ViewControllerTVC: BaseTVC {
     
-    @IBOutlet weak var rightNavigationItem: UIBarButtonItem!
     let dataSource = [
         ("PopularApp", PopularAppTVC.omClassName),
         ("ViewContoller", PlaceholderVC.omClassName)
     ]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        rightNavigationItem.om.clickHandler { [weak self] in
-            
-            self?.navigationItem.om.startActivity(position: .right)
-            
-            Thread.OM.runInMain(delay: 2, handler: {
-                
-                self?.navigationItem.om.stopActivity()
-            })
-        }
-    }
     
     // MARK: - Table view data source
     

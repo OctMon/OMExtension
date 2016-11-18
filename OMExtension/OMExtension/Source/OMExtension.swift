@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol OMCompatible {
+public protocol OMCompatible {
     
     associatedtype CompatableType
     var om: CompatableType { get }
