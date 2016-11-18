@@ -76,6 +76,7 @@ import OMExtension
 - [UIFont](#uifont)
 - [UIImage](#uiimage)
 - [UINavigationBar](#uinavigationbar)
+- [UINavigationItem](#uinavigationitem)
 - [UIScreen](#uiscreen)
 - [UIStoryboard](#uistoryboard)
 - [UITableView](#uitableview)
@@ -899,6 +900,20 @@ omNavigationBar?.om.setTransparent(transparent: true)
 
 ```swift
 omNavigationBar?.om.setTransparent(transparent: true, translucent: false)
+```
+
+### UINavigationItem
+
+开始菊花动画
+
+```swift
+self?.navigationItem.om.startActivity(position: .right)
+```
+
+停止菊花动画
+
+```swift
+self?.navigationItem.om.stopActivity()
 ```
 
 ### UIScreen
