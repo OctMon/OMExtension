@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FE13E1C11DDE9B8A005FB3FC /* OMNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13E1C01DDE9B8A005FB3FC /* OMNavigationItem.swift */; };
 		FE1658CF1D7842CA005FAEB0 /* OMArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658B51D7842CA005FAEB0 /* OMArray.swift */; };
 		FE1658D01D7842CA005FAEB0 /* OMBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658B61D7842CA005FAEB0 /* OMBool.swift */; };
 		FE1658D11D7842CA005FAEB0 /* OMDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658B71D7842CA005FAEB0 /* OMDate.swift */; };
@@ -85,6 +86,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FE13E1C01DDE9B8A005FB3FC /* OMNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMNavigationItem.swift; sourceTree = "<group>"; };
 		FE1658B51D7842CA005FAEB0 /* OMArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMArray.swift; sourceTree = "<group>"; };
 		FE1658B61D7842CA005FAEB0 /* OMBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBool.swift; sourceTree = "<group>"; };
 		FE1658B71D7842CA005FAEB0 /* OMDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDate.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				FE1658C41D7842CA005FAEB0 /* OMFont.swift */,
 				FE1658C51D7842CA005FAEB0 /* OMImage.swift */,
 				FE1658C61D7842CA005FAEB0 /* OMNavigationBar.swift */,
+				FE13E1C01DDE9B8A005FB3FC /* OMNavigationItem.swift */,
 				FE1658C71D7842CA005FAEB0 /* OMRect.swift */,
 				FE1658C81D7842CA005FAEB0 /* OMScreen.swift */,
 				FE1658C91D7842CA005FAEB0 /* OMStoryboard.swift */,
@@ -485,6 +488,7 @@
 				FE7837D51D7020BD00B6F233 /* ApplicationTVC.swift in Sources */,
 				FE1658DB1D7842CA005FAEB0 /* OMColor.swift in Sources */,
 				FE1658E71D7842CA005FAEB0 /* OMViewController.swift in Sources */,
+				FE13E1C11DDE9B8A005FB3FC /* OMNavigationItem.swift in Sources */,
 				FE1658D91D7842CA005FAEB0 /* OMAlertController.swift in Sources */,
 				FE1658DE1D7842CA005FAEB0 /* OMImage.swift in Sources */,
 				FE37D5EF1D701670000F749C /* MainTVC.swift in Sources */,

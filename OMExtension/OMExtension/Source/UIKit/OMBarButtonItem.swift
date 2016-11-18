@@ -27,6 +27,8 @@
 import Foundation
 import UIKit
 
+// MARK: clickHandler
+
 public extension OMExtension where OMBase: UIBarButtonItem {
     
     /// 点击回调
