@@ -650,9 +650,32 @@ public extension UIApplication {
     }
 }
 
+public enum OMBaseURLType: String {
+    case release, develop, test, custom
+    
+    public var currentType: OMBaseURLType {
+        
+        if let type = UserDefaults.standard.object(forKey: UIApplication.OM.release.defaultBaseURLTypeKey) as? String, !UIApplication.OM.release.isAppstore {
+            
+            return OMBaseURLType(rawValue: type) ?? OMBaseURLType.release
+            
+        } else {
+            
+            return self
+        }
+    }
+    
+    public var currentURL: String {
+        
+        return UIApplication.OM.release.module(type: currentType)
+    }
+}
+
 public extension UIApplication {
     
     struct OM {
+        
+        // MARK: - App
         
         /// 获取单例delegate
         public static var appDelegate: UIApplicationDelegate { return UIApplication.shared.delegate! }
@@ -750,6 +773,8 @@ public extension UIApplication {
                 return false
             }
         }
+        
+        // MARK: - Prefs
         
         //  http://stackoverflow.com/questions/8246070/ios-launching-settings-restrictions-url-scheme/8246814#8246814
         
@@ -1066,6 +1091,8 @@ public extension UIApplication {
         @discardableResult
         public static func openPrefsWiFi() -> Bool { return openPrefsRoot("WIFI") }
         
+        // MARK: - Audio
+        
         public static func playSystemSound(systemSoundID: OMSystemSoundID) {
             
             AudioServicesPlaySystemSound(SystemSoundID(systemSoundID.rawValue))
@@ -1086,6 +1113,8 @@ public extension UIApplication {
             AudioServicesPlaySystemSound(soundID)
         }
         
+        // MARK: - Authentication
+        
         public static func authenticationTouchID(reason: String, handler: @escaping (Bool, LAError?) -> Void) {
             
             let context: LAContext = LAContext()
@@ -1102,6 +1131,166 @@ public extension UIApplication {
             } else {
                 
                 handler(false, error as? LAError)
+            }
+        }
+        
+        // MARK: - Release
+        
+        public struct release {
+            
+            /* Must first in AppDelegate didFinishLaunchingWithOptions configure the environment
+             #if DEBUG
+             let isDebug = true
+             #else
+             let isDebug = false
+             #endif
+             
+             #if APPSTORE
+             let isAppstore = true
+             #else
+             let isAppstore = false
+             #endif
+             
+             #if BETA
+             let isBeta = true
+             #else
+             let isBeta = false
+             #endif
+             
+             UIApplication.OM.release.isDebug = isDebug
+             UIApplication.OM.release.isAppstore = isAppstore
+             UIApplication.OM.release.isBeta = isBeta
+             
+             UIApplication.OM.release.configURLRelease = "http://release.example.com"
+             UIApplication.OM.release.configURLDeveloper = "http://developer.example.com"
+             UIApplication.OM.release.configURLTest = "http://test.example.com"
+             */
+            
+            public static var isDebug = true
+            public static var isAppstore = false
+            public static var isBeta = false
+            
+            public static var defaultBaseURLTypeKey = "OM_BaseURLTypeKey"
+            public static var defaultCustomModuleKey = "OM_CustomModuleKey"
+            
+            /// 默认BaseURLType
+            public static var baseURL: OMBaseURLType = baseURLType
+            
+            private static var baseURLType: OMBaseURLType {
+                
+                if isAppstore {
+                    
+                    return .release
+                    
+                } else if isDebug {
+                    
+                    return .develop
+                }
+                
+                return .test
+            }
+            
+            private static func showCustomBaseURL(currentURL: String = baseURL.currentURL, viewController: UIViewController? = UIApplication.OM.currentVC, completionHandler: ((OMBaseURLType) -> Void)? = nil) {
+                
+                let alert = UIAlertController(title: "custom BaseURL", message: nil, preferredStyle: .alert)
+                
+                alert.addTextField { (textField) in
+                    
+                    textField.text = currentURL
+                    textField.keyboardType = .URL
+                }
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: { (_) in
+                    
+                    let url = alert.textFields?.first?.text
+                    
+                    if let url = url, url.omIsURL {
+                        
+                        UserDefaults.standard.set(url, forKey: defaultCustomModuleKey)
+                        UserDefaults.standard.synchronize()
+                        
+                        saveBaseURL(URLType: .custom)
+                        completionHandler?(.custom)
+                        
+                    } else {
+                        
+                        let alert = UIAlertController(title: "address validation fails", message: nil, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler:  { _ in
+                            
+                            showCustomBaseURL(currentURL: url ?? baseURL.currentURL, viewController: viewController, completionHandler: completionHandler)
+                        }))
+                        viewController?.om.presentViewController(alert)
+                    }
+                    
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                
+                viewController?.om.presentViewController(alert)
+            }
+            
+            public static func showBaseURL(viewController: UIViewController? = UIApplication.OM.currentVC, completionHandler: ((OMBaseURLType) -> Void)? = nil) {
+                
+                let current = UserDefaults.standard.object(forKey: defaultBaseURLTypeKey) as? String ?? baseURL.rawValue
+                
+                let alert = UIAlertController(title: "current BaseURL: [" + current + "]", message: nil, preferredStyle: .alert)
+                
+                alert.addAction(UIAlertAction(title: OMBaseURLType.release.rawValue, style: .default, handler: { (_) in
+                    
+                    saveBaseURL(URLType: .release)
+                    completionHandler?(.release)
+                }))
+                alert.addAction(UIAlertAction(title: OMBaseURLType.develop.rawValue, style: .default, handler: { (_) in
+                    
+                    saveBaseURL(URLType: .develop)
+                    completionHandler?(.develop)
+                }))
+                alert.addAction(UIAlertAction(title: OMBaseURLType.test.rawValue, style: .default, handler: { (_) in
+                    
+                    saveBaseURL(URLType: .test)
+                    completionHandler?(.test)
+                }))
+                alert.addAction(UIAlertAction(title: OMBaseURLType.custom.rawValue, style: .destructive, handler: { (_) in
+                    
+                    showCustomBaseURL(viewController: viewController, completionHandler: completionHandler)
+                }))
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                
+                guard let viewController = viewController else {
+                    
+                    print("viewController is nil")
+                    
+                    return
+                }
+                
+                viewController.om.presentViewController(alert)
+            }
+            
+            public static func saveBaseURL(URLType: OMBaseURLType) {
+                
+                UserDefaults.standard.set(URLType.rawValue, forKey: defaultBaseURLTypeKey)
+                UserDefaults.standard.synchronize()
+            }
+            
+            public static var configURLRelease = "http://release.example.com"
+            public static var configURLDeveloper = "http://developer.example.com"
+            public static var configURLTest = "http://test.example.com"
+            
+            fileprivate
+            static func module(type: OMBaseURLType) -> String {
+                
+                switch type {
+                case .release:
+                    return configURLRelease
+                case .develop:
+                    return configURLDeveloper
+                case .test:
+                    return configURLTest
+                case .custom:
+                    if let url = UserDefaults.standard.object(forKey: defaultCustomModuleKey) as? String {
+                        
+                        return url
+                    }
+                    return module(type: .develop)
+                }
             }
         }
     }
