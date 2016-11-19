@@ -763,6 +763,64 @@ UIApplication.OM.authenticationTouchID(reason: "TouchID授权测试", handler: {
 })
 ```
 
+动态切换主机地址
+
+[Active Compilation Conditions自定义环境变量]( https://miqu.me/blog/2016/07/31/xcode-8-new-build-settings-and-analyzer-improvements/)
+
+```swift
+/// 配置release
+
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    
+    #if DEBUG
+        let isDebug = true
+    #else
+        let isDebug = false
+    #endif
+    
+    #if APPSTORE
+        let isAppstore = true
+    #else
+        let isAppstore = false
+    #endif
+    
+    #if BETA
+        let isBeta = true
+    #else
+        let isBeta = false
+    #endif
+    
+    UIApplication.OM.release.isDebug = isDebug
+    UIApplication.OM.release.isAppstore = isAppstore
+    UIApplication.OM.release.isBeta = isBeta
+    
+    UIApplication.OM.release.configURLRelease = "http://release.example.com"
+    UIApplication.OM.release.configURLDeveloper = "http://developer.example.com"
+    UIApplication.OM.release.configURLTest = "http://test.example.com"
+    
+    // Override point for customization after application launch.
+    return true
+}
+
+/// 弹出切换对话框
+if !UIApplication.OM.release.isAppstore {
+    
+    tableView.tableHeaderView?.om.addLongPressGestureRecognizer(handler: { [unowned self] (longPressGestureRecognizer) in
+        
+        if longPressGestureRecognizer.state == .ended {
+            
+            UIApplication.OM.release.showBaseURL(viewController: self,  completionHandler: { (type) in
+                
+                print("Switch success: " + type.rawValue)
+                
+                // 请求接口时使用 UIApplication.OM.release.baseURL.currentURL
+                print("Current URL: " + UIApplication.OM.release.baseURL.currentURL)
+            })
+        }
+    })
+}
+```
+
 ### UIBarButtonItem
 
 点击回调

@@ -47,6 +47,23 @@ class ApplicationTVC: BaseTVC {
             
             self.tableView.tableHeaderView?.backgroundColor = UIColor.OM.random
         }
+        
+        /// 弹出切换对话框
+        if !UIApplication.OM.release.isAppstore {
+            
+            tableView.tableHeaderView?.om.addLongPressGestureRecognizer(handler: { [unowned self] (longPressGestureRecognizer) in
+                
+                if longPressGestureRecognizer.state == .ended {
+                    
+                    UIApplication.OM.release.showBaseURL(viewController: self,  completionHandler: { (type) in
+                        
+                        print("Switch success: " + type.rawValue)
+                        
+                        print("Current URL: " + UIApplication.OM.release.baseURL.currentURL)
+                    })
+                }
+            })
+        }
     }
 
     // MARK: - Table view data source

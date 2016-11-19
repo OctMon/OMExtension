@@ -33,6 +33,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        /// 配置release
+        
+        #if DEBUG
+            let isDebug = true
+        #else
+            let isDebug = false
+        #endif
+        
+        #if APPSTORE
+            let isAppstore = true
+        #else
+            let isAppstore = false
+        #endif
+        
+        #if BETA
+            let isBeta = true
+        #else
+            let isBeta = false
+        #endif
+        
+        UIApplication.OM.release.isDebug = isDebug
+        UIApplication.OM.release.isAppstore = isAppstore
+        UIApplication.OM.release.isBeta = isBeta
+        
+        UIApplication.OM.release.configURLRelease = "http://release.example.com"
+        UIApplication.OM.release.configURLDeveloper = "http://developer.example.com"
+        UIApplication.OM.release.configURLTest = "http://test.example.com"
+        
         // Override point for customization after application launch.
         return true
     }
