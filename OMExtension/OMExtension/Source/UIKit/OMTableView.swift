@@ -29,6 +29,33 @@ import UIKit
 
 public extension OMExtension where OMBase: UITableView {
     
+    func setHeader(height: CGFloat) {
+        
+        var view = UIView()
+        view.om.height = height
+        base.tableHeaderView = view
+    }
+    
+    func setHeaderZero() {
+        
+        setHeader(height: 0.1)
+    }
+    
+    func setFooter(height: CGFloat) {
+        
+        var view = UIView()
+        view.om.height = height
+        base.tableFooterView = view
+    }
+    
+    func setFooterZero() {
+        
+        setFooter(height: 0)
+    }
+}
+
+public extension OMExtension where OMBase: UITableView {
+    
     func reloadAnimationWave() {
         
         base.isUserInteractionEnabled = false
