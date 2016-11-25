@@ -427,7 +427,7 @@ public extension UIApplication {
      */
     @discardableResult
     static func omOpenPrefsWiFi() -> Bool { return OM.openPrefsWiFi() }
-
+    
 }
 
 // MARK: - Audio
@@ -581,7 +581,7 @@ public extension UIApplication {
         
         OM.playSound(forResource: forResource)
     }
-
+    
 }
 
 // MARK: - Authentication
@@ -632,7 +632,7 @@ public extension UIApplication {
                         handler(.error)
                     }
                 }
-            } as! (Bool, Error?) -> Void)
+                } as! (Bool, Error?) -> Void)
             
         } else {
             
@@ -685,7 +685,11 @@ public extension UIApplication {
             
             var top = UIApplication.shared.keyWindow?.rootViewController
             
-            if top?.isKind(of: UITabBarController.classForCoder()) == true {
+            if top?.presentedViewController != nil {
+                
+                top = top?.presentedViewController
+                
+            } else if top?.isKind(of: UITabBarController.classForCoder()) == true {
                 
                 top = (top as! UITabBarController).selectedViewController
                 
@@ -693,10 +697,6 @@ public extension UIApplication {
                     
                     top = (top as! UINavigationController).topViewController
                 }
-                
-            } else if top?.presentedViewController != nil {
-                
-                top = top?.presentedViewController
                 
             } else if (top?.isKind(of: UINavigationController.classForCoder()) == true) && (top as! UINavigationController).topViewController != nil {
                 
@@ -720,7 +720,7 @@ public extension UIApplication {
         // 获取当前UITabBarController
         public static var currentTBC: UITabBarController? {
             
-            if let top = UIApplication.shared.keyWindow?.rootViewController , top.isKind(of: UITabBarController.classForCoder()) == true {
+            if let top = UIApplication.shared.keyWindow?.rootViewController, top.isKind(of: UITabBarController.classForCoder()) == true {
                 
                 return (top as! UITabBarController)
             }
