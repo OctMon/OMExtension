@@ -239,6 +239,13 @@ print(FileManager.OM.getFileSize(at: FileManager.OM.getCaches(path: "download"))
 // 68
 ```
 
+获取磁盘空闲空间大小
+
+```swift
+FileManager.OM.getDiskFreeSpace
+FileManager.OM.getDiskFreeSpaceString
+```
+
 删除文件
 
 ```swift
@@ -1008,6 +1015,13 @@ UIStoryboard(omName: "Storyboard 文件名").instantiateViewController(withIdent
 tableView.om.reloadAnimationWave()
 ```
 
+设置tableHeaderView、tableFooterView高度
+
+```swift
+tableView.om.setHeaderZero()
+tableView.om.setFooterZero()
+```
+
 ### UITextField
 
 限制长度
@@ -1136,6 +1150,12 @@ screenshot
 ```swift
 view.om.savedScreenshotPhotosAlbum() // 截图并保存到相册
 view.om.getScreenshot() // 截图
+```
+
+颜色渐变
+
+```swift
+view.om.addGradientColors([UIColor.red, UIColor.green, UIColor.blue])
 ```
 
 ### UIViewController
