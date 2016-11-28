@@ -27,7 +27,7 @@
 import Foundation
 import UIKit
 
-public enum OMFamilyFontName : String {
+public enum OMFamilyFontName: String {
     case academyEngravedLET = "Academy Engraved LET"
     case alNile = "Al Nile"
     case americanTypewriter = "American Typewriter"

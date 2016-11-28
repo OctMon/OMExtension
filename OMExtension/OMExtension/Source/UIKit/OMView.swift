@@ -954,3 +954,85 @@ public extension UIView {
     }
 
 }
+
+public enum OMGradientColorDirection: String {
+    
+    case topToBottom = "0001"
+    case leftToRight = "0010"
+    case bottomToTop = "0100"
+    case rightToLeft = "1000"
+    
+    case leftTopToRightBottom = "0011"
+    case rightTopToLeftBottom = "1001"
+    case leftBottomToRightTop = "0110"
+    case rightBottomToLeftTop = "1100"
+}
+
+// MARK: - gradient color
+
+public extension OMExtension where OMBase: UIView {
+    
+    /// 计算起点与终点
+    ///
+    /// - Parameters:
+    ///   - gradientLayer: 图层
+    ///   - direction: 方向
+    fileprivate func startAndEndPoint(gradientLayer: CAGradientLayer, direction: OMGradientColorDirection) {
+        
+        let str = direction.rawValue
+        
+        gradientLayer.startPoint = CGPoint(x: Int(str[str.index(str.startIndex, offsetBy: 0)..<str.index(str.endIndex, offsetBy: -3)]) ?? 0, y: Int(str[str.index(str.startIndex, offsetBy: 1)..<str.index(str.endIndex, offsetBy: -2)]) ?? 0)
+        gradientLayer.endPoint = CGPoint(x: Int(str[str.index(str.startIndex, offsetBy: 2)..<str.index(str.endIndex, offsetBy: -1)]) ?? 0, y: Int(str[str.index(str.endIndex, offsetBy: -1)..<str.index(str.endIndex, offsetBy: 0)]) ?? 0)
+    }
+    
+    /// 透明度渐变
+    ///
+    /// - Parameters:
+    ///   - color: 颜色
+    ///   - fromAlpha: 开始透明度 [default = 0
+    ///   - toAlpha: 结束透明度 [defualt = 1]
+    ///   - direction: 方向 [default = .topToBottom]
+    func addGradientColor(_ color: UIColor, fromAlpha: CGFloat = 0, toAlpha: CGFloat = 1, direction: OMGradientColorDirection = .topToBottom) {
+        
+        var fromAlpha = fromAlpha
+        fromAlpha = max(0, fromAlpha)
+        
+        var toAlpha = toAlpha
+        toAlpha = min(1, toAlpha)
+        
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.colors = [color.withAlphaComponent(fromAlpha).cgColor, color.withAlphaComponent(toAlpha).cgColor]
+        base.layoutIfNeeded()
+        
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: base.bounds.width, height: base.bounds.height)
+        startAndEndPoint(gradientLayer: gradientLayer, direction: direction)
+        base.layer.addSublayer(gradientLayer)
+    }
+    
+    /// 颜色渐变
+    ///
+    /// - Parameters:
+    ///   - colors: 颜色
+    ///   - direction: 方向 [default = .topToBottom]
+    func addGradientColors(_ colors: [UIColor], direction: OMGradientColorDirection = .topToBottom) {
+        
+        addGradientColors(colors.map({ ($0, 1) }), direction: direction)
+    }
+    
+    /// 颜色渐变
+    ///
+    /// - Parameters:
+    ///   - colors: (颜色, 透明度)
+    ///   - direction: 方向 [default = .topToBottom]
+    func addGradientColors(_ colors: [(color: UIColor, alpha: CGFloat)], direction: OMGradientColorDirection = .topToBottom) {
+        
+        let gradientLayer = CAGradientLayer()
+        
+        gradientLayer.colors = colors.map({ $0.color.withAlphaComponent($0.alpha).cgColor })
+        base.layoutIfNeeded()
+        
+        gradientLayer.frame = CGRect(x: 0, y: 0, width: base.bounds.width, height: base.bounds.height)
+        startAndEndPoint(gradientLayer: gradientLayer, direction: direction)
+        base.layer.addSublayer(gradientLayer)
+    }
+}

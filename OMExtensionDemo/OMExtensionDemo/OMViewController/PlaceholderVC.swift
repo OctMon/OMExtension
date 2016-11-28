@@ -78,7 +78,7 @@ class PlaceholderVC: BaseVC {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        if let timer = timer , timer.isValid {
+        if let timer = timer, timer.isValid {
             
             timer.invalidate()
         }
