@@ -38,7 +38,7 @@ public extension Thread {
                 
             } else {
                 
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: handler)
+                DispatchQueue.main.asyncAfter(deadline: .now() + delay, execute: handler)
             }
         }
         
@@ -50,7 +50,7 @@ public extension Thread {
                 
             } else {
                 
-                DispatchQueue.global(qos: .default).asyncAfter(deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: handler)
+                DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + delay, execute: handler)
             }
         }
     }
