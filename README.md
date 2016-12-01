@@ -1157,7 +1157,12 @@ view.om.getScreenshot() // 截图
 ```swift
 view.om.addGradientColors([UIColor.red, UIColor.green, UIColor.blue])
 ```
+快速实例化一个xib
 
+```swift
+let test = TestView.omInstantiateFromNib() as! TestView
+view.addSubview(test)
+```
 ### UIViewController
 
 点击任意位置收回键盘

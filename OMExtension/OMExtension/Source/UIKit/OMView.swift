@@ -1036,3 +1036,27 @@ public extension OMExtension where OMBase: UIView {
         base.layer.addSublayer(gradientLayer)
     }
 }
+
+// MARK: - Class
+
+public extension UIView {
+    
+    
+    /// 快速实例化一个xib e.g.let test = TestView.omInstantiateFromNib() as! TestView
+    ///
+    /// - Returns: view
+    static func omInstantiateFromNib() -> UIView {
+        
+        guard let nib = Bundle.main.loadNibNamed(omClassName, owner: nil, options: nil) else {
+            
+            return UIView()
+        }
+        
+        guard let instantiate = nib.first as? UIView else {
+            
+            return UIView()
+        }
+        
+        return instantiate
+    }
+}
