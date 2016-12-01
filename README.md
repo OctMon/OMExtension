@@ -373,6 +373,12 @@ print("https:// github. com/ OctMon  ".omSplit(" ")[3]) // OctMon
 print("https://github.com/OctMon".omContains("OctMon")) // true
 ```
 
+字符串中间添加分割符
+
+```swift
+print("123".omJoinSeparator(" ")) // 1 2 3
+```
+
 获取子串的NSRange
 
 ```swift

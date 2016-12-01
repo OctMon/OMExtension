@@ -295,6 +295,16 @@ public extension String {
         return range(of: subStirng) != nil
     }
     
+    func omJoinSeparator(_ separator: String) -> String {
+        
+        return characters.map({ "\($0)" }).joined(separator: separator)
+    }
+    
+    mutating func omJoinedSeparatored(_ separator: String) {
+        
+        self = omJoinSeparator(separator)
+    }
+    
     func omGetRanges(_ searchString: String) -> [NSRange] {
         
         var start = 0
