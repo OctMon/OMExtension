@@ -1121,13 +1121,20 @@ let view2 = UIView(omX: view1.om.rightOffset(15.0), y: view1.om.bottomOffset(30)
 print(view2.frame) // (115.0, 130.0, 100.0, 100.0)
 ```
 
-border
+layer
 
 ```swift
 view.om.addBorder()
 view.om.addBorderBottom(size: 0.3, color: UIColor(omHex: 0xCCCCCC), padding: (0, 0))
 view.om.addRoundedCorners()
 view.om.addRoundedCorners(byRoundingCorners: .allCorners, cornerRadii: 10)
+```
+
+```swift
+tableView.om.addContentsImage(UIImage(named: "icon_icloud"), contentsGravity: kCAGravityResizeAspect)
+```
+```swift
+label.om.addShadow(offset: CGSize(width: 5, height: 5), opacity: 0.7, radius: 5, color: UIColor.black)
 ```
 
 transform
