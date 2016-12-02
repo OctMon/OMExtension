@@ -1056,6 +1056,12 @@ textField.om.addLeftSpace(padding: 50)
 textField.om.addLeftIcon(image: UIImage(named: "icon")!)
 ```
 
+设置PlaceholderColor
+
+```swift
+textField.om.setPlaceholderColor(UIColor.green)
+```
+
 ### UITextView
 
 限制长度
