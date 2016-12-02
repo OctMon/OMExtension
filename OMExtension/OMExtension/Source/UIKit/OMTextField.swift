@@ -89,6 +89,11 @@ public extension OMExtension where OMBase: UITextField {
         self.base.leftView?.frame.size = CGSize(width: image.size.width + padding, height: image.size.height)
         self.base.leftViewMode = UITextFieldViewMode.always
     }
+    
+    func setPlaceholderColor(_ color: UIColor) {
+        
+        base.attributedPlaceholder = base.placeholder?.omGetAttributes(color: [(color, base.placeholder)])
+    }
 }
 
 public extension UITextField {
