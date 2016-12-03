@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "FE8F90531D6EADCC0095D74B"
                BuildableName = "OMExtension.framework"
-               BlueprintName = "OMExtension"
+               BlueprintName = "OMExtension iOS"
                ReferencedContainer = "container:OMExtension.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,26 +28,7 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE8F905D1D6EADCC0095D74B"
-               BuildableName = "OMExtensionTests.xctest"
-               BlueprintName = "OMExtensionTests"
-               ReferencedContainer = "container:OMExtension.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FE8F90531D6EADCC0095D74B"
-            BuildableName = "OMExtension.framework"
-            BlueprintName = "OMExtension"
-            ReferencedContainer = "container:OMExtension.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -66,7 +47,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FE8F90531D6EADCC0095D74B"
             BuildableName = "OMExtension.framework"
-            BlueprintName = "OMExtension"
+            BlueprintName = "OMExtension iOS"
             ReferencedContainer = "container:OMExtension.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +65,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "FE8F90531D6EADCC0095D74B"
             BuildableName = "OMExtension.framework"
-            BlueprintName = "OMExtension"
+            BlueprintName = "OMExtension iOS"
             ReferencedContainer = "container:OMExtension.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

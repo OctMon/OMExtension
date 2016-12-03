@@ -33,9 +33,9 @@
 		FE8F90851D6EADEB0095D74B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8F90831D6EADEB0095D74B /* LaunchScreen.storyboard */; };
 		FE8F90901D6EADEB0095D74B /* OMExtensionDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F908F1D6EADEB0095D74B /* OMExtensionDemoTests.swift */; };
 		FE8F909B1D6EADEB0095D74B /* OMExtensionDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F909A1D6EADEB0095D74B /* OMExtensionDemoUITests.swift */; };
-		FEB94BC81DF2C9CA00D01805 /* OMExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEB94BC51DF2C9C100D01805 /* OMExtension.framework */; };
-		FEB94BC91DF2C9CA00D01805 /* OMExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FEB94BC51DF2C9C100D01805 /* OMExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FEBECC861D6F179300632A32 /* OMApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBECC851D6F179300632A32 /* OMApplicationTests.swift */; };
+		FEF359F31DF30C8D009ECE1D /* OMExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEB94BC51DF2C9C100D01805 /* OMExtension.framework */; };
+		FEF359F41DF30C8D009ECE1D /* OMExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FEB94BC51DF2C9C100D01805 /* OMExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,23 +67,23 @@
 			remoteGlobalIDString = FE8F905E1D6EADCC0095D74B;
 			remoteInfo = OMExtensionTests;
 		};
-		FEB94BCA1DF2C9CA00D01805 /* PBXContainerItemProxy */ = {
+		FEF359F51DF30C8D009ECE1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = FE8F90531D6EADCC0095D74B;
-			remoteInfo = OMExtension;
+			remoteInfo = "OMExtension iOS";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		FEB94BB91DF2C95800D01805 /* Embed Frameworks */ = {
+		FEF359F71DF30C8E009ECE1D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				FEB94BC91DF2C9CA00D01805 /* OMExtension.framework in Embed Frameworks */,
+				FEF359F41DF30C8D009ECE1D /* OMExtension.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,7 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FEB94BC81DF2C9CA00D01805 /* OMExtension.framework in Frameworks */,
+				FEF359F31DF30C8D009ECE1D /* OMExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,12 +276,12 @@
 				FE8F90731D6EADEB0095D74B /* Sources */,
 				FE8F90741D6EADEB0095D74B /* Frameworks */,
 				FE8F90751D6EADEB0095D74B /* Resources */,
-				FEB94BB91DF2C95800D01805 /* Embed Frameworks */,
+				FEF359F71DF30C8E009ECE1D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FEB94BCB1DF2C9CA00D01805 /* PBXTargetDependency */,
+				FEF359F61DF30C8D009ECE1D /* PBXTargetDependency */,
 			);
 			name = OMExtensionDemo;
 			productName = OMExtensionDemo;
@@ -480,10 +480,10 @@
 			target = FE8F90761D6EADEB0095D74B /* OMExtensionDemo */;
 			targetProxy = FE8F90971D6EADEB0095D74B /* PBXContainerItemProxy */;
 		};
-		FEB94BCB1DF2C9CA00D01805 /* PBXTargetDependency */ = {
+		FEF359F61DF30C8D009ECE1D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = OMExtension;
-			targetProxy = FEB94BCA1DF2C9CA00D01805 /* PBXContainerItemProxy */;
+			name = "OMExtension iOS";
+			targetProxy = FEF359F51DF30C8D009ECE1D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

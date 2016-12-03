@@ -223,9 +223,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		FE8F90531D6EADCC0095D74B /* OMExtension */ = {
+		FE8F90531D6EADCC0095D74B /* OMExtension iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE8F90681D6EADCC0095D74B /* Build configuration list for PBXNativeTarget "OMExtension" */;
+			buildConfigurationList = FE8F90681D6EADCC0095D74B /* Build configuration list for PBXNativeTarget "OMExtension iOS" */;
 			buildPhases = (
 				FE8F904F1D6EADCC0095D74B /* Sources */,
 				FE8F90501D6EADCC0095D74B /* Frameworks */,
@@ -236,7 +236,7 @@
 			);
 			dependencies = (
 			);
-			name = OMExtension;
+			name = "OMExtension iOS";
 			productName = OMExtension;
 			productReference = FE8F90541D6EADCC0095D74B /* OMExtension.framework */;
 			productType = "com.apple.product-type.framework";
@@ -272,6 +272,7 @@
 					FE8F90531D6EADCC0095D74B = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					FE8F905D1D6EADCC0095D74B = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -291,7 +292,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FE8F90531D6EADCC0095D74B /* OMExtension */,
+				FE8F90531D6EADCC0095D74B /* OMExtension iOS */,
 				FE8F905D1D6EADCC0095D74B /* OMExtensionTests */,
 			);
 		};
@@ -368,7 +369,7 @@
 /* Begin PBXTargetDependency section */
 		FE8F90611D6EADCC0095D74B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FE8F90531D6EADCC0095D74B /* OMExtension */;
+			target = FE8F90531D6EADCC0095D74B /* OMExtension iOS */;
 			targetProxy = FE8F90601D6EADCC0095D74B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -473,7 +474,8 @@
 		FE8F90691D6EADCC0095D74B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -482,7 +484,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OMExtension;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -491,7 +493,8 @@
 		FE8F906A1D6EADCC0095D74B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -500,7 +503,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtension;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = OMExtension;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -542,7 +545,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE8F90681D6EADCC0095D74B /* Build configuration list for PBXNativeTarget "OMExtension" */ = {
+		FE8F90681D6EADCC0095D74B /* Build configuration list for PBXNativeTarget "OMExtension iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE8F90691D6EADCC0095D74B /* Debug */,
