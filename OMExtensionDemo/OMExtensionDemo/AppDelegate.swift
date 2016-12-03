@@ -25,6 +25,7 @@
 //  SOFTWARE.
 
 import UIKit
+import OMExtension
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

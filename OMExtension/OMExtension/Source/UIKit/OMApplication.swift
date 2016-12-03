@@ -430,144 +430,14 @@ public extension UIApplication {
     
 }
 
-// MARK: - Audio
-
-/**
- http://iphonedevwiki.net/index.php/AudioServices
- */
-public enum OMSystemSoundID: Int {
-    case newMail = 1000
-    case mailSent = 1001
-    case voiceMail = 1002
-    case recivedMessage = 1003
-    case sentMessage = 1004
-    case alarm = 1005
-    case lowPower = 1006
-    case smsReceived1 = 1007
-    case smsReceived2 = 1008
-    case smsReceived3 = 1009
-    case smsReceived4 = 1010
-    case smsReceived5 = 1013
-    case smsReceived6 = 1014
-    case tweetSent = 1016
-    case anticipate = 1020
-    case bloom = 1021
-    case calypso = 1022
-    case chooChoo = 1023
-    case descent = 1024
-    case fanfare = 1025
-    case ladder = 1026
-    case minuet = 1027
-    case newsFlash = 1028
-    case noir = 1029
-    case sherwoodForest = 1030
-    case spell = 1031
-    case suspence = 1032
-    case telegraph = 1033
-    case tiptoes = 1034
-    case typewriters = 1035
-    case update = 1036
-    case ussdAlert = 1050
-    case simToolkitCallDropped = 1051
-    case simToolkitGeneralBeep = 1052
-    case simToolkitNegativeACK = 1053
-    case simToolkitPositiveACK = 1054
-    case simToolkitSMS = 1055
-    case tink = 1057
-    case ctBusy = 1070
-    case ctCongestion = 1071
-    case ctPathACK = 1072
-    case ctError = 1073
-    case ctCallWaiting = 1074
-    case ctKeytone = 1075
-    case lock = 1100
-    case unlock = 1101
-    case failedUnlock = 1102
-    case keypressedTink = 1103
-    case keypressedTock = 1104
-    case tock = 1105
-    case beepBeep = 1106
-    case ringerCharged = 1107
-    case photoShutter = 1108
-    case shake = 1109
-    case jblBegin = 1110
-    case jblConfirm = 1111
-    case jblCancel = 1112
-    case beginRecording = 1113
-    case endRecording = 1114
-    case jblAmbiguous = 1115
-    case jblNoMatch = 1116
-    case beginVideoRecord = 1117
-    case endVideoRecord = 1118
-    case vcInvitationAccepted = 1150
-    case vcRinging = 1151
-    case vcEnded = 1152
-    case vcCallWaiting = 1153
-    case vcCallUpgrade = 1154
-    case touchTone1 = 1200
-    case touchTone2 = 1201
-    case touchTone3 = 1202
-    case touchTone4 = 1203
-    case touchTone5 = 1204
-    case touchTone6 = 1205
-    case touchTone7 = 1206
-    case touchTone8 = 1207
-    case touchTone9 = 1208
-    case touchTone10 = 1209
-    case touchToneStar = 1210
-    case touchTonePound = 1211
-    case headsetStartCall = 1254
-    case headsetRedial = 1255
-    case headsetAnswerCall = 1256
-    case headsetEndCall = 1257
-    case headsetCallWaitingActions = 1258
-    case headsetTransitionEnd = 1259
-    case voicemail = 1300
-    case receivedMessage = 1301
-    case newMail2 = 1302
-    case mailSent2 = 1303
-    case alarm2 = 1304
-    case lock2 = 1305
-    case tock2 = 1306
-    case smsReceived1_2 = 1307
-    case smsReceived2_2 = 1308
-    case smsReceived3_2 = 1309
-    case smsReceived4_2 = 1310
-    case smsReceivedVibrate = 1311
-    case smsReceived1_3 = 1312
-    case smsReceived5_3 = 1313
-    case smsReceived6_3 = 1314
-    case voicemail2 = 1315
-    case anticipate2 = 1320
-    case bloom2 = 1321
-    case calypso2 = 1322
-    case chooChoo2 = 1323
-    case descent2 = 1324
-    case fanfare2 = 1325
-    case ladder2 = 1326
-    case minuet2 = 1327
-    case newsFlash2 = 1328
-    case noir2 = 1329
-    case sherwoodForest2 = 1330
-    case spell2 = 1331
-    case suspence2 = 1332
-    case telegraph2 = 1333
-    case tiptoes2 = 1334
-    case typewriters2 = 1335
-    case update2 = 1336
-    case ringerVibeChanged = 1350
-    case silentVibeChanged = 1351
-    case vibrate = 4095
-}
-
 import AudioToolbox
 
 public extension UIApplication {
     
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.playSystemSound` instead.", renamed: "OM.playSystemSound")
-    static func omSystemSoundPlay(_ omAudioSystemSoundID: OMSystemSoundID) {
+    static func omSystemSoundPlay(_ omAudioSystemSoundID: OM.SoundID) {
         
-        OM.playSystemSound(systemSoundID: omAudioSystemSoundID)
+        OM.playSystemSound(soundID: omAudioSystemSoundID)
     }
     
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIApplication.OM.playVibrate` instead.", renamed: "OM.playVibrate")
@@ -674,6 +544,136 @@ public enum OMBaseURLType: String {
 public extension UIApplication {
     
     struct OM {
+        
+        // MARK: - Audio
+        
+        /**
+         http://iphonedevwiki.net/index.php/AudioServices
+         */
+        public enum SoundID: Int {
+            case newMail = 1000
+            case mailSent = 1001
+            case voiceMail = 1002
+            case recivedMessage = 1003
+            case sentMessage = 1004
+            case alarm = 1005
+            case lowPower = 1006
+            case smsReceived1 = 1007
+            case smsReceived2 = 1008
+            case smsReceived3 = 1009
+            case smsReceived4 = 1010
+            case smsReceived5 = 1013
+            case smsReceived6 = 1014
+            case tweetSent = 1016
+            case anticipate = 1020
+            case bloom = 1021
+            case calypso = 1022
+            case chooChoo = 1023
+            case descent = 1024
+            case fanfare = 1025
+            case ladder = 1026
+            case minuet = 1027
+            case newsFlash = 1028
+            case noir = 1029
+            case sherwoodForest = 1030
+            case spell = 1031
+            case suspence = 1032
+            case telegraph = 1033
+            case tiptoes = 1034
+            case typewriters = 1035
+            case update = 1036
+            case ussdAlert = 1050
+            case simToolkitCallDropped = 1051
+            case simToolkitGeneralBeep = 1052
+            case simToolkitNegativeACK = 1053
+            case simToolkitPositiveACK = 1054
+            case simToolkitSMS = 1055
+            case tink = 1057
+            case ctBusy = 1070
+            case ctCongestion = 1071
+            case ctPathACK = 1072
+            case ctError = 1073
+            case ctCallWaiting = 1074
+            case ctKeytone = 1075
+            case lock = 1100
+            case unlock = 1101
+            case failedUnlock = 1102
+            case keypressedTink = 1103
+            case keypressedTock = 1104
+            case tock = 1105
+            case beepBeep = 1106
+            case ringerCharged = 1107
+            case photoShutter = 1108
+            case shake = 1109
+            case jblBegin = 1110
+            case jblConfirm = 1111
+            case jblCancel = 1112
+            case beginRecording = 1113
+            case endRecording = 1114
+            case jblAmbiguous = 1115
+            case jblNoMatch = 1116
+            case beginVideoRecord = 1117
+            case endVideoRecord = 1118
+            case vcInvitationAccepted = 1150
+            case vcRinging = 1151
+            case vcEnded = 1152
+            case vcCallWaiting = 1153
+            case vcCallUpgrade = 1154
+            case touchTone1 = 1200
+            case touchTone2 = 1201
+            case touchTone3 = 1202
+            case touchTone4 = 1203
+            case touchTone5 = 1204
+            case touchTone6 = 1205
+            case touchTone7 = 1206
+            case touchTone8 = 1207
+            case touchTone9 = 1208
+            case touchTone10 = 1209
+            case touchToneStar = 1210
+            case touchTonePound = 1211
+            case headsetStartCall = 1254
+            case headsetRedial = 1255
+            case headsetAnswerCall = 1256
+            case headsetEndCall = 1257
+            case headsetCallWaitingActions = 1258
+            case headsetTransitionEnd = 1259
+            case voicemail = 1300
+            case receivedMessage = 1301
+            case newMail2 = 1302
+            case mailSent2 = 1303
+            case alarm2 = 1304
+            case lock2 = 1305
+            case tock2 = 1306
+            case smsReceived1_2 = 1307
+            case smsReceived2_2 = 1308
+            case smsReceived3_2 = 1309
+            case smsReceived4_2 = 1310
+            case smsReceivedVibrate = 1311
+            case smsReceived1_3 = 1312
+            case smsReceived5_3 = 1313
+            case smsReceived6_3 = 1314
+            case voicemail2 = 1315
+            case anticipate2 = 1320
+            case bloom2 = 1321
+            case calypso2 = 1322
+            case chooChoo2 = 1323
+            case descent2 = 1324
+            case fanfare2 = 1325
+            case ladder2 = 1326
+            case minuet2 = 1327
+            case newsFlash2 = 1328
+            case noir2 = 1329
+            case sherwoodForest2 = 1330
+            case spell2 = 1331
+            case suspence2 = 1332
+            case telegraph2 = 1333
+            case tiptoes2 = 1334
+            case typewriters2 = 1335
+            case update2 = 1336
+            case ringerVibeChanged = 1350
+            case silentVibeChanged = 1351
+            case vibrate = 4095
+        }
         
         // MARK: - App
         
@@ -1093,9 +1093,9 @@ public extension UIApplication {
         
         // MARK: - Audio
         
-        public static func playSystemSound(systemSoundID: OMSystemSoundID) {
+        public static func playSystemSound(soundID: OM.SoundID) {
             
-            AudioServicesPlaySystemSound(SystemSoundID(systemSoundID.rawValue))
+            AudioServicesPlaySystemSound(SystemSoundID(soundID.rawValue))
         }
         
         public static func playVibrate() {

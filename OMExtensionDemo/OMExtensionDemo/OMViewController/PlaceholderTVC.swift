@@ -80,7 +80,7 @@ class PlaceholderTVC: BaseTVC {
             
             text = "No Messages"
             textColor = UIColor(omHex: 0xc9c9c9)
-            textFont = UIFont(omFontName: OMFontName.helveticaNeueLight, size: 22) ?? UIFont.systemFont(ofSize: 22)
+            textFont = UIFont(omFontName: UIFont.OM.Font.helveticaNeueLight, size: 22) ?? UIFont.systemFont(ofSize: 22)
             
             description = "When you have messages, you’ll see them here."
             descriptionColor = UIColor(omHex: 0xcfcfcf)
@@ -168,7 +168,7 @@ class PlaceholderTVC: BaseTVC {
             
             text = "Instagram Direct"
             textColor = UIColor(omHex: 0x444444)
-            textFont = UIFont(omFontName: OMFontName.helveticaNeueLight, size: 26) ?? UIFont.systemFont(ofSize: 26)
+            textFont = UIFont(omFontName: UIFont.OM.Font.helveticaNeueLight, size: 26) ?? UIFont.systemFont(ofSize: 26)
             
             description = "Send photos and videos directly to your friends. Only the people you send to can see these posts."
             descriptionColor = UIColor(omHex: 0x444444)
@@ -226,11 +226,11 @@ class PlaceholderTVC: BaseTVC {
         case .Remote:
             text = "Cannot Connect to a Local Networ"
             textColor = UIColor(omHex: 0x555555)
-            textFont = UIFont(omFontName: OMFontName.helveticaNeueMedium, size: 18) ?? UIFont.systemFont(ofSize: 18)
+            textFont = UIFont(omFontName: UIFont.OM.Font.helveticaNeueMedium, size: 18) ?? UIFont.systemFont(ofSize: 18)
             
             description = "You must connect to a Wi-Fi network to control iTunes or Apple TV"
             descriptionColor = UIColor(omHex: 0x555555)
-            descriptionFont = UIFont(omFontName: OMFontName.helveticaNeueMedium, size: 11.75) ?? UIFont.systemFont(ofSize: 11.75)
+            descriptionFont = UIFont(omFontName: UIFont.OM.Font.helveticaNeueMedium, size: 11.75) ?? UIFont.systemFont(ofSize: 11.75)
         case .Safari:
             description = "Safari cannot open the page because your iPhone is not connected to the Internet."
             descriptionColor = UIColor(omHex: 0x7d7f7f)
@@ -241,7 +241,7 @@ class PlaceholderTVC: BaseTVC {
             
             description = "Keep all your favorite people together, add favorites."
             descriptionColor = UIColor(omHex: 0xa6c3d1)
-            descriptionFont = UIFont(omFontName: OMFontName.helveticaNeueLight, size: 17.75) ?? UIFont.systemFont(ofSize: 17.75)
+            descriptionFont = UIFont(omFontName: UIFont.OM.Font.helveticaNeueLight, size: 17.75) ?? UIFont.systemFont(ofSize: 17.75)
         case .Slack:
             barColor = UIColor(omHex: 0xf4f5f6)
             tintColor = UIColor(omHex: 0x3eba92)
@@ -250,7 +250,7 @@ class PlaceholderTVC: BaseTVC {
             
             description = "You don't have any recent mentions"
             descriptionColor = UIColor(omHex: 0xd7d7d7)
-            descriptionFont = UIFont(omFontName: OMFontName.copperplate, size: 19) ?? UIFont.systemFont(ofSize: 19)
+            descriptionFont = UIFont(omFontName: UIFont.OM.Font.copperplate, size: 19) ?? UIFont.systemFont(ofSize: 19)
         case .Tumblr:
             barColor = UIColor(omHex: 0x2e3e53)
             tintColor = UIColor.white
@@ -288,7 +288,7 @@ class PlaceholderTVC: BaseTVC {
             
             text = "No Notes"
             textColor = UIColor(omHex: 0xd9dce1)
-            textFont = UIFont(omFontName: OMFontName.gillSans, size: 16) ?? UIFont.systemFont(ofSize: 16)
+            textFont = UIFont(omFontName: UIFont.OM.Font.gillSans, size: 16) ?? UIFont.systemFont(ofSize: 16)
             
             description = "When you have messages, you’ll see them here."
             descriptionColor = UIColor(omHex: 0xcfcfcf)
@@ -333,7 +333,7 @@ class PlaceholderTVC: BaseTVC {
             
             text = "No Favorites"
             textColor = UIColor(omHex: 0xb9b9b9)
-            textFont = UIFont(omFontName: OMFontName.helveticaNeueMedium, size: 16) ?? UIFont.systemFont(ofSize: 16)
+            textFont = UIFont(omFontName: UIFont.OM.Font.helveticaNeueMedium, size: 16) ?? UIFont.systemFont(ofSize: 16)
             
             description = "Favorites are only available to Registered Apple Developers."
             descriptionColor = UIColor(omHex: 0xb9b9b9)

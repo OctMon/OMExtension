@@ -31,7 +31,7 @@ public extension Timer {
     struct OM {
         
         @discardableResult
-        static func runLoop(seconds: TimeInterval, handler: @escaping (_ timer: Timer?) -> Void) -> Timer {
+        public static func runLoop(seconds: TimeInterval, handler: @escaping (_ timer: Timer?) -> Void) -> Timer {
             
             let fireDate = CFAbsoluteTimeGetCurrent()
             let timer = CFRunLoopTimerCreateWithHandler(kCFAllocatorDefault, fireDate, seconds, 0, 0, handler)

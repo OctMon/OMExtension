@@ -7,37 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FE13E1C11DDE9B8A005FB3FC /* OMNavigationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE13E1C01DDE9B8A005FB3FC /* OMNavigationItem.swift */; };
-		FE1658CF1D7842CA005FAEB0 /* OMArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658B51D7842CA005FAEB0 /* OMArray.swift */; };
-		FE1658D01D7842CA005FAEB0 /* OMBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658B61D7842CA005FAEB0 /* OMBool.swift */; };
-		FE1658D11D7842CA005FAEB0 /* OMDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658B71D7842CA005FAEB0 /* OMDate.swift */; };
-		FE1658D21D7842CA005FAEB0 /* OMDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658B81D7842CA005FAEB0 /* OMDictionary.swift */; };
-		FE1658D31D7842CA005FAEB0 /* OMDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658B91D7842CA005FAEB0 /* OMDouble.swift */; };
-		FE1658D41D7842CA005FAEB0 /* OMInt.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658BA1D7842CA005FAEB0 /* OMInt.swift */; };
-		FE1658D51D7842CA005FAEB0 /* OMObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658BB1D7842CA005FAEB0 /* OMObject.swift */; };
-		FE1658D61D7842CA005FAEB0 /* OMString.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658BC1D7842CA005FAEB0 /* OMString.swift */; };
-		FE1658D71D7842CA005FAEB0 /* OMThread.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658BD1D7842CA005FAEB0 /* OMThread.swift */; };
-		FE1658D81D7842CA005FAEB0 /* OMTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658BE1D7842CA005FAEB0 /* OMTimer.swift */; };
-		FE1658D91D7842CA005FAEB0 /* OMAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C01D7842CA005FAEB0 /* OMAlertController.swift */; };
-		FE1658DA1D7842CA005FAEB0 /* OMApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C11D7842CA005FAEB0 /* OMApplication.swift */; };
-		FE1658DB1D7842CA005FAEB0 /* OMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C21D7842CA005FAEB0 /* OMColor.swift */; };
-		FE1658DC1D7842CA005FAEB0 /* OMDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C31D7842CA005FAEB0 /* OMDevice.swift */; };
-		FE1658DD1D7842CA005FAEB0 /* OMFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C41D7842CA005FAEB0 /* OMFont.swift */; };
-		FE1658DE1D7842CA005FAEB0 /* OMImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C51D7842CA005FAEB0 /* OMImage.swift */; };
-		FE1658DF1D7842CA005FAEB0 /* OMNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C61D7842CA005FAEB0 /* OMNavigationBar.swift */; };
-		FE1658E01D7842CA005FAEB0 /* OMRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C71D7842CA005FAEB0 /* OMRect.swift */; };
-		FE1658E11D7842CA005FAEB0 /* OMScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C81D7842CA005FAEB0 /* OMScreen.swift */; };
-		FE1658E21D7842CA005FAEB0 /* OMStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658C91D7842CA005FAEB0 /* OMStoryboard.swift */; };
-		FE1658E31D7842CA005FAEB0 /* OMTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CA1D7842CA005FAEB0 /* OMTableView.swift */; };
-		FE1658E41D7842CA005FAEB0 /* OMTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CB1D7842CA005FAEB0 /* OMTextField.swift */; };
-		FE1658E51D7842CA005FAEB0 /* OMTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CC1D7842CA005FAEB0 /* OMTextView.swift */; };
-		FE1658E61D7842CA005FAEB0 /* OMView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CD1D7842CA005FAEB0 /* OMView.swift */; };
-		FE1658E71D7842CA005FAEB0 /* OMViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658CE1D7842CA005FAEB0 /* OMViewController.swift */; };
 		FE1658EB1D784441005FAEB0 /* SystemSoundTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1658EA1D784441005FAEB0 /* SystemSoundTVC.swift */; };
-		FE1EFA891DD43BB70061926B /* OMExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1EFA881DD43BB70061926B /* OMExtension.swift */; };
-		FE250B911DC3426A00CA0F8D /* OMData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE250B8F1DC3426A00CA0F8D /* OMData.swift */; };
-		FE250B921DC3426A00CA0F8D /* OMURLRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE250B901DC3426A00CA0F8D /* OMURLRequest.swift */; };
-		FE28E6F71DD2BFCB0009A2BE /* OMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE28E6F61DD2BFCB0009A2BE /* OMButton.swift */; };
 		FE37D5EF1D701670000F749C /* MainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE37D5EE1D701670000F749C /* MainTVC.swift */; };
 		FE38A6EF1D891E98005AEB72 /* PopularAppTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE38A6EE1D891E98005AEB72 /* PopularAppTVC.swift */; };
 		FE38A6F11D891EBA005AEB72 /* UIViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE38A6F01D891EBA005AEB72 /* UIViewController.storyboard */; };
@@ -63,10 +33,9 @@
 		FE8F90851D6EADEB0095D74B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE8F90831D6EADEB0095D74B /* LaunchScreen.storyboard */; };
 		FE8F90901D6EADEB0095D74B /* OMExtensionDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F908F1D6EADEB0095D74B /* OMExtensionDemoTests.swift */; };
 		FE8F909B1D6EADEB0095D74B /* OMExtensionDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8F909A1D6EADEB0095D74B /* OMExtensionDemoUITests.swift */; };
+		FEB94BC81DF2C9CA00D01805 /* OMExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FEB94BC51DF2C9C100D01805 /* OMExtension.framework */; };
+		FEB94BC91DF2C9CA00D01805 /* OMExtension.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FEB94BC51DF2C9C100D01805 /* OMExtension.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		FEBECC861D6F179300632A32 /* OMApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBECC851D6F179300632A32 /* OMApplicationTests.swift */; };
-		FEC273E71DDEAADA00D33030 /* OMWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC273E61DDEAADA00D33030 /* OMWebView.swift */; };
-		FEF949031DD3027100B5F1BC /* OMBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEF949021DD3027100B5F1BC /* OMBarButtonItem.swift */; };
-		FEFB4DDA1DC6EBAF0036B709 /* OMFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEFB4DD91DC6EBAF0036B709 /* OMFileManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,40 +53,45 @@
 			remoteGlobalIDString = FE8F90761D6EADEB0095D74B;
 			remoteInfo = OMExtensionDemo;
 		};
+		FEB94BC41DF2C9C100D01805 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FE8F90541D6EADCC0095D74B;
+			remoteInfo = OMExtension;
+		};
+		FEB94BC61DF2C9C100D01805 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FE8F905E1D6EADCC0095D74B;
+			remoteInfo = OMExtensionTests;
+		};
+		FEB94BCA1DF2C9CA00D01805 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FE8F90531D6EADCC0095D74B;
+			remoteInfo = OMExtension;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		FEB94BB91DF2C95800D01805 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FEB94BC91DF2C9CA00D01805 /* OMExtension.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		FE13E1C01DDE9B8A005FB3FC /* OMNavigationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMNavigationItem.swift; sourceTree = "<group>"; };
-		FE1658B51D7842CA005FAEB0 /* OMArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMArray.swift; sourceTree = "<group>"; };
-		FE1658B61D7842CA005FAEB0 /* OMBool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBool.swift; sourceTree = "<group>"; };
-		FE1658B71D7842CA005FAEB0 /* OMDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDate.swift; sourceTree = "<group>"; };
-		FE1658B81D7842CA005FAEB0 /* OMDictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDictionary.swift; sourceTree = "<group>"; };
-		FE1658B91D7842CA005FAEB0 /* OMDouble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDouble.swift; sourceTree = "<group>"; };
-		FE1658BA1D7842CA005FAEB0 /* OMInt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMInt.swift; sourceTree = "<group>"; };
-		FE1658BB1D7842CA005FAEB0 /* OMObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMObject.swift; sourceTree = "<group>"; };
-		FE1658BC1D7842CA005FAEB0 /* OMString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMString.swift; sourceTree = "<group>"; };
-		FE1658BD1D7842CA005FAEB0 /* OMThread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMThread.swift; sourceTree = "<group>"; };
-		FE1658BE1D7842CA005FAEB0 /* OMTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTimer.swift; sourceTree = "<group>"; };
-		FE1658C01D7842CA005FAEB0 /* OMAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMAlertController.swift; sourceTree = "<group>"; };
-		FE1658C11D7842CA005FAEB0 /* OMApplication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMApplication.swift; sourceTree = "<group>"; };
-		FE1658C21D7842CA005FAEB0 /* OMColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMColor.swift; sourceTree = "<group>"; };
-		FE1658C31D7842CA005FAEB0 /* OMDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMDevice.swift; sourceTree = "<group>"; };
-		FE1658C41D7842CA005FAEB0 /* OMFont.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMFont.swift; sourceTree = "<group>"; };
-		FE1658C51D7842CA005FAEB0 /* OMImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMImage.swift; sourceTree = "<group>"; };
-		FE1658C61D7842CA005FAEB0 /* OMNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMNavigationBar.swift; sourceTree = "<group>"; };
-		FE1658C71D7842CA005FAEB0 /* OMRect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMRect.swift; sourceTree = "<group>"; };
-		FE1658C81D7842CA005FAEB0 /* OMScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMScreen.swift; sourceTree = "<group>"; };
-		FE1658C91D7842CA005FAEB0 /* OMStoryboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMStoryboard.swift; sourceTree = "<group>"; };
-		FE1658CA1D7842CA005FAEB0 /* OMTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTableView.swift; sourceTree = "<group>"; };
-		FE1658CB1D7842CA005FAEB0 /* OMTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextField.swift; sourceTree = "<group>"; };
-		FE1658CC1D7842CA005FAEB0 /* OMTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMTextView.swift; sourceTree = "<group>"; };
-		FE1658CD1D7842CA005FAEB0 /* OMView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMView.swift; sourceTree = "<group>"; };
-		FE1658CE1D7842CA005FAEB0 /* OMViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMViewController.swift; sourceTree = "<group>"; };
 		FE1658EA1D784441005FAEB0 /* SystemSoundTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemSoundTVC.swift; sourceTree = "<group>"; };
-		FE1EFA881DD43BB70061926B /* OMExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMExtension.swift; sourceTree = "<group>"; };
-		FE250B8F1DC3426A00CA0F8D /* OMData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMData.swift; sourceTree = "<group>"; };
-		FE250B901DC3426A00CA0F8D /* OMURLRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMURLRequest.swift; sourceTree = "<group>"; };
-		FE28E6F61DD2BFCB0009A2BE /* OMButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMButton.swift; sourceTree = "<group>"; };
 		FE37D5EE1D701670000F749C /* MainTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTVC.swift; sourceTree = "<group>"; };
 		FE38A6EE1D891E98005AEB72 /* PopularAppTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopularAppTVC.swift; sourceTree = "<group>"; };
 		FE38A6F01D891EBA005AEB72 /* UIViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UIViewController.storyboard; sourceTree = "<group>"; };
@@ -149,10 +123,8 @@
 		FE8F90961D6EADEB0095D74B /* OMExtensionDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OMExtensionDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE8F909A1D6EADEB0095D74B /* OMExtensionDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OMExtensionDemoUITests.swift; sourceTree = "<group>"; };
 		FE8F909C1D6EADEB0095D74B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = OMExtension.xcodeproj; path = ../OMExtension/OMExtension.xcodeproj; sourceTree = "<group>"; };
 		FEBECC851D6F179300632A32 /* OMApplicationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMApplicationTests.swift; sourceTree = "<group>"; };
-		FEC273E61DDEAADA00D33030 /* OMWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMWebView.swift; sourceTree = "<group>"; };
-		FEF949021DD3027100B5F1BC /* OMBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMBarButtonItem.swift; sourceTree = "<group>"; };
-		FEFB4DD91DC6EBAF0036B709 /* OMFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OMFileManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEB94BC81DF2C9CA00D01805 /* OMExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,63 +153,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FE1658B31D7842CA005FAEB0 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				FE1EFA881DD43BB70061926B /* OMExtension.swift */,
-				FE1658B41D7842CA005FAEB0 /* Foundation */,
-				FE1658BF1D7842CA005FAEB0 /* UIKit */,
-			);
-			name = Source;
-			path = ../../OMExtension/OMExtension/Source;
-			sourceTree = "<group>";
-		};
-		FE1658B41D7842CA005FAEB0 /* Foundation */ = {
-			isa = PBXGroup;
-			children = (
-				FE1658B51D7842CA005FAEB0 /* OMArray.swift */,
-				FE1658B61D7842CA005FAEB0 /* OMBool.swift */,
-				FE250B8F1DC3426A00CA0F8D /* OMData.swift */,
-				FE1658B71D7842CA005FAEB0 /* OMDate.swift */,
-				FE1658B81D7842CA005FAEB0 /* OMDictionary.swift */,
-				FE1658B91D7842CA005FAEB0 /* OMDouble.swift */,
-				FEFB4DD91DC6EBAF0036B709 /* OMFileManager.swift */,
-				FE1658BA1D7842CA005FAEB0 /* OMInt.swift */,
-				FE1658BB1D7842CA005FAEB0 /* OMObject.swift */,
-				FE1658BC1D7842CA005FAEB0 /* OMString.swift */,
-				FE1658BD1D7842CA005FAEB0 /* OMThread.swift */,
-				FE1658BE1D7842CA005FAEB0 /* OMTimer.swift */,
-				FE250B901DC3426A00CA0F8D /* OMURLRequest.swift */,
-			);
-			path = Foundation;
-			sourceTree = "<group>";
-		};
-		FE1658BF1D7842CA005FAEB0 /* UIKit */ = {
-			isa = PBXGroup;
-			children = (
-				FE1658C01D7842CA005FAEB0 /* OMAlertController.swift */,
-				FE1658C11D7842CA005FAEB0 /* OMApplication.swift */,
-				FEF949021DD3027100B5F1BC /* OMBarButtonItem.swift */,
-				FE28E6F61DD2BFCB0009A2BE /* OMButton.swift */,
-				FE1658C21D7842CA005FAEB0 /* OMColor.swift */,
-				FE1658C31D7842CA005FAEB0 /* OMDevice.swift */,
-				FE1658C41D7842CA005FAEB0 /* OMFont.swift */,
-				FE1658C51D7842CA005FAEB0 /* OMImage.swift */,
-				FE1658C61D7842CA005FAEB0 /* OMNavigationBar.swift */,
-				FE13E1C01DDE9B8A005FB3FC /* OMNavigationItem.swift */,
-				FE1658C71D7842CA005FAEB0 /* OMRect.swift */,
-				FE1658C81D7842CA005FAEB0 /* OMScreen.swift */,
-				FE1658C91D7842CA005FAEB0 /* OMStoryboard.swift */,
-				FE1658CA1D7842CA005FAEB0 /* OMTableView.swift */,
-				FE1658CB1D7842CA005FAEB0 /* OMTextField.swift */,
-				FE1658CC1D7842CA005FAEB0 /* OMTextView.swift */,
-				FE1658CD1D7842CA005FAEB0 /* OMView.swift */,
-				FE1658CE1D7842CA005FAEB0 /* OMViewController.swift */,
-				FEC273E61DDEAADA00D33030 /* OMWebView.swift */,
-			);
-			path = UIKit;
-			sourceTree = "<group>";
-		};
 		FE37D5EB1D7015FB000F749C /* OMApplication */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +204,7 @@
 				FE8F908E1D6EADEB0095D74B /* OMExtensionDemoTests */,
 				FE8F90991D6EADEB0095D74B /* OMExtensionDemoUITests */,
 				FE8F90781D6EADEB0095D74B /* Products */,
+				FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -316,7 +233,6 @@
 				FE6351C01D74001000A0A0B1 /* OMColor */,
 				FE6351BB1D73E0E500A0A0B1 /* OMFont */,
 				FE38A6ED1D891E7C005AEB72 /* OMViewController */,
-				FE1658B31D7842CA005FAEB0 /* Source */,
 			);
 			path = OMExtensionDemo;
 			sourceTree = "<group>";
@@ -341,6 +257,15 @@
 			path = OMExtensionDemoUITests;
 			sourceTree = "<group>";
 		};
+		FEB94BC01DF2C9C000D01805 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FEB94BC51DF2C9C100D01805 /* OMExtension.framework */,
+				FEB94BC71DF2C9C100D01805 /* OMExtensionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -351,10 +276,12 @@
 				FE8F90731D6EADEB0095D74B /* Sources */,
 				FE8F90741D6EADEB0095D74B /* Frameworks */,
 				FE8F90751D6EADEB0095D74B /* Resources */,
+				FEB94BB91DF2C95800D01805 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				FEB94BCB1DF2C9CA00D01805 /* PBXTargetDependency */,
 			);
 			name = OMExtensionDemo;
 			productName = OMExtensionDemo;
@@ -435,6 +362,12 @@
 			mainGroup = FE8F906E1D6EADEB0095D74B;
 			productRefGroup = FE8F90781D6EADEB0095D74B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FEB94BC01DF2C9C000D01805 /* Products */;
+					ProjectRef = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FE8F90761D6EADEB0095D74B /* OMExtensionDemo */,
@@ -443,6 +376,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FEB94BC51DF2C9C100D01805 /* OMExtension.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OMExtension.framework;
+			remoteRef = FEB94BC41DF2C9C100D01805 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FEB94BC71DF2C9C100D01805 /* OMExtensionTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = OMExtensionTests.xctest;
+			remoteRef = FEB94BC61DF2C9C100D01805 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FE8F90751D6EADEB0095D74B /* Resources */ = {
@@ -481,54 +431,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FE1658D51D7842CA005FAEB0 /* OMObject.swift in Sources */,
-				FE1658DC1D7842CA005FAEB0 /* OMDevice.swift in Sources */,
 				FE7837E71D70409600B6F233 /* BaseTVC.swift in Sources */,
-				FE1658DF1D7842CA005FAEB0 /* OMNavigationBar.swift in Sources */,
 				FE639D401D8E6D9C00A6CFB7 /* ViewControllerTVC.swift in Sources */,
-				FE250B911DC3426A00CA0F8D /* OMData.swift in Sources */,
 				FE6351C41D74003600A0A0B1 /* ColorTVC.swift in Sources */,
 				FE7837D51D7020BD00B6F233 /* ApplicationTVC.swift in Sources */,
-				FE1658DB1D7842CA005FAEB0 /* OMColor.swift in Sources */,
-				FE1658E71D7842CA005FAEB0 /* OMViewController.swift in Sources */,
-				FE13E1C11DDE9B8A005FB3FC /* OMNavigationItem.swift in Sources */,
-				FE1658D91D7842CA005FAEB0 /* OMAlertController.swift in Sources */,
-				FE1658DE1D7842CA005FAEB0 /* OMImage.swift in Sources */,
 				FE37D5EF1D701670000F749C /* MainTVC.swift in Sources */,
-				FE1658DA1D7842CA005FAEB0 /* OMApplication.swift in Sources */,
-				FEC273E71DDEAADA00D33030 /* OMWebView.swift in Sources */,
-				FE250B921DC3426A00CA0F8D /* OMURLRequest.swift in Sources */,
-				FE1EFA891DD43BB70061926B /* OMExtension.swift in Sources */,
 				FE6351BD1D73E0F700A0A0B1 /* FontTVC.swift in Sources */,
 				FE1658EB1D784441005FAEB0 /* SystemSoundTVC.swift in Sources */,
 				FE639D3E1D8E6CBF00A6CFB7 /* PlaceholderVC.swift in Sources */,
-				FE1658D71D7842CA005FAEB0 /* OMThread.swift in Sources */,
-				FEFB4DDA1DC6EBAF0036B709 /* OMFileManager.swift in Sources */,
-				FEF949031DD3027100B5F1BC /* OMBarButtonItem.swift in Sources */,
 				FE48ACC61D7839770066F52D /* PrefsTVC.swift in Sources */,
-				FE1658E11D7842CA005FAEB0 /* OMScreen.swift in Sources */,
-				FE1658CF1D7842CA005FAEB0 /* OMArray.swift in Sources */,
-				FE1658D81D7842CA005FAEB0 /* OMTimer.swift in Sources */,
-				FE1658D21D7842CA005FAEB0 /* OMDictionary.swift in Sources */,
-				FE1658D01D7842CA005FAEB0 /* OMBool.swift in Sources */,
 				FE639D3C1D8E6C9300A6CFB7 /* BaseVC.swift in Sources */,
-				FE1658E31D7842CA005FAEB0 /* OMTableView.swift in Sources */,
 				FE8F907B1D6EADEB0095D74B /* AppDelegate.swift in Sources */,
 				FE6DA6181DD173DC00257991 /* JumpOtherTVC.swift in Sources */,
-				FE1658DD1D7842CA005FAEB0 /* OMFont.swift in Sources */,
 				FE48ACC81D783C810066F52D /* AuthenticationTVC.swift in Sources */,
-				FE1658E51D7842CA005FAEB0 /* OMTextView.swift in Sources */,
-				FE1658D61D7842CA005FAEB0 /* OMString.swift in Sources */,
 				FE38A6F71D892492005AEB72 /* PlaceholderTVC.swift in Sources */,
-				FE1658D11D7842CA005FAEB0 /* OMDate.swift in Sources */,
-				FE1658E41D7842CA005FAEB0 /* OMTextField.swift in Sources */,
-				FE28E6F71DD2BFCB0009A2BE /* OMButton.swift in Sources */,
 				FE38A6EF1D891E98005AEB72 /* PopularAppTVC.swift in Sources */,
-				FE1658D31D7842CA005FAEB0 /* OMDouble.swift in Sources */,
-				FE1658D41D7842CA005FAEB0 /* OMInt.swift in Sources */,
-				FE1658E21D7842CA005FAEB0 /* OMStoryboard.swift in Sources */,
-				FE1658E61D7842CA005FAEB0 /* OMView.swift in Sources */,
-				FE1658E01D7842CA005FAEB0 /* OMRect.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +479,11 @@
 			isa = PBXTargetDependency;
 			target = FE8F90761D6EADEB0095D74B /* OMExtensionDemo */;
 			targetProxy = FE8F90971D6EADEB0095D74B /* PBXContainerItemProxy */;
+		};
+		FEB94BCB1DF2C9CA00D01805 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = OMExtension;
+			targetProxy = FEB94BCA1DF2C9CA00D01805 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -678,6 +600,7 @@
 		FE8F90A01D6EADEB0095D74B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = E4QM55B48M;
 				INFOPLIST_FILE = OMExtensionDemo/Info.plist;
@@ -691,6 +614,7 @@
 		FE8F90A11D6EADEB0095D74B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = E4QM55B48M;
 				INFOPLIST_FILE = OMExtensionDemo/Info.plist;
