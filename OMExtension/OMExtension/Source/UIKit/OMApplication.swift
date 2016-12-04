@@ -744,7 +744,7 @@ public extension UIApplication {
         public static var isFirstStart: Bool { return OM.isFirstStartForKey(OM.appIdentifier) }
         
         /// 是否存在一个以内部版本号为标记的key
-        public static var isFirstStartForCurrentBuild: Bool { return OM.isFirstStartForKey(OM.appIdentifier) }
+        public static var isFirstStartForCurrentBuild: Bool { return OM.isFirstStartForKey(OM.appBuild) }
         
         /// 是否存在一个以外部版本号为标记的key
         public static var isFirstStartForCurrentVersion: Bool { return OM.isFirstStartForKey(OM.appVersion) }
