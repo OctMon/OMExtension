@@ -337,7 +337,7 @@ public extension String {
     
     #if !os(macOS)
     
-    func omGetAttributes(color: [(color: UIColor, subString: String?)]? = nil, font: [(font: UIFont, subString: String?)]? = nil, underlineStyle: [String]? = nil, strikethroughStyle: [String]? = nil) -> NSMutableAttributedString {
+    func omGetAttributes(color: [(color: UIColor, subString: String?)]? = nil, font: [(font: UIFont, subString: String?)]? = nil, underlineStyle: [String]? = nil, strikethroughStyle: [String]? = nil, lineSpacing: CGFloat? = nil) -> NSMutableAttributedString {
         
         let mutableAttributedString = NSMutableAttributedString(string: self)
         
@@ -391,6 +391,14 @@ public extension String {
                     mutableAttributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int), range: range)
                 }
             }
+        }
+        
+        if let lineSpacing = lineSpacing {
+            
+            let style = NSMutableParagraphStyle()
+            style.lineSpacing = lineSpacing
+            
+            mutableAttributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: characters.count))
         }
         
         return mutableAttributedString

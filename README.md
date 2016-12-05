@@ -4,8 +4,10 @@
 
 ## Requirements
 
-- iOS 8.0+
-- Swift 3 (OMExtension 1.1.x), Swift 2.3 (OMExtension 1.0.x)
+- iOS 8.0+ / tvOS 9.0+ / watchOS 2.0+ / macOS 10.10+
+- Xcode 8.1+
+- Swift 3.0+
+- Swift 2.3 use OMExtension 1.0.x
 
 ## 安装和使用
 
@@ -36,8 +38,8 @@ use_frameworks!
 
 pod 'OMExtension'
 
-swift <= 2.3 use
-pod 'OMExtension', '< 1.1'
+# swift <= 2.3 use
+# pod 'OMExtension', '< 1.1'
 ```
 
 Then run `pod install`. For details of the installation and usage of CocoaPods, visit [it's official web site](https://cocoapods.org/).
@@ -389,6 +391,8 @@ NSMutableAttributedString
 
 ```swift
 let mutableAttributedString = ("https://github.com/OctMon".omGetAttributes(color: [(color: UIColor.redColor(), subString: "github")], font: [(font: UIFont.systemFontOfSize(12), subString: "Octmon")]))
+
+let attributes = text.omGetAttributes(lineSpacing: 10)
 ```
 
 ### Thread
