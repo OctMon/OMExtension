@@ -40,7 +40,7 @@ public extension FileManager {
         ///   - for: SearchPathDirectory
         ///   - path: e.g. "a/b/c/d.txt"
         /// - Returns: URL
-        static func getURL(for: SearchPathDirectory, path: String? = nil) -> URL {
+        public static func getURL(for: SearchPathDirectory, path: String? = nil) -> URL {
             
             var url = FileManager.default.urls(for: `for`, in: .userDomainMask)[0]
             
@@ -56,7 +56,7 @@ public extension FileManager {
         ///
         /// - Parameter path: e.g. "a/b/c/d.txt"
         /// - Returns: URL
-        static func getDocument(path: String? = nil) -> URL {
+        public static func getDocument(path: String? = nil) -> URL {
             
             return getURL(for: .documentDirectory, path: path)
         }
@@ -65,7 +65,7 @@ public extension FileManager {
         ///
         /// - Parameter path: e.g. "a/b/c/d.txt"
         /// - Returns: URL
-        static func getCaches(path: String? = nil) -> URL {
+        public static func getCaches(path: String? = nil) -> URL {
             
             return getURL(for: .cachesDirectory, path: path)
         }
@@ -76,7 +76,7 @@ public extension FileManager {
         ///   - for: SearchPathDirectory
         ///   - path: "a/b/c/d.txt
         /// - Returns: 存在返回URL 不存在返回空nil
-        static func fileExists(for: SearchPathDirectory = .documentDirectory, path: String) -> URL? {
+        public static func fileExists(for: SearchPathDirectory = .documentDirectory, path: String) -> URL? {
             
             let url = getURL(for: `for`, path: path)
             
@@ -87,7 +87,7 @@ public extension FileManager {
         ///
         /// - Parameter at: URL
         /// - Returns: 存在返回URL 不存在返回空nil
-        static func fileExists(at: URL) -> URL? {
+        public static func fileExists(at: URL) -> URL? {
             
             if FileManager.default.fileExists(atPath: at.path) {
                 
@@ -103,7 +103,7 @@ public extension FileManager {
         ///   - for: SearchPathDirectory
         ///   - path: e.g. "a/b/c/d.txt"
         /// - Returns: 存在返回大小 不存在返回空nil
-        static func getFileSize(for: SearchPathDirectory = .documentDirectory, path: String) -> Int {
+        public static func getFileSize(for: SearchPathDirectory = .documentDirectory, path: String) -> Int {
             
             let url = getURL(for: `for`, path: path)
             
@@ -114,7 +114,7 @@ public extension FileManager {
         ///
         /// - Parameter at: URL
         /// - Returns: 存在返回大小 不存在返回空nil
-        static func getFileSize(at: URL) -> Int {
+        public static func getFileSize(at: URL) -> Int {
             
             do {
                 return (try FileManager.default.attributesOfItem(atPath: at.path)[FileAttributeKey.size] as? Int) ?? 0
@@ -124,7 +124,7 @@ public extension FileManager {
         }
         
         /// 获取磁盘空闲空间大小
-        static var getDiskFreeSpace: Int {
+        public static var getDiskFreeSpace: Int {
             
             guard let attrs = try? FileManager.default.attributesOfFileSystem(forPath: NSHomeDirectory()) else { return -1 }
             
@@ -136,7 +136,7 @@ public extension FileManager {
         }
         
         /// 获取磁盘空闲空间大小
-        static var getDiskFreeSpaceString: String {
+        public static var getDiskFreeSpaceString: String {
             
             let size = CGFloat(getDiskFreeSpace)
             
@@ -165,7 +165,7 @@ public extension FileManager {
         /// - Parameters:
         ///   - for: SearchPathDirectory
         ///   - path: e.g. "a/b/c"
-        static func createDirectory(for: SearchPathDirectory = .documentDirectory, path: String) {
+        public static func createDirectory(for: SearchPathDirectory = .documentDirectory, path: String) {
             
             let url = getURL(for: `for`, path: path)
             
@@ -175,7 +175,7 @@ public extension FileManager {
         /// 创建目录
         ///
         /// - Parameter at: URL
-        static func createDirectory(at: URL) {
+        public static func createDirectory(at: URL) {
             
             if fileExists(path: at.path) == nil {
                 
@@ -188,7 +188,7 @@ public extension FileManager {
         /// - Parameters:
         ///   - for: SearchPathDirectory
         ///   - path: e.g. "a/b/c"
-        static func removeItem(for: SearchPathDirectory = .documentDirectory, path: String) {
+        public static func removeItem(for: SearchPathDirectory = .documentDirectory, path: String) {
             
             let url = getURL(for: `for`, path: path)
             
@@ -198,7 +198,7 @@ public extension FileManager {
         /// 删除文件或目录
         ///
         /// - Parameter at: URL
-        static func removeItem(at: URL) {
+        public static func removeItem(at: URL) {
             
             try? FileManager.default.removeItem(at: at)
         }
