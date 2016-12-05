@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 // MARK: - common
@@ -665,3 +668,5 @@ public extension UIViewController {
     }
     
 }
+
+#endif

@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -93,3 +96,5 @@ public extension UITextView {
         om.addDoneButton(barStyle: barStyle, title: title)
     }
 }
+
+#endif

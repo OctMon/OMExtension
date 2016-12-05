@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 // MARK: - App
@@ -1295,3 +1298,5 @@ public extension UIApplication {
         }
     }
 }
+
+#endif

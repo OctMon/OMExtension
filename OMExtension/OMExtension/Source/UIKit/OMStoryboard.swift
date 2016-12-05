@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 public extension UIStoryboard {
@@ -61,3 +64,5 @@ public extension UIStoryboard {
     }
 
 }
+
+#endif

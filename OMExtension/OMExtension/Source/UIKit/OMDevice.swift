@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 public extension UIDevice {
@@ -81,3 +84,5 @@ public extension UIDevice {
     /// 后面的摄像头是否可用
     static var omIsAvailableCameraRear: Bool { return OM.isAvailableCameraRear }
 }
+
+#endif

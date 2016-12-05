@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 public extension OMExtension where OMBase: UIImage {
@@ -166,3 +169,5 @@ public extension UIImage {
     }
     
 }
+
+#endif

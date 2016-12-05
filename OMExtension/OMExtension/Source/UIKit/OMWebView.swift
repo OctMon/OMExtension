@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 public extension OMExtension where OMBase: UIWebView {
@@ -34,3 +37,5 @@ public extension OMExtension where OMBase: UIWebView {
         HTTPCookieStorage.shared.cookies?.forEach({ HTTPCookieStorage.shared.deleteCookie($0) })
     }
 }
+
+#endif

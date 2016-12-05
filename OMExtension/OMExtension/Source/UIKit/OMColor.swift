@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 public extension OMExtension where OMBase: UIColor {
@@ -1265,3 +1268,5 @@ public extension UIColor {
     static var omChinese老银: UIColor { return UIColor(omHex: 0xBACAC6) }
     
 }
+
+#endif

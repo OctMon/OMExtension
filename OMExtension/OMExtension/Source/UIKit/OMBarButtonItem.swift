@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 // MARK: clickHandler
@@ -76,3 +79,5 @@ fileprivate extension UIBarButtonItem {
         action = #selector(clickAction)
     }
 }
+
+#endif

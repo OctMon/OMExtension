@@ -25,7 +25,10 @@
 //  SOFTWARE.
 
 import Foundation
-import UIKit
+
+#if !os(macOS)
+    import UIKit
+#endif
 
 public extension FileManager {
     

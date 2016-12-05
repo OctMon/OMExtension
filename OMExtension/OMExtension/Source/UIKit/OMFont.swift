@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 public extension UIFont {
@@ -360,3 +363,5 @@ public extension UIFont {
     }
 
 }
+
+#endif

@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 // MARK: activityIndicator
@@ -116,3 +119,5 @@ fileprivate extension UINavigationItem {
         self.customView = nil
     }
 }
+
+#endif

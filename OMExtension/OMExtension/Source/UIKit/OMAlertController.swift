@@ -26,6 +26,9 @@
 
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 public extension OMExtension where OMBase: UIAlertController {
@@ -47,3 +50,5 @@ public extension UIAlertController {
     }
 
 }
+
+#endif

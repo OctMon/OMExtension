@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 public extension OMExtension where OMBase: UINavigationBar {
@@ -55,3 +58,5 @@ public extension UINavigationBar {
     }
     
 }
+
+#endif

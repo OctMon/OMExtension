@@ -25,6 +25,9 @@
 //  SOFTWARE.
 
 import Foundation
+
+#if !os(macOS)
+
 import UIKit
 
 // MARK: - GestureHandler
@@ -1089,3 +1092,5 @@ public extension UIView {
         return instantiate
     }
 }
+
+#endif

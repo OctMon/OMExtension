@@ -25,7 +25,10 @@
 //  SOFTWARE.
 
 import Foundation
-import UIKit
+
+#if !os(macOS)
+    import UIKit
+#endif
 
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
@@ -229,6 +232,8 @@ public extension String {
         return urls
     }
     
+    #if !os(macOS)
+    
     func omCopyToPasteboard() {
         
         UIPasteboard.general.string = self
@@ -249,6 +254,8 @@ public extension String {
         
         return ceil((self as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:attrib, context: nil).height)
     }
+    
+    #endif
     
     mutating func omTrim() {
         
@@ -328,6 +335,8 @@ public extension String {
         return ranges
     }
     
+    #if !os(macOS)
+    
     func omGetAttributes(color: [(color: UIColor, subString: String?)]? = nil, font: [(font: UIFont, subString: String?)]? = nil, underlineStyle: [String]? = nil, strikethroughStyle: [String]? = nil) -> NSMutableAttributedString {
         
         let mutableAttributedString = NSMutableAttributedString(string: self)
@@ -386,6 +395,8 @@ public extension String {
         
         return mutableAttributedString
     }
+    
+    #endif
 
 }
 
