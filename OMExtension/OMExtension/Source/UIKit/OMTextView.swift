@@ -26,7 +26,7 @@
 
 import Foundation
 
-#if !os(macOS) && !os(tvOS)
+#if os(iOS)
 
 import UIKit
 

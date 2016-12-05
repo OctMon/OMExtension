@@ -232,7 +232,7 @@ public extension String {
         return urls
     }
     
-    #if !os(macOS) && !os(tvOS)
+    #if os(iOS)
     
     func omCopyToPasteboard() {
         

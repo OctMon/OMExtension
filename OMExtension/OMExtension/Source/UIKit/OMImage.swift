@@ -71,7 +71,7 @@ public extension UIImage {
     
     struct OM {
         
-        #if !os(tvOS)
+        #if !os(tvOS) && !os(watchOS)
         
         public static var launchImage: UIImage? {
             
@@ -112,6 +112,8 @@ public extension UIImage {
 
 public extension UIImage {
     
+    #if !os(watchOS)
+    
     convenience init?(omQRcode: String) {
         
         self.init(omCodeGeneratorWithFilterName: "CIQRCodeGenerator", code: omQRcode)
@@ -142,6 +144,8 @@ public extension UIImage {
         }
     }
     
+    #endif
+    
     convenience init?(omColor: UIColor, frame:CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)) {
         
         UIGraphicsBeginImageContext(frame.size)
@@ -165,7 +169,7 @@ public extension UIImage {
         
         return om.setTintColor(tintColor: tintColor)
     }
-    #if !os(tvOS)
+    #if !os(tvOS) && !os(watchOS)
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIImage.OM.launchImage` instead.", renamed: "OM.launchImage")
     static func omLaunchImage() -> UIImage? {
         
