@@ -97,7 +97,7 @@ public extension UIApplication {
     static var omIsFirstStart: Bool { return omIsFirstStartForKey(omAppIdentifier) }
     
     /// 是否存在一个以内部版本号为标记的key
-    static var omIsFirstStartForCurrentBuild: Bool { return omIsFirstStartForKey(omAppIdentifier) }
+    static var omIsFirstStartForCurrentBuild: Bool { return omIsFirstStartForKey(omAppBuild) }
     
     /// 是否存在一个以外部版本号为标记的key
     static var omIsFirstStartForCurrentVersion: Bool { return omIsFirstStartForKey(omAppVersion) }
