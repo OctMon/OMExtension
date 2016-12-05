@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FE0F350E1DF53A5200744328"
+               BlueprintIdentifier = "FE0F34DF1DF511FB00744328"
                BuildableName = "OMExtension.framework"
-               BlueprintName = "OMExtension watchOS"
+               BlueprintName = "OMExtension tvOS"
                ReferencedContainer = "container:OMExtension.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FE0F350E1DF53A5200744328"
+            BlueprintIdentifier = "FE0F34DF1DF511FB00744328"
             BuildableName = "OMExtension.framework"
-            BlueprintName = "OMExtension watchOS"
+            BlueprintName = "OMExtension tvOS"
             ReferencedContainer = "container:OMExtension.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FE0F350E1DF53A5200744328"
+            BlueprintIdentifier = "FE0F34DF1DF511FB00744328"
             BuildableName = "OMExtension.framework"
-            BlueprintName = "OMExtension watchOS"
+            BlueprintName = "OMExtension tvOS"
             ReferencedContainer = "container:OMExtension.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
