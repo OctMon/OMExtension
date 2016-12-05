@@ -67,6 +67,27 @@
 			remoteGlobalIDString = FE8F905E1D6EADCC0095D74B;
 			remoteInfo = OMExtensionTests;
 		};
+		FED9ECD81DF54DE400FEB11E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FE0F35091DF511FB00744328;
+			remoteInfo = "OMExtension tvOS";
+		};
+		FED9ECDA1DF54DE400FEB11E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FE0F35381DF53A5200744328;
+			remoteInfo = "OMExtension watchOS";
+		};
+		FED9ECDC1DF54DE400FEB11E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FE0F340B1DF5066200744328;
+			remoteInfo = "OMExtension macOS";
+		};
 		FEF359F51DF30C8D009ECE1D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = FEB94BBF1DF2C9C000D01805 /* OMExtension.xcodeproj */;
@@ -261,6 +282,9 @@
 			isa = PBXGroup;
 			children = (
 				FEB94BC51DF2C9C100D01805 /* OMExtension.framework */,
+				FED9ECD91DF54DE400FEB11E /* OMExtension.framework */,
+				FED9ECDB1DF54DE400FEB11E /* OMExtension.framework */,
+				FED9ECDD1DF54DE400FEB11E /* OMExtension.framework */,
 				FEB94BC71DF2C9C100D01805 /* OMExtensionTests.xctest */,
 			);
 			name = Products;
@@ -390,6 +414,27 @@
 			fileType = wrapper.cfbundle;
 			path = OMExtensionTests.xctest;
 			remoteRef = FEB94BC61DF2C9C100D01805 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FED9ECD91DF54DE400FEB11E /* OMExtension.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OMExtension.framework;
+			remoteRef = FED9ECD81DF54DE400FEB11E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FED9ECDB1DF54DE400FEB11E /* OMExtension.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OMExtension.framework;
+			remoteRef = FED9ECDA1DF54DE400FEB11E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FED9ECDD1DF54DE400FEB11E /* OMExtension.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = OMExtension.framework;
+			remoteRef = FED9ECDC1DF54DE400FEB11E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
