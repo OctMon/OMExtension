@@ -459,6 +459,8 @@ public extension UIApplication {
 
 // MARK: - Authentication
 
+#if !os(tvOS)
+
 import LocalAuthentication
 
 public enum OMAuthenticationTouchID: Int {
@@ -522,6 +524,8 @@ public extension UIApplication {
         }
     }
 }
+
+#endif
 
 public enum OMBaseURLType: String {
     case release, develop, test, custom
@@ -1118,6 +1122,8 @@ public extension UIApplication {
         
         // MARK: - Authentication
         
+        #if !os(tvOS)
+        
         public static func authenticationTouchID(reason: String, handler: @escaping (Bool, LAError?) -> Void) {
             
             let context: LAContext = LAContext()
@@ -1136,6 +1142,8 @@ public extension UIApplication {
                 handler(false, error as? LAError)
             }
         }
+        
+        #endif
         
         // MARK: - Release
         

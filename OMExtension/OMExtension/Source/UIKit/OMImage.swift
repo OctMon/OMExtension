@@ -71,6 +71,8 @@ public extension UIImage {
     
     struct OM {
         
+        #if !os(tvOS)
+        
         public static var launchImage: UIImage? {
             
             if let imagesDict = Bundle.main.infoDictionary!["UILaunchImages"] as? [[String: String]] {
@@ -103,6 +105,8 @@ public extension UIImage {
             
             return nil
         }
+        
+        #endif
     }
 }
 
@@ -161,13 +165,13 @@ public extension UIImage {
         
         return om.setTintColor(tintColor: tintColor)
     }
-    
+    #if !os(tvOS)
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIImage.OM.launchImage` instead.", renamed: "OM.launchImage")
     static func omLaunchImage() -> UIImage? {
         
         return OM.launchImage
     }
-    
+    #endif
 }
 
 #endif

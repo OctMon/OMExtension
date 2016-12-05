@@ -81,7 +81,12 @@ fileprivate extension UINavigationItem {
         
         stopActivityIndicator()
         
-        let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        #if os(tvOS)
+            let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .white)
+        #else
+            let activityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        #endif
+        
         
         switch position {
         case .left:

@@ -39,12 +39,16 @@ public extension OMExtension where OMBase: UIViewController {
         return base.navigationController?.navigationBar
     }
     
+    #if !os(tvOS)
+    
     func setBackBarButtonItem(title: String? = nil) {
         
         let temporaryBarButtonItem = UIBarButtonItem()
         temporaryBarButtonItem.title = title ?? ""
         base.navigationItem.backBarButtonItem = temporaryBarButtonItem
     }
+    
+    #endif
     
     func pushViewController(_ viewController: UIViewController, animated: Bool = true) {
         
@@ -132,13 +136,13 @@ public extension UIViewController {
         
         return om.navigationBar
     }
-    
+    #if !os(tvOS)
     @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.setBackBarButtonItem` instead.", renamed: "om.setBackBarButtonItem")
     func omSetBackBarButtonItem(_ title: String) {
         
         om.setBackBarButtonItem(title: title)
     }
-    
+    #endif
     @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.pushViewController` instead.", renamed: "om.pushViewController")
     func omPushViewController(_ viewController: UIViewController, animated: Bool = true) {
         
@@ -611,6 +615,8 @@ public extension UIViewController {
         descriptionlLabel(descriptionAttributedString, space: space)
         button(buttonBackgroundImages, titles: buttonTitles, size: buttonSize, space: space)
         
+        #if !os(tvOS)
+            
         omPlaceholderButton?.om.addTapGestureRecognizer(handler: { [weak self] (_) in
             
             if let button = self?.omPlaceholderButton {
@@ -629,6 +635,8 @@ public extension UIViewController {
             
             self?.updateFrame(offset, space: space, buttonSize: buttonSize)
         }
+        
+        #endif
     }
     
     @available(*, deprecated, message: "Extensions directly deprecated. Use `viewController.om.hidePlaceholder` instead.", renamed: "om.hidePlaceholder")

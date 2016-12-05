@@ -34,10 +34,14 @@ public extension UIScreen {
     
     struct OM {
         
+        #if !os(tvOS)
+        
         public static var isPortrait: Bool {
             
             return UIDevice.current.orientation.isPortrait
         }
+        
+        #endif
         
         public static var width: CGFloat {
             
@@ -59,13 +63,13 @@ public extension UIScreen {
             return UIScreen.main.bounds
         }
     }
-    
+    #if !os(tvOS)
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.OM.isPortrait` instead.", renamed: "OM.isPortrait")
     static var omIsPortrait: Bool {
         
         return OM.isPortrait
     }
-    
+    #endif
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.OM.width` instead.", renamed: "OM.width")
     static var omGetWidth: CGFloat {
         

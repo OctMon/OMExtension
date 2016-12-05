@@ -54,11 +54,15 @@ public extension UIDevice {
         /// iPad判断
         public static var isPad: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
         
+        #if !os(tvOS)
+        
         /// 前面的摄像头是否可用
         public static var isAvailableCameraFront: Bool { return UIImagePickerController.isCameraDeviceAvailable(.front) }
         
         /// 后面的摄像头是否可用
         public static var isAvailableCameraRear: Bool { return UIImagePickerController.isCameraDeviceAvailable(.rear) }
+        
+        #endif
     }
     
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.name` instead.", renamed: "OM.name")
@@ -75,7 +79,7 @@ public extension UIDevice {
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isPad` instead.", renamed: "OM.isPad")
     /// iPad判断
     static var omIsPad: Bool { return OM.isPad }
-    
+    #if !os(tvOS)
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isAvailableCameraFront` instead.", renamed: "OM.isAvailableCameraFront")
     /// 前面的摄像头是否可用
     static var omIsAvailableCameraFront: Bool { return OM.isAvailableCameraFront }
@@ -83,6 +87,7 @@ public extension UIDevice {
     @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isAvailableCameraRear` instead.", renamed: "OM.isAvailableCameraRear")
     /// 后面的摄像头是否可用
     static var omIsAvailableCameraRear: Bool { return OM.isAvailableCameraRear }
+    #endif
 }
 
 #endif

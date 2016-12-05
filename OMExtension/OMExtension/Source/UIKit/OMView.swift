@@ -29,6 +29,8 @@ import Foundation
 #if !os(macOS)
 
 import UIKit
+    
+#if !os(tvOS)
 
 // MARK: - GestureHandler
 
@@ -321,6 +323,8 @@ public extension UIView {
     }
 
 }
+    
+#endif
 
 // MARK: - frame
 
@@ -945,6 +949,8 @@ public extension OMExtension where OMBase: UIView {
         return image
     }
     
+    #if !os(tvOS)
+    
     /**
      截图并保存到相册
      
@@ -958,6 +964,8 @@ public extension OMExtension where OMBase: UIView {
         
         return image
     }
+    
+    #endif
 }
 
 public extension UIView {
@@ -972,7 +980,7 @@ public extension UIView {
         
         return om.getScreenshot()
     }
-    
+    #if !os(tvOS)
     /**
      截图并保存到相册
      
@@ -984,6 +992,7 @@ public extension UIView {
         
         return om.savedScreenshotPhotosAlbum()
     }
+    #endif
 
 }
 
