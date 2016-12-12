@@ -59,9 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.OM.release.isAppstore = isAppstore
         UIApplication.OM.release.isBeta = isBeta
         
-        UIApplication.OM.release.configURLRelease = "http://release.example.com"
-        UIApplication.OM.release.configURLDeveloper = "http://developer.example.com"
-        UIApplication.OM.release.configURLTest = "http://test.example.com"
+        UIApplication.OM.release.configURLRelease = "https://release.example.com"
+        UIApplication.OM.release.configURLDeveloper = "https://developer.example.com"
+        UIApplication.OM.release.configURLTest = "https://test.example.com"
         
         // Override point for customization after application launch.
         return true

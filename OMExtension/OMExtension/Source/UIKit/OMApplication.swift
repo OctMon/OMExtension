@@ -866,13 +866,13 @@ public extension UIApplication {
         ///
         /// - Parameter id: 应该id
         /// - Returns: 成功/失败
-        public static func getAppStoreURL(id: Int) -> String { return "http://itunes.apple.com/app/id\(id)" }
+        public static func getAppStoreURL(id: Int) -> String { return "https://itunes.apple.com/app/id\(id)" }
         
         /// 应用在appStore中的详情json的请求地址
         ///
         /// - Parameter id: 应该id
         /// - Returns: 成功/失败
-        public static func getAppStoreLookupURL(id: Int) -> String { return "http://itunes.apple.com/US/lookup?id=\(id)" }
+        public static func getAppStoreLookupURL(id: Int) -> String { return "https://itunes.apple.com/US/lookup?id=\(id)" }
         
         /**
          跳转到应用设置
@@ -1172,9 +1172,9 @@ public extension UIApplication {
              UIApplication.OM.release.isAppstore = isAppstore
              UIApplication.OM.release.isBeta = isBeta
              
-             UIApplication.OM.release.configURLRelease = "http://release.example.com"
-             UIApplication.OM.release.configURLDeveloper = "http://developer.example.com"
-             UIApplication.OM.release.configURLTest = "http://test.example.com"
+             UIApplication.OM.release.configURLRelease = "https://release.example.com"
+             UIApplication.OM.release.configURLDeveloper = "https://developer.example.com"
+             UIApplication.OM.release.configURLTest = "https://test.example.com"
              */
             
             public static var isDebug = true
@@ -1281,9 +1281,9 @@ public extension UIApplication {
                 UserDefaults.standard.synchronize()
             }
             
-            public static var configURLRelease = "http://release.example.com"
-            public static var configURLDeveloper = "http://developer.example.com"
-            public static var configURLTest = "http://test.example.com"
+            public static var configURLRelease = "https://release.example.com"
+            public static var configURLDeveloper = "https://developer.example.com"
+            public static var configURLTest = "https://test.example.com"
             
             fileprivate
             static func module(type: OMBaseURLType) -> String {
