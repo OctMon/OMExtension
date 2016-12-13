@@ -119,6 +119,28 @@ public extension String {
         
         return omToBool ?? false
     }
+    
+    /// Date object from "yyyy-MM-dd" formatted string
+    var omToDate: Date? {
+        
+        let selfLowercased = self.omTrimming.lowercased()
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy-MM-dd"
+        
+        return formatter.date(from: selfLowercased)
+    }
+    
+    /// Date object from "yyyy-MM-dd HH:mm:ss" formatted string.
+    var omToDateTime: Date? {
+        
+        let selfLowercased = self.omTrimming.lowercased()
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        return formatter.date(from: selfLowercased)
+    }
 
 }
 
@@ -317,6 +339,21 @@ public extension String {
     var omTrimming: String {
         
         return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
+    
+    var omWithoutSpacesAndNewLines: String {
+        
+        return replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
+    }
+    
+    mutating func omReverse() {
+        
+        self = omReversed
+    }
+    
+    var omReversed: String {
+        
+        return String(characters.reversed())
     }
     
     var omIsContainEmoji: Bool {
