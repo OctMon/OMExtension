@@ -82,4 +82,18 @@ public extension Int {
         
         return !omIsEven
     }
+    
+    var omAbs: Int {
+        
+        return abs(self)
+    }
+    
+    var omLocaleCurrency: String {
+        
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.locale = Locale.current
+        
+        return formatter.string(from: self as NSNumber)!
+    }
 }

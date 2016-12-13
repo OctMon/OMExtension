@@ -64,6 +64,11 @@ public extension String {
         return nil
     }
     
+    var omToFloatValue: Float {
+        
+        return omToFloat ?? 0
+    }
+    
     var omToDouble: Double? {
         
         if let num = NumberFormatter().number(from: self) {
@@ -74,6 +79,11 @@ public extension String {
         return nil
     }
     
+    var omToDoubleValue: Double {
+        
+        return omToDouble ?? 0.0
+    }
+    
     var omToInt: Int? {
         
         if let num = NumberFormatter().number(from: self) {
@@ -82,6 +92,11 @@ public extension String {
         }
         
         return nil
+    }
+    
+    var omToIntValue: Int {
+        
+        return omToInt ?? 0
     }
     
     var omToBool: Bool? {
@@ -99,7 +114,30 @@ public extension String {
         
         return nil
     }
+    
+    var omToBoolValue: Bool {
+        
+        return omToBool ?? false
+    }
 
+}
+
+// MARK: - base64
+
+// https://github.com/Reza-Rg/Base64-Swift-Extension/blob/master/Base64.swift
+public extension String {
+    
+    var omBase64Decoded: String? {
+        guard let decodedData = Data(base64Encoded: self) else {
+            return nil
+        }
+        return String(data: decodedData, encoding: .utf8)
+    }
+    
+    var omBase64Encoded: String? {
+        let plainData = self.data(using: .utf8)
+        return plainData?.base64EncodedString()
+    }
 }
 
 // MARK: - valid
@@ -126,7 +164,21 @@ public extension String {
     var omIsPhoneTelephone: Bool { return omIsRegex("([\\d]{7,25}(?!\\d))|((\\d{3,4})-(\\d{7,8}))|((\\d{3,4})-(\\d{7,8})-(\\d{1,4}))") }
     
     /// URL网址验证
-    var omIsURL: Bool { return omExtractURL.count > 0 }
+    var omIsURL: Bool { return URL(string: self) != nil }
+    
+    var omIsHttpsUrl: Bool {
+        guard lowercased().hasPrefix("https://") else {
+            return false
+        }
+        return URL(string: self) != nil
+    }
+    
+    var omIsHttpUrl: Bool {
+        guard lowercased().hasPrefix("http://") else {
+            return false
+        }
+        return URL(string: self) != nil
+    }
     
     /// IP地址验证
     var omIsIP: Bool {
