@@ -381,6 +381,47 @@ public extension String {
         })
     }
     
+    func omContain(_ subStirng: String, caseSensitive: Bool = true) -> Bool {
+        
+        if !caseSensitive {
+            
+            return range(of: subStirng, options: .caseInsensitive) != nil
+        }
+        
+        return range(of: subStirng) != nil
+    }
+    
+    func omCount(of subString: String, caseSensitive: Bool = true) -> Int {
+        
+        if !caseSensitive {
+            
+            return lowercased().components(separatedBy: subString).count - 1
+        }
+        
+        return components(separatedBy: subString).count - 1
+    }
+    
+    func omHasPrefix(with prefix: String, caseSensitive: Bool = true) -> Bool {
+        
+        if !caseSensitive {
+            
+            return lowercased().hasPrefix(prefix.lowercased())
+        }
+        
+        return hasPrefix(prefix)
+    }
+    
+    func omHasSuffix(_ suffix: String, caseSensitive: Bool = true) -> Bool {
+        
+        if !caseSensitive {
+            
+            return lowercased().hasSuffix(suffix.lowercased())
+        }
+        
+        return hasSuffix(suffix)
+    }
+    
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `omContain` instead.", renamed: "omContain")
     func omContains(_ subStirng: String, options: NSString.CompareOptions? = nil) -> Bool {
         
         if let options = options {
