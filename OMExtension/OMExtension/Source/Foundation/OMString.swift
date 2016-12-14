@@ -341,7 +341,7 @@ public extension String {
         return trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
-    var omWithoutSpacesAndNewLines: String {
+    var omTrimmingWithoutSpacesAndNewLines: String {
         
         return replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
     }
@@ -401,7 +401,7 @@ public extension String {
         return components(separatedBy: subString).count - 1
     }
     
-    func omHasPrefix(with prefix: String, caseSensitive: Bool = true) -> Bool {
+    func omHasPrefix(_ prefix: String, caseSensitive: Bool = true) -> Bool {
         
         if !caseSensitive {
             

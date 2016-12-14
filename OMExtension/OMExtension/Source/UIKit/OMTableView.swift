@@ -56,6 +56,36 @@ public extension OMExtension where OMBase: UITableView {
         setFooter(height: 0)
     }
 }
+    
+public extension OMExtension where OMBase: UITableView {
+    
+    var lastSection: Int {
+        
+        return base.numberOfSections > 0 ? base.numberOfSections - 1 : 0
+    }
+    
+    func lastRow(inSection section: Int = 0) -> IndexPath? {
+        
+        guard section >= 0, base.numberOfSections > section else {
+            
+            return nil
+        }
+        
+        return IndexPath(row: base.numberOfRows(inSection: section) - 1, section: section)
+    }
+    
+    func scrollToBottom(animated: Bool = true) {
+        
+        let bottomOffset = CGPoint(x: 0, y: base.contentSize.height - base.bounds.size.height)
+        
+        base.setContentOffset(bottomOffset, animated: animated)
+    }
+    
+    func scrollToTop(animated: Bool = true) {
+        
+        base.setContentOffset(CGPoint.zero, animated: animated)
+    }
+}
 
 public extension OMExtension where OMBase: UITableView {
     

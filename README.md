@@ -193,10 +193,21 @@ print(type(of: double.omToInt)) // Int
 print(type(of: double.omToDate)) // Date
 print(type(of: double.omToString)) // String
 print(100.58.omToDecimalStyle()) // 100.58
+print(100.58654.omToDecimalStyle()) // 100.59
 print(123.456.omToDecimalStyle(3)) // 123.456
 
 let date = (Date().timeIntervalSince1970 * 1000).omToDate
 print(date) // 2016-11-17 08:28:16 +0000
+
+print(12345.678.omLocaleCurrency) // $12,345.68
+        
+let abs = -12345.67
+print(abs.omAbs) // 12345.67
+
+let double = 12345.67
+print(double.omFloor) // 12345.0
+print(double.omCeil) // 12346.0
+print(double.omToDigits) // [1, 2, 3, 4, 5, 6, 7]
 ```
 
 ### FileManager
@@ -267,6 +278,11 @@ print(type(of: int.omToFloat)) // Float
 print(type(of: int.omToDouble)) // Double
 print(int.omIsOdd) // true
 print(int.omIsEven) // false
+
+print(12345.omLocaleCurrency) // $12,345.00
+
+let abs = -12345
+print(abs.omAbs) // 12345
 ```
 
 ### NSObject
@@ -290,11 +306,15 @@ print(string.omToDouble) // Optional(128.0)
 print(string.omToFloat) // Optional(128.0)
 print(string.omToInt) // Optional(128)
 print(string.omToBool) // nil
+print("2016-12-31".omToDate) // Optional(2016-12-30 16:00:00 +0000)
+print("2016-12-31 12:01:02".omToDateTime) // Optional(2016-12-31 04:01:02 +0000)
 
 print(type(of: string.omToDouble)) // Optional<Double>
 print(type(of: string.omToFloat)) // Optional<Float>
 print(type(of: string.omToInt)) // Optional<Int>
 print(type(of: string.omToBool)) // Optional<Bool>
+print(type(of: "2016-12-31".omToDate)) // Optional<Date>
+print(type(of: "2016-12-31 12:01:02".omToDateTime)) // Optional<Date>
 ```
 
 手机号验证
@@ -339,6 +359,24 @@ string.omIsNumber
 string.omIsIDCard
 ```
 
+Http验证
+
+```swift
+print("https://github.com/OctMon".omIsHttpUrl) // false
+```
+
+Https验证
+
+```swift
+print("https://github.com/OctMon".omIsHttpsUrl) // true
+```
+
+URL网址验证
+
+```swift
+print("octmon://github.com/OctMon".omIsURL) // true
+```
+
 提取URL
 
 ```swift
@@ -372,13 +410,37 @@ print("https:// github. com/ OctMon  ".omSplit(" ")[3]) // OctMon
 字符串包含
 
 ```swift
-print("https://github.com/OctMon".omContains("OctMon")) // true
+print("https://github.com/OctMon".omContain("OctMon")) // true
+print("https://github.com/OctMon".omCount(of: "git")) // 1
+print("https://github.com/OctMon".omHasPrefix("https")) // true
+print("https://github.com/OctMon".omHasSuffix("octmon")) // false
+print("https://github.com/OctMon".omHasSuffix("octmon", caseSensitive: false)) // true
 ```
 
 字符串中间添加分割符
 
 ```swift
 print("123".omJoinSeparator(" ")) // 1 2 3
+```
+
+字符串去空格、回车
+
+```swift
+print(" Opti onal <Da te> ".omTrimming) // Opti onal <Da te>
+print(" Opti onal <Da te> ".omTrimmingWithoutSpacesAndNewLines) // Optional<Date>
+```
+
+字符串反转
+
+```swift
+print("https://github.com/OctMon".omReversed) // noMtcO/moc.buhtig//:sptth
+```
+
+Base64
+
+```swift
+print("http://github.com/OctMon".omBase64Encoded) // Optional("aHR0cDovL2dpdGh1Yi5jb20vT2N0TW9u")
+print("aHR0cDovL2dpdGh1Yi5jb20vT2N0TW9u".omBase64Decoded) // Optional("http://github.com/OctMon")
 ```
 
 获取子串的NSRange
@@ -1030,6 +1092,20 @@ tableView.om.reloadAnimationWave()
 ```swift
 tableView.om.setHeaderZero()
 tableView.om.setFooterZero()
+```
+
+获取最后一组、一行
+
+```swift
+self.tableView.om.lastSection
+self.tableView.om.lastRow(inSection: 1)
+```
+
+滚动到顶部、底部
+
+```swift
+self.tableView.om.scrollToTop()
+self.tableView.om.scrollToBottom()
 ```
 
 ### UITextField
