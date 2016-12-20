@@ -442,6 +442,19 @@ public extension String {
         self = omJoinSeparator(separator)
     }
     
+    /// 字符串截取
+    ///
+    /// - Parameters:
+    ///   - from: 从下标from开始截取
+    ///   - to: 截取多少位
+    mutating func omSubString(from: Int = 0, to: Int) {
+        
+        let fromIndex = index(startIndex, offsetBy: from)
+        let toIndex = index(fromIndex, offsetBy: to)
+        
+        self = substring(with: Range(fromIndex..<toIndex))
+    }
+    
     func omGetRanges(_ searchString: String) -> [NSRange] {
         
         var start = 0
