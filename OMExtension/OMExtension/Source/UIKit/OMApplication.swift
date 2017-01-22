@@ -736,7 +736,12 @@ public extension UIApplication {
         }
         
         /// 获取应用名称
-        public static var appName: String { return Bundle.main.infoDictionary!["CFBundleName"] as! String }
+        public static var appName: String {
+            if let name = Bundle.main.infoDictionary!["CFBundleDisplayName"] as? String {
+                return name
+            }
+            return Bundle.main.infoDictionary!["CFBundleName"] as? String ?? ""
+        }
         
         /// 获取应用唯一标识
         public static var appIdentifier: String { return Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String }
