@@ -186,8 +186,9 @@ public extension String {
     var omIsPhoneTelephone: Bool { return omIsRegex("([\\d]{7,25}(?!\\d))|((\\d{3,4})-(\\d{7,8}))|((\\d{3,4})-(\\d{7,8})-(\\d{1,4}))") }
     
     /// URL网址验证
-    var omIsURL: Bool { return URL(string: self) != nil }
+    var omIsURL: Bool { return omIsHttpUrl || omIsHttpsUrl }
     
+    /// URL网址验证
     var omIsHttpsUrl: Bool {
         guard lowercased().hasPrefix("https://") else {
             return false
@@ -195,6 +196,7 @@ public extension String {
         return URL(string: self) != nil
     }
     
+    /// URL网址验证
     var omIsHttpUrl: Bool {
         guard lowercased().hasPrefix("http://") else {
             return false
