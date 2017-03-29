@@ -725,7 +725,7 @@ public extension OMExtension where OMBase: UIView {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * angle) / 180.0, 1.0, 0.0, 0.0)
+        transform = CATransform3DRotate(transform, (CGFloat (Double.pi) * angle) / 180.0, 1.0, 0.0, 0.0)
         base.layer.transform = transform
     }
     
@@ -733,7 +733,7 @@ public extension OMExtension where OMBase: UIView {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * angle) / 180.0, 0.0, 1.0, 0.0)
+        transform = CATransform3DRotate(transform, (CGFloat (Double.pi) * angle) / 180.0, 0.0, 1.0, 0.0)
         base.layer.transform = transform
     }
     
@@ -741,7 +741,7 @@ public extension OMExtension where OMBase: UIView {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * angle) / 180.0, 0.0, 0.0, 1.0)
+        transform = CATransform3DRotate(transform, (CGFloat (Double.pi) * angle) / 180.0, 0.0, 0.0, 1.0)
         base.layer.transform = transform
     }
     
@@ -749,9 +749,9 @@ public extension OMExtension where OMBase: UIView {
         
         var transform = CATransform3DIdentity
         transform.m34 = 1.0 / -1000.0
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * x) / 180.0, 1.0, 0.0, 0.0)
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * y) / 180.0, 0.0, 1.0, 0.0)
-        transform = CATransform3DRotate(transform, (CGFloat (M_PI) * z) / 180.0, 0.0, 0.0, 1.0)
+        transform = CATransform3DRotate(transform, (CGFloat (Double.pi) * x) / 180.0, 1.0, 0.0, 0.0)
+        transform = CATransform3DRotate(transform, (CGFloat (Double.pi) * y) / 180.0, 0.0, 1.0, 0.0)
+        transform = CATransform3DRotate(transform, (CGFloat (Double.pi) * z) / 180.0, 0.0, 0.0, 1.0)
         base.layer.transform = transform
     }
     
