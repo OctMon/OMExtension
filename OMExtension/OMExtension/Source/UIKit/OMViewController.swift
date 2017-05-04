@@ -534,7 +534,12 @@ public extension UIViewController {
             _button.frame.size = CGSize(width: min(size.width + 30, UIScreen.OM.width - 30), height: max(size.height, 30))
         }
         
-        _button.frame.origin.y = _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + space
+        if let text = _descriptionLabel.text, !text.isEmpty {
+            _button.frame.origin.y = _descriptionLabel.frame.origin.y + _descriptionLabel.frame.size.height + space
+        } else {
+            _button.frame.origin.y = _titleLabel.frame.origin.y + _titleLabel.frame.size.height + space
+        }
+        
         _button.center.x = _descriptionLabel.center.x
     }
     
