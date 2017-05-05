@@ -458,7 +458,7 @@ public extension UIViewController {
             
             _view.addSubview(_button)
             
-            updateFrame(offset: offset, space: space)
+            updateFrame(offset: offset, space: space, buttonSize: size)
         }
     }
     
