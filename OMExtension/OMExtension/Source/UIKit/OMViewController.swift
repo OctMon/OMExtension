@@ -464,7 +464,7 @@ public extension UIViewController {
     
     private func updateFrame(offset: CGFloat, space: CGFloat = 8, buttonSize: CGSize? = nil) {
         
-        guard var _view = omPlaceholderView else {
+        guard let _view = omPlaceholderView else {
             
             return
         }
@@ -475,7 +475,13 @@ public extension UIViewController {
         }
         
         _view.frame = view.frame
-        _view.om.top = 0
+        
+        if view.frame.origin.x >= UIScreen.OM.size.width {
+            _view.frame.origin.x = 0
+        }
+        if view.frame.origin.y >= UIScreen.OM.size.height {
+            _view.frame.origin.y = 0
+        }
         
         _imageView.center.x = _view.center.x
         _imageView.center.y = _view.center.y + offset
