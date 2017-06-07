@@ -246,9 +246,9 @@ public extension OMExtension where OMBase: UIViewController {
      - parameter shouldTapBackground:         是否可以交互
      - parameter offset:                      距离y坐标偏移
      */
-    func showPlaceholder(image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton) -> Void)? = nil, placeholderViewTapHandler: (() -> Void)? = nil) {
+    func showPlaceholder(image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, bringSubviews: [UIView]? = nil, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton) -> Void)? = nil, placeholderViewTapHandler: (() -> Void)? = nil) {
         
-        base.showPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: titleAttributedString, descriptionAttributedString: descriptionAttributedString, space: space, shouldTap: shouldTap, offset: offset, buttonBackgroundImages: buttonBackgroundImages, buttonTitles: buttonTitles, buttonSize: buttonSize, buttonTapHandler: buttonTapHandler, placeholderViewTapHandler: placeholderViewTapHandler)
+        base.showPlaceholder(image, backgroundColor: backgroundColor, titleAttributedString: titleAttributedString, descriptionAttributedString: descriptionAttributedString, space: space, shouldTap: shouldTap, offset: offset, bringSubviews: bringSubviews, buttonBackgroundImages: buttonBackgroundImages, buttonTitles: buttonTitles, buttonSize: buttonSize, buttonTapHandler: buttonTapHandler, placeholderViewTapHandler: placeholderViewTapHandler)
     }
     
     /**
@@ -367,14 +367,9 @@ public extension UIViewController {
                 return
             }
             
-            guard let _view = omPlaceholderView else {
-                
-                return
-            }
-            
             _imageView.contentMode = .center
             
-            _view.addSubview(_imageView)
+            view.addSubview(_imageView)
             
             updateFrame(offset: offset)
         }
@@ -397,12 +392,7 @@ public extension UIViewController {
             _titleLabel.numberOfLines = 0
             _titleLabel.textAlignment = .center
             
-            guard let _view = omPlaceholderView else {
-                
-                return
-            }
-            
-            _view.addSubview(_titleLabel)
+            view.addSubview(_titleLabel)
             
             updateFrame(offset: offset, space: space)
         }
@@ -425,12 +415,7 @@ public extension UIViewController {
             _descriptionLabel.numberOfLines = 0
             _descriptionLabel.textAlignment = .center
             
-            guard let _view = omPlaceholderView else {
-                
-                return
-            }
-            
-            _view.addSubview(_descriptionLabel)
+            view.addSubview(_descriptionLabel)
             
             updateFrame(offset: offset, space: space)
         }
@@ -451,12 +436,7 @@ public extension UIViewController {
             backgroundImages?.forEach({_button.setBackgroundImage($0.backgroundImage, for: $0.state)})
             titles?.forEach({_button.setAttributedTitle($0.title, for: $0.state)})
             
-            guard let _view = omPlaceholderView else {
-                
-                return
-            }
-            
-            _view.addSubview(_button)
+            view.addSubview(_button)
             
             updateFrame(offset: offset, space: space, buttonSize: size)
         }
@@ -588,7 +568,7 @@ public extension UIViewController {
      - parameter shouldTapBackground:         是否可以交互
      - parameter offset:                      距离y坐标偏移
      */
-    fileprivate func showPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor = UIColor.clear, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton) -> Void)? = nil, placeholderViewTapHandler: (() -> Void)? = nil) {
+    fileprivate func showPlaceholder(_ image: UIImage? = nil, backgroundColor: UIColor, titleAttributedString: NSMutableAttributedString? = nil, descriptionAttributedString: NSMutableAttributedString? = nil, space: CGFloat = 8, shouldTap: Bool = false, offset: CGFloat = 0, bringSubviews: [UIView]? = nil, buttonBackgroundImages: [(backgroundImage: UIImage?, state: UIControlState)]? = nil, buttonTitles: [(title: NSMutableAttributedString?, state: UIControlState)]? = nil, buttonSize: CGSize? = nil, buttonTapHandler: ((_ button: UIButton) -> Void)? = nil, placeholderViewTapHandler: (() -> Void)? = nil) {
         
         omPlaceholderLastBackgroundColor = view.backgroundColor
         
@@ -602,6 +582,7 @@ public extension UIViewController {
             offsetY += offset
         }
         
+        // 如果要阻止tableview可以滑动，shouldTap必须为false
         omSetScrollEnabled(shouldTap)
         
         omPlaceholderView = UIView(frame: UIScreen.main.bounds)
@@ -612,19 +593,24 @@ public extension UIViewController {
             view.backgroundColor = backgroundColor
         }
         
-        if shouldTap {
-            
-            view.insertSubview(omPlaceholderView!, at: 0)
-            
-        } else {
-            
-            view.addSubview(omPlaceholderView!)
-        }
-        
         imageView(image, offset: offsetY)
         titleLabel(titleAttributedString, offset: offset, space: space)
         descriptionlLabel(descriptionAttributedString, offset: offset, space: space)
         button(buttonBackgroundImages, titles: buttonTitles, size: buttonSize, offset: offset, space: space)
+        
+        if let p = omPlaceholderView {
+            
+            view.insertSubview(p, at: 0)
+        }
+        
+        view.bringSubview(toFront: om.placeholderView!)
+        
+        view.bringSubview(toFront: om.placeholderButton!)
+        view.bringSubview(toFront: om.placeholderImageView!)
+        view.bringSubview(toFront: om.placeholderTitleLabel!)
+        view.bringSubview(toFront: om.placeholderDescriptionLabel!)
+        
+        bringSubviews?.forEach({ view.bringSubview(toFront: $0) })
         
         #if !os(tvOS)
             
@@ -637,10 +623,18 @@ public extension UIViewController {
                 
             })
             
-            omPlaceholderView?.om.addTapGestureRecognizer(handler: { (_) in
+            if placeholderViewTapHandler != nil {
                 
-                placeholderViewTapHandler?()
-            })
+                omPlaceholderView?.backgroundColor = backgroundColor
+                omPlaceholderView?.isUserInteractionEnabled = true
+                omPlaceholderView?.om.addTapGestureRecognizer(handler: { (_) in
+                    placeholderViewTapHandler?()
+                })
+                
+            } else {
+                
+                omPlaceholderView?.isUserInteractionEnabled = false
+            }
             
             NotificationCenter.default.addObserver(forName: NSNotification.Name.UIDeviceOrientationDidChange, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
                 
@@ -687,5 +681,5 @@ public extension UIViewController {
     }
     
 }
-
+    
 #endif

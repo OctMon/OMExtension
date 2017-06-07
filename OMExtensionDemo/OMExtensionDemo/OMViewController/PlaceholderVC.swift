@@ -29,6 +29,8 @@ import UIKit
 
 class PlaceholderVC: BaseVC {
     
+    @IBOutlet weak var segmentControl: UISegmentedControl!
+    
     let dataSource = [
         "500px",
         "Airbnb",
@@ -100,7 +102,7 @@ class PlaceholderVC: BaseVC {
                 let backgroundImageNormal = UIImage(named: backgroundImageName + "_normal")
                 let backgroundImageHighlight = UIImage(named: backgroundImageName + "_highlight")
                 
-                self.om.showPlaceholder(image: image, shouldTap: true, offset: image.size.width * 0.5, buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState()), (backgroundImageHighlight, state: UIControlState.highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState())] : nil), buttonTapHandler: { (button) in
+                self.om.showPlaceholder(image: image, shouldTap: true, offset: image.size.width * 0.5, bringSubviews: [self.segmentControl], buttonBackgroundImages: [(backgroundImageNormal, state: UIControlState()), (backgroundImageHighlight, state: UIControlState.highlighted)], buttonTitles: (backgroundImageNormal != nil ? [(title.omGetAttributes(), UIControlState())] : nil), buttonTapHandler: { (button) in
                     
                     print(button.isSelected)
                     
