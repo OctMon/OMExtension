@@ -599,7 +599,7 @@ public extension UIViewController {
         button(buttonBackgroundImages, titles: buttonTitles, size: buttonSize, offset: offset, space: space)
         
         if let p = omPlaceholderView {
-            
+            p.frame = CGRect(x: 0, y: 0, width: UIScreen.OM.width, height: UIScreen.OM.height)
             view.insertSubview(p, at: 0)
         }
         
