@@ -180,7 +180,7 @@ public extension String {
     var omIsEmail: Bool { return omIsRegex("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$") }
     
     /// 手机号验证
-    var omIsMobile: Bool { return omIsRegex("^(0|86|17951)?(13[0-9]|15[0-9]|17[0-9]|18[0-9]|14[57])[0-9]{8}$") }
+    var omIsMobile: Bool { return omIsRegex("^(0|86|17951)?(13[0-9]|14[0-9]|15[0-9]|16[0-9]|17[0-9]|18[0-9]|19[0-9])[0-9]{8}$") }
     
     /// 电话号码验证
     var omIsPhoneTelephone: Bool { return omIsRegex("([\\d]{7,25}(?!\\d))|((\\d{3,4})-(\\d{7,8}))|((\\d{3,4})-(\\d{7,8})-(\\d{1,4}))") }
