@@ -141,6 +141,21 @@ public extension String {
         
         return formatter.date(from: selfLowercased)
     }
+    
+    var omToJson: Any? {
+        
+        if let data = data(using: String.Encoding.utf8) {
+            
+            let json = try? JSONSerialization.jsonObject(with: data)
+            
+            if let json = json {
+                
+                return json
+            }
+        }
+        
+        return nil
+    }
 
 }
 
@@ -225,6 +240,38 @@ public extension String {
         }
     }
     
+    var omIsIncludeUppercaseLetterCharact: Bool {
+        
+        if let regular = try? NSRegularExpression(pattern: "[A-Z]") {
+            return regular.numberOfMatches(in: self, options: .reportProgress, range: NSMakeRange(0, characters.count)) > 0
+        }
+        
+        return false
+    }
+    
+    var omIsIncludeLowercaseLetterCharact: Bool {
+        
+        if let regular = try? NSRegularExpression(pattern: "[a-z]") {
+            return regular.numberOfMatches(in: self, options: .reportProgress, range: NSMakeRange(0, characters.count)) > 0
+        }
+        
+        return false
+    }
+    
+    var omIsIncludeSpecialCharact: Bool {
+        
+        guard let range = rangeOfCharacter(from: CharacterSet(charactersIn: "~￥#&*<>《》()[]{}【】^@/￡¤￥|§¨「」『』￠￢￣~@#￥&*（）——+|《》$_€")) else {
+            
+            return false
+        }
+        
+        if range.isEmpty {
+            return false
+        }
+        
+        return true
+    }
+    
     /// 身份证号码验证
     var omIsIDCard: Bool {
         
@@ -273,6 +320,29 @@ public extension String {
         return (checkBit == chars.last)
     }
 
+}
+
+public extension String {
+    
+    /// 密码验证
+    ///
+    /// - Parameters:
+    ///   - min: 最小长度
+    ///   - max: 最大长大
+    ///   - includeCase: 必须包含大小写
+    /// - Returns: 检测密码必须包含大写字母、小写字母、数字
+    func omIsPasswordRegulation(min: Int = 6, max: Int = 16, includeCase: Bool = true) -> Bool {
+        
+        var casesensitive = omIsIncludeLowercaseLetterCharact || omIsIncludeUppercaseLetterCharact
+        if includeCase {
+            casesensitive = omIsIncludeLowercaseLetterCharact && omIsIncludeUppercaseLetterCharact
+        }
+        guard characters.count >= min && characters.count <= max && !omIsNumber && !omIsIncludeSpecialCharact && casesensitive else {
+            return false
+        }
+        
+        return true
+    }
 }
 
 // MARK: - common

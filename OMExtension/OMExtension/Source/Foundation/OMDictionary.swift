@@ -124,3 +124,19 @@ public extension Dictionary where Value: Equatable {
         return result
     }
 }
+
+public extension Dictionary {
+    
+    var omToString: String? {
+        
+        if let data = try? JSONSerialization.data(withJSONObject: self) {
+            
+            let string = String(data: data, encoding: .utf8)
+            
+            return string
+        }
+        
+        return nil
+        
+    }
+}

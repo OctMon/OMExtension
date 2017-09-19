@@ -30,26 +30,6 @@ import Foundation
 
 import UIKit
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 public extension OMExtension where OMBase: UITextField {
     
     func addTextLimit(length: Int, limitHandler: (() -> Void)? = nil) {
@@ -100,6 +80,21 @@ public extension OMExtension where OMBase: UITextField {
     func setPlaceholderColor(_ color: UIColor) {
         
         base.attributedPlaceholder = base.placeholder?.omGetAttributes(color: [(color, base.placeholder)])
+    }
+    
+    func setMobileStyle(textColor: UIColor) {
+        
+        base.textColor = textColor
+        self.addTextLimit(length: 11)
+        base.keyboardType = .numberPad
+    }
+    
+    func setPasswordStyle(textColor: UIColor) {
+        
+        base.textColor = textColor
+        self.addTextLimit(length: 16)
+        base.isSecureTextEntry = true
+        base.keyboardType = .default
     }
 }
 
