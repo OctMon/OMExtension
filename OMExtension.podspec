@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "OMExtension"
   s.module_name      = "OMExtension"
-  s.version          = "2.1.8"
+  s.version          = "2.2"
   s.summary          = "一个有用的swift扩展集合"
   s.homepage         = "https://github.com/OctMon/OMExtension"
   s.license          = {
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "http://www.jianshu.com/users/b9a4a97967be"
   s.source           = {
                           :git => "https://github.com/OctMon/OMExtension.git",
-                          :tag => "2.1.8"
+                          :tag => "2.2"
                        }
   s.source_files     = "OMExtension/OMExtension/Source/**/*.{swift}"
   s.requires_arc     = true
