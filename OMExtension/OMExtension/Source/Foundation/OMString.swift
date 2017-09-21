@@ -30,26 +30,6 @@ import Foundation
     import UIKit
 #endif
 
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 // MARK: - convert
 
 public extension String {
@@ -157,6 +137,34 @@ public extension String {
         return nil
     }
 
+    var omToURLParameters: [String: Any]? {
+        // 截取是否有参数
+        guard let urlComponents = URLComponents(string: self), let queryItems = urlComponents.queryItems else {
+            return nil
+        }
+        
+        var parameters = [String: Any]()
+        
+        queryItems.forEach({ (item) in
+            
+            if let existValue = parameters[item.name], let value = item.value {
+                
+                if var existValue = existValue as? [Any] {
+                    
+                    existValue.append(value)
+                    
+                } else {
+                    parameters[item.name] = [existValue, value]
+                }
+                
+            } else {
+                
+                parameters[item.name] = item.value
+            }
+        })
+        
+        return parameters
+    }
 }
 
 // MARK: - base64
@@ -226,7 +234,7 @@ public extension String {
             
             for string in self.components(separatedBy: ".") {
                 
-                if string.omToInt > 255 {
+                if string.omToIntValue > 255 {
                     
                     return false
                 }
