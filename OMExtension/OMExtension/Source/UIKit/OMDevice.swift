@@ -54,6 +54,11 @@ public extension UIDevice {
         /// iPad判断
         public static var isPad: Bool { return UIDevice.current.userInterfaceIdiom == .pad }
         
+        public static let iPhone5 = UIScreen.OM.width == 320
+        public static let iPhone6 = UIScreen.OM.width == 375
+        public static let iPhone6Plus = UIScreen.OM.width == 414
+        public static let iPhoneX = UIScreen.OM.height == 812
+
         #if !os(tvOS)
         
         /// 前面的摄像头是否可用
