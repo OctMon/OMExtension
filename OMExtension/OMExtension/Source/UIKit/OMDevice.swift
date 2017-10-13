@@ -34,18 +34,24 @@ public extension UIDevice {
     
     struct OM {
         
+        @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.name` instead.", renamed: "hardwareString")
         /// 设备型号
         public static var name: String {
             
-            var name: [Int32] = [CTL_HW, HW_MACHINE]
-            var size: Int = 2
-            sysctl(&name, 2, nil, &size, &name, 0)
-            var hw_machine = [CChar](repeating: 0, count: Int(size))
-            sysctl(&name, 2, &hw_machine, &size, &name, 0)
-            
-            let hardware: String = String(cString: hw_machine)
-            
-            return hardware
+            return hardwareString
+        }
+        
+        /// 设备型号 e.g. "iPhone2,1"
+        public static var hardwareString: String {
+            var systemInfo = utsname()
+            uname(&systemInfo)
+            let machineMirror = Mirror(reflecting: systemInfo.machine)
+            return machineMirror.children.reduce("") { acc, element in
+                guard let value = element.value as? Int8, value != 0 else {
+                    return acc
+                }
+                return acc + String(UnicodeScalar(UInt8(value)))
+            }
         }
         
         /// iPhone判断
@@ -70,7 +76,7 @@ public extension UIDevice {
         #endif
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.name` instead.", renamed: "OM.name")
+    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.name` instead.", renamed: "OM.hardwareString")
     /// 设备型号
     static var omName: String {
         

@@ -85,7 +85,7 @@ public extension Dictionary {
         return result
     }
     
-    func omIntersection<K, V>(_ dictionary: [K: V]...) -> [K: V] where K: Equatable, V: Equatable {
+    func omIntersection<K, V>(_ dictionary: [K: V]...) -> [K: V] where V: Equatable {
         
         let filter = omMapFilter { (key, value) -> (K, V)? in
             
