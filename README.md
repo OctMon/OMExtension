@@ -5,8 +5,9 @@
 ## Requirements
 
 - iOS 8.0+ / tvOS 9.0+ / watchOS 2.0+ / macOS 10.10+
-- Xcode 8.1+
-- Swift 3.0+
+- Xcode 9+
+- Swift 4.0+
+- Swift 3 use OMExtension 2.2.x
 - Swift 2.3 use OMExtension 1.0.x
 
 ## 安装和使用

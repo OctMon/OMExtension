@@ -61,7 +61,7 @@ enum PopularApp: String {
 
 class PopularAppTVC: BaseTVC {
     
-    let dataSource = [
+    @objc let dataSource = [
         "500px",
         "Airbnb",
         "AppStore",

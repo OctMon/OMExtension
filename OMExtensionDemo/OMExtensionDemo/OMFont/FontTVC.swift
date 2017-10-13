@@ -28,7 +28,7 @@ import UIKit
 
 class FontTVC: BaseTVC {
     
-    var fonts: [String] = []
+    @objc var fonts: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()

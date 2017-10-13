@@ -113,12 +113,6 @@ public extension OMExtension where OMBase: UITableView {
 
 public extension UITableView {
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `tableView.om.reloadAnimationWave` instead.", renamed: "om.reloadAnimationWave")
-    func omReloadAnimationWithWave() {
-        
-        om.reloadAnimationWave()
-    }
-    
     fileprivate func visibleRowsBeginAnimation() {
         
         let array = indexPathsForVisibleRows

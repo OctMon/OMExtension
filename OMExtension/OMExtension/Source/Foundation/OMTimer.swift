@@ -41,12 +41,5 @@ public extension Timer {
             return timer!
         }
     }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.runLoop` instead.", renamed: "OM.runLoop")
-    @discardableResult
-    static func omRunLoop(seconds: TimeInterval, handler: @escaping (_ timer: Timer?) -> Void) -> Timer {
-        
-        return OM.runLoop(seconds: seconds, handler: handler)
-    }
 
 }

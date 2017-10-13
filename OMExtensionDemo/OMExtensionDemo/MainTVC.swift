@@ -28,7 +28,7 @@ import UIKit
 
 class MainTVC: BaseTVC {
     
-    let dataSource = [UIApplication.omClassName, UIFont.omClassName, UIColor.omClassName, UIViewController.omClassName]
+    @objc let dataSource = [UIApplication.omClassName, UIFont.omClassName, UIColor.omClassName, UIViewController.omClassName]
 
     override func viewDidLoad() {
         super.viewDidLoad()

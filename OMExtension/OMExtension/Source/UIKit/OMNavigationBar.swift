@@ -49,14 +49,4 @@ public extension OMExtension where OMBase: UINavigationBar {
     }
 }
 
-public extension UINavigationBar {
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `navigationBar.om.setTransparent` instead.", renamed: "om.setTransparent")
-    public func omTransparent(_ transparent: Bool, translucent: Bool = true) {
-        
-        om.setTransparent(transparent: translucent, translucent: transparent)
-    }
-    
-}
-
 #endif

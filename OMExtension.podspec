@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = "OMExtension"
   s.module_name      = "OMExtension"
-  s.version          = "2.2.1"
+  s.version          = "3.0"
   s.summary          = "一个有用的swift扩展集合"
   s.homepage         = "https://github.com/OctMon/OMExtension"
   s.license          = {
@@ -12,7 +12,7 @@ Pod::Spec.new do |s|
   s.social_media_url = "http://www.jianshu.com/users/b9a4a97967be"
   s.source           = {
                           :git => "https://github.com/OctMon/OMExtension.git",
-                          :tag => "2.2.1"
+                          :tag => "3.0"
                        }
   s.source_files     = "OMExtension/OMExtension/Source/**/*.{swift}"
   s.requires_arc     = true
@@ -22,5 +22,5 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
 
-  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3.0' }
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4.0' }
 end

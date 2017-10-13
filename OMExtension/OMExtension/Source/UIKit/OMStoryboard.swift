@@ -37,32 +37,10 @@ public extension UIStoryboard {
     /// - Parameters:
     ///   - omName: name
     ///   - bundle: bundle
-    convenience init(omName: String, bundle: Bundle? = nil) {
+    @objc convenience init(omName: String, bundle: Bundle? = nil) {
         
         self.init(name: omName, bundle: bundle)
     }
-    
-    /**
-     通过Storyboard初始化一个UIViewController
-     
-     - parameter name:       Storyboard 文件名
-     - parameter identifier: Storyboard ID
-     
-     - returns: UIViewController
-     */
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIStoryboard convenience init` instead.")
-    static func omInstantiateViewController(name: String, identifier: String? = nil) -> UIViewController? {
-        
-        if let identifier = identifier {
-            
-            return UIStoryboard(omName: name).instantiateViewController(withIdentifier: identifier)
-            
-        } else {
-            
-            return UIStoryboard(omName: name).instantiateInitialViewController()
-        }
-    }
-
 }
 
 #endif

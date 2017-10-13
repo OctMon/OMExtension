@@ -103,32 +103,4 @@ public extension UITextField {
     @objc fileprivate func doneAction() { endEditing(true) }
 }
 
-public extension UITextField {
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `textField.om.addTextLimit` instead.", renamed: "om.addTextLimit")
-    func omSetLimit(_ length: Int, limitHandler: (() -> Void)? = nil) {
-        
-        om.addTextLimit(length: length, limitHandler: limitHandler)
-    }
-    #if !os(tvOS)
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `textField.om.addDoneButton` instead.", renamed: "om.addDoneButton")
-    func omAddDoneButton(_ barStyle: UIBarStyle = .default, title: String? = "完成") {
-        
-        om.addDoneButton(barStyle: barStyle, title: title)
-    }
-    #endif
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `textField.om.addLeftSpace` instead.", renamed: "om.addLeftSpace")
-    func omAddLeftPadding(_ padding: CGFloat) {
-        
-        om.addLeftSpace(padding: padding)
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `textField.om.addLeftIcon` instead.", renamed: "om.addLeftIcon")
-    func omAddLeftIcon(_ image: UIImage, padding: CGFloat = 8) {
-        
-        om.addLeftIcon(image: image, padding: padding)
-    }
-
-}
-
 #endif

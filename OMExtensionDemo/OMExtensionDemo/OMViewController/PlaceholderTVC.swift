@@ -41,7 +41,7 @@ class PlaceholderTVC: BaseTVC {
         showPlaceholder()
     }
     
-    func showPlaceholder() {
+    @objc func showPlaceholder() {
         
         var barColor: UIColor? = nil
         var tintColor: UIColor? = nil

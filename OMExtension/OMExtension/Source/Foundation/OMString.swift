@@ -395,18 +395,18 @@ public extension String {
     
     func omHeight(_ width: CGFloat, font: UIFont, lineBreakMode: NSLineBreakMode? = nil) -> CGFloat {
         
-        var attrib: [String: AnyObject] = [NSFontAttributeName: font]
+        var attrib: [NSAttributedStringKey: Any] = [.font: font]
         
         if lineBreakMode != nil {
             
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.lineBreakMode = lineBreakMode!
-            attrib.updateValue(paragraphStyle, forKey: NSParagraphStyleAttributeName)
+            attrib.updateValue(paragraphStyle, forKey: .paragraphStyle)
         }
         
         let size = CGSize(width: width, height: CGFloat(Double.greatestFiniteMagnitude))
         
-        return ceil((self as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:attrib, context: nil).height)
+        return ceil((self as NSString).boundingRect(with: size, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrib, context: nil).height)
     }
     
     #endif
@@ -501,17 +501,6 @@ public extension String {
         return hasSuffix(suffix)
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `omContain` instead.", renamed: "omContain")
-    func omContains(_ subStirng: String, options: NSString.CompareOptions? = nil) -> Bool {
-        
-        if let options = options {
-            
-            return range(of: subStirng, options: options) != nil
-        }
-        
-        return range(of: subStirng) != nil
-    }
-    
     func omJoinSeparator(_ separator: String) -> String {
         
         return characters.map({ "\($0)" }).joined(separator: separator)
@@ -532,7 +521,7 @@ public extension String {
         let fromIndex = index(startIndex, offsetBy: from)
         let toIndex = index(fromIndex, offsetBy: to)
         
-        self = substring(with: Range(fromIndex..<toIndex))
+        self = String(self[fromIndex..<toIndex])
     }
     
     func omGetRanges(_ searchString: String) -> [NSRange] {
@@ -570,12 +559,12 @@ public extension String {
                 
                 for range in omGetRanges(string) {
                     
-                    mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+                    mutableAttributedString.addAttribute(.foregroundColor, value: color, range: range)
                 }
                 
             } else {
                 
-                mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value: color, range: NSRange(location: 0, length: characters.count))
+                mutableAttributedString.addAttribute(.foregroundColor, value: color, range: NSRange(location: 0, length: characters.count))
             }
         }
         
@@ -585,12 +574,12 @@ public extension String {
                 
                 for range in omGetRanges(string) {
                     
-                    mutableAttributedString.addAttribute(NSFontAttributeName, value: font, range: range)
+                    mutableAttributedString.addAttribute(.font, value: font, range: range)
                 }
                 
             } else {
                 
-                mutableAttributedString.addAttribute(NSFontAttributeName, value: font, range: NSRange(location: 0, length: characters.count))
+                mutableAttributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: characters.count))
             }
         }
         
@@ -600,7 +589,7 @@ public extension String {
                 
                 for range in omGetRanges(subString) {
                     
-                    mutableAttributedString.addAttribute(NSUnderlineStyleAttributeName, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
+                    mutableAttributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.styleSingle.rawValue, range: range)
                 }
             }
         }
@@ -611,7 +600,7 @@ public extension String {
                 
                 for range in omGetRanges(subString) {
                     
-                    mutableAttributedString.addAttribute(NSStrikethroughStyleAttributeName, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int), range: range)
+                    mutableAttributedString.addAttribute(.strikethroughStyle, value: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int), range: range)
                 }
             }
         }
@@ -621,7 +610,7 @@ public extension String {
             let style = NSMutableParagraphStyle()
             style.lineSpacing = lineSpacing
             
-            mutableAttributedString.addAttribute(NSParagraphStyleAttributeName, value: style, range: NSRange(location: 0, length: characters.count))
+            mutableAttributedString.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: characters.count))
         }
         
         return mutableAttributedString
@@ -689,7 +678,7 @@ extension Int {
 extension NSMutableData {
     
     /** Convenient way to append bytes */
-    func appendBytes(_ arrayOfBytes: [UInt8]) {
+    @objc func appendBytes(_ arrayOfBytes: [UInt8]) {
         append(arrayOfBytes, length: arrayOfBytes.count)
     }
     

@@ -28,7 +28,7 @@ import UIKit
 
 class AuthenticationTVC: BaseTVC {
 
-    let dataSource = [
+    @objc let dataSource = [
         "TouchID授权"
         ]
     

@@ -66,7 +66,7 @@ public extension URLRequest {
         print(log + "\(separator.popLast() ?? "")")
     }
     
-    func omPrintResponseLog(_ isPrintHeader: Bool = false, isPrintBase64DecodeBody: Bool = false, isPrintBase64DecodeData: Bool = false, response: HTTPURLResponse?, data: Data?, error: Error?, requestDuration: TimeInterval?) {
+    func omPrintResponseLog(_ isPrintHeader: Bool = false, isPrintBase64DecodeBody: Bool = false, response: HTTPURLResponse?, data: Data?, error: Error?, requestDuration: TimeInterval?) {
         
         var log = ""
         

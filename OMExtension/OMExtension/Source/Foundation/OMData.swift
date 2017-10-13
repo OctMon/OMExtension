@@ -48,12 +48,6 @@ public extension Data {
         }
     }
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Data.OM.JSONString` instead.", renamed: "OM.JSONString")
-    static func omToJson(from json: Any?) -> String? {
-        
-        return OM.JSONString(from: json)
-    }
-    
     func omToJson() -> String? {
         
         var string: String? = nil

@@ -75,30 +75,6 @@ public extension UIDevice {
         
         #endif
     }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.name` instead.", renamed: "OM.hardwareString")
-    /// 设备型号
-    static var omName: String {
-        
-        return OM.name
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isPhone` instead.", renamed: "OM.isPhone")
-    /// iPhone判断
-    static var omIsPhone: Bool { return OM.isPhone }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isPad` instead.", renamed: "OM.isPad")
-    /// iPad判断
-    static var omIsPad: Bool { return OM.isPad }
-    #if !os(tvOS)
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isAvailableCameraFront` instead.", renamed: "OM.isAvailableCameraFront")
-    /// 前面的摄像头是否可用
-    static var omIsAvailableCameraFront: Bool { return OM.isAvailableCameraFront }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIDevice.OM.isAvailableCameraRear` instead.", renamed: "OM.isAvailableCameraRear")
-    /// 后面的摄像头是否可用
-    static var omIsAvailableCameraRear: Bool { return OM.isAvailableCameraRear }
-    #endif
 }
 
 #endif

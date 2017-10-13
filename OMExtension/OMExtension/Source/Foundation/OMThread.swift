@@ -54,16 +54,4 @@ public extension Thread {
             }
         }
     }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.runInMain` instead.", renamed: "OM.runInMain")
-    static func omRunInMainThread(delay: TimeInterval = 0, handler: @escaping () -> Void) {
-        
-        OM.runInMain(delay: delay, handler: handler)
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `Thread.OM.runInGlobal` instead.", renamed: "OM.runInGlobal")
-    static func omRunInBackgroundThread(delay: TimeInterval = 0, handler: @escaping () -> Void) {
-        
-        OM.runInGlobal(delay: delay, handler: handler)
-    }
 }

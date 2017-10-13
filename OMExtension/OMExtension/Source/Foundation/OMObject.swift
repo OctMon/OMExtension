@@ -43,29 +43,14 @@ public extension OMExtension where OMBase: NSObject {
 
 public extension NSObject {
     
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `object.om.deinitLog` instead.", renamed: "om.deinitLog")
-    /// ♻️deinit
-    var omDeinitLog: String {
-        
-        return om.deinitLog
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `object.om.className` instead.", renamed: "om.className")
-    /// 获取类型名称
-    var omClassName: String {
-        
-        return om.className
-    }
-    
     /// 获取类型名称
     fileprivate static var className: String {
         
         return String(describing: self)
     }
     
-//    @available(*, deprecated, message: "Extensions directly deprecated. Use `NSObject.OM.className` instead.", renamed: "OM.className")
     /// 获取类型名称
-    static var omClassName: String {
+    @objc static var omClassName: String {
         
         return String(describing: self)
     }

@@ -41,14 +41,4 @@ public extension OMExtension where OMBase: UIAlertController {
     }
 }
 
-public extension UIAlertController {
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `alertController.om.show` instead.", renamed: "om.show")
-    func omShow(_ completion: (()->())? = nil) {
-        
-        om.show(completion: completion)
-    }
-
-}
-
 #endif

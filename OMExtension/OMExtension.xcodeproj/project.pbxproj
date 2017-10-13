@@ -481,7 +481,7 @@
 					};
 					FE8F90531D6EADCC0095D74B = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					FE8F905D1D6EADCC0095D74B = {
@@ -984,7 +984,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtension;
 				PRODUCT_NAME = OMExtension;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1003,7 +1003,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.octmon.OMExtension;
 				PRODUCT_NAME = OMExtension;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

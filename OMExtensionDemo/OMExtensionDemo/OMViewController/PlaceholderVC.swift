@@ -31,7 +31,7 @@ class PlaceholderVC: BaseVC {
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
-    let dataSource = [
+    @objc let dataSource = [
         "500px",
         "Airbnb",
         "AppStore",
@@ -61,21 +61,21 @@ class PlaceholderVC: BaseVC {
         "WWDC"
     ]
     
-    var getImage: UIImage? {
+    @objc var getImage: UIImage? {
         
         let app = PopularApp(rawValue: dataSource.omRandom()!.element)!
         
         return UIImage(named: "placeholder_" + app.rawValue.lowercased().replacingOccurrences(of: "", with: "_", options: NSString.CompareOptions.caseInsensitive, range: nil))
     }
     
-    var getButtonBackgroundImageName: String {
+    @objc var getButtonBackgroundImageName: String {
         
         let app = PopularApp(rawValue: dataSource.omRandom()!.element)!
         
         return "button_background_" + app.rawValue.lowercased()
     }
     
-    var timer: Timer?
+    @objc var timer: Timer?
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

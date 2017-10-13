@@ -26,46 +26,46 @@ class JumpOtherTVC: BaseTVC {
         // Do any additional setup after loading the view.
     }
     
-    func showAlert(title: String) {
+    @objc func showAlert(title: String) {
         
         let alert = UIAlertController(title: title, message: nil, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
         alert.om.show()
     }
     
-    func canOpenWeixin() {
+    @objc func canOpenWeixin() {
         
         let canOpen = UIApplication.OM.canOpenURL(string: "weixin://")
         
         showAlert(title: "\(canOpen)")
     }
     
-    func openWeixin() {
+    @objc func openWeixin() {
         
         UIApplication.OM.openURL(string: "weixin://")
     }
     
-    func callTelephone() {
+    @objc func callTelephone() {
         
         UIApplication.OM.call(telephone: "112")
     }
     
-    func openAppStoreDetails() {
+    @objc func openAppStoreDetails() {
         
         UIApplication.OM.openAppStoreDetails(id: 414478124)
     }
     
-    func openAppStoreReviews() {
+    @objc func openAppStoreReviews() {
         
         UIApplication.OM.openAppStoreReviews(id: 414478124)
     }
     
-    func getAppStoreURL() {
+    @objc func getAppStoreURL() {
         
         showAlert(title: UIApplication.OM.getAppStoreURL(id: 414478124))
     }
     
-    func getAppStoreLookupURL() {
+    @objc func getAppStoreLookupURL() {
         
         showAlert(title: UIApplication.OM.getAppStoreLookupURL(id: 414478124))
     }

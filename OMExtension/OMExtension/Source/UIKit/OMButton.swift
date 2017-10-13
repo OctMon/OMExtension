@@ -107,18 +107,6 @@ public extension UIButton {
             omActivityIndicatorView = nil
         }
     }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `color.om.startActivity` instead.", renamed: "om.startActivity")
-    func omStartActivity() {
-        
-        om.startActivity()
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `color.om.stopActivity` instead.", renamed: "om.stopActivity")
-    func omStopActivity() {
-        
-        om.stopActivity()
-    }
 }
 
 #endif

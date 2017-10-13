@@ -63,36 +63,6 @@ public extension UIScreen {
             return UIScreen.main.bounds
         }
     }
-    #if !os(tvOS)
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.OM.isPortrait` instead.", renamed: "OM.isPortrait")
-    static var omIsPortrait: Bool {
-        
-        return OM.isPortrait
-    }
-    #endif
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.OM.width` instead.", renamed: "OM.width")
-    static var omGetWidth: CGFloat {
-        
-        return OM.width
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.OM.height` instead.", renamed: "OM.height")
-    static var omGetHeight: CGFloat {
-        
-        return OM.height
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.OM.size` instead.", renamed: "OM.size")
-    static var omGetSize: CGSize {
-        
-        return OM.size
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIScreen.OM.bounds` instead.", renamed: "OM.bounds")
-    static var omGetBounds: CGRect {
-        
-        return OM.bounds
-    }
 }
 
 #endif

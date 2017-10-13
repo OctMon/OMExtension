@@ -114,17 +114,17 @@ public extension UIImage {
     
     #if !os(watchOS)
     
-    convenience init?(omQRcode: String) {
+    @objc convenience init?(omQRcode: String) {
         
         self.init(omCodeGeneratorWithFilterName: "CIQRCodeGenerator", code: omQRcode)
     }
     
-    convenience init?(omBarcode: String) {
+    @objc convenience init?(omBarcode: String) {
         
         self.init(omCodeGeneratorWithFilterName: "CICode128BarcodeGenerator", code: omBarcode)
     }
     
-    convenience init?(omCodeGeneratorWithFilterName: String, code: String) {
+    @objc convenience init?(omCodeGeneratorWithFilterName: String, code: String) {
         
         let filter = CIFilter(name: omCodeGeneratorWithFilterName)
         filter?.setDefaults()
@@ -146,7 +146,7 @@ public extension UIImage {
     
     #endif
     
-    convenience init?(omColor: UIColor, frame:CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)) {
+    @objc convenience init?(omColor: UIColor, frame:CGRect = CGRect(x: 0, y: 0, width: 1, height: 1)) {
         
         UIGraphicsBeginImageContext(frame.size)
         let context = UIGraphicsGetCurrentContext()
@@ -157,25 +157,6 @@ public extension UIImage {
         
         self.init(cgImage: cgImage!, scale: 1.0, orientation: UIImageOrientation.up)
     }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `image.om.resize` instead.", renamed: "om.resize")
-    func omResize(_ size: CGSize, quality: CGInterpolationQuality = .none) -> UIImage {
-        
-        return om.resize(size: size, quality: quality)
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `image.om.setTintColor` instead.", renamed: "om.setTintColor")
-    func omTintColor(_ tintColor: UIColor) -> UIImage {
-        
-        return om.setTintColor(tintColor: tintColor)
-    }
-    #if !os(tvOS) && !os(watchOS)
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `UIImage.OM.launchImage` instead.", renamed: "OM.launchImage")
-    static func omLaunchImage() -> UIImage? {
-        
-        return OM.launchImage
-    }
-    #endif
 }
 
 #endif

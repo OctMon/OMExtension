@@ -62,19 +62,4 @@ public extension UITextView {
     @objc fileprivate func doneAction() { endEditing(true) }
 }
 
-public extension UITextView {
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `textView.om.addTextLimit` instead.", renamed: "om.addTextLimit")
-    func omSetLimit(_ length: Int, limitHandler: (() -> Void)? = nil) {
-        
-        om.addTextLimit(length: length, limitHandler: limitHandler)
-    }
-    
-    @available(*, deprecated, message: "Extensions directly deprecated. Use `textView.om.addDoneButton` instead.", renamed: "om.addDoneButton")
-    func omAddDoneButton(_ barStyle: UIBarStyle = .default, title: String? = "完成") {
-        
-        om.addDoneButton(barStyle: barStyle, title: title)
-    }
-}
-
 #endif
