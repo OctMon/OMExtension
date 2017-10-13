@@ -40,11 +40,11 @@ class OMApplicationTests: XCTestCase {
     
     func testApp() {
         
-        print(UIApplication.omAppName)
-        print(UIApplication.omAppVersion)
-        print(UIApplication.omIdentifier)
-        print(UIApplication.omAppBuild)
-        print(UIApplication.omAppDelegate)
+        print(UIApplication.OM.appName)
+        print(UIApplication.OM.appVersion)
+        print(UIApplication.OM.appIdentifier)
+        print(UIApplication.OM.appBuild)
+        print(UIApplication.OM.appDelegate)
     }
     
 }
