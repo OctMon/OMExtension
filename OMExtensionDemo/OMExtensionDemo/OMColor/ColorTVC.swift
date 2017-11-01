@@ -197,7 +197,7 @@ class ColorTVC: BaseTVC {
         
         /*colors.forEach { (color) in
             
-            if color.2.characters.count > 0 {
+            if color.2.count > 0 {
                 
                 print("UIColor." + color.1 + " // " + color.2)
                 

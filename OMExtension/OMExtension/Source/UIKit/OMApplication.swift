@@ -363,7 +363,7 @@ public extension UIApplication {
         @discardableResult
         public static func call(telephone: String) -> Bool {
             
-            guard telephone.characters.count > 0 else {
+            guard telephone.count > 0 else {
                 
                 return false
             }

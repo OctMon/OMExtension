@@ -96,7 +96,7 @@ public extension UIColor {
         let colorString: String = omHex.replacingOccurrences(of: "#", with: "").uppercased()
         var alpha: CGFloat = 0.0, red: CGFloat = 0.0, green: CGFloat = 0.0, blue: CGFloat = 0.0
         
-        switch colorString.characters.count {
+        switch colorString.count {
         case 3: // #RGB
             alpha = 1.0
             red = UIColor.colorComponentFrom(colorString, start: 0, lenght: 1)

@@ -251,7 +251,7 @@ public extension String {
     var omIsIncludeUppercaseLetterCharact: Bool {
         
         if let regular = try? NSRegularExpression(pattern: "[A-Z]") {
-            return regular.numberOfMatches(in: self, options: .reportProgress, range: NSMakeRange(0, characters.count)) > 0
+            return regular.numberOfMatches(in: self, options: .reportProgress, range: NSMakeRange(0, count)) > 0
         }
         
         return false
@@ -260,7 +260,7 @@ public extension String {
     var omIsIncludeLowercaseLetterCharact: Bool {
         
         if let regular = try? NSRegularExpression(pattern: "[a-z]") {
-            return regular.numberOfMatches(in: self, options: .reportProgress, range: NSMakeRange(0, characters.count)) > 0
+            return regular.numberOfMatches(in: self, options: .reportProgress, range: NSMakeRange(0, count)) > 0
         }
         
         return false
@@ -283,7 +283,7 @@ public extension String {
     /// 身份证号码验证
     var omIsIDCard: Bool {
         
-        if characters.count != 18 {
+        if count != 18 {
             
             return false
         }
@@ -305,7 +305,7 @@ public extension String {
             return false
         }
         
-        let chars = uppercased().characters.map { return String($0) }
+        let chars = uppercased().map { return String($0) }
         
         let c1 = chars[7].omToInt!
         let c2 = (chars[6].omToInt! + chars[16].omToInt!) * 2
@@ -323,7 +323,7 @@ public extension String {
         let remainder = summary % 11
         let checkString = "10X98765432"
         
-        let checkBit = checkString.characters.map { return String($0) }[remainder]
+        let checkBit = checkString.map { return String($0) }[remainder]
         
         return (checkBit == chars.last)
     }
@@ -345,7 +345,7 @@ public extension String {
         if includeCase {
             casesensitive = omIsIncludeLowercaseLetterCharact && omIsIncludeUppercaseLetterCharact
         }
-        guard characters.count >= min && characters.count <= max && !omIsNumber && !omIsIncludeSpecialCharact && casesensitive else {
+        guard count >= min && count <= max && !omIsNumber && !omIsIncludeSpecialCharact && casesensitive else {
             return false
         }
         
@@ -372,7 +372,7 @@ public extension String {
         
         if let detector = detector {
             
-            detector.enumerateMatches(in: text, options: [], range: NSRange(location: 0, length: text.characters.count), using: {
+            detector.enumerateMatches(in: text, options: [], range: NSRange(location: 0, length: text.count), using: {
                 
                 (result: NSTextCheckingResult?, flags: NSRegularExpression.MatchingFlags, stop: UnsafeMutablePointer<ObjCBool>) -> Void in
                 
@@ -433,7 +433,7 @@ public extension String {
     
     var omReversed: String {
         
-        return String(characters.reversed())
+        return String(reversed())
     }
     
     var omIsContainEmoji: Bool {
@@ -503,7 +503,7 @@ public extension String {
     
     func omJoinSeparator(_ separator: String) -> String {
         
-        return characters.map({ "\($0)" }).joined(separator: separator)
+        return map({ "\($0)" }).joined(separator: separator)
     }
     
     mutating func omJoinedSeparatored(_ separator: String) {
@@ -555,7 +555,7 @@ public extension String {
         
         color?.forEach { (color, subString) in
             
-            if let string = subString , string.characters.count > 0 {
+            if let string = subString , string.count > 0 {
                 
                 for range in omGetRanges(string) {
                     
@@ -564,13 +564,13 @@ public extension String {
                 
             } else {
                 
-                mutableAttributedString.addAttribute(.foregroundColor, value: color, range: NSRange(location: 0, length: characters.count))
+                mutableAttributedString.addAttribute(.foregroundColor, value: color, range: NSRange(location: 0, length: count))
             }
         }
         
         font?.forEach { (font, subString) in
             
-            if let string = subString , string.characters.count > 0 {
+            if let string = subString , string.count > 0 {
                 
                 for range in omGetRanges(string) {
                     
@@ -579,13 +579,13 @@ public extension String {
                 
             } else {
                 
-                mutableAttributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: characters.count))
+                mutableAttributedString.addAttribute(.font, value: font, range: NSRange(location: 0, length: count))
             }
         }
         
         underlineStyle?.forEach { (subString) in
             
-            if subString.characters.count > 0 {
+            if subString.count > 0 {
                 
                 for range in omGetRanges(subString) {
                     
@@ -596,7 +596,7 @@ public extension String {
         
         strikethroughStyle?.forEach { (subString) in
             
-            if subString.characters.count > 0 {
+            if subString.count > 0 {
                 
                 for range in omGetRanges(subString) {
                     
@@ -610,7 +610,7 @@ public extension String {
             let style = NSMutableParagraphStyle()
             style.lineSpacing = lineSpacing
             
-            mutableAttributedString.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: characters.count))
+            mutableAttributedString.addAttribute(.paragraphStyle, value: style, range: NSRange(location: 0, length: count))
         }
         
         return mutableAttributedString

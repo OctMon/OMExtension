@@ -56,7 +56,7 @@ public extension Double {
         
         var digits: [Int] = []
         
-        for char in String(self).characters {
+        for char in String(self) {
             
             if let int = Int(String(char)) {
                 
