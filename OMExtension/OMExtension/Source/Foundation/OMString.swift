@@ -79,25 +79,9 @@ public extension String {
         return omToInt ?? 0
     }
     
-    var omToBool: Bool? {
-        
-        let string = trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
-        
-        if string == "true" {
-            
-            return true
-            
-        } else if string == "false" {
-            
-            return false
-        }
-        
-        return nil
-    }
-    
     var omToBoolValue: Bool {
         
-        return omToBool ?? false
+        return ["true", "y", "t", "yes", "1"].contains { self.caseInsensitiveCompare($0) == .orderedSame }
     }
     
     /// Date object from "yyyy-MM-dd" formatted string
