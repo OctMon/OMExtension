@@ -32,12 +32,14 @@ private let omResponseSeparator = "\n->->->->->->->->->->Response->->->->->->->-
 
 public extension URLRequest {
     
-    func omPrintRequestLog(isPrintBase64DecodeBody: Bool = false) {
+    @discardableResult
+    func omPrintRequestLog(isPrintBase64DecodeBody: Bool = false) -> String {
         
-        omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omRequestSeparator, omRequestSeparator])
+        return omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omRequestSeparator, omRequestSeparator])
     }
     
-    private func omPrintRequestLog(isPrintBase64DecodeBody: Bool = false, separator: [String]) {
+    @discardableResult
+    private func omPrintRequestLog(isPrintBase64DecodeBody: Bool = false, separator: [String]) -> String {
         
         var separator = Array(separator.reversed())
         
@@ -63,57 +65,66 @@ public extension URLRequest {
             }
         }
         
-        print(log + "\(separator.popLast() ?? "")")
+        log += "\(separator.popLast() ?? "")"
+        
+        print(log)
+        
+        return log
     }
     
-    func omPrintResponseLog(_ isPrintHeader: Bool = false, isPrintBase64DecodeBody: Bool = false, response: HTTPURLResponse?, data: Data?, error: Error?, requestDuration: TimeInterval?) {
+    @discardableResult
+    func omPrintResponseLog(_ isPrintHeader: Bool = false, isPrintBase64DecodeBody: Bool = false, response: HTTPURLResponse?, data: Data?, error: Error?, requestDuration: TimeInterval?) -> (requestLog: String, responseLog: String) {
         
-        var log = ""
+        var requestLog = ""
+        var responseLog = ""
         
         if let response = response {
             
-            omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omResponseSeparator, omStatusCodeSeparator(statusCode: response.statusCode)])
+            requestLog = omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omResponseSeparator, omStatusCodeSeparator(statusCode: response.statusCode)])
             
             if let requestDuration = requestDuration {
                 
-                log += "[Duration]\t\(requestDuration)"
+                responseLog += "[Duration]\t\(requestDuration)"
             }
             
             if isPrintHeader, let header = Data.OM.JSONString(from: response.allHeaderFields) {
                 
-                log += "\n[Header]\n\(header)"
+                responseLog += "\n[Header]\n\(header)"
             }
             
         } else {
             
-            omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omResponseSeparator, omStatusCodeSeparator()])
+            requestLog = omPrintRequestLog(isPrintBase64DecodeBody: isPrintBase64DecodeBody, separator: [omResponseSeparator, omStatusCodeSeparator()])
             
             if let requestDuration = requestDuration {
                 
-                log += "[Duration]\t\(requestDuration)"
+                responseLog += "[Duration]\t\(requestDuration)"
             }
         }
         
         if let error = error {
             
-            log += "\n[Error]\t\t\(error.localizedDescription)"
+            responseLog += "\n[Error]\t\t\(error.localizedDescription)"
         }
         
         if let data = data {
             
-            log += "\n[Size]\t\t\(data)"
+            responseLog += "\n[Size]\t\t\(data)"
             
             if let data = data.omToJson() {
                 
-                log += "\n[Data]\n\(data)"
+                responseLog += "\n[Data]\n\(data)"
                 
                 if let json = Data(base64Encoded: data, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)?.omToJson(), isPrintBase64DecodeBody {
                     
-                    log += "\n[Data -> Base64Decode]\n\(json)"
+                    responseLog += "\n[Data -> Base64Decode]\n\(json)"
                 }
             }
         }
         
-        print(log + omResponseSeparator)
+        responseLog += omResponseSeparator
+        print(responseLog)
+        
+        return (requestLog, responseLog)
     }
 }
