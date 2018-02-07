@@ -544,9 +544,13 @@ public extension UIViewController {
                 omPlaceholderView?.isUserInteractionEnabled = false
             }
             
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UIDeviceOrientationDidChange, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+            if #available(iOS 9, *) {
                 
-                self?.updateFrame(offset: offset, space: space, buttonSize: buttonSize)
+            } else {
+                NotificationCenter.default.addObserver(forName: NSNotification.Name.UIDeviceOrientationDidChange, object: nil, queue: OperationQueue.main) { [weak self] (notification) in
+                    
+                    self?.updateFrame(offset: offset, space: space, buttonSize: buttonSize)
+                }
             }
             
         #endif
